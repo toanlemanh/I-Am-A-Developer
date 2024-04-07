@@ -1,3 +1,3 @@
-export default function MediaDeviceInfo() {
+export default function Main() {
 
 }
