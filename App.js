@@ -2,10 +2,10 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {NavigationContainer} from '@react-navigation/native'
-import HomeScreen from '../screens/HomeScreen'
-import HealthScreen from '../screens/HealthScreen';
-import MoneyScreen from '../screens/MoneyScreen';
-import OccupationScreen from '../screens/OccupationScreen';
+import HomeScreen from './src/screens/Home'
+import HealthScreen from './src/screens/HealthScreen';
+import MoneyScreen from './src/screens/MoneyScreen';
+import OccupationScreen from './src/screens/OccupationScreen';
 import { Entypo,AntDesign,MaterialCommunityIcons,MaterialIcons  } from '@expo/vector-icons';
 
 
