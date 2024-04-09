@@ -1,7 +1,7 @@
-import React, { useContext, useState } from 'react';
-import { View, Text, TouchableOpacity, Image, Platform, StyleSheet, ScrollView } from 'react-native';
-import FormInput from '../../components/FormInput';
+import React, { useState } from 'react';
+import { Image, Platform, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import FormButton from '../../components/FormButton';
+import FormInput from '../../components/FormInput';
 import SocialButton from '../../components/SocialButton';
 // import { AuthContext } from '../navigation/AuthProvider';
 

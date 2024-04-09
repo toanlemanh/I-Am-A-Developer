@@ -1,0 +1,611 @@
+{
+  "diseases": {
+    "-Nuz6CCNNRdauYq-20WC": [
+      {
+        "cureCost": 14578,
+        "id": 1,
+        "name": "Common Cold"
+      },
+      {
+        "cureCost": 51698,
+        "id": 2,
+        "name": "Flu"
+      },
+      {
+        "cureCost": 65747,
+        "id": 3,
+        "name": "Headache"
+      },
+      {
+        "cureCost": 59134,
+        "id": 4,
+        "name": "Stomach Ache"
+      },
+      {
+        "cureCost": 32637,
+        "id": 5,
+        "name": "Sprain"
+      },
+      {
+        "cureCost": 36998,
+        "id": 6,
+        "name": "Pink Eye"
+      },
+      {
+        "cureCost": 19414,
+        "id": 7,
+        "name": "Ear Infection"
+      },
+      {
+        "cureCost": 2241,
+        "id": 8,
+        "name": "Anxiety"
+      },
+      {
+        "cureCost": 90547,
+        "id": 9,
+        "name": "Depression"
+      },
+      {
+        "cureCost": 48905,
+        "id": 10,
+        "name": "Diabetes"
+      },
+      {
+        "cureCost": 88428,
+        "id": 11,
+        "name": "Cancer"
+      }
+    ]
+  },
+  "houses": {
+    "-Nuz441QzZLhwq8fqTb0": [
+      {
+        "id": 1,
+        "location": "Downtown",
+        "rent": 2103
+      },
+      {
+        "id": 2,
+        "location": "Suburbs",
+        "rent": 891
+      },
+      {
+        "id": 3,
+        "location": "Beachfront",
+        "rent": 2464
+      },
+      {
+        "id": 4,
+        "location": "Countryside",
+        "rent": 2402
+      },
+      {
+        "id": 5,
+        "location": "University District",
+        "rent": 2195
+      },
+      {
+        "id": 6,
+        "location": "Historic District",
+        "rent": 1427
+      },
+      {
+        "id": 7,
+        "location": "Lakefront",
+        "rent": 2250
+      },
+      {
+        "id": 8,
+        "location": "Mountain View",
+        "rent": 776
+      }
+    ]
+  },
+  "jobs": {
+    "-NuzAIDelQL69wEJGJPz": [
+      {
+        "id": 1,
+        "name": "Primary School Math Teacher",
+        "salary": 50000,
+        "subjectRequirements": {
+          "Math": 5
+        }
+      },
+      {
+        "id": 2,
+        "name": "Software Engineer",
+        "requirement": {
+          "universityMajor": "Computer Science"
+        },
+        "salary": 100000,
+        "subjectRequirements": {
+          "ComputerScience": 5,
+          "English": 4,
+          "Science": 3
+        }
+      },
+      {
+        "id": 3,
+        "name": "Doctor",
+        "requirement": {
+          "universityMajor": "Medicine"
+        },
+        "salary": 120000
+      },
+      {
+        "id": 4,
+        "name": "High School Math Teacher",
+        "salary": 60000,
+        "subjectRequirements": {
+          "Math": 5,
+          "Science": 4
+        }
+      },
+      {
+        "id": 5,
+        "name": "English Literature Professor",
+        "requirement": {
+          "universityMajor": "English"
+        },
+        "salary": 80000,
+        "subjectRequirements": {
+          "English": 4,
+          "Literature": 5
+        }
+      },
+      {
+        "id": 6,
+        "name": "History Lecturer",
+        "requirement": {
+          "universityMajor": "History"
+        },
+        "salary": 75000,
+        "subjectRequirements": {
+          "History": 5
+        }
+      },
+      {
+        "id": 7,
+        "name": "Marine Biologist",
+        "requirement": {
+          "universityMajor": "Biology"
+        },
+        "salary": 90000,
+        "subjectRequirements": {
+          "Geography": 3,
+          "Science": 5
+        }
+      },
+      {
+        "id": 8,
+        "name": "Geographer",
+        "requirement": {
+          "universityMajor": "Geography"
+        },
+        "salary": 70000,
+        "subjectRequirements": {
+          "Geography": 5,
+          "History": 2
+        }
+      },
+      {
+        "id": 9,
+        "name": "Art Director",
+        "salary": 85000,
+        "subjectRequirements": {
+          "Art": 5,
+          "English": 3
+        }
+      },
+      {
+        "id": 10,
+        "name": "Music Teacher",
+        "salary": 55000,
+        "subjectRequirements": {
+          "English": 2,
+          "Music": 5
+        }
+      },
+      {
+        "id": 11,
+        "name": "Physical Therapist",
+        "salary": 65000,
+        "subjectRequirements": {
+          "Biology": 3,
+          "Education": 5,
+          "Science": 5
+        }
+      },
+      {
+        "id": 12,
+        "name": "Web Developer",
+        "salary": 70000,
+        "subjectRequirements": {
+          "ComputerScience": 4,
+          "English": 3
+        }
+      },
+      {
+        "id": 13,
+        "name": "Technical Writer",
+        "requirement": {
+          "universityMajor": "English"
+        },
+        "salary": 60000,
+        "subjectRequirements": {
+          "ComputerScience": 2,
+          "English": 4
+        }
+      },
+      {
+        "id": 14,
+        "name": "Math Tutor",
+        "salary": 3000,
+        "subjectRequirements": {
+          "Math": 4
+        }
+      },
+      {
+        "id": 15,
+        "name": "Science Journalist",
+        "requirement": {
+          "universityMajor": "Journalism"
+        },
+        "salary": 75000,
+        "subjectRequirements": {
+          "English": 4,
+          "Science": 4
+        }
+      },
+      {
+        "id": 16,
+        "name": "History Channel Producer",
+        "requirement": {
+          "universityMajor": "Film"
+        },
+        "salary": 80000,
+        "subjectRequirements": {
+          "English": 4,
+          "History": 3
+        }
+      },
+      {
+        "id": 17,
+        "name": "Museum Curator",
+        "requirement": {
+          "universityMajor": "History"
+        },
+        "salary": 60000,
+        "subjectRequirements": {
+          "Art": 3,
+          "History": 4
+        }
+      },
+      {
+        "id": 18,
+        "name": "Cartographer",
+        "salary": 70000,
+        "subjectRequirements": {
+          "ComputerScience": 2,
+          "Geography": 4
+        }
+      },
+      {
+        "id": 19,
+        "name": "Graphic Designer",
+        "salary": 65000,
+        "subjectRequirements": {
+          "Art": 4,
+          "ComputerScience": 2
+        }
+      },
+      {
+        "id": 20,
+        "name": "Music Composer",
+        "salary": 90000,
+        "subjectRequirements": {
+          "Music": 5
+        }
+      }
+    ]
+  },
+  "npcs": {
+    "-Nuz58QMBTu_7ipk3ZN5": [
+      {
+        "age": 18,
+        "id": 1,
+        "name": "Kevin",
+        "occupation": "Athlete",
+        "relationshipLevel": 83,
+        "relationshipType": ""
+      },
+      {
+        "age": 33,
+        "id": 2,
+        "name": "Richard",
+        "occupation": "Politician",
+        "relationshipLevel": 97,
+        "relationshipType": ""
+      },
+      {
+        "age": 23,
+        "id": 3,
+        "name": "Brandon",
+        "occupation": "Lawyer",
+        "relationshipLevel": 69,
+        "relationshipType": ""
+      },
+      {
+        "age": 36,
+        "id": 4,
+        "name": "Lisa",
+        "occupation": "Entrepreneur",
+        "relationshipLevel": 75,
+        "relationshipType": ""
+      },
+      {
+        "age": 22,
+        "id": 5,
+        "name": "Hilary",
+        "occupation": "Musician",
+        "relationshipLevel": 99,
+        "relationshipType": ""
+      },
+      {
+        "age": 38,
+        "id": 6,
+        "name": "Sarah",
+        "occupation": "Politician",
+        "relationshipLevel": 49,
+        "relationshipType": ""
+      },
+      {
+        "age": 22,
+        "id": 7,
+        "name": "Jacqueline",
+        "occupation": "Doctor",
+        "relationshipLevel": 2,
+        "relationshipType": ""
+      },
+      {
+        "age": 19,
+        "id": 8,
+        "name": "David",
+        "occupation": "Musician",
+        "relationshipLevel": 16,
+        "relationshipType": ""
+      },
+      {
+        "age": 33,
+        "id": 9,
+        "name": "Jessica",
+        "occupation": "Doctor",
+        "relationshipLevel": 19,
+        "relationshipType": ""
+      },
+      {
+        "age": 31,
+        "id": 10,
+        "name": "James",
+        "occupation": "Politician",
+        "relationshipLevel": 12,
+        "relationshipType": ""
+      },
+      {
+        "age": 19,
+        "id": 11,
+        "name": "Alexis",
+        "occupation": "Musician",
+        "relationshipLevel": 19,
+        "relationshipType": ""
+      },
+      {
+        "age": 22,
+        "id": 12,
+        "name": "Emily",
+        "occupation": "Student",
+        "relationshipLevel": 77,
+        "relationshipType": ""
+      },
+      {
+        "age": 33,
+        "id": 13,
+        "name": "Victoria",
+        "occupation": "Doctor",
+        "relationshipLevel": 96,
+        "relationshipType": ""
+      },
+      {
+        "age": 18,
+        "id": 14,
+        "name": "Ruth",
+        "occupation": "Athlete",
+        "relationshipLevel": 84,
+        "relationshipType": ""
+      },
+      {
+        "age": 21,
+        "id": 15,
+        "name": "Matthew",
+        "occupation": "Lawyer",
+        "relationshipLevel": 69,
+        "relationshipType": ""
+      },
+      {
+        "age": 32,
+        "id": 16,
+        "name": "Christina",
+        "occupation": "Teacher",
+        "relationshipLevel": 15,
+        "relationshipType": ""
+      },
+      {
+        "age": 38,
+        "id": 17,
+        "name": "Katherine",
+        "occupation": "Politician",
+        "relationshipLevel": 14,
+        "relationshipType": ""
+      },
+      {
+        "age": 19,
+        "id": 18,
+        "name": "Lauren",
+        "occupation": "Entrepreneur",
+        "relationshipLevel": 93,
+        "relationshipType": ""
+      },
+      {
+        "age": 32,
+        "id": 19,
+        "name": "Erin",
+        "occupation": "Lawyer",
+        "relationshipLevel": 43,
+        "relationshipType": ""
+      },
+      {
+        "age": 17,
+        "id": 20,
+        "name": "Paul",
+        "occupation": "Athlete",
+        "relationshipLevel": 95,
+        "relationshipType": ""
+      },
+      {
+        "age": 26,
+        "id": 21,
+        "name": "Charles",
+        "occupation": "Student",
+        "relationshipLevel": 89,
+        "relationshipType": ""
+      },
+      {
+        "age": 33,
+        "id": 22,
+        "name": "Dorothy",
+        "occupation": "Artist",
+        "relationshipLevel": 82,
+        "relationshipType": ""
+      },
+      {
+        "age": 36,
+        "id": 23,
+        "name": "Alice",
+        "occupation": "Entrepreneur",
+        "relationshipLevel": 15,
+        "relationshipType": ""
+      },
+      {
+        "age": 13,
+        "id": 24,
+        "name": "Samuel",
+        "occupation": "Politician",
+        "relationshipLevel": 68,
+        "relationshipType": ""
+      },
+      {
+        "age": 20,
+        "id": 25,
+        "name": "Susan",
+        "occupation": "Athlete",
+        "relationshipLevel": 36,
+        "relationshipType": ""
+      },
+      {
+        "age": 18,
+        "id": 26,
+        "name": "Angel",
+        "occupation": "Lawyer",
+        "relationshipLevel": 89,
+        "relationshipType": ""
+      },
+      {
+        "age": 17,
+        "id": 27,
+        "name": "Megan",
+        "occupation": "Student",
+        "relationshipLevel": 52,
+        "relationshipType": ""
+      },
+      {
+        "age": 15,
+        "id": 28,
+        "name": "Joseph",
+        "occupation": "Entrepreneur",
+        "relationshipLevel": 83,
+        "relationshipType": ""
+      },
+      {
+        "age": 33,
+        "id": 29,
+        "name": "Jacob",
+        "occupation": "Entrepreneur",
+        "relationshipLevel": 9,
+        "relationshipType": ""
+      },
+      {
+        "age": 26,
+        "id": 30,
+        "name": "Jennifer",
+        "occupation": "Lawyer",
+        "relationshipLevel": 25,
+        "relationshipType": ""
+      }
+    ]
+  },
+  "subjects": {
+    "-Nuz4_alAc3p_mHbvaZ2": [
+      {
+        "duration": 3,
+        "id": 1,
+        "name": "Math"
+      },
+      {
+        "duration": 4,
+        "id": 2,
+        "name": "Literature"
+      },
+      {
+        "duration": 5,
+        "id": 3,
+        "name": "History"
+      },
+      {
+        "duration": 5,
+        "id": 4,
+        "name": "Science"
+      },
+      {
+        "duration": 3,
+        "id": 5,
+        "name": "Geography"
+      },
+      {
+        "duration": 4,
+        "id": 6,
+        "name": "Art"
+      },
+      {
+        "duration": 5,
+        "id": 7,
+        "name": "Music"
+      },
+      {
+        "duration": 5,
+        "id": 8,
+        "name": "Physical Education"
+      },
+      {
+        "duration": 4,
+        "id": 9,
+        "name": "Computer Science"
+      },
+      {
+        "duration": 5,
+        "id": 10,
+        "name": "English"
+      }
+    ]
+  }
+}
