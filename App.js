@@ -1,17 +1,11 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { StyleSheet } from 'react-native';
 
-import HomeScreen from './src/screens/Home'
-import HealthScreen from './src/screens/HealthScreen';
-import MoneyScreen from './src/screens/MoneyScreen';
-import OccupationScreen from './src/screens/OccupationScreen';
 import Login from './src/screens/LoginScreen';
 import Signup from './src/screens/Signup';
 
-import { Entypo, AntDesign, MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 
 export default function App() {
 

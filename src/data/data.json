@@ -103,126 +103,29 @@
     ]
   },
   "jobs": {
-    "-NuzAIDelQL69wEJGJPz": [
+    "-NvDh6FI4gw4w4-VTIgY": [
       {
         "id": 1,
-        "name": "Primary School Math Teacher",
-        "salary": 50000,
-        "subjectRequirements": {
-          "Math": 5
-        }
-      },
-      {
-        "id": 2,
         "name": "Software Engineer",
         "requirement": {
-          "universityMajor": "Computer Science"
+          "ComputerScience": 5,
+          "SoftwareEngineering": 4
         },
         "salary": 100000,
         "subjectRequirements": {
-          "ComputerScience": 5,
           "English": 4,
           "Science": 3
         }
       },
       {
-        "id": 3,
-        "name": "Doctor",
-        "requirement": {
-          "universityMajor": "Medicine"
-        },
-        "salary": 120000
-      },
-      {
-        "id": 4,
-        "name": "High School Math Teacher",
-        "salary": 60000,
-        "subjectRequirements": {
-          "Math": 5,
-          "Science": 4
-        }
-      },
-      {
-        "id": 5,
-        "name": "English Literature Professor",
-        "requirement": {
-          "universityMajor": "English"
-        },
-        "salary": 80000,
-        "subjectRequirements": {
-          "English": 4,
-          "Literature": 5
-        }
-      },
-      {
-        "id": 6,
-        "name": "History Lecturer",
-        "requirement": {
-          "universityMajor": "History"
-        },
-        "salary": 75000,
-        "subjectRequirements": {
-          "History": 5
-        }
-      },
-      {
-        "id": 7,
-        "name": "Marine Biologist",
-        "requirement": {
-          "universityMajor": "Biology"
-        },
-        "salary": 90000,
-        "subjectRequirements": {
-          "Geography": 3,
-          "Science": 5
-        }
-      },
-      {
-        "id": 8,
-        "name": "Geographer",
-        "requirement": {
-          "universityMajor": "Geography"
-        },
-        "salary": 70000,
-        "subjectRequirements": {
-          "Geography": 5,
-          "History": 2
-        }
-      },
-      {
-        "id": 9,
-        "name": "Art Director",
-        "salary": 85000,
-        "subjectRequirements": {
-          "Art": 5,
-          "English": 3
-        }
-      },
-      {
-        "id": 10,
-        "name": "Music Teacher",
-        "salary": 55000,
-        "subjectRequirements": {
-          "English": 2,
-          "Music": 5
-        }
-      },
-      {
-        "id": 11,
-        "name": "Physical Therapist",
-        "salary": 65000,
-        "subjectRequirements": {
-          "Biology": 3,
-          "Education": 5,
-          "Science": 5
-        }
-      },
-      {
         "id": 12,
         "name": "Web Developer",
+        "requirement": {
+          "ComputerScience": 4,
+          "Design": 3
+        },
         "salary": 70000,
         "subjectRequirements": {
-          "ComputerScience": 4,
           "English": 3
         }
       },
@@ -230,82 +133,145 @@
         "id": 13,
         "name": "Technical Writer",
         "requirement": {
-          "universityMajor": "English"
-        },
-        "salary": 60000,
-        "subjectRequirements": {
           "ComputerScience": 2,
-          "English": 4
-        }
-      },
-      {
-        "id": 14,
-        "name": "Math Tutor",
-        "salary": 3000,
-        "subjectRequirements": {
-          "Math": 4
-        }
-      },
-      {
-        "id": 15,
-        "name": "Science Journalist",
-        "requirement": {
-          "universityMajor": "Journalism"
-        },
-        "salary": 75000,
-        "subjectRequirements": {
-          "English": 4,
-          "Science": 4
-        }
-      },
-      {
-        "id": 16,
-        "name": "History Channel Producer",
-        "requirement": {
-          "universityMajor": "Film"
-        },
-        "salary": 80000,
-        "subjectRequirements": {
-          "English": 4,
-          "History": 3
-        }
-      },
-      {
-        "id": 17,
-        "name": "Museum Curator",
-        "requirement": {
-          "universityMajor": "History"
+          "InformationTechnology": 3
         },
         "salary": 60000,
         "subjectRequirements": {
-          "Art": 3,
-          "History": 4
+          "English": 5,
+          "Literature": 5
         }
       },
       {
         "id": 18,
         "name": "Cartographer",
+        "requirement": {
+          "ComputerScience": 2,
+          "InformationTechnology": 3
+        },
         "salary": 70000,
         "subjectRequirements": {
-          "ComputerScience": 2,
-          "Geography": 4
+          "Geography": 5
         }
       },
       {
         "id": 19,
         "name": "Graphic Designer",
+        "requirement": {
+          "ComputerScience": 2,
+          "Design": 5
+        },
         "salary": 65000,
         "subjectRequirements": {
-          "Art": 4,
-          "ComputerScience": 2
+          "Art": 4
         }
       },
       {
         "id": 20,
-        "name": "Music Composer",
+        "name": "Network Administrator",
+        "requirement": {
+          "InformationTechnology": 2,
+          "Networking": 4,
+          "Security": 3
+        },
+        "salary": 80000,
+        "subjectRequirements": {
+          "Math": 4,
+          "Science": 3
+        }
+      },
+      {
+        "id": 21,
+        "name": "Cybersecurity Analyst",
+        "requirement": {
+          "ComputerScience": 3,
+          "Cybersecurity": 4,
+          "Security": 5
+        },
         "salary": 90000,
         "subjectRequirements": {
-          "Music": 5
+          "Math": 5
+        }
+      },
+      {
+        "id": 22,
+        "name": "Data Analyst",
+        "requirement": {
+          "ComputerScience": 3,
+          "DataScience": 4,
+          "SQL": 3,
+          "Statistics": 4
+        },
+        "salary": 75000,
+        "subjectRequirements": {
+          "Math": 4
+        }
+      },
+      {
+        "id": 23,
+        "name": "Database Administrator",
+        "requirement": {
+          "DatabaseManagement": 3,
+          "InformationTechnology": 2,
+          "SQL": 4
+        },
+        "salary": 85000,
+        "subjectRequirements": {
+          "Math": 4
+        }
+      },
+      {
+        "id": 24,
+        "name": "IT Project Manager",
+        "requirement": {
+          "Communication": 4,
+          "InformationTechnology": 4,
+          "ProjectManagement": 5
+        },
+        "salary": 110000,
+        "subjectRequirements": {
+          "English": 5,
+          "Literature": 4
+        }
+      },
+      {
+        "id": 25,
+        "name": "Systems Analyst",
+        "requirement": {
+          "BusinessAnalysis": 4,
+          "ComputerScience": 2,
+          "InformationTechnology": 3
+        },
+        "salary": 80000,
+        "subjectRequirements": {
+          "English": 4,
+          "Literature": 4
+        }
+      },
+      {
+        "id": 26,
+        "name": "QA Tester",
+        "requirement": {
+          "ComputerScience": 2,
+          "SoftwareDevelopment": 2,
+          "Testing": 2
+        },
+        "salary": 60000,
+        "subjectRequirements": {
+          "Math": 5
+        }
+      },
+      {
+        "id": 27,
+        "name": "UX/UI Designer",
+        "requirement": {
+          "Design": 2,
+          "UserExperience": 2,
+          "UserInterface": 2
+        },
+        "salary": 90000,
+        "subjectRequirements": {
+          "Art": 5
         }
       }
     ]
@@ -605,6 +571,100 @@
         "duration": 5,
         "id": 10,
         "name": "English"
+      }
+    ]
+  },
+  "universitySubjects": {
+    "-NvDdo5f56HIqlEsssTJ": [
+      {
+        "duration": 4,
+        "id": 1,
+        "name": "Computer Science"
+      },
+      {
+        "duration": 4,
+        "id": 2,
+        "name": "Software Engineering"
+      },
+      {
+        "duration": 4,
+        "id": 3,
+        "name": "Information Technology"
+      },
+      {
+        "duration": 4,
+        "id": 4,
+        "name": "Cybersecurity"
+      },
+      {
+        "duration": 4,
+        "id": 5,
+        "name": "Data Science"
+      },
+      {
+        "duration": 4,
+        "id": 6,
+        "name": "Design"
+      },
+      {
+        "duration": 4,
+        "id": 7,
+        "name": "Networking"
+      },
+      {
+        "duration": 4,
+        "id": 8,
+        "name": "Security"
+      },
+      {
+        "duration": 4,
+        "id": 9,
+        "name": "Statistics"
+      },
+      {
+        "duration": 4,
+        "id": 10,
+        "name": "SQL"
+      },
+      {
+        "duration": 4,
+        "id": 11,
+        "name": "Database Management"
+      },
+      {
+        "duration": 4,
+        "id": 12,
+        "name": "Project Management"
+      },
+      {
+        "duration": 4,
+        "id": 13,
+        "name": "Communication"
+      },
+      {
+        "duration": 4,
+        "id": 14,
+        "name": "Business Analysis"
+      },
+      {
+        "duration": 4,
+        "id": 15,
+        "name": "Testing"
+      },
+      {
+        "duration": 4,
+        "id": 16,
+        "name": "Software Development"
+      },
+      {
+        "duration": 4,
+        "id": 17,
+        "name": "User Experience"
+      },
+      {
+        "duration": 4,
+        "id": 18,
+        "name": "User Interface"
       }
     ]
   }
