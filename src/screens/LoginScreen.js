@@ -5,7 +5,7 @@ import FormInput from '../../components/FormInput';
 import SocialButton from '../../components/SocialButton';
 // import { AuthContext } from '../navigation/AuthProvider';
 
-const Login = ({ navigation }) => {
+const LoginScreen = ({ navigation }) => {
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
 
@@ -77,7 +77,7 @@ const Login = ({ navigation }) => {
     );
 };
 
-export default Login;
+export default LoginScreen;
 
 const styles = StyleSheet.create({
     container: {

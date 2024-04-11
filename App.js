@@ -8,13 +8,10 @@ import HomeScreen from './src/screens/Home'
 import HealthScreen from './src/screens/HealthScreen';
 import MoneyScreen from './src/screens/MoneyScreen';
 import OccupationScreen from './src/screens/OccupationScreen';
-import Login from './src/screens/Login';
+import Login from './src/screens/LoginScreen';
 import Signup from './src/screens/Signup';
 
 import { Entypo, AntDesign, MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
-
-
-
 
 export default function App() {
 
