@@ -1,8 +1,8 @@
-import React, { useContext, useState } from 'react';
-import { View, Text, TouchableOpacity, Platform, StyleSheet } from 'react-native';
-import FormInput from '../../components/FormInput';
-import FormButton from '../../components/FormButton';
-import SocialButton from '../../components/SocialButton';
+import React, { useState } from 'react';
+import { Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import FormButton from '../components/FormButton';
+import FormInput from '../components/FormInput';
+import SocialButton from '../components/SocialButton';
 // import { AuthContext } from '../navigation/AuthProvider';
 
 const RegisterScreen = ({ navigation }) => {

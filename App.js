@@ -3,8 +3,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { StyleSheet } from 'react-native';
 
-import Login from './src/screens/LoginScreen';
-import Signup from './src/screens/Signup';
+import LoginScreen from './src/screens/LoginScreen';
+import RegisterScreen from './src/screens/RegisterScreen';
 
 
 export default function App() {
@@ -17,13 +17,13 @@ export default function App() {
 
       <Stack.Navigator initialRouteName='login'>
         <Stack.Screen
-          name='Login'
-          component={Login}
+          name='LoginScreen'
+          component={LoginScreen}
           options={{ header: () => null }}
         />
         <Stack.Screen
           name='Register'
-          component={Signup}
+          component={RegisterScreen}
           options={({ navigation }) => ({
             title: '',
             headerStyle: {
@@ -37,7 +37,7 @@ export default function App() {
             //       size={25}
             //       backgroundColor="#f9fafd"
             //       color="#333"
-            //       onPress={() => navigation.navigate('Login')}
+            //       onPress={() => navigation.navigate('LoginScreen')}
             //     />
             //   </View>
             // ),
