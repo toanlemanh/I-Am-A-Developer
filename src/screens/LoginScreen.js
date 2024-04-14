@@ -1,111 +1,108 @@
-import React, { useState } from 'react';
-import { Image, Platform, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import FormButton from '../components/FormButton';
+import React from 'react';
+import { View, StyleSheet, TouchableOpacity, Platform, Text } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
+
+import SocialBtn from '../components/SocialBtn';
+import FormBtn from '../components/PrimaryBtn';
 import FormInput from '../components/FormInput';
-import SocialButton from '../components/SocialButton';
-// import { AuthContext } from '../navigation/AuthProvider';
+import DividerLine from '../components/DividerLine';
 
-const LoginScreen = ({ navigation }) => {
-    const [email, setEmail] = useState();
-    const [password, setPassword] = useState();
-
-
-    // const MyContext = React.createContext();
-
-
-    // const { login, googleLogin, fbLogin } = useContext();
+function LoginScreen() {
+    const onLoginPressed = () => {
+        console.warn("Logged in successfully")
+    }
 
     return (
-        <ScrollView contentContainerStyle={styles.container}>
-            <Image
-                source={require('../assets/images/logo icon.png')}
-                style={styles.logo}
-            />
-            <Text style={styles.text}>Born to Reborn</Text>
+        <View style={styles.container}>
+            <TouchableOpacity style={styles.iconContainer}>
+                <Ionicons
+                    name={Platform.OS === 'ios' ? "chevron-back" : "chevron-back"}
+                    size={24}
+                    color="black"
+                    style={styles.icon} />
 
-            <FormInput
-                labelValue={email}
-                onChangeText={(userEmail) => setEmail(userEmail)}
-                placeholderText="Email"
-                // iconType="user"
-                keyboardType="email-address"
-                autoCapitalize="none"
-                autoCorrect={false}
-            />
-
-            <FormInput
-                labelValue={password}
-                onChangeText={(userPassword) => setPassword(userPassword)}
-                placeholderText="Password"
-                // iconType="lock"
-                secureTextEntry={true}
-            />
-
-            <FormButton
-                buttonTitle="Log In"
-            // onPress={() => login(email, password)}
-            />
-
-            {Platform.OS === 'android' ? (
-                <View style={styles.socialButton}>
-                    <SocialButton
-                        // buttonTitle="Sign in with Facebook"
-                        btnType="facebook"
-                        color="#4867aa"
-                        backgroundColor="#e6eaf4"
-                    // onPress={() => fbLogin()}
-                    />
-
-                    <SocialButton
-                        // buttonTitle="Sign in with Google"
-                        btnType="google"
-                        color="#de4d41"
-                        backgroundColor="#f5e7ea"
-                    // onPress={() => googleLogin()}
-                    />
-                </View>
-            ) : null}
-
-            <TouchableOpacity
-                style={styles.naviButton}
-                onPress={() => navigation.navigate('Register')}>
-                <Text style={styles.navButtonText}>
-                    Don't have an acount? <Text style={{ color: '#35C2C1' }}>Register now</Text>
-                </Text>
             </TouchableOpacity>
-        </ScrollView>
-    );
-};
 
-export default LoginScreen;
+            <Text style={styles.title}>Welcome back! Glad to see you</Text>
+
+            <View style={styles.boxInput}>
+                <FormInput placeholder={"Enter your email"} secureTextEntry={false} />
+                <FormInput placeholder={"Enter your password"} secureTextEntry={true} />
+            </View>
+
+            <FormBtn title={'Login'} onTap={onLoginPressed} />
+            <DividerLine children={"Or Login with"} />
+
+            <View style={styles.socialBox}>
+                <SocialBtn name={'logo-facebook'} size={30} color={"#4092FF"}></SocialBtn>
+                <SocialBtn name={'logo-google'} size={30} color={"#F14336"}></SocialBtn>
+                <SocialBtn name={'logo-apple'} size={30} color={"black"}></SocialBtn>
+            </View>
+
+            <View style={styles.registerContainer}>
+                <Text style={{ color: 'black' }}>
+                    Don't have an account?{' '}
+                    <Text style={styles.registerLink}>
+                        Register Now
+                    </Text>
+                </Text>
+            </View>
+        </View >
+    )
+}
+
+export default LoginScreen
 
 const styles = StyleSheet.create({
     container: {
-        justifyContent: 'center',
+        width: '100%',
+        height: '100%',
+        flex: 1,
+        justifyContent: 'flex-start',
         alignItems: 'center',
-        padding: 20,
-        paddingTop: 50
+        paddingHorizontal: 20,
     },
-    logo: {
-        height: 150,
-        width: 150,
-        resizeMode: 'cover',
+
+    // Icon Box
+    iconContainer: {
+        borderRadius: 10,
+        alignSelf: 'flex-start',
+        marginTop: 70,
+        marginBottom: 20,
+        backgroundColor: 'white',
     },
-    text: {
-        fontSize: 28,
+
+    icon: {
+        width: '100%',
+        padding: 10,
+        borderWidth: 1,
+        borderColor: '#E8ECF4',
+        borderRadius: 10,
+    },
+
+    title: {
+        color: '#77B29F',
+        fontWeight: 'bold',
+        fontSize: 36,
         marginBottom: 10,
-        color: '#051d5f',
     },
-    socialButton: {
+
+    boxInput: {
+        width: '100%',
+        marginVertical: 20,
+        backgroundColor: '#F7F8F9',
+    },
+
+    socialBox: {
         flexDirection: 'row',
-        padding: 20
     },
-    naviButton: {
-        marginVertical: 35,
+
+    registerContainer: {
+        marginVertical: 20,
     },
-    navButtonText: {
-        fontSize: 15,
-        fontWeight: '300',
-        // color: '#2e64e5',
+
+    registerLink: {
+        fontWeight: 'bold',
+        color: '#EB9F4A',
     },
-});
+})
