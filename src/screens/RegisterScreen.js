@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import FormButton from '../components/FormButton';
+import FormBtn from '../components/FormBtn';
 import FormInput from '../components/FormInput';
-import SocialButton from '../components/SocialButton';
+import SocialBtn from '../components/SocialBtn';
 // import { AuthContext } from '../navigation/AuthProvider';
 
 const RegisterScreen = ({ navigation }) => {
@@ -52,7 +52,7 @@ const RegisterScreen = ({ navigation }) => {
                 secureTextEntry={true}
             />
 
-            <FormButton
+            <FormBtn
                 buttonTitle="Sign Up"
             // onPress={() => register(email, password)}
             />
@@ -62,8 +62,8 @@ const RegisterScreen = ({ navigation }) => {
 
 
             {Platform.OS === 'android' ? (
-                <View style={styles.socialButton}>
-                    <SocialButton
+                <View style={styles.SocialBtn}>
+                    <SocialBtn
                         // buttonTitle="Sign Up with Facebook"
                         btnType="facebook"
                         color="#4867aa"
@@ -71,7 +71,7 @@ const RegisterScreen = ({ navigation }) => {
                         onPress={() => { }}
                     />
 
-                    <SocialButton
+                    <SocialBtn
                         // buttonTitle="Sign Up with Google"
                         btnType="google"
                         color="#de4d41"
@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold'
         // color: '#051d5f',
     },
-    socialButton: {
+    SocialBtn: {
         flexDirection: 'row',
         padding: 20,
 

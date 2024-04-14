@@ -1,13 +1,13 @@
-import React from 'react';
-import { View, StyleSheet, TouchableOpacity, Platform, Text } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import React from 'react';
+import { Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
-import SocialBtn from '../components/SocialBtn';
-import FormBtn from '../components/PrimaryBtn';
-import FormInput from '../components/FormInput';
 import DividerLine from '../components/DividerLine';
+import FormBtn from '../components/FormBtn';
+import FormInput from '../components/FormInput';
+import SocialBtn from '../components/SocialBtn';
 
-function LoginScreen() {
+function LoginScreen({ navigation }) {
     const onLoginPressed = () => {
         console.warn("Logged in successfully")
     }
@@ -42,11 +42,16 @@ function LoginScreen() {
             <View style={styles.registerContainer}>
                 <Text style={{ color: 'black' }}>
                     Don't have an account?{' '}
+                </Text>
+                <TouchableOpacity
+                    style={styles.navButton}
+                    onPress={() => navigation.navigate('Register')}>
                     <Text style={styles.registerLink}>
                         Register Now
                     </Text>
-                </Text>
+                </TouchableOpacity>
             </View>
+
         </View >
     )
 }
@@ -99,6 +104,7 @@ const styles = StyleSheet.create({
 
     registerContainer: {
         marginVertical: 20,
+        flexDirection: 'row'
     },
 
     registerLink: {
