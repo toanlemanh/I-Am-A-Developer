@@ -1,9 +1,9 @@
 import {View,Text,StyleSheet} from 'react-native'
 
-export default function HealthScreen(){
+export default function AssetScreen(){
     return(
         <View>
-            <Text>HealthScreen</Text>
+            <Text>AssetScreen</Text>
         </View>
     )
 }

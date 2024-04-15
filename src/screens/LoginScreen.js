@@ -9,7 +9,7 @@ import SocialBtn from '../components/SocialBtn';
 
 function LoginScreen({ navigation }) {
     const onLoginPressed = () => {
-        console.warn("Logged in successfully")
+        navigation.navigate('MainScreen');
     }
 
     return (

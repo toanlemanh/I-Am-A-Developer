@@ -1,17 +1,40 @@
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+
 import { StyleSheet } from 'react-native';
 
 import LoginScreen from './src/screens/LoginScreen';
 import RegisterScreen from './src/screens/RegisterScreen';
+import HomeScreen from './src/screens/Home';
+import RelationshipScreen from './src/screens/Relationship'
+import AssetScreen from './src/screens/AssetScreen';
+import OccupationScreen from './src/screens/OccupationScreen';
+import { AntDesign,  } from '@expo/vector-icons';
 
-
+import ManageRelationship from './src/screens/ManageRelationship';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 export default function App() {
 
-  const BottomTab = createBottomTabNavigator();
-
-  const Stack = createStackNavigator();
+  const Drawer = createDrawerNavigator();
+  const Stack = createNativeStackNavigator();
+  function DrawerNav(){
+    return(
+      <Drawer.Navigator>
+        <Drawer.Screen
+          name='I am a Developer'
+          component={HomeScreen}
+          options={{
+            headerStyle:{
+              backgroundColor:'#77B29F'
+            },
+            headerTintColor:'#EED817',
+            headerTitleAlign:'center'
+          }}
+        />
+      </Drawer.Navigator>
+    )
+  }
   return (
     <NavigationContainer>
 
@@ -30,47 +53,71 @@ export default function App() {
               backgroundColor: '#f9fafd',
               elevation: 0
             },
-            // headerLeft: () => (
-            //   <View>
-            //     <FontAwesome.Button
-            //       name='long-arrow-left'
-            //       size={25}
-            //       backgroundColor="#f9fafd"
-            //       color="#333"
-            //       onPress={() => navigation.navigate('LoginScreen')}
-            //     />
-            //   </View>
-            // ),
+           
           })}
         />
-      </Stack.Navigator>
+        <Stack.Screen 
+          name='MainScreen'
+          component={DrawerNav}
+          options={{headerShown:false}}
+          
+        />
 
-      {/* <BottomTab.Navigator screenOptions={{
-        headerShown: false,
-        tabBarShowLabel: false,
-        tabBarActiveTintColor: 'black'
-      }}>
-        <BottomTab.Screen name='Home' component={HomeScreen} options={{
-          tabBarIcon: ({ color, size }) => <View style={styles.wrapper}>
-            <Entypo name="shop" size={size} color={color} />
-          </View>
-        }} />
-        <BottomTab.Screen name='Health' component={HealthScreen} options={{
-          tabBarIcon: ({ color, size }) => <View style={styles.wrapper}>
-            <AntDesign name="heart" size={size} color={color} />
-          </View>
-        }} />
-        <BottomTab.Screen name='Money' component={MoneyScreen} options={{
-          tabBarIcon: ({ color, size }) => <View style={styles.wrapper}>
-            <MaterialCommunityIcons name="sack" size={size} color={color} />
-          </View>
-        }} />
-        <BottomTab.Screen name='Occupation' component={OccupationScreen} options={{
-          tabBarIcon: ({ color, size }) => <View style={styles.wrapper}>
-            <MaterialIcons name="work" size={size} color={color} />
-          </View>
-        }} />
-      </BottomTab.Navigator> */}
+        <Stack.Screen
+          name='Relationship'
+          component={RelationshipScreen}
+          options={({ navigation }) => ({
+            title: 'RELATIONSHIP',
+            headerStyle: {
+              backgroundColor: '#EB9F4A',
+            },
+            headerTintColor: '#FFFFFF',
+            headerLeft: () => (
+              <AntDesign
+                name="caretleft"
+                size={24}
+                color="white"
+                style={{ marginLeft: 10 }}
+                onPress={() => navigation.goBack()} 
+              />
+            ),
+            headerTitleAlign:'center'
+          })}
+        
+        />
+         <Stack.Screen
+          name='ManageRelationship'
+          component={ManageRelationship}
+          options={({ navigation }) => ({
+            headerStyle: {
+              backgroundColor: '#EB9F4A',
+            },
+            headerTintColor: '#FFFFFF',
+            headerLeft: () => (
+              <AntDesign
+                name="caretleft"
+                size={24}
+                color="white"
+                style={{ marginLeft: 10 }}
+                onPress={() => navigation.goBack()} 
+              />
+            ),
+            headerTitleAlign:'center'
+          })}
+        
+        />
+        <Stack.Screen
+          name='Assets'
+          component={AssetScreen}
+          options={{headerShown:false}}
+        />
+        <Stack.Screen
+          name='Occupation'
+          component={OccupationScreen}
+        />
+
+
+      </Stack.Navigator>
     </NavigationContainer>
   );
 }
@@ -82,12 +129,4 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  wrapper: {
-    width: 42,
-    height: 42,
-    borderRadius: 24,
-    backgroundColor: '#C0C0C0',
-    justifyContent: 'center',
-    alignItems: 'center'
-  }
 });
