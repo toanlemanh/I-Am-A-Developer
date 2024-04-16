@@ -120,17 +120,18 @@ const styles = StyleSheet.create({
 
     boxInput: {
         width: '100%',
-        marginVertical: 10,
-        // backgroundColor: '#F7F8F9',
+        marginVertical: 20,
     },
 
     socialBox: {
         flexDirection: 'row',
+        justifyContent: 'center',
     },
 
     registerContainer: {
         marginVertical: 20,
-        flexDirection: 'row'
+        flexDirection: 'row',
+        justifyContent: 'center',
     },
 
     registerLink: {

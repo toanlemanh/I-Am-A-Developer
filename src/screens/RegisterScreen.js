@@ -35,7 +35,7 @@ function RegisterScreen({ navigation }) {
         <FormInput placeholder={"Confirm password"} secureTextEntry={true} />
       </View>
 
-      <FormBtn title={"Register"}></FormBtn>
+      <FormBtn title={"Register"} onPress={() => navigation.navigate('MainScreen')}></FormBtn>
 
       <DividerLine children={"Or Login with"} />
 
@@ -104,12 +104,14 @@ const styles = StyleSheet.create({
   },
 
   socialBox: {
-    flexDirection: "row",
+    flexDirection: 'row',
+    justifyContent: 'center',
   },
 
   registerContainer: {
     marginVertical: 20,
-    flexDirection: 'row'
+    flexDirection: 'row',
+    justifyContent: 'center',
   },
 
   registerLink: {
