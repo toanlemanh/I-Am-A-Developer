@@ -1,4 +1,4 @@
-const WebApiKey = "AIzaSyAb-ikC6OtN_mah2Z1_BKu-bPYKEPdWn2w";
+const WebApiKey = "";
 import axios from "axios";
 const authenticate = async (mode, email, password) => {
   try {
