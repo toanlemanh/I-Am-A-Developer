@@ -12,7 +12,7 @@ function WelcomeScreen({ navigation }) {
 
                 <View style={styles.btnBox}>
                     <FormBtn title={'Login'} onTap={() => navigation.navigate('LoginScreen')}></FormBtn>
-                    <FormBtn title={'Register'} onTap={() => navigation.navigate('RegisterScreen')}></FormBtn>
+                    <FormBtn title={'Register'} onTap={() => navigation.navigate('RegisterScreen')} style={styles.btn}></FormBtn>
                 </View>
 
                 <Image
