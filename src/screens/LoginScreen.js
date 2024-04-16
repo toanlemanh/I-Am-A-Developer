@@ -1,12 +1,13 @@
-import { Ionicons } from '@expo/vector-icons';
 import React, { useContext } from 'react';
-import { Alert, Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Alert, Platform, StyleSheet, Text, TouchableOpacity, View, ScrollView } from 'react-native';
 
 import DividerLine from '../components/DividerLine';
 import FormBtn from '../components/FormBtn';
 import FormInput from '../components/FormInput';
 import SocialBtn from '../components/SocialBtn';
 import { signInWithPassword } from '../utils/firebase';
+
+import { Ionicons } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { AuthContext } from "./../context/auth"
 import Animated, { FadeIn, ZoomIn, FadeOut, ZoomOut } from 'react-native-reanimated';
@@ -42,8 +43,8 @@ function LoginScreen({ navigation }) {
     }
 
     return (
-        <View style={styles.container}>
-            <TouchableOpacity style={styles.iconContainer}>
+        <ScrollView style={styles.container}>
+            <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('WelcomeScreen')}>
                 <Ionicons
                     name={Platform.OS === 'ios' ? "chevron-back" : "chevron-back"}
                     size={24}
@@ -73,14 +74,14 @@ function LoginScreen({ navigation }) {
                 </Text>
                 <TouchableOpacity
                     style={styles.navButton}
-                    onPress={() => navigation.navigate('Register')}>
+                    onPress={() => navigation.navigate('RegisterScreen')}>
                     <Text style={styles.registerLink}>
                         Register Now
                     </Text>
                 </TouchableOpacity>
             </View>
 
-        </View >
+        </ScrollView >
     )
 }
 
@@ -88,11 +89,8 @@ export default LoginScreen
 
 const styles = StyleSheet.create({
     container: {
-        width: '100%',
-        height: '100%',
-        flex: 1,
-        justifyContent: 'flex-start',
-        alignItems: 'center',
+        width: "100%",
+        height: "100%",
         paddingHorizontal: 20,
     },
 
@@ -122,7 +120,7 @@ const styles = StyleSheet.create({
 
     boxInput: {
         width: '100%',
-        marginVertical: 20,
+        marginVertical: 10,
         // backgroundColor: '#F7F8F9',
     },
 

@@ -1,21 +1,21 @@
-import { NavigationContainer } from "@react-navigation/native";
-
+import React, { useContext, useState } from "react";
 import { StyleSheet, Text } from "react-native";
 
-import LoginScreen from "./src/screens/LoginScreen";
-import RegisterScreen from "./src/screens/RegisterScreen";
-import HomeScreen from "./src/screens/Home";
-import RelationshipScreen from "./src/screens/Relationship";
-import AssetScreen from "./src/screens/AssetScreen";
-import OccupationScreen from "./src/screens/OccupationScreen";
+import { NavigationContainer } from "@react-navigation/native";
 import { AntDesign } from "@expo/vector-icons";
-import React from "react";
-import ManageRelationship from "./src/screens/ManageRelationship";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createDrawerNavigator } from "@react-navigation/drawer";
-import AuthContextProvider, { AuthContext } from "./src/context/auth";
-import { useContext, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+
+import WelcomeScreen from "./src/screens/WelcomeScreen";
+import LoginScreen from "./src/screens/LoginScreen";
+import RegisterScreen from "./src/screens/RegisterScreen";
+import HomeScreen from "./src/screens/HomeScreen";
+import RelationshipScreen from "./src/screens/Relationship";
+import AssetScreen from "./src/screens/AssetScreen";
+import ManageRelationship from "./src/screens/ManageRelationship";
+import OccupationScreen from "./src/screens/OccupationScreen";
+import AuthContextProvider, { AuthContext } from "./src/context/auth";
 
 export default function App() {
   const authContext = useContext(AuthContext);
@@ -29,20 +29,20 @@ export default function App() {
     return (
       <AuthenticateStack.Navigator>
         <Stack.Screen
+          name="WelcomeScreen"
+          component={WelcomeScreen}
+          options={{ header: () => null }}
+        />
+
+        <Stack.Screen
           name="LoginScreen"
           component={LoginScreen}
           options={{ header: () => null }}
         />
         <Stack.Screen
-          name="Register"
+          name="RegisterScreen"
           component={RegisterScreen}
-          options={({ navigation }) => ({
-            title: "",
-            headerStyle: {
-              backgroundColor: "#f9fafd",
-              elevation: 0,
-            },
-          })}
+          options={{ header: () => null }}
         />
       </AuthenticateStack.Navigator>
     );
