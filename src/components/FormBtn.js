@@ -1,16 +1,13 @@
 import React from 'react';
-import { Pressable, Text, StyleSheet } from 'react-native';
+import { Pressable, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import Animated, { BounceIn } from 'react-native-reanimated';
+const AnimatedTouchableOpacity = Animated.createAnimatedComponent(TouchableOpacity);
 
 function FormBtn({ title, onTap }) {
     return (
-        <Pressable onPress={onTap} style={({ pressed }) => [
-            {
-                opacity: pressed ? 0.7 : 1 // Opacity changes on press
-            },
-            styles.button
-        ]}>
+        <AnimatedTouchableOpacity entering={BounceIn.duration(500).delay(100).springify()} onPress={onTap} style={styles.button}>
             <Text style={styles.text}>{title}</Text>
-        </Pressable>
+        </AnimatedTouchableOpacity>
     );
 }
 
