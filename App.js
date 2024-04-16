@@ -1,5 +1,12 @@
 import React, { useContext, useState } from "react";
-import { StyleSheet, Text } from "react-native";
+import {
+  Pressable,
+  StyleSheet,
+  Text,
+  ActivityIndicator,
+  TouchableOpacity,
+  Button,
+} from "react-native";
 
 import { NavigationContainer } from "@react-navigation/native";
 import { AntDesign } from "@expo/vector-icons";
@@ -43,8 +50,19 @@ function AuthenticateScreen() {
   );
 }
 function AuthenticatedScreen() {
+  const authContext = useContext(AuthContext);
   return (
-    <Stack.Navigator>
+    <Stack.Navigator
+      screenOptions={({ navigation }) => ({
+        headerRight: () => (
+          <Button
+            title="logout"
+            style={{ backgroundColor: "red" }}
+            onPress={() => authContext.logout()}
+          />
+        ),
+      })}
+    >
       <Stack.Screen
         name="MainScreen"
         component={DrawerNav}
@@ -101,6 +119,7 @@ function AuthenticatedScreen() {
   );
 }
 function DrawerNav() {
+  const authContext = useContext(AuthContext);
   return (
     <Drawer.Navigator>
       <Drawer.Screen
@@ -112,6 +131,13 @@ function DrawerNav() {
           },
           headerTintColor: "#EED817",
           headerTitleAlign: "center",
+          headerRight: () => (
+            <Button
+              title="logout"
+              
+              onPress={() => authContext.logout()}
+            />
+          ),
         }}
       />
     </Drawer.Navigator>
@@ -145,8 +171,7 @@ export default function App() {
     fetchToken();
   }, []);
 
-  console.log("2", authContext.isAuthenticated, authContext.token);
-  if (isTryingLogin) return <AppLoading />;
+  if (isTryingLogin) return <ActivityIndicator size="large" color="#00ff00" />;
   else
     return (
       <AuthContextProvider>

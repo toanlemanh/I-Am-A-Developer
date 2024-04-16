@@ -33,7 +33,7 @@ function LoginScreen({ navigation }) {
         // if good credentila => allow 
         if (email && password) {
             const token = await signInWithPassword(email, password);
-            console.log(token);
+            // console.log(token);
             authContext.authenticate(token);
         }
         else {
