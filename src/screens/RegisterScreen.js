@@ -50,12 +50,11 @@ function RegisterScreen({ navigation }) {
       </View>
 
       <View style={styles.registerContainer}>
-        <Text style={styles.registerText}>
+        <Text style={{ fontSize: 16 }}>
           Already have an account?{" "}
         </Text>
 
         <TouchableOpacity
-          style={styles.navButton}
           onPress={() => navigation.navigate('LoginScreen')}>
           <Text style={styles.registerLink}>
             Login Now
@@ -117,5 +116,6 @@ const styles = StyleSheet.create({
   registerLink: {
     fontWeight: "bold",
     color: "#EB9F4A",
+    fontSize: 16,
   },
 });
