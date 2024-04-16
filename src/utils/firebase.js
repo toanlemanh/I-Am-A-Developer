@@ -1,4 +1,4 @@
-const WebApiKey = "";
+const WebApiKey = "AIzaSyAb-ikC6OtN_mah2Z1_BKu-bPYKEPdWn2w";
 import axios from "axios";
 const authenticate = async (mode, email, password) => {
   try {
@@ -14,12 +14,11 @@ const authenticate = async (mode, email, password) => {
     console.log(response.data)
     return response.data.idToken;
   } catch (err) {
-    console.log("[Error] firebase", err.message);
+    // console.log("[Error] firebase", err.message);
   }
 };
 
 export const signInWithPassword = (email, password) => {
-
   return authenticate("signInWithPassword", email, password);
 };
 export const signUp = (email, password) => {
