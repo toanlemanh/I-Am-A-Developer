@@ -17,7 +17,7 @@ function WelcomeScreen({ navigation }) {
 
                 <Image
                     source={require('../assets/images/bg-welcome.png')}
-                    resizeMode="contain"
+                    resizeMode='cover'
                     style={styles.image}
                 />
             </View>
@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
 
     textBox: {
         marginVertical: 40,
-        alignItems: "center"
+        alignItems: 'center',
     },
 
     text: {
@@ -52,6 +52,5 @@ const styles = StyleSheet.create({
     image: {
         width: "100%",
         height: '50%',
-        justifyContent: 'center',
     }
 });
