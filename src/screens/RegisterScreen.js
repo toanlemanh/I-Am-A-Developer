@@ -1,134 +1,115 @@
-import React, { useState } from 'react';
-import { Platform, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import FormBtn from '../components/FormBtn';
-import FormInput from '../components/FormInput';
+import React from "react";
+import {
+  View,
+  StyleSheet,
+  TouchableOpacity,
+  Platform,
+  Text,
+  ScrollView,
+} from "react-native";
+import { Ionicons } from "@expo/vector-icons";
+
 import SocialBtn from '../components/SocialBtn';
-// import { AuthContext } from '../navigation/AuthProvider';
+import FormBtn from '../components/PrimaryBtn';
+import FormInput from '../components/FormInput';
+import DividerLine from '../components/DividerLine';
 
-const RegisterScreen = ({ navigation }) => {
-    const [user, setUser] = useState();
-    const [email, setEmail] = useState();
-    const [password, setPassword] = useState();
-    const [confirmPassword, setConfirmPassword] = useState();
+function RegisterScreen() {
+  return (
+    <ScrollView style={styles.container}>
+      <TouchableOpacity style={styles.iconContainer}>
+        <Ionicons
+          name={Platform.OS === "ios" ? "chevron-back" : "chevron-back"}
+          size={24}
+          color="black"
+          style={styles.icon}
+        />
+      </TouchableOpacity>
 
-    // const { register } = useContext(AuthContext);
+      <Text style={styles.title}>Hello! Register to get started</Text>
 
-    return (
-        <View style={styles.container}>
-            <Text style={styles.text}>Hello! Register to get started</Text>
+      <View style={styles.boxInput}>
+        <FormInput placeholder={"User"} secureTextEntry={false} />
+        <FormInput placeholder={"Email"} secureTextEntry={false} />
+        <FormInput placeholder={"Password"} secureTextEntry={true} />
+        <FormInput placeholder={"Confirm password"} secureTextEntry={true} />
+      </View>
 
-            <FormInput
-                labelValue={user}
-                onChangeText={(userName) => setUser(userName)}
-                placeholderText="User Name"
-                // iconType="user"
-                // keyboardType="email-address"
-                autoCapitalize="none"
-                autoCorrect={false}
-            />
-            <FormInput
-                labelValue={email}
-                onChangeText={(userEmail) => setEmail(userEmail)}
-                placeholderText="Email"
-                // iconType="user"
-                keyboardType="email-address"
-                autoCapitalize="none"
-                autoCorrect={false}
-            />
+      <FormBtn title={"Register"}></FormBtn>
 
-            <FormInput
-                labelValue={password}
-                onChangeText={(userPassword) => setPassword(userPassword)}
-                placeholderText="Password"
-                // iconType="lock"
-                secureTextEntry={true}
-            />
+      <DividerLine children={"Or Login with"} />
 
-            <FormInput
-                labelValue={confirmPassword}
-                onChangeText={(userPassword) => setConfirmPassword(userPassword)}
-                placeholderText="Confirm Password"
-                // iconType="lock"
-                secureTextEntry={true}
-            />
+      <View style={styles.socialBox}>
+        <SocialBtn
+          name={"logo-facebook"}
+          size={30}
+          color={"#4092FF"}
+        />
+        <SocialBtn name={"logo-google"} size={30} color={"#F14336"}></SocialBtn>
+        <SocialBtn name={"logo-apple"} size={30} color={"black"}></SocialBtn>
+      </View>
 
-            <FormBtn
-                buttonTitle="Sign Up"
-            // onPress={() => register(email, password)}
-            />
-
-
-            <Text style={styles.colorTextPrivate}>Or register with</Text>
-
-
-            {Platform.OS === 'android' ? (
-                <View style={styles.SocialBtn}>
-                    <SocialBtn
-                        // buttonTitle="Sign Up with Facebook"
-                        btnType="facebook"
-                        color="#4867aa"
-                        backgroundColor="#e6eaf4"
-                        onPress={() => { }}
-                    />
-
-                    <SocialBtn
-                        // buttonTitle="Sign Up with Google"
-                        btnType="google"
-                        color="#de4d41"
-                        backgroundColor="#f5e7ea"
-                        onPress={() => { }}
-                    />
-                </View>
-            ) : null}
-
-            <TouchableOpacity
-                style={styles.navButton}
-                onPress={() => navigation.navigate('LoginScreen')}>
-                <Text style={styles.navButtonText}>Already have an account?
-                    <Text style={{ color: '#35C2C1' }}> Sign In</Text>
-                </Text>
-            </TouchableOpacity>
-        </View>
-    );
-};
+      <View style={styles.registerContainer}>
+        <Text style={styles.registerText}>
+          Already have an account?{" "}
+          <Text style={styles.registerLink}>Login Now</Text>
+        </Text>
+      </View>
+    </ScrollView>
+  );
+}
 
 export default RegisterScreen;
 
 const styles = StyleSheet.create({
-    container: {
-        backgroundColor: '#f9fafd',
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        padding: 20,
-    },
-    text: {
-        fontSize: 28,
-        marginBottom: 10,
-        fontWeight: 'bold'
-        // color: '#051d5f',
-    },
-    SocialBtn: {
-        flexDirection: 'row',
-        padding: 20,
+  container: {
+    width: "100%",
+    height: "100%",
+    paddingHorizontal: 20,
+  },
 
-    },
-    navButton: {
-        marginTop: 60,
-    },
-    navButtonText: {
-        fontSize: 15,
-        fontWeight: '300',
-        // color: '#2e64e5',  
-    },
+  iconContainer: {
+    borderRadius: 10,
+    alignSelf: "flex-start",
+    marginTop: 70,
+    marginBottom: 20,
+    backgroundColor: "white",
+  },
 
-    colorTextPrivate: {
-        flexDirection: 'row',
-        flexWrap: 'wrap',
-        marginVertical: 35,
-        justifyContent: 'center',
-        fontSize: 13,
-        fontWeight: '400',
-        color: 'grey',
-    },
+  icon: {
+    width: "100%",
+    padding: 10,
+    borderWidth: 1,
+    borderColor: "#E8ECF4",
+    borderRadius: 10,
+  },
+
+  title: {
+    color: "#77B29F",
+    fontWeight: "bold",
+    fontSize: 36,
+    marginBottom: 10,
+  },
+
+  boxInput: {
+    width: "100%",
+    marginVertical: 20,
+  },
+
+  socialBox: {
+    flexDirection: "row",
+  },
+
+  registerContainer: {
+    marginVertical: 20,
+    alignItems: 'center',
+  },
+
+  registerText: {
+    color: "#000",
+  },
+  registerLink: {
+    fontWeight: "bold",
+    color: "#EB9F4A",
+  },
 });
