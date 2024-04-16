@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, FlatList, Pressable } from 'react-native'
+import { View, Text, StyleSheet, FlatList, Pressable, Platform } from 'react-native'
 import PercentageBar from '../components/ProgressBar'
 import { useState } from 'react'
 import CustomAvatar from '../components/CustomAvatar';
@@ -24,7 +24,37 @@ export default function HomeScreen() {
             id: '3',
             age: '2',
             event: 'Tối thứ 4(3/4) tầm 9h30 10h mình có để quên một chiếc loa màu nâu trên mui ô tô gần sau D3. Bạn nào nhặt được thì cho mình xin lại ạ'
-        }
+        },
+        {
+            id: '4',
+            age: '2',
+            event: 'Tối thứ 4(3/4) tầm 9h30 10h mình có để quên một chiếc loa màu nâu trên mui ô tô gần sau D3. Bạn nào nhặt được thì cho mình xin lại ạ'
+        },
+        {
+            id: '5',
+            age: '2',
+            event: 'Tối thứ 4(3/4) tầm 9h30 10h mình có để quên một chiếc loa màu nâu trên mui ô tô gần sau D3. Bạn nào nhặt được thì cho mình xin lại ạ'
+        },
+        {
+            id: '6',
+            age: '2',
+            event: 'Tối thứ 4(3/4) tầm 9h30 10h mình có để quên một chiếc loa màu nâu trên mui ô tô gần sau D3. Bạn nào nhặt được thì cho mình xin lại ạ'
+        },
+        {
+            id: '7',
+            age: '2',
+            event: 'Tối thứ 4(3/4) tầm 9h30 10h mình có để quên một chiếc loa màu nâu trên mui ô tô gần sau D3. Bạn nào nhặt được thì cho mình xin lại ạ'
+        },
+        {
+            id: '8',
+            age: '2',
+            event: 'Tối thứ 4(3/4) tầm 9h30 10h mình có để quên một chiếc loa màu nâu trên mui ô tô gần sau D3. Bạn nào nhặt được thì cho mình xin lại ạ'
+        },
+        {
+            id: '9',
+            age: '2',
+            event: 'Tối thứ 4(3/4) tầm 9h30 10h mình có để quên một chiếc loa màu nâu trên mui ô tô gần sau D3. Bạn nào nhặt được thì cho mình xin lại ạ'
+        },
     ]
     function renderItem(data) {
         return (
@@ -118,7 +148,7 @@ export default function HomeScreen() {
                     </Pressable>
                 </View>
 
-                <View style={styles.allStatusContainer}>
+                <View style={Platform.OS === 'ios' ? styles.allStatusContainer : [styles.allStatusContainer,{ paddingBottom:50}]}>
                     <View style={styles.statusContainer} >
                         <Text style={styles.ageText}>Happiness:</Text>
                         <PercentageBar
@@ -229,13 +259,16 @@ const styles = StyleSheet.create({
         marginVertical: 20,
     },
     eventsContainer: {
-        height: 387,
+         height: 387,
+         paddingLeft: 15,
+        // flex: 1,
 
     },
     allStatusContainer: {
         width: '100%',
         height: 205,
         justifyContent: 'center',
+        
     },
     ageContainer: {
         width: '100%',
