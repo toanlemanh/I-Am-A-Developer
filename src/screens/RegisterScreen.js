@@ -14,10 +14,10 @@ import FormBtn from '../components/FormBtn';
 import FormInput from '../components/FormInput';
 import DividerLine from '../components/DividerLine';
 
-function RegisterScreen() {
+function RegisterScreen({ navigation }) {
   return (
     <ScrollView style={styles.container}>
-      <TouchableOpacity style={styles.iconContainer}>
+      <TouchableOpacity style={styles.iconContainer} onPress={() => navigation.navigate('LoginScreen')}>
         <Ionicons
           name={Platform.OS === "ios" ? "chevron-back" : "chevron-back"}
           size={24}
@@ -35,7 +35,7 @@ function RegisterScreen() {
         <FormInput placeholder={"Confirm password"} secureTextEntry={true} />
       </View>
 
-      <FormBtn title={"Register"}></FormBtn>
+      <FormBtn title={"Register"} onPress={() => navigation.navigate('MainScreen')}></FormBtn>
 
       <DividerLine children={"Or Login with"} />
 
@@ -52,8 +52,15 @@ function RegisterScreen() {
       <View style={styles.registerContainer}>
         <Text style={styles.registerText}>
           Already have an account?{" "}
-          <Text style={styles.registerLink}>Login Now</Text>
         </Text>
+
+        <TouchableOpacity
+          style={styles.navButton}
+          onPress={() => navigation.navigate('LoginScreen')}>
+          <Text style={styles.registerLink}>
+            Login Now
+          </Text>
+        </TouchableOpacity>
       </View>
     </ScrollView>
   );
@@ -93,21 +100,20 @@ const styles = StyleSheet.create({
 
   boxInput: {
     width: "100%",
-    marginVertical: 20,
+    marginVertical: 10,
   },
 
   socialBox: {
-    flexDirection: "row",
+    flexDirection: 'row',
+    justifyContent: 'center',
   },
 
   registerContainer: {
     marginVertical: 20,
-    alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: 'center',
   },
 
-  registerText: {
-    color: "#000",
-  },
   registerLink: {
     fontWeight: "bold",
     color: "#EB9F4A",
