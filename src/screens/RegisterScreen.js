@@ -10,7 +10,7 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 
 import SocialBtn from '../components/SocialBtn';
-import FormBtn from '../components/PrimaryBtn';
+import FormBtn from '../components/FormBtn';
 import FormInput from '../components/FormInput';
 import DividerLine from '../components/DividerLine';
 
