@@ -43,8 +43,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF',
     borderRadius: 12,
     marginVertical: 7,
-    
     elevation: 7,
+    shadowColor: "#000",
+    shadowOffset: {width: 0, height:2},
+    shadowOpacity: 0.3,
+    shadowRadius: 4,
   },
  
   pressed: {
