@@ -63,7 +63,7 @@ function RegisterScreen({ navigation }) {
 
     // Perform registration (e.g., send data to backend API)
     //  logging the data here
-    console.log('Registration successful!');
+    // console.log('Registration successful!');
     console.log('email:', email);
     console.log('Password:', passsword);
 
