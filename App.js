@@ -6,6 +6,7 @@ import {
   ActivityIndicator,
   TouchableOpacity,
   Button,
+  View,
 } from "react-native";
 
 import { NavigationContainer } from "@react-navigation/native";
@@ -13,7 +14,6 @@ import { AntDesign } from "@expo/vector-icons";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import AppLoading from "expo-app-loading";
 import WelcomeScreen from "./src/screens/WelcomeScreen";
 import LoginScreen from "./src/screens/LoginScreen";
 import RegisterScreen from "./src/screens/RegisterScreen";
@@ -23,6 +23,7 @@ import AssetScreen from "./src/screens/AssetScreen";
 import ManageRelationship from "./src/screens/ManageRelationship";
 import OccupationScreen from "./src/screens/OccupationScreen";
 import AuthContextProvider, { AuthContext } from "./src/context/auth";
+import SchoolScreen from "./src/screens/SchoolScreen";
 
 const Drawer = createDrawerNavigator();
 const Stack = createNativeStackNavigator();
@@ -55,12 +56,27 @@ function AuthenticatedScreen() {
     <Stack.Navigator
       screenOptions={({ navigation }) => ({
         headerRight: () => (
-          <Button
+          <Pressable
             title="logout"
             style={{ backgroundColor: "red" }}
             onPress={() => authContext.logout()}
           />
         ),
+        headerStyle: {
+          backgroundColor: "#EB9F4A",
+        },
+        headerTintColor: "#FFFFFF",
+        headerLeft: () => (
+          <AntDesign
+            name="caretleft"
+            size={24}
+            color="white"
+            style={{ marginLeft: 10 }}
+            onPress={() => navigation.goBack()}
+          />
+        ),
+        headerTitleAlign: "center",
+
       })}
     >
       <Stack.Screen
@@ -73,40 +89,14 @@ function AuthenticatedScreen() {
         component={RelationshipScreen}
         options={({ navigation }) => ({
           title: "RELATIONSHIP",
-          headerStyle: {
-            backgroundColor: "#EB9F4A",
-          },
-          headerTintColor: "#FFFFFF",
-          headerLeft: () => (
-            <AntDesign
-              name="caretleft"
-              size={24}
-              color="white"
-              style={{ marginLeft: 10 }}
-              onPress={() => navigation.goBack()}
-            />
-          ),
-          headerTitleAlign: "center",
+         
         })}
       />
       <Stack.Screen
         name="ManageRelationship"
         component={ManageRelationship}
         options={({ navigation }) => ({
-          headerStyle: {
-            backgroundColor: "#EB9F4A",
-          },
-          headerTintColor: "#FFFFFF",
-          headerLeft: () => (
-            <AntDesign
-              name="caretleft"
-              size={24}
-              color="white"
-              style={{ marginLeft: 10 }}
-              onPress={() => navigation.goBack()}
-            />
-          ),
-          headerTitleAlign: "center",
+         
         })}
       />
       <Stack.Screen
@@ -115,6 +105,14 @@ function AuthenticatedScreen() {
         options={{ headerShown: false }}
       />
       <Stack.Screen name="Occupation" component={OccupationScreen} />
+      <Stack.Screen
+        name="SchoolScreen"
+        component={SchoolScreen}
+        options={({ navigation }) => ({
+          title: "School",
+         
+        })}
+      />
     </Stack.Navigator>
   );
 }
@@ -132,11 +130,13 @@ function DrawerNav() {
           headerTintColor: "#EED817",
           headerTitleAlign: "center",
           headerRight: () => (
-            <Button
+            <Pressable
+            style={{backgroundColor: 'blue', padding: 5, borderRadius: 10, alignItems: 'center', justifyContent: 'center', marginRight: 10}}
               title="logout"
-
               onPress={() => authContext.logout()}
-            />
+            >
+              <View><Text style={{color: 'white', textAlign: 'center'}}>Logout</Text></View>
+            </Pressable>
           ),
         }}
       />

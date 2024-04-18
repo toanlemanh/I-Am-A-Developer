@@ -20,7 +20,7 @@ export default function ManageRelationship({route,navigation}){
     return(
         <ScrollView contentContainerStyle={styles.container}>
             <Card barHidden={true} showDetail={true}>{name}</Card>
-            <CustomDataLabel>Actions</CustomDataLabel>
+            <CustomDataLabel>Action List</CustomDataLabel>
             <View style={styles.actionsContainer}>
                 {actions.map((action, index) => (
                     <Card key={index} barHidden={true} showDetail={true}>

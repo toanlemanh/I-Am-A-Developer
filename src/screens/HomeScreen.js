@@ -156,7 +156,7 @@ export default function HomeScreen() {
                         </View>
                     </Pressable>
 
-                    <Pressable style={({ pressed }) => pressed && styles.pressed}>
+                    <Pressable style={({ pressed }) => pressed && styles.pressed} onPress={() => navigation.navigate("SchoolScreen")}>
                         <View style={{ justifyContent: 'center', alignItems: 'center' }}>
                             <Ionicons name="school" size={24} color="black" />
                             <Text style={{ fontSize: 10 }}>Education</Text>
