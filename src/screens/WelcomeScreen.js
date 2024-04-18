@@ -7,7 +7,7 @@ function WelcomeScreen({ navigation }) {
         <SafeAreaView style={styles.container}>
             <View>
                 <View style={styles.textBox}>
-                    <Text style={styles.text}>I'm Developer</Text>
+                    <Text style={styles.text}>I'm a Developer</Text>
                 </View>
 
                 <View style={styles.btnBox}>

@@ -5,6 +5,7 @@ import { FlatList, Platform, Pressable, StyleSheet, Text, View } from 'react-nat
 import CustomAvatar from '../components/CustomAvatar';
 import PercentageBar from '../components/ProgressBar';
 import RandomPopup from '../components/eventsPopup/RandomPopup';
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import data from '../data/userData.json';
 
 
@@ -241,7 +242,7 @@ const styles = StyleSheet.create({
         marginVertical: 20,
     },
     eventsContainer: {
-        height: 387,
+        height: hp('55%'),
         paddingLeft: 15,
         // flex: 1,
 
@@ -252,11 +253,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
 
     },
-    ageContainer: {
-        width: '100%',
-        height: 50,
-        backgroundColor: 'black'
-    },
+
     statusContainer: {
         flexDirection: 'row',
         justifyContent: 'space-around',

@@ -90,5 +90,7 @@ const styles = StyleSheet.create({
   container: {
     height: 800,
     backgroundColor: '#FFF1E7'
+    flexGrow: 1,
+    backgroundColor: '#FFF1E7'
   },
 });
