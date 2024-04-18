@@ -11,9 +11,9 @@
         }
     },
     "Info": {
-        "age": 25,
-        "name": "Alex Smith",
-        "currentOccupation": "Software Engineer"
+        "age": 0,
+        "name": "William Smith",
+        "currentOccupation": ""
     },
     "userAgeLogs": [
         {
@@ -27,13 +27,7 @@
         "Looks": 85
     },
     "Properties": {
-        "Vehicles": [
-            {
-                "make": "Honda",
-                "model": "Civic",
-                "year": 2020
-            }
-        ],
+        "Vehicles": [],
         "Money": 9999,
         "assets": [
             "Guitar"
@@ -48,48 +42,48 @@
         "NPCs": [
             {
                 "name": "William Jones",
-                "relationship": "Father"
+                "relationshipType": "Father",
+                "relationshipLevel": "100"
             },
             {
                 "name": "Emily Taylor",
-                "relationship": "Mother"
+                "relationshipType": "Mother",
+                "relationshipLevel": "100"
             }
         ]
     },
     "EducationalBackground": {
-        "Character Educational Background": {
-            "subjects": {
-                "Math": 0,
-                "Literature": 0,
-                "History": 0,
-                "Science": 0,
-                "Geography": 0,
-                "Art": 0,
-                "Music": 0,
-                "Physical Education": 0,
-                "Computer Science": 0,
-                "English": 0
-            },
-            "universitySubjects": {
-                "Computer Science": 0,
-                "Software Engineering": 0,
-                "Information Technology": 0,
-                "Cybersecurity": 0,
-                "Data Science": 0,
-                "Design": 0,
-                "Networking": 0,
-                "Security": 0,
-                "Statistics": 0,
-                "SQL": 0,
-                "Database Management": 0,
-                "Project Management": 0,
-                "Communication": 0,
-                "Business Analysis": 0,
-                "Testing": 0,
-                "Software Development": 0,
-                "User Experience": 0,
-                "User Interface": 0
-            }
+        "subjects": {
+            "Math": 0,
+            "Literature": 0,
+            "History": 0,
+            "Science": 0,
+            "Geography": 0,
+            "Art": 0,
+            "Music": 0,
+            "Physical Education": 0,
+            "Computer Science": 0,
+            "English": 0
+        },
+        "universitySubjects": {
+            "Computer Science": 0,
+            "Software Engineering": 0,
+            "Information Technology": 0,
+            "Cybersecurity": 0,
+            "Data Science": 0,
+            "Design": 0,
+            "Networking": 0,
+            "Security": 0,
+            "Statistics": 0,
+            "SQL": 0,
+            "Database Management": 0,
+            "Project Management": 0,
+            "Communication": 0,
+            "Business Analysis": 0,
+            "Testing": 0,
+            "Software Development": 0,
+            "User Experience": 0,
+            "User Interface": 0
         }
     },
     "Character's Diseases": [],
