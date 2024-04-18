@@ -1,16 +1,27 @@
-import { View, Text, StyleSheet, FlatList, Pressable, Platform } from 'react-native'
-import { useState } from 'react'
-import { Ionicons, MaterialCommunityIcons, AntDesign, MaterialIcons } from '@expo/vector-icons';
+import { AntDesign, Ionicons, MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
-
-import PercentageBar from '../components/ProgressBar'
+import { useEffect, useState } from 'react';
+import { FlatList, Platform, Pressable, StyleSheet, Text, View } from 'react-native';
 import CustomAvatar from '../components/CustomAvatar';
+import PercentageBar from '../components/ProgressBar';
 import RandomPopup from '../components/eventsPopup/RandomPopup';
+import data from '../data/userData.json';
 
 
 export default function HomeScreen() {
     const navigation = useNavigation();
     const [lifeStage, setLifeStage] = useState('Infant');
+    let age = data.Info.age
+    useEffect(() => {
+        if (age <= 1) {
+            setLifeStage("Infant")
+        } else if (age <= 9) {
+            setLifeStage("Kid")
+        } else if (age <= 19) {
+            setLifeStage("Teenager")
+        } else setLifeStage("Adult")
+    }, [])
+    const characterName = data.Info.name;
 
 
     const [modalVisible, setModalVisible] = useState(false);
@@ -19,58 +30,13 @@ export default function HomeScreen() {
         setModalVisible(false);
     };
 
-    const data = [
-        {
-            id: '1',
-            age: '0',
-            event: 'Tối thứ 4(3/4) tầm 9h30 10h mình có để quên một chiếc loa màu nâu trên mui ô tô gần sau D3. Bạn nào nhặt được thì cho mình xin lại ạ'
-        },
-        {
-            id: '2',
-            age: '1',
-            event: 'Tối thứ 4(3/4) tầm 9h30 10h mình có để quên một chiếc loa màu nâu trên mui ô tô gần sau D3. Bạn nào nhặt được thì cho mình xin lại ạ'
-        },
-        {
-            id: '3',
-            age: '2',
-            event: 'Tối thứ 4(3/4) tầm 9h30 10h mình có để quên một chiếc loa màu nâu trên mui ô tô gần sau D3. Bạn nào nhặt được thì cho mình xin lại ạ'
-        },
-        {
-            id: '4',
-            age: '2',
-            event: 'Tối thứ 4(3/4) tầm 9h30 10h mình có để quên một chiếc loa màu nâu trên mui ô tô gần sau D3. Bạn nào nhặt được thì cho mình xin lại ạ'
-        },
-        {
-            id: '5',
-            age: '2',
-            event: 'Tối thứ 4(3/4) tầm 9h30 10h mình có để quên một chiếc loa màu nâu trên mui ô tô gần sau D3. Bạn nào nhặt được thì cho mình xin lại ạ'
-        },
-        {
-            id: '6',
-            age: '2',
-            event: 'Tối thứ 4(3/4) tầm 9h30 10h mình có để quên một chiếc loa màu nâu trên mui ô tô gần sau D3. Bạn nào nhặt được thì cho mình xin lại ạ'
-        },
-        {
-            id: '7',
-            age: '2',
-            event: 'Tối thứ 4(3/4) tầm 9h30 10h mình có để quên một chiếc loa màu nâu trên mui ô tô gần sau D3. Bạn nào nhặt được thì cho mình xin lại ạ'
-        },
-        {
-            id: '8',
-            age: '2',
-            event: 'Tối thứ 4(3/4) tầm 9h30 10h mình có để quên một chiếc loa màu nâu trên mui ô tô gần sau D3. Bạn nào nhặt được thì cho mình xin lại ạ'
-        },
-        {
-            id: '9',
-            age: '2',
-            event: 'Tối thứ 4(3/4) tầm 9h30 10h mình có để quên một chiếc loa màu nâu trên mui ô tô gần sau D3. Bạn nào nhặt được thì cho mình xin lại ạ'
-        },
-    ]
+    const eventData = data.userAgeLogs
     function renderItem(data) {
         return (
             <View style={styles.eventContainer} >
                 <Text style={styles.ageText}> Age: {data.item.age} </Text>
-                <Text style={styles.eventText}>{data.item.event}</Text>
+                {data.item.events.map((event) => <Text style={styles.eventText}>{event}</Text>)}
+
             </View>
         )
     }
@@ -83,7 +49,7 @@ export default function HomeScreen() {
                 height={12}
                 backgroundColor={'#E0E9F2'}
                 completedColor={'#EB9F4A'}
-                percentage={90}
+                percentage={data.Info.aging}
             />
 
             {/* Top container will contain avatar, age and balance*/}
@@ -97,21 +63,21 @@ export default function HomeScreen() {
                     </View>
                     <View style={{ marginTop: 17 }}>
                         <Text style={styles.stageStyle}> {lifeStage}</Text>
-                        <Text style={styles.username}>John Doe</Text>
+                        <Text style={styles.username}>{characterName}</Text>
                     </View>
                 </View>
                 <View>
                     <Text style={{ fontWeight: 300 }}>Balance:</Text>
-                    <Text style={styles.money}>$100</Text>
+                    <Text style={styles.money}>${data.Info.money}</Text>
                 </View>
             </View>
 
             {/* Container of user's events and different age */}
             <View style={styles.eventsContainer}>
                 <FlatList
-                    data={data}
+                    data={eventData}
                     renderItem={renderItem}
-                    keyExtractor={item => item.id}
+                    keyExtractor={item => item.age}
                 />
             </View>
 
@@ -171,7 +137,7 @@ export default function HomeScreen() {
                             height={15}
                             backgroundColor='grey'
                             completedColor="#009A34"
-                            percentage={75}
+                            percentage={data.Condition.Happiness}
                             width={200}
                         />
                     </View>
@@ -181,7 +147,7 @@ export default function HomeScreen() {
                             height={15}
                             backgroundColor='grey'
                             completedColor="#EED817"
-                            percentage={60}
+                            percentage={data.Condition.Health}
                             width={200}
 
                         />
@@ -203,7 +169,7 @@ export default function HomeScreen() {
                             height={15}
                             backgroundColor='grey'
                             completedColor="#FD7C1F"
-                            percentage={30}
+                            percentage={data.Condition.Looks}
                             width={200}
                         />
                     </View>

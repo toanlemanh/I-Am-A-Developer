@@ -1,12 +1,12 @@
 import React from 'react';
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import { ScrollView, StyleSheet, View } from 'react-native';
 import Card from '../components/Card';
 import CustomDataLabel from '../components/CustomDataLabel';
-
-
+import data from "../data/userData.json";
+const relationships2 = data.Relationships
 const relationships = [
   {
-    group: "Parent",
+    group: "Parents",
     name: "vu dep",
     percentage: 10,
     age: 58,
@@ -45,12 +45,12 @@ const relationships = [
     age: 20,
     occupation: "designer",
   },
-  
+
 ];
 
-export default function RelationshipScreen({navigation}) {
+export default function RelationshipScreen({ navigation }) {
   // Grouping relationships by group name
-  const groupedRelationships = relationships.reduce((acc, item) => {
+  const groupedRelationships = relationships2.reduce((acc, item) => {
     if (!acc[item.group]) {
       acc[item.group] = [];
     }
@@ -58,11 +58,11 @@ export default function RelationshipScreen({navigation}) {
     return acc;
   }, {});
 
-  function handleCard(group,name){
-    navigation.navigate('ManageRelationship',{
-        group:group,
-        dataName:name,
-        
+  function handleCard(group, name) {
+    navigation.navigate('ManageRelationship', {
+      group: group,
+      dataName: name,
+
     });
   }
   return (
@@ -71,13 +71,13 @@ export default function RelationshipScreen({navigation}) {
         <View key={index} style={{ alignItems: 'center' }}>
           <CustomDataLabel>{group}</CustomDataLabel>
           {groupItems.map((item, itemIndex) => (
-            <Card 
-              key={itemIndex} 
+            <Card
+              key={itemIndex}
               onPress={() => handleCard(group, item.name)}
-              percentage={item.percentage}
+              percentage={item.relationshipLevel}
               showDetail={false}
-              >
-                {item.name}
+            >
+              {item.name} ({item.relationshipType})
             </Card>
           ))}
         </View>
@@ -89,6 +89,6 @@ export default function RelationshipScreen({navigation}) {
 const styles = StyleSheet.create({
   container: {
     height: 800,
-    backgroundColor:'#FFF1E7'
+    backgroundColor: '#FFF1E7'
   },
 });

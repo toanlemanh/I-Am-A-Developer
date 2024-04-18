@@ -11,14 +11,33 @@
         }
     },
     "Info": {
-        "age": 0,
+        "age": 2,
         "name": "William Smith",
-        "currentOccupation": ""
+        "currentOccupation": "",
+        "money": 999,
+        "aging": 15
     },
     "userAgeLogs": [
         {
             "age": 0,
-            "events": []
+            "events": [
+                "Tối thứ 4(3/4) tầm 9h30 10h mình có để quên một chiếc loa màu nâu trên mui ô tô gần sau D3. Bạn nào nhặt được thì cho mình xin lại ạ",
+                "Tối thứ 4(3/4) tầm 9h30 10h mình có để quên một chiếc loa màu nâu trên mui ô tô gần sau D3. Bạn nào nhặt được thì cho mình xin lại ạ",
+                "Tối thứ 4(3/4) tầm 9h30 10h mình có để quên một chiếc loa màu nâu trên mui ô tô gần sau D3. Bạn nào nhặt được thì cho mình xin lại ạ"
+            ]
+        },
+        {
+            "age": 1,
+            "events": [
+                "Tối thứ 4(3/4) tầm 9h30 10h mình có để quên một chiếc loa màu nâu trên mui ô tô gần sau D3. Bạn nào nhặt được thì cho mình xin lại ạ",
+                "Tối thứ 4(3/4) tầm 9h30 10h mình có để quên một chiếc loa màu nâu trên mui ô tô gần sau D3. Bạn nào nhặt được thì cho mình xin lại ạ"
+            ]
+        },
+        {
+            "age": 2,
+            "events": [
+                "Tối thứ 4(3/4) tầm 9h30 10h mình có để quên một chiếc loa màu nâu trên mui ô tô gần sau D3. Bạn nào nhặt được thì cho mình xin lại ạ"
+            ]
         }
     ],
     "Condition": {
@@ -38,20 +57,36 @@
             }
         ]
     },
-    "Relationships": {
-        "NPCs": [
-            {
-                "name": "William Jones",
-                "relationshipType": "Father",
-                "relationshipLevel": "100"
-            },
-            {
-                "name": "Emily Taylor",
-                "relationshipType": "Mother",
-                "relationshipLevel": "100"
-            }
-        ]
-    },
+    "Relationships": [
+        {
+            "name": "William Jones",
+            "group": "Parents",
+            "relationshipType": "Father",
+            "relationshipLevel": "100",
+            "occupation": "Doctor"
+        },
+        {
+            "name": "Emily Taylor",
+            "group": "Parents",
+            "relationshipType": "Mother",
+            "relationshipLevel": "100",
+            "occupation": "Teacher"
+        },
+        {
+            "name": "William Jones",
+            "group": "Parents",
+            "relationshipType": "Father",
+            "relationshipLevel": "100",
+            "occupation": "Doctor"
+        },
+        {
+            "name": "Emily Taylor",
+            "group": "Parents",
+            "relationshipType": "Mother",
+            "relationshipLevel": "100",
+            "occupation": "Teacher"
+        }
+    ],
     "EducationalBackground": {
         "subjects": {
             "Math": 0,
