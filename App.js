@@ -134,7 +134,7 @@ function DrawerNav() {
           headerRight: () => (
             <Button
               title="logout"
-              
+
               onPress={() => authContext.logout()}
             />
           ),

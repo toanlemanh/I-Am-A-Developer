@@ -1,14 +1,24 @@
 import { View, Text, StyleSheet, FlatList, Pressable, Platform } from 'react-native'
-import PercentageBar from '../components/ProgressBar'
 import { useState } from 'react'
-import CustomAvatar from '../components/CustomAvatar';
 import { Ionicons, MaterialCommunityIcons, AntDesign, MaterialIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
+
+import PercentageBar from '../components/ProgressBar'
+import CustomAvatar from '../components/CustomAvatar';
+import RandomPopup from '../components/eventsPopup/RandomPopup';
 
 
 export default function HomeScreen() {
     const navigation = useNavigation();
     const [lifeStage, setLifeStage] = useState('Infant');
+
+
+    const [modalVisible, setModalVisible] = useState(false);
+
+    const closeModal = () => {
+        setModalVisible(false);
+    };
+
     const data = [
         {
             id: '1',
@@ -124,13 +134,19 @@ export default function HomeScreen() {
                         </View>
                     </Pressable>
                     <View style={styles.outterContainer}>
-                        <Pressable style={({ pressed }) => pressed && styles.pressed}>
+                        <Pressable
+                            style={({ pressed }) => pressed && styles.pressed}
+                            onPress={() => setModalVisible(true)} //add onPress
+                        >
                             <View style={styles.buttonContainer}>
                                 <Text style={{ fontWeight: '600', color: 'white', fontSize: 24 }}>+</Text>
                                 <Text style={{ fontWeight: '500', color: 'white', fontSize: 20 }}>Age</Text>
                             </View>
                         </Pressable >
+                        {/* random modal component */}
+                        <RandomPopup modalVisible={modalVisible} closeModal={closeModal} />
                     </View>
+
                     <Pressable style={({ pressed }) => pressed && styles.pressed} onPress={() => {
                         navigation.navigate('Relationship');
                     }}>
@@ -148,7 +164,7 @@ export default function HomeScreen() {
                     </Pressable>
                 </View>
 
-                <View style={Platform.OS === 'ios' ? styles.allStatusContainer : [styles.allStatusContainer,{ paddingBottom:50}]}>
+                <View style={Platform.OS === 'ios' ? styles.allStatusContainer : [styles.allStatusContainer, { paddingBottom: 50 }]}>
                     <View style={styles.statusContainer} >
                         <Text style={styles.ageText}>Happiness:</Text>
                         <PercentageBar
@@ -259,8 +275,8 @@ const styles = StyleSheet.create({
         marginVertical: 20,
     },
     eventsContainer: {
-         height: 387,
-         paddingLeft: 15,
+        height: 387,
+        paddingLeft: 15,
         // flex: 1,
 
     },
@@ -268,7 +284,7 @@ const styles = StyleSheet.create({
         width: '100%',
         height: 205,
         justifyContent: 'center',
-        
+
     },
     ageContainer: {
         width: '100%',
