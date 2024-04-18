@@ -275,7 +275,7 @@ const styles = StyleSheet.create({
         marginVertical: 20,
     },
     eventsContainer: {
-        height: hp('60%'),
+        height: hp('55%'),
         paddingLeft: 15,
         // flex: 1,
 
