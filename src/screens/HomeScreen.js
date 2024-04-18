@@ -6,7 +6,7 @@ import { useNavigation } from '@react-navigation/native';
 import PercentageBar from '../components/ProgressBar'
 import CustomAvatar from '../components/CustomAvatar';
 import RandomPopup from '../components/eventsPopup/RandomPopup';
-
+import { widthPercentageToDP as wp ,heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 export default function HomeScreen() {
     const navigation = useNavigation();
@@ -275,7 +275,7 @@ const styles = StyleSheet.create({
         marginVertical: 20,
     },
     eventsContainer: {
-        height: 387,
+        height: hp('60%'),
         paddingLeft: 15,
         // flex: 1,
 
@@ -286,11 +286,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
 
     },
-    ageContainer: {
-        width: '100%',
-        height: 50,
-        backgroundColor: 'black'
-    },
+    
     statusContainer: {
         flexDirection: 'row',
         justifyContent: 'space-around',
