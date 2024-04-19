@@ -1,3 +1,4 @@
+
 import React, { useContext, useState } from "react";
 import {
   Pressable,
@@ -89,14 +90,14 @@ function AuthenticatedScreen() {
         component={RelationshipScreen}
         options={({ navigation }) => ({
           title: "RELATIONSHIP",
-         
+
         })}
       />
       <Stack.Screen
         name="ManageRelationship"
         component={ManageRelationship}
         options={({ navigation }) => ({
-         
+
         })}
       />
       <Stack.Screen
@@ -110,7 +111,7 @@ function AuthenticatedScreen() {
         component={SchoolScreen}
         options={({ navigation }) => ({
           title: "School",
-         
+
         })}
       />
     </Stack.Navigator>
@@ -131,11 +132,11 @@ function DrawerNav() {
           headerTitleAlign: "center",
           headerRight: () => (
             <Pressable
-            style={{backgroundColor: 'blue', padding: 5, borderRadius: 10, alignItems: 'center', justifyContent: 'center', marginRight: 10}}
+              style={{ backgroundColor: 'blue', padding: 5, borderRadius: 10, alignItems: 'center', justifyContent: 'center', marginRight: 10 }}
               title="logout"
               onPress={() => authContext.logout()}
             >
-              <View><Text style={{color: 'white', textAlign: 'center'}}>Logout</Text></View>
+              <View><Text style={{ color: 'white', textAlign: 'center' }}>Logout</Text></View>
             </Pressable>
           ),
         }}
