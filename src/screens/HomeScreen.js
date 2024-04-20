@@ -36,7 +36,7 @@ export default function HomeScreen() {
         return (
             <View style={styles.eventContainer} >
                 <Text style={styles.ageText}> Age: {data.item.age} </Text>
-                {data.item.events.map((event) => <Text style={styles.eventText}>{event}</Text>)}
+                {data.item.events.map((event, id) => <Text key={id} style={styles.eventText}>{event}</Text>)}
 
             </View>
         )
