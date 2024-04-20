@@ -37,7 +37,8 @@ export default function Card({ percentage,onPress,barHidden,showDetail,children 
 }
 
 const styles = StyleSheet.create({
-  container: {    width: '85%',
+  container: {    
+    width: wp('85%'),
     height: hp('12%'),
     backgroundColor: '#FFFFFF',
     borderRadius: 12,
@@ -67,7 +68,7 @@ const styles = StyleSheet.create({
   },
   items: {
     marginLeft:10,
-    marginTop: 15,
+    marginTop: 23,
     
   },
 });

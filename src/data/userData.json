@@ -49,7 +49,31 @@
         "Vehicles": [],
         "Money": 9999,
         "assets": [
-            "Guitar"
+            {
+                "group": "Cars",
+                "name": "Mustang",
+                "price": "250,000 USD"
+            },
+            {
+                "group": "Real Estate",
+                "name": "West Lake Mansion",
+                "price": "50,000 USD"
+            },
+            {
+                "group": "Investments",
+                "name": "Stock Vingroup",
+                "price": "100,000 USD"
+            },
+            {
+                "group": "Paintings",
+                "name": "Apple painting",
+                "price": "1,000 USD"
+            },
+            {
+                "group": "Laptop",
+                "name": "Dell Inspiron 5580",
+                "price": "900 USD"
+            }
         ],
         "Houses": [
             {

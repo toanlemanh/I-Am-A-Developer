@@ -1,8 +1,8 @@
 import React from 'react';
 import { Modal, StyleSheet, Text, Pressable, View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-
-function AlertPopup({ modalVisible, closeModal }) {
+import { widthPercentageToDP as wp ,heightPercentageToDP as hp } from 'react-native-responsive-screen';
+function AlertPopup({ modalVisible, closeModal,title,content,buttonText }) {
     return (
         <Modal
             animationType="slide"
@@ -17,13 +17,13 @@ function AlertPopup({ modalVisible, closeModal }) {
                 <View style={styles.outerBoderPopup}>
                     <View style={styles.innerBoderPopup}>
 
-                        <View style={{ width: 200 }}>
-                            <Text style={styles.eventTitle}>God Dammit!</Text>
-                            <Text style={styles.eventText}>Your neighbor cooked your dog with lemongrass, but they didn't dip it in shrimp paste???</Text>
+                        <View style={{ width: wp('62%') }}>
+                            <Text style={styles.eventTitle}>{title}</Text>
+                            <Text style={styles.eventText}>{content}</Text>
                         </View>
 
                         <LinearGradient
-                            colors={['#BD1313', 'black', '#BD1313']}
+                            colors={['#4facfe', '#00f2fe']}
                             style={styles.gradient}
                             start={{ x: 0, y: 0 }}
                             end={{ x: 1, y: 1 }}
@@ -32,7 +32,7 @@ function AlertPopup({ modalVisible, closeModal }) {
                             <Pressable
                                 style={styles.button}
                                 onPress={closeModal}>
-                                <Text style={styles.textButtonStyle}>God bless them</Text>
+                                <Text style={styles.textButtonStyle}>{buttonText}</Text>
                             </Pressable>
 
                         </LinearGradient>
@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
         shadowRadius: 4,
         // elevation: 5,
         borderWidth: 1,
-        width: 230,
+       
     },
     gradient: {
         borderRadius: 20,

@@ -3,50 +3,7 @@ import { ScrollView, StyleSheet, View } from 'react-native';
 import Card from '../components/Card';
 import CustomDataLabel from '../components/CustomDataLabel';
 import data from "../data/userData.json";
-const relationships2 = data.Relationships
-const relationships = [
-  {
-    group: "Parents",
-    name: "vu dep",
-    percentage: 10,
-    age: 58,
-    occupation: "doctor",
-  },
-  {
-    group: "Siblings",
-    name: "ngo van quyen",
-    percentage: 80,
-    age: 30,
-    occupation: "teacher",
-  },
-  {
-    group: "Friends",
-    name: "dang dinh quan",
-    percentage: 35,
-    age: 32,
-    occupation: "engineer",
-  },
-  {
-    group: "Pets",
-    name: "long (dog)",
-    percentage: 90,
-  },
-  {
-    group: "Friends",
-    name: "Mai",
-    percentage: 70,
-    age: 28,
-    occupation: "designer",
-  },
-  {
-    group: "Pets",
-    name: "Hai",
-    percentage: 70,
-    age: 20,
-    occupation: "designer",
-  },
-
-];
+const relationships2 = data.Relationships;
 
 export default function RelationshipScreen({ navigation }) {
   // Grouping relationships by group name
@@ -88,7 +45,6 @@ export default function RelationshipScreen({ navigation }) {
 
 const styles = StyleSheet.create({
   container: {
-    height: 800,
     flexGrow: 1,
     backgroundColor: '#FFF1E7'
   },

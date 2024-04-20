@@ -24,6 +24,7 @@ import ManageRelationship from "./src/screens/ManageRelationship";
 import OccupationScreen from "./src/screens/OccupationScreen";
 import AuthContextProvider, { AuthContext } from "./src/context/auth";
 import SchoolScreen from "./src/screens/SchoolScreen";
+import JobMarket from "./src/screens/JobMarket";
 
 const Drawer = createDrawerNavigator();
 const Stack = createNativeStackNavigator();
@@ -102,16 +103,31 @@ function AuthenticatedScreen() {
       <Stack.Screen
         name="Assets"
         component={AssetScreen}
-        options={{ headerShown: false }}
+        options={{
+          title:'ASSETS'
+        }}
       />
-      <Stack.Screen name="Occupation" component={OccupationScreen} />
+      <Stack.Screen 
+        name="Occupation" 
+        component={OccupationScreen} 
+        options={{
+          title:'OCCUPATION'
+        }}
+      />
       <Stack.Screen
         name="SchoolScreen"
         component={SchoolScreen}
         options={({ navigation }) => ({
-          title: "School",
+          title: "EDUCATION",
          
         })}
+      />
+      <Stack.Screen
+        name="Job Market"
+        component={JobMarket}
+        options={{
+          title:'JOB MARKET'
+        }}
       />
     </Stack.Navigator>
   );

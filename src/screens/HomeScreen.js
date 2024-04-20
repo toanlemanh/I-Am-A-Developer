@@ -87,7 +87,9 @@ export default function HomeScreen() {
                 <View style={styles.utility}>
                     <Pressable style={({ pressed }) => pressed && styles.pressed} >
                         <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-                            <MaterialIcons name="work" size={24} color="black" />
+                            <MaterialIcons name="work" size={24} color="black" onPress={()=>{
+                                navigation.navigate('Occupation')
+                            }} />
                             <Text style={{ fontSize: 10 }}>Occupation</Text>
                         </View>
                     </Pressable>
