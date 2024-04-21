@@ -108,6 +108,7 @@ const styles = StyleSheet.create({
   },
   label: {
     fontWeight: 'bold',
+    fontSize:16
   },
 });
 // create progress bar => current subject (time)
