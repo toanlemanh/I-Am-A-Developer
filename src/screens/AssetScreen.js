@@ -35,9 +35,17 @@ export default function AssetScreen() {
   }, {});
 
   const buttonText = (text) => {
-    return <Text> Shop for: {text} </Text>; 
+    return <Text> Look for: {text} </Text>; 
   };
   
+  const renderContent =(name,price)=>{
+    return(
+      <View>
+        <Text><Text style={styles.label}>Brand Name: :</Text> {name}</Text>
+         <Text><Text style={styles.label}>Price:</Text> {price}</Text>
+      </View>
+    )
+  }
   return (
     <ScrollView style={styles.container}>
       {Object.entries(groupedAssets).map(([group, groupItems], index) => (
@@ -60,8 +68,8 @@ export default function AssetScreen() {
       <AlertPopup
         modalVisible={modalVisible}
         closeModal={closeModal}
-        title={selectedAsset?.name} 
-        content={selectedAsset?.price}
+        title={selectedAsset?.group} 
+        content={renderContent(selectedAsset?.name,selectedAsset?.price)}
         buttonText={buttonText(selectedAsset?.group)}
       />
     </ScrollView>
@@ -72,5 +80,9 @@ const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
     backgroundColor: '#FFF1E7',
+  },
+  label: {
+    fontWeight: 'bold',
+    fontSize:16
   },
 });
