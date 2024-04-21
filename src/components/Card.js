@@ -42,7 +42,8 @@ const styles = StyleSheet.create({
     height: hp('12%'),
     backgroundColor: '#FFFFFF',
     borderRadius: 12,
-    marginVertical: 7,
+    marginVertical: 10,
+    justifyContent: 'center',
 
     elevation: 7,
     shadowColor: "#000",
