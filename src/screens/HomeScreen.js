@@ -156,17 +156,6 @@ export default function HomeScreen() {
                         />
                     </View>
                     <View style={styles.statusContainer} >
-                        <Text style={styles.ageText}>     Smart:</Text>
-                        <PercentageBar
-                            height={15}
-                            backgroundColor='grey'
-                            completedColor="#F12C23"
-                            percentage={20}
-                            width={200}
-
-                        />
-                    </View>
-                    <View style={styles.statusContainer} >
                         <Text style={styles.ageText}>      Look:</Text>
                         <PercentageBar
                             height={15}
