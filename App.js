@@ -1,32 +1,30 @@
 
 import React, { useContext, useState } from "react";
 import {
+  ActivityIndicator,
   Pressable,
   StyleSheet,
   Text,
-  ActivityIndicator,
-  TouchableOpacity,
-  Button,
-  View,
+  View
 } from "react-native";
 
-import { NavigationContainer } from "@react-navigation/native";
 import { AntDesign } from "@expo/vector-icons";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { createDrawerNavigator } from "@react-navigation/drawer";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import WelcomeScreen from "./src/screens/WelcomeScreen";
-import LoginScreen from "./src/screens/LoginScreen";
-import RegisterScreen from "./src/screens/RegisterScreen";
-import HomeScreen from "./src/screens/HomeScreen";
-import RelationshipScreen from "./src/screens/Relationship";
+import { createDrawerNavigator } from "@react-navigation/drawer";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import AuthContextProvider, { AuthContext } from "./src/context/auth";
+import ActivitiesScreen from "./src/screens/ActivitiesScreen";
 import AssetScreen from "./src/screens/AssetScreen";
+import HomeScreen from "./src/screens/HomeScreen";
+import JobMarket from "./src/screens/JobMarket";
+import LoginScreen from "./src/screens/LoginScreen";
 import ManageRelationship from "./src/screens/ManageRelationship";
 import OccupationScreen from "./src/screens/OccupationScreen";
-import AuthContextProvider, { AuthContext } from "./src/context/auth";
+import RegisterScreen from "./src/screens/RegisterScreen";
+import RelationshipScreen from "./src/screens/Relationship";
 import SchoolScreen from "./src/screens/SchoolScreen";
-import JobMarket from "./src/screens/JobMarket";
-
+import WelcomeScreen from "./src/screens/WelcomeScreen";
 const Drawer = createDrawerNavigator();
 const Stack = createNativeStackNavigator();
 
@@ -105,14 +103,14 @@ function AuthenticatedScreen() {
         name="Assets"
         component={AssetScreen}
         options={{
-          title:'ASSETS'
+          title: 'ASSETS'
         }}
       />
-      <Stack.Screen 
-        name="Occupation" 
-        component={OccupationScreen} 
+      <Stack.Screen
+        name="Occupation"
+        component={OccupationScreen}
         options={{
-          title:'OCCUPATION'
+          title: 'OCCUPATION'
         }}
       />
       <Stack.Screen
@@ -120,16 +118,16 @@ function AuthenticatedScreen() {
         component={SchoolScreen}
         options={({ navigation }) => ({
           title: "EDUCATION",
-         
 
- 
+
+
         })}
       />
       <Stack.Screen
         name="Job Market"
         component={JobMarket}
         options={{
-          title:'JOB MARKET'
+          title: 'JOB MARKET'
         }}
       />
     </Stack.Navigator>
@@ -157,6 +155,18 @@ function DrawerNav() {
               <View><Text style={{ color: 'white', textAlign: 'center' }}>Logout</Text></View>
             </Pressable>
           ),
+        }}
+      />
+      <Drawer.Screen
+        name="Activities"
+        component={ActivitiesScreen}
+        options={{
+          headerStyle: {
+            backgroundColor: "#77B29F",
+          },
+          headerTintColor: "#EED817",
+          headerTitleAlign: "center",
+
         }}
       />
     </Drawer.Navigator>

@@ -146,5 +146,28 @@
             "User Interface": 0
         }
     },
-    "Character's Diseases": []
+    "CurrentDiseases": {
+        "data": [
+            {
+                "name": "flu",
+                "treatmentCost": "200",
+                "successChance": "50",
+                "effects": {
+                    "health": -10,
+                    "Happiness": -10,
+                    "look": 0
+                }
+            },
+            {
+                "name": "AIDS",
+                "treatmentCost": "1000",
+                "successChance": "20",
+                "effects": {
+                    "health": -40,
+                    "Happiness": -50,
+                    "look": -20
+                }
+            }
+        ]
+    }
 }
