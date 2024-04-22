@@ -15,10 +15,13 @@ export default function RelationshipScreen({ navigation }) {
     return acc;
   }, {});
 
-  function handleCard(group, name) {
+  function handleCard(group, name,relationshipType,relationshipLevel,occupation) {
     navigation.navigate('ManageRelationship', {
       group: group,
       dataName: name,
+      relationshipType:relationshipType,
+      relationshipLevel:relationshipLevel,
+      occupation:occupation,
 
     });
   }
@@ -30,7 +33,7 @@ export default function RelationshipScreen({ navigation }) {
           {groupItems.map((item, itemIndex) => (
             <Card
               key={itemIndex}
-              onPress={() => handleCard(group, item.name)}
+              onPress={() => handleCard(group, item.name,item.relationshipType,item.relationshipLevel,item.occupation)}
               percentage={item.relationshipLevel}
               showDetail={false}
             >

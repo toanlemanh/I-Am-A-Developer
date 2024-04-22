@@ -8,6 +8,10 @@ export default function ManageRelationship({ route, navigation }) {
 
     const actions = ['suck my dick', 'play lol', 'Kiss', 'Invite drinking', 'action 4', 'Playing football', 'Do some thing']
     const name = route.params.dataName;
+    const type = route.params.relationshipType;
+    const level = route.params.relationshipLevel;
+    const job = route.params.occupation;
+
 
     useLayoutEffect(() => {
         const group = route.params.group;
@@ -17,9 +21,13 @@ export default function ManageRelationship({ route, navigation }) {
 
         })
     })
+    function log() {
+        console.log("name : ", name, "type:", type, "level:", level, "job:", job);
+    }
     return (
         <ScrollView contentContainerStyle={styles.container}>
-            <Card barHidden={true} showDetail={true}>{name}</Card>
+            <Card barHidden={true} showDetail={true} onPress={log} >{name}</Card>
+            <Text>{type},{level},{job}</Text>
             <CustomDataLabel>Action List</CustomDataLabel>
             <Card barHidden={true} showDetail={true} onPress={() => SpendTime}>
                 Spend Time With
