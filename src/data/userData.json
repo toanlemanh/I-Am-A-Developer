@@ -1,0 +1,173 @@
+{
+    "UserAccount": {
+        "email": "t@gmail.com",
+        "username": "NgoVanQuyen",
+        "password": "123456"
+    },
+    "UserDailyLogin": {
+        "lastLoginDate": "2024-04-17",
+        "currentLoginDate": "2024-04-18",
+        "rewards": {
+            "money": 100
+        }
+    },
+    "Info": {
+        "age": 2,
+        "name": "William Smith",
+        "currentOccupation": "",
+        "money": 999,
+        "progress": 15,
+        "inUni": true,
+        "inSchool": false
+    },
+    "userAgeLogs": [
+        {
+            "age": 0,
+            "events": [
+                "Tối thứ 4(3/4) tầm 9h30 10h mình có để quên một chiếc loa màu nâu trên mui ô tô gần sau D3. Bạn nào nhặt được thì cho mình xin lại ạ",
+                "Tối thứ 4(3/4) tầm 9h30 10h mình có để quên một chiếc loa màu nâu trên mui ô tô gần sau D3. Bạn nào nhặt được thì cho mình xin lại ạ",
+                "Tối thứ 4(3/4) tầm 9h30 10h mình có để quên một chiếc loa màu nâu trên mui ô tô gần sau D3. Bạn nào nhặt được thì cho mình xin lại ạ"
+            ]
+        },
+        {
+            "age": 1,
+            "events": [
+                "Tối thứ 4(3/4) tầm 9h30 10h mình có để quên một chiếc loa màu nâu trên mui ô tô gần sau D3. Bạn nào nhặt được thì cho mình xin lại ạ",
+                "Tối thứ 4(3/4) tầm 9h30 10h mình có để quên một chiếc loa màu nâu trên mui ô tô gần sau D3. Bạn nào nhặt được thì cho mình xin lại ạ"
+            ]
+        },
+        {
+            "age": 2,
+            "events": [
+                "Tối thứ 4(3/4) tầm 9h30 10h mình có để quên một chiếc loa màu nâu trên mui ô tô gần sau D3. Bạn nào nhặt được thì cho mình xin lại ạ"
+            ]
+        }
+    ],
+    "Condition": {
+        "Health": 80,
+        "Happiness": 75,
+        "Looks": 85
+    },
+    "Properties": {
+        "assets": [
+            {
+                "group": "Cars",
+                "name": "Mustang",
+                "price": "250,000 USD"
+            },
+            {
+                "group": "Real Estate",
+                "name": "West Lake Mansion",
+                "price": "50,000 USD"
+            },
+            {
+                "group": "Investments",
+                "name": "Stock Vingroup",
+                "price": "100,000 USD"
+            },
+            {
+                "group": "Paintings",
+                "name": "Apple painting",
+                "price": "1,000 USD"
+            },
+            {
+                "group": "Laptop",
+                "name": "Dell Inspiron 5580",
+                "price": "900 USD"
+            }
+        ],
+        "Houses": [
+            {
+                "location": "Downtown"
+            }
+        ]
+    },
+    "Relationships": [
+        {
+            "name": "William Jones",
+            "group": "Parents",
+            "relationshipType": "Father",
+            "relationshipLevel": "100",
+            "occupation": "Doctor"
+        },
+        {
+            "name": "Emily Taylor",
+            "group": "Parents",
+            "relationshipType": "Mother",
+            "relationshipLevel": "100",
+            "occupation": "Teacher"
+        },
+        {
+            "name": "William Jones",
+            "group": "Parents",
+            "relationshipType": "Father",
+            "relationshipLevel": "100",
+            "occupation": "Doctor"
+        },
+        {
+            "name": "Emily Taylor",
+            "group": "Parents",
+            "relationshipType": "Mother",
+            "relationshipLevel": "100",
+            "occupation": "Teacher"
+        }
+    ],
+    "EducationalBackground": {
+        "subjects": {
+            "Math": 0,
+            "Literature": 0,
+            "History": 0,
+            "Science": 0,
+            "Geography": 0,
+            "Art": 0,
+            "Music": 0,
+            "Physical Education": 0,
+            "Computer Science": 0,
+            "English": 0
+        },
+        "universitySubjects": {
+            "Computer Science": 0,
+            "Software Engineering": 0,
+            "Information Technology": 0,
+            "Cybersecurity": 0,
+            "Data Science": 0,
+            "Design": 0,
+            "Networking": 0,
+            "Security": 0,
+            "Statistics": 0,
+            "SQL": 0,
+            "Database Management": 0,
+            "Project Management": 0,
+            "Communication": 0,
+            "Business Analysis": 0,
+            "Testing": 0,
+            "Software Development": 0,
+            "User Experience": 0,
+            "User Interface": 0
+        }
+    },
+    "CurrentDiseases": {
+        "data": [
+            {
+                "name": "flu",
+                "treatmentCost": "200",
+                "successChance": "50",
+                "effects": {
+                    "health": -10,
+                    "Happiness": -10,
+                    "look": 0
+                }
+            },
+            {
+                "name": "AIDS",
+                "treatmentCost": "1000",
+                "successChance": "20",
+                "effects": {
+                    "health": -40,
+                    "Happiness": -50,
+                    "look": -20
+                }
+            }
+        ]
+    }
+}

@@ -1,27 +1,42 @@
 import { useLayoutEffect } from "react";
-import { View,Text,StyleSheet,ScrollView } from "react-native";
+import { ScrollView, StyleSheet, Text, View } from "react-native";
 import Card from "../components/Card";
 import CustomDataLabel from "../components/CustomDataLabel";
+import ManageActions from "../utils/ManageActions";
+export default function ManageRelationship({ route, navigation }) {
 
-export default function ManageRelationship({route,navigation}){
 
-    
-    const actions =['suck my dick','play lol','Kiss', 'Invite drinking','action 4','Playing football','Do some thing']
+    const actions = ['suck my dick', 'play lol', 'Kiss', 'Invite drinking', 'action 4', 'Playing football', 'Do some thing']
     const name = route.params.dataName;
-    
-    useLayoutEffect(()=>{
+    const type = route.params.relationshipType;
+    const level = route.params.relationshipLevel;
+    const job = route.params.occupation;
+
+
+    useLayoutEffect(() => {
         const group = route.params.group;
-  
+
         navigation.setOptions({
             title: group.toUpperCase(),
 
         })
     })
-    return(
+    function log() {
+        console.log("name : ", name, "type:", type, "level:", level, "job:", job);
+    }
+    return (
         <ScrollView contentContainerStyle={styles.container}>
-            <Card barHidden={true} showDetail={true}>{name}</Card>
-            <CustomDataLabel>Actions</CustomDataLabel>
+            <Card barHidden={true} showDetail={true} onPress={log} >{name}</Card>
+            <Text>{type},{level},{job}</Text>
+            <CustomDataLabel>Action List</CustomDataLabel>
+            <Card barHidden={true} showDetail={true} onPress={() => ManageActions.SpendTime(name)}>
+                Spend Time With
+            </Card>
+            <Card barHidden={true} showDetail={true} onPress={() => ManageActions.PartyTogether(name)}>
+                Party Together
+            </Card>
             <View style={styles.actionsContainer}>
+                {() => SpendTime(name)}
                 {actions.map((action, index) => (
                     <Card key={index} barHidden={true} showDetail={true}>
                         {action}
@@ -32,10 +47,10 @@ export default function ManageRelationship({route,navigation}){
     )
 }
 
-const styles =StyleSheet.create({
-    container:{
+const styles = StyleSheet.create({
+    container: {
         flexGrow: 1,
-        backgroundColor:'#FFF1E7',
+        backgroundColor: '#FFF1E7',
         alignItems: 'center',
     },
     actionsContainer: {

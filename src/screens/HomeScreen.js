@@ -1,66 +1,43 @@
-import { View, Text, StyleSheet, FlatList, Pressable, Platform } from 'react-native'
-import PercentageBar from '../components/ProgressBar'
-import { useState } from 'react'
-import CustomAvatar from '../components/CustomAvatar';
-import { Ionicons, MaterialCommunityIcons, AntDesign, MaterialIcons } from '@expo/vector-icons';
+import { AntDesign, Ionicons, MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
+import { useEffect, useState } from 'react';
+import { FlatList, Platform, Pressable, StyleSheet, Text, View } from 'react-native';
+import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import CustomAvatar from '../components/CustomAvatar';
+import PercentageBar from '../components/ProgressBar';
+import RandomPopup from '../components/eventsPopup/RandomPopup';
+import data from '../data/userData.json';
 
 
 export default function HomeScreen() {
     const navigation = useNavigation();
     const [lifeStage, setLifeStage] = useState('Infant');
-    const data = [
-        {
-            id: '1',
-            age: '0',
-            event: 'Tối thứ 4(3/4) tầm 9h30 10h mình có để quên một chiếc loa màu nâu trên mui ô tô gần sau D3. Bạn nào nhặt được thì cho mình xin lại ạ'
-        },
-        {
-            id: '2',
-            age: '1',
-            event: 'Tối thứ 4(3/4) tầm 9h30 10h mình có để quên một chiếc loa màu nâu trên mui ô tô gần sau D3. Bạn nào nhặt được thì cho mình xin lại ạ'
-        },
-        {
-            id: '3',
-            age: '2',
-            event: 'Tối thứ 4(3/4) tầm 9h30 10h mình có để quên một chiếc loa màu nâu trên mui ô tô gần sau D3. Bạn nào nhặt được thì cho mình xin lại ạ'
-        },
-        {
-            id: '4',
-            age: '2',
-            event: 'Tối thứ 4(3/4) tầm 9h30 10h mình có để quên một chiếc loa màu nâu trên mui ô tô gần sau D3. Bạn nào nhặt được thì cho mình xin lại ạ'
-        },
-        {
-            id: '5',
-            age: '2',
-            event: 'Tối thứ 4(3/4) tầm 9h30 10h mình có để quên một chiếc loa màu nâu trên mui ô tô gần sau D3. Bạn nào nhặt được thì cho mình xin lại ạ'
-        },
-        {
-            id: '6',
-            age: '2',
-            event: 'Tối thứ 4(3/4) tầm 9h30 10h mình có để quên một chiếc loa màu nâu trên mui ô tô gần sau D3. Bạn nào nhặt được thì cho mình xin lại ạ'
-        },
-        {
-            id: '7',
-            age: '2',
-            event: 'Tối thứ 4(3/4) tầm 9h30 10h mình có để quên một chiếc loa màu nâu trên mui ô tô gần sau D3. Bạn nào nhặt được thì cho mình xin lại ạ'
-        },
-        {
-            id: '8',
-            age: '2',
-            event: 'Tối thứ 4(3/4) tầm 9h30 10h mình có để quên một chiếc loa màu nâu trên mui ô tô gần sau D3. Bạn nào nhặt được thì cho mình xin lại ạ'
-        },
-        {
-            id: '9',
-            age: '2',
-            event: 'Tối thứ 4(3/4) tầm 9h30 10h mình có để quên một chiếc loa màu nâu trên mui ô tô gần sau D3. Bạn nào nhặt được thì cho mình xin lại ạ'
-        },
-    ]
+    let age = data.Info.age
+    useEffect(() => {
+        if (age <= 1) {
+            setLifeStage("Infant")
+        } else if (age <= 9) {
+            setLifeStage("Kid")
+        } else if (age <= 19) {
+            setLifeStage("Teenager")
+        } else setLifeStage("Adult")
+    }, [])
+    const characterName = data.Info.name;
+
+
+    const [modalVisible, setModalVisible] = useState(false);
+
+    const closeModal = () => {
+        setModalVisible(false);
+    };
+
+    const eventData = data.userAgeLogs
     function renderItem(data) {
         return (
             <View style={styles.eventContainer} >
                 <Text style={styles.ageText}> Age: {data.item.age} </Text>
-                <Text style={styles.eventText}>{data.item.event}</Text>
+                {data.item.events.map((event, id) => <Text key={id} style={styles.eventText}>{event}</Text>)}
+
             </View>
         )
     }
@@ -73,7 +50,7 @@ export default function HomeScreen() {
                 height={12}
                 backgroundColor={'#E0E9F2'}
                 completedColor={'#EB9F4A'}
-                percentage={90}
+                percentage={data.Info.progress}
             />
 
             {/* Top container will contain avatar, age and balance*/}
@@ -87,21 +64,21 @@ export default function HomeScreen() {
                     </View>
                     <View style={{ marginTop: 17 }}>
                         <Text style={styles.stageStyle}> {lifeStage}</Text>
-                        <Text style={styles.username}>John Doe</Text>
+                        <Text style={styles.username}>{characterName}</Text>
                     </View>
                 </View>
                 <View>
                     <Text style={{ fontWeight: 300 }}>Balance:</Text>
-                    <Text style={styles.money}>$100</Text>
+                    <Text style={styles.money}>${data.Info.money}</Text>
                 </View>
             </View>
 
             {/* Container of user's events and different age */}
             <View style={styles.eventsContainer}>
                 <FlatList
-                    data={data}
+                    data={eventData}
                     renderItem={renderItem}
-                    keyExtractor={item => item.id}
+                    keyExtractor={item => item.age}
                 />
             </View>
 
@@ -110,7 +87,9 @@ export default function HomeScreen() {
                 <View style={styles.utility}>
                     <Pressable style={({ pressed }) => pressed && styles.pressed} >
                         <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-                            <MaterialIcons name="work" size={24} color="black" />
+                            <MaterialIcons name="work" size={24} color="black" onPress={() => {
+                                navigation.navigate('Occupation')
+                            }} />
                             <Text style={{ fontSize: 10 }}>Occupation</Text>
                         </View>
                     </Pressable>
@@ -124,13 +103,19 @@ export default function HomeScreen() {
                         </View>
                     </Pressable>
                     <View style={styles.outterContainer}>
-                        <Pressable style={({ pressed }) => pressed && styles.pressed}>
+                        <Pressable
+                            style={({ pressed }) => pressed && styles.pressed}
+                            onPress={() => setModalVisible(true)} //add onPress
+                        >
                             <View style={styles.buttonContainer}>
                                 <Text style={{ fontWeight: '600', color: 'white', fontSize: 24 }}>+</Text>
                                 <Text style={{ fontWeight: '500', color: 'white', fontSize: 20 }}>Age</Text>
                             </View>
                         </Pressable >
+                        {/* random modal component */}
+                        <RandomPopup modalVisible={modalVisible} closeModal={closeModal} />
                     </View>
+
                     <Pressable style={({ pressed }) => pressed && styles.pressed} onPress={() => {
                         navigation.navigate('Relationship');
                     }}>
@@ -140,7 +125,7 @@ export default function HomeScreen() {
                         </View>
                     </Pressable>
 
-                    <Pressable style={({ pressed }) => pressed && styles.pressed}>
+                    <Pressable style={({ pressed }) => pressed && styles.pressed} onPress={() => navigation.navigate("SchoolScreen")}>
                         <View style={{ justifyContent: 'center', alignItems: 'center' }}>
                             <Ionicons name="school" size={24} color="black" />
                             <Text style={{ fontSize: 10 }}>Education</Text>
@@ -148,14 +133,14 @@ export default function HomeScreen() {
                     </Pressable>
                 </View>
 
-                <View style={Platform.OS === 'ios' ? styles.allStatusContainer : [styles.allStatusContainer,{ paddingBottom:50}]}>
+                <View style={Platform.OS === 'ios' ? styles.allStatusContainer : [styles.allStatusContainer, { paddingBottom: 50 }]}>
                     <View style={styles.statusContainer} >
                         <Text style={styles.ageText}>Happiness:</Text>
                         <PercentageBar
                             height={15}
                             backgroundColor='grey'
                             completedColor="#009A34"
-                            percentage={75}
+                            percentage={data.Condition.Happiness}
                             width={200}
                         />
                     </View>
@@ -165,18 +150,7 @@ export default function HomeScreen() {
                             height={15}
                             backgroundColor='grey'
                             completedColor="#EED817"
-                            percentage={60}
-                            width={200}
-
-                        />
-                    </View>
-                    <View style={styles.statusContainer} >
-                        <Text style={styles.ageText}>     Smart:</Text>
-                        <PercentageBar
-                            height={15}
-                            backgroundColor='grey'
-                            completedColor="#F12C23"
-                            percentage={20}
+                            percentage={data.Condition.Health}
                             width={200}
 
                         />
@@ -187,7 +161,7 @@ export default function HomeScreen() {
                             height={15}
                             backgroundColor='grey'
                             completedColor="#FD7C1F"
-                            percentage={30}
+                            percentage={data.Condition.Looks}
                             width={200}
                         />
                     </View>
@@ -259,8 +233,8 @@ const styles = StyleSheet.create({
         marginVertical: 20,
     },
     eventsContainer: {
-         height: 387,
-         paddingLeft: 15,
+        height: hp('55%'),
+        paddingLeft: 15,
         // flex: 1,
 
     },
@@ -268,13 +242,9 @@ const styles = StyleSheet.create({
         width: '100%',
         height: 205,
         justifyContent: 'center',
-        
+
     },
-    ageContainer: {
-        width: '100%',
-        height: 50,
-        backgroundColor: 'black'
-    },
+
     statusContainer: {
         flexDirection: 'row',
         justifyContent: 'space-around',

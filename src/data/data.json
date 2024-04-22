@@ -1,6 +1,6 @@
 {
   "diseases": {
-    "-Nuz6CCNNRdauYq-20WC": [
+    "data": [
       {
         "cureCost": 14578,
         "id": 1,
@@ -59,7 +59,7 @@
     ]
   },
   "houses": {
-    "-Nuz441QzZLhwq8fqTb0": [
+    "data": [
       {
         "id": 1,
         "location": "Downtown",
@@ -103,7 +103,7 @@
     ]
   },
   "jobs": {
-    "-NvDh6FI4gw4w4-VTIgY": [
+    "data": [
       {
         "id": 1,
         "name": "Software Engineer",
@@ -277,7 +277,7 @@
     ]
   },
   "npcs": {
-    "-Nuz58QMBTu_7ipk3ZN5": [
+    "data": [
       {
         "age": 18,
         "id": 1,
@@ -521,7 +521,7 @@
     ]
   },
   "subjects": {
-    "-Nuz4_alAc3p_mHbvaZ2": [
+    "data": [
       {
         "duration": 3,
         "id": 1,
@@ -575,7 +575,7 @@
     ]
   },
   "universitySubjects": {
-    "-NvDdo5f56HIqlEsssTJ": [
+    "data": [
       {
         "duration": 4,
         "id": 1,
@@ -665,6 +665,343 @@
         "duration": 4,
         "id": 18,
         "name": "User Interface"
+      }
+    ]
+  },
+  "fatalEvents": {
+    "data": [
+      {
+        "description": "You're walking down the street when suddenly...",
+        "rate": 0.01,
+        "choice": {
+          "description": "You hear a screech of tires!",
+          "healthEffect": -100,
+          "happinessEffect": 0,
+          "result": "There's nothing you can do to avoid the impact."
+        }
+      },
+      {
+        "description": "You experience some unusual symptoms and decide to visit a doctor. The news isn't good...",
+        "rate": 0.005,
+        "choice": {
+          "description": "You are diagnosed with a terminal illness.",
+          "healthEffect": -100,
+          "happinessEffect": -20,
+          "result": "The doctor explains the diagnosis and treatment options (if any)."
+        }
+      },
+      {
+        "description": "The weather forecast has been ominous for days. Now...",
+        "rate": 0.02,
+        "choice": {
+          "description": "A powerful earthquake strikes your area!",
+          "healthEffect": -50,
+          "happinessEffect": -15,
+          "result": "The ground shakes violently, causing widespread destruction."
+        }
+      },
+      {
+        "description": "You're driving down the road when...",
+        "rate": 0.05,
+        "choice": {
+          "description": "There's a sudden brake and a minor collision!",
+          "healthEffect": -5,
+          "happinessEffect": -10,
+          "result": "Your car sustains some bumper damage, but everyone is okay."
+        }
+      },
+      {
+        "description": "You enjoy a delicious meal, but a few hours later...",
+        "rate": 0.03,
+        "choice": {
+          "description": "You experience a nasty case of food poisoning.",
+          "healthEffect": -15,
+          "happinessEffect": -5,
+          "result": "You spend the next few days curled up on the couch."
+        }
+      },
+      {
+        "description": "You're walking home late at night when...",
+        "rate": 0.02,
+        "choice": {
+          "description": "Someone approaches you and demands your valuables!",
+          "healthEffect": -5,
+          "happinessEffect": -15,
+          "result": "You hand over your wallet to avoid further trouble."
+        }
+      },
+      {
+        "description": "You wake up in the middle of the night to the smell of smoke...",
+        "rate": 0.01,
+        "choice": [
+          {
+            "description": "Quickly evacuate the house and call for help.",
+            "healthEffect": -5,
+            "happinessEffect": -10,
+            "result": "The fire department arrives and manages to put out the fire before major damage."
+          },
+          {
+            "description": "Panic and become disoriented, delaying your escape.",
+            "healthEffect": -10,
+            "happinessEffect": -15,
+            "result": "Firefighters rescue you from the house, but it sustains significant damage."
+          }
+        ]
+      },
+      {
+        "description": "You're excited about your upcoming vacation, but during your travels...",
+        "rate": 0.02,
+        "choice": [
+          {
+            "description": "Your flight gets delayed due to bad weather.",
+            "healthEffect": 0,
+            "happinessEffect": -5,
+            "result": "You spend the day at the airport, waiting for your rescheduled flight."
+          },
+          {
+            "description": "You get a mild case of food poisoning while abroad.",
+            "healthEffect": -10,
+            "happinessEffect": -10,
+            "result": "You spend a few days resting in your hotel room, missing out on some sightseeing."
+          }
+        ]
+      }
+    ]
+  },
+  "newAgeEvents": {
+    "data": [
+      {
+        "description": "You wake up feeling strangely energetic. You could:",
+        "choice": [
+          {
+            "description": "Meditate and find your inner peace.",
+            "healthEffect": 15,
+            "happinessEffect": 10,
+            "result": "You feel a radiant glow emanating from you."
+          },
+          {
+            "description": "Go for a crystal healing session.",
+            "healthEffect": 5,
+            "happinessEffect": 15,
+            "result": "The crystals leave you feeling centered, but maybe a little woozy."
+          },
+          {
+            "description": "Ignore the strange energy and go about your day.",
+            "healthEffect": 0,
+            "happinessEffect": 5,
+            "result": "The strange feeling fades away throughout the day."
+          }
+        ]
+      },
+      {
+        "description": "You encounter a street psychic. They offer to read your palm for a small fee. Do you:",
+        "choice": [
+          {
+            "description": "Pay for the palm reading.",
+            "healthEffect": 0,
+            "happinessEffect": 10,
+            "result": "The psychic reveals some intriguing things about your future."
+          },
+          {
+            "description": "Decline politely and walk away.",
+            "healthEffect": 0,
+            "happinessEffect": 5,
+            "result": "The psychic shrugs and moves on to the next person."
+          }
+        ]
+      },
+      {
+        "description": "You hear about a local yoga retreat happening this weekend. Are you interested in:",
+        "choice": [
+          {
+            "description": "Joining the yoga retreat for some mindfulness training.",
+            "healthEffect": 10,
+            "happinessEffect": 15,
+            "result": "You return from the retreat feeling refreshed and rejuvenated."
+          },
+          {
+            "description": "Sticking to your usual routine. Maybe yoga isn't your thing.",
+            "healthEffect": 0,
+            "happinessEffect": 5,
+            "result": "You miss out on a potentially relaxing experience."
+          }
+        ]
+      },
+      {
+        "description": "It's a full moon tonight! You feel a surge of creative energy. Will you:",
+        "choice": [
+          {
+            "description": "Write down your dreams and see if they hold any meaning.",
+            "healthEffect": 5,
+            "happinessEffect": 10,
+            "result": "You spend the night with a pen and notebook, lost in thought."
+          },
+          {
+            "description": "Channel your energy into creating art or music.",
+            "healthEffect": -5,
+            "happinessEffect": 15,
+            "result": "You become engrossed in your artistic expression."
+          },
+          {
+            "description": "Do some calming yoga or meditation to balance the lunar energy.",
+            "healthEffect": 10,
+            "happinessEffect": 10,
+            "result": "You feel centered and grounded after your practice."
+          }
+        ]
+      },
+      {
+        "description": "You meet a friend who offers to do an aura reading for you. Do you:",
+        "choice": [
+          {
+            "description": "Let your friend read your aura and see what they discover.",
+            "healthEffect": 0,
+            "happinessEffect": 10,
+            "result": "Your friend studies your aura with a focused gaze."
+          },
+          {
+            "description": "Politely decline, unsure about aura readings.",
+            "healthEffect": 0,
+            "happinessEffect": 5,
+            "result": "Your friend shrugs it off and you move on with your conversation."
+          }
+        ]
+      },
+      {
+        "description": "You come across an advertisement for a past life regression therapy session. Are you interested in:",
+        "choice": [
+          {
+            "description": "Undergoing past life regression to explore your past lives.",
+            "healthEffect": -5,
+            "happinessEffect": 15,
+            "result": "You spend the session in a relaxed state, guided by the therapist."
+          },
+          {
+            "description": "Skipping the regression and sticking to your present life.",
+            "healthEffect": 0,
+            "happinessEffect": 5,
+            "result": "The ad piques your curiosity for a moment, then you move on."
+          }
+        ]
+      },
+      {
+        "description": "You come across an advertisement for a past life regression therapy session. Are you interested in:",
+        "choice": [
+          {
+            "description": "Undergoing past life regression to explore your past lives.",
+            "healthEffect": -5,
+            "happinessEffect": 15,
+            "result": "You spend the session in a relaxed state, guided by the therapist."
+          },
+          {
+            "description": "Skipping the regression and sticking to your present life.",
+            "healthEffect": 0,
+            "happinessEffect": 5,
+            "result": "The ad piques your curiosity for a moment, then you move on."
+          }
+        ]
+      },
+      {
+        "description": "You hear about a sound bath meditation session advertised for stress relief. Are you interested in:",
+        "choice": [
+          {
+            "description": "Participating in the sound bath meditation to experience deep relaxation.",
+            "healthEffect": 15,
+            "happinessEffect": 10,
+            "result": "You lie down in a comfortable position, surrounded by soothing sounds."
+          },
+          {
+            "description": "Sticking to your usual routine. Meditation isn't your preferred method of relaxation.",
+            "healthEffect": 0,
+            "happinessEffect": 5,
+            "result": "You miss out on a potentially stress-reducing experience."
+          }
+        ]
+      },
+      {
+        "description": "You see a flyer for an aromatherapy workshop. Are you interested in:",
+        "choice": [
+          {
+            "description": "Learning about essential oils and their potential benefits.",
+            "healthEffect": 5,
+            "happinessEffect": 10,
+            "lookEffect": "You leave the workshop feeling refreshed and with a newfound knowledge of essential oils."
+          },
+          {
+            "description": "Sticking to your usual routine. Aromatherapy isn't really your thing.",
+            "healthEffect": 0,
+            "happinessEffect": 5,
+            "lookEffect": "The flyer piques your curiosity for a moment, then you move on."
+          }
+        ]
+      },
+      {
+        "description": "You stumble upon a beautiful crystal shop overflowing with gemstones. Do you:",
+        "choice": [
+          {
+            "description": "Treat yourself to a crystal that resonates with you.",
+            "healthEffect": 0,
+            "happinessEffect": 15,
+            "lookEffect": "You proudly wear your new crystal pendant, believing it brings good luck."
+          },
+          {
+            "description": "Browse the selection but decide against buying anything.",
+            "healthEffect": 0,
+            "happinessEffect": 5,
+            "lookEffect": "You admire the various crystals but don't feel drawn to any in particular."
+          }
+        ]
+      },
+      {
+        "description": "A friend invites you to a Law of Attraction workshop. Do you want to:",
+        "choice": [
+          {
+            "description": "Learn about manifesting your desires through positive affirmations.",
+            "healthEffect": 5,
+            "happinessEffect": 10,
+            "lookEffect": "You leave the workshop with a notebook full of affirmations and a positive outlook."
+          },
+          {
+            "description": "Decline politely, unsure about the Law of Attraction principles.",
+            "healthEffect": 0,
+            "happinessEffect": 5,
+            "lookEffect": "You thank your friend for the invite but explain you're not interested in the workshop."
+          }
+        ]
+      },
+      {
+        "description": "A therapist offers you a past life regression therapy session. Are you interested in:",
+        "choice": [
+          {
+            "description": "Explore your past lives through guided meditation and hypnosis.",
+            "healthEffect": -5,
+            "happinessEffect": 15,
+            "lookEffect": "You spend the session in a relaxed state, guided by the therapist's voice."
+          },
+          {
+            "description": "Decline politely, feeling skeptical about past life regression.",
+            "healthEffect": 0,
+            "happinessEffect": 5,
+            "lookEffect": "You thank the therapist but explain you're not comfortable with the technique."
+          }
+        ]
+      },
+      {
+        "description": "You come across a weekend retreat focused on sound bath meditation. Do you:",
+        "choice": [
+          {
+            "description": "Immerse yourself in the sounds of gongs, singing bowls, and other instruments for deep relaxation.",
+            "healthEffect": 15,
+            "happinessEffect": 10,
+            "lookEffect": "You spend the weekend lying comfortably, surrounded by soothing soundscapes."
+          },
+          {
+            "description": "Stick to your usual routine. Meditation retreats aren't your preferred method of relaxation.",
+            "healthEffect": 0,
+            "happinessEffect": 5,
+            "lookEffect": "The retreat sounds appealing, but you decide to pass on it this time."
+          }
+        ]
       }
     ]
   }

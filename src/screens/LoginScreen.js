@@ -22,14 +22,16 @@ function LoginScreen({ navigation }) {
 
     function onEmailChangeHandler(email) {
         console.log(email);
+        email = email.trim();
         setEmail(email)
     }
     function onPasswordChangeHandler(password) {
+        password = password.trim();
         console.log(password);
         setPassword(password)
     }
     const onLoginPressed = async () => {
-        console.log(email, password);
+        // console.log(email, password);
         // if good credentila => allow 
         if (email && password) {
             const token = await signInWithPassword(email, password);
