@@ -1,7 +1,8 @@
 {
     "UserAccount": {
-        "user_name": "NgoVanQuyen",
-        "pwd": "123123"
+        "email": "t@gmail.com",
+        "username": "NgoVanQuyen",
+        "password": "123456"
     },
     "UserDailyLogin": {
         "lastLoginDate": "2024-04-17",
@@ -15,7 +16,9 @@
         "name": "William Smith",
         "currentOccupation": "",
         "money": 999,
-        "aging": 15
+        "progress": 15,
+        "inUni": true,
+        "inSchool": false
     },
     "userAgeLogs": [
         {
@@ -46,8 +49,6 @@
         "Looks": 85
     },
     "Properties": {
-        "Vehicles": [],
-        "Money": 9999,
         "assets": [
             {
                 "group": "Cars",
@@ -145,6 +146,5 @@
             "User Interface": 0
         }
     },
-    "Character's Diseases": [],
-    "Age Progress": 25
+    "Character's Diseases": []
 }

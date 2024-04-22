@@ -1,48 +1,39 @@
+import React, { useState } from "react";
 import {
-  View,
-  Text,
-  StyleSheet,
   ScrollView,
-  Platform,
-  TouchableNativeFeedback,
-  TouchableOpacity,
+  StyleSheet,
+  Text,
+  View
 } from "react-native";
-import React from "react";
 import Card from "../components/Card";
-import AlertPopup from "../components/eventsPopup/AlertPopup";
-import { useState } from "react";
-import { FontAwesome } from "@expo/vector-icons";
 import PercentageBar from "../components/ProgressBar";
-import {
-  widthPercentageToDP as wp,
-  heightPercentageToDP as hp,
-} from "react-native-responsive-screen";
+import AlertPopup from "../components/eventsPopup/AlertPopup";
 import data from "../data/data.json";
 
 function SchoolScreen() {
 
- const subjects = data.subjects.data;
-    const [selectedSubject, setSelectedSubject] = useState(null); // Track currently selected job
-    const [modalVisible, setModalVisible] = useState(false);
-    const openModal = (subject) => {
-      setSelectedSubject(subject); // Set the selected asset before opening modal
-      setModalVisible(true);
-    };
-  
-    const closeModal = () => {
-      setModalVisible(false);
-      setSelectedSubject(null); // Clear selected subject on close
-    };
+  const subjects = data.subjects.data;
+  const [selectedSubject, setSelectedSubject] = useState(null); // Track currently selected job
+  const [modalVisible, setModalVisible] = useState(false);
+  const openModal = (subject) => {
+    setSelectedSubject(subject); // Set the selected asset before opening modal
+    setModalVisible(true);
+  };
 
-    const renderContent = (name, duration, level) => {
-        return (
-          <View>
-             <Text><Text style={styles.label}>Name:</Text> {name}</Text>
-             <Text><Text style={styles.label}>Duration:</Text> {duration}</Text>
-             <Text><Text style={styles.label}>Level:</Text> {level}</Text>
-          </View>
-        )
-      }
+  const closeModal = () => {
+    setModalVisible(false);
+    setSelectedSubject(null); // Clear selected subject on close
+  };
+
+  const renderContent = (name, duration, level) => {
+    return (
+      <View>
+        <Text><Text style={styles.label}>Name:</Text> {name}</Text>
+        <Text><Text style={styles.label}>Duration:</Text> {duration}</Text>
+        <Text><Text style={styles.label}>Level:</Text> {level}</Text>
+      </View>
+    )
+  }
 
   return (
     <ScrollView style={styles.container}>
@@ -78,11 +69,11 @@ function SchoolScreen() {
       <AlertPopup
         modalVisible={modalVisible}
         closeModal={closeModal}
-        title={selectedSubject?selectedSubject.name:"Subject"}
+        title={selectedSubject ? selectedSubject.name : "Subject"}
         content={renderContent(
-            selectedSubject?.name,
-            selectedSubject?.duration,
-            // selectedSubject?.level,
+          selectedSubject?.name,
+          selectedSubject?.duration,
+          // selectedSubject?.level,
         )}
         buttonText={"OK"}
       />
@@ -108,7 +99,7 @@ const styles = StyleSheet.create({
   },
   label: {
     fontWeight: 'bold',
-    fontSize:16
+    fontSize: 16
   },
 });
 // create progress bar => current subject (time)

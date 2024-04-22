@@ -1,7 +1,6 @@
 import React from 'react';
-import { SafeAreaView, View, Text, StyleSheet, Image, Dimensions } from 'react-native';
+import { Dimensions, Image, Platform, SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import FormBtn from '../components/FormBtn';
-import { Platform } from 'react-native';
 
 function WelcomeScreen({ navigation }) {
     const imageStyle = Platform.select({

@@ -2,10 +2,10 @@ import { AntDesign, Ionicons, MaterialCommunityIcons, MaterialIcons } from '@exp
 import { useNavigation } from '@react-navigation/native';
 import { useEffect, useState } from 'react';
 import { FlatList, Platform, Pressable, StyleSheet, Text, View } from 'react-native';
+import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import CustomAvatar from '../components/CustomAvatar';
 import PercentageBar from '../components/ProgressBar';
 import RandomPopup from '../components/eventsPopup/RandomPopup';
-import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import data from '../data/userData.json';
 
 
@@ -50,7 +50,7 @@ export default function HomeScreen() {
                 height={12}
                 backgroundColor={'#E0E9F2'}
                 completedColor={'#EB9F4A'}
-                percentage={data.Info.aging}
+                percentage={data.Info.progress}
             />
 
             {/* Top container will contain avatar, age and balance*/}
@@ -87,7 +87,7 @@ export default function HomeScreen() {
                 <View style={styles.utility}>
                     <Pressable style={({ pressed }) => pressed && styles.pressed} >
                         <View style={{ justifyContent: 'center', alignItems: 'center' }}>
-                            <MaterialIcons name="work" size={24} color="black" onPress={()=>{
+                            <MaterialIcons name="work" size={24} color="black" onPress={() => {
                                 navigation.navigate('Occupation')
                             }} />
                             <Text style={{ fontSize: 10 }}>Occupation</Text>
