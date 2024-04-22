@@ -1,8 +1,8 @@
 import { useLayoutEffect } from "react";
-import { ScrollView, StyleSheet, View } from "react-native";
+import { ScrollView, StyleSheet, Text, View } from "react-native";
 import Card from "../components/Card";
 import CustomDataLabel from "../components/CustomDataLabel";
-import { SpendTime } from "../utils/ManageActions";
+import ManageActions from "../utils/ManageActions";
 export default function ManageRelationship({ route, navigation }) {
 
 
@@ -29,8 +29,11 @@ export default function ManageRelationship({ route, navigation }) {
             <Card barHidden={true} showDetail={true} onPress={log} >{name}</Card>
             <Text>{type},{level},{job}</Text>
             <CustomDataLabel>Action List</CustomDataLabel>
-            <Card barHidden={true} showDetail={true} onPress={() => SpendTime}>
+            <Card barHidden={true} showDetail={true} onPress={() => ManageActions.SpendTime(name)}>
                 Spend Time With
+            </Card>
+            <Card barHidden={true} showDetail={true} onPress={() => ManageActions.PartyTogether(name)}>
+                Party Together
             </Card>
             <View style={styles.actionsContainer}>
                 {() => SpendTime(name)}
