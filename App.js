@@ -25,6 +25,7 @@ import RegisterScreen from "./src/screens/RegisterScreen";
 import RelationshipScreen from "./src/screens/Relationship";
 import SchoolScreen from "./src/screens/SchoolScreen";
 import WelcomeScreen from "./src/screens/WelcomeScreen";
+import TestData from "./src/utils/TestData";
 const Drawer = createDrawerNavigator();
 const Stack = createNativeStackNavigator();
 
@@ -160,6 +161,18 @@ function DrawerNav() {
       <Drawer.Screen
         name="Activities"
         component={ActivitiesScreen}
+        options={{
+          headerStyle: {
+            backgroundColor: "#77B29F",
+          },
+          headerTintColor: "#EED817",
+          headerTitleAlign: "center",
+
+        }}
+      />
+      <Drawer.Screen
+        name="TestData"
+        component={TestData}
         options={{
           headerStyle: {
             backgroundColor: "#77B29F",
