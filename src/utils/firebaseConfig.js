@@ -1,4 +1,3 @@
-
 const firebaseConfig = {
     apiKey: "AIzaSyAb-ikC6OtN_mah2Z1_BKu-bPYKEPdWn2w",
     authDomain: "fb-login-demo-93174.firebaseapp.com",

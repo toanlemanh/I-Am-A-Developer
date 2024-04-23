@@ -1,6 +1,9 @@
-const WebApiKey = "AIzaSyAb-ikC6OtN_mah2Z1_BKu-bPYKEPdWn2w";
 import axios from "axios";
 import { Alert } from "react-native";
+
+
+const WebApiKey = "AIzaSyAb-ikC6OtN_mah2Z1_BKu-bPYKEPdWn2w";
+
 const authenticate = async (mode, email, password) => {
   try {
     console.log(mode, email, typeof email, password, typeof password);
@@ -23,6 +26,7 @@ const authenticate = async (mode, email, password) => {
 export const signInWithPassword = (email, password) => {
   return authenticate("signInWithPassword", email, password);
 };
+
 export const signUp = (email, password) => {
   return authenticate("signUp", email, password);
 };
