@@ -1,6 +1,7 @@
 import { doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
 import { db } from "../utils/firebaseConfig";
 
+// Lấy data về (có thể bất kì loại data nào)
 export const fetchData = async (userid, collection) => {
     const docRef = doc(db, collection, userid);
     const docSnap = await getDoc(docRef);
@@ -12,6 +13,7 @@ export const fetchData = async (userid, collection) => {
     return docSnap.data()
 }
 
+// Thêm mới 1 document vào 1 custom collection hoặc cũng có thể ghi đè data (not recommended)
 export async function postData(userid, collection, data) {
     if (!document) {
         throw new Error("Please provide a document ID for the new document.");
@@ -26,7 +28,7 @@ export async function postData(userid, collection, data) {
 }
 
 
-//INIT USER
+//INIT USER (Working on it)
 export async function initUserData(collection, userid, data) {
     if (!document) {
         throw new Error("Please provide a document ID for the new document.");
@@ -41,7 +43,7 @@ export async function initUserData(collection, userid, data) {
 }
 
 
-
+// Working on it
 export async function updateStatus(userid, { happiness, health, look }) {
     if (!document) {
         throw new Error("Please provide a document ID for the new document.");
@@ -61,7 +63,7 @@ export async function updateStatus(userid, { happiness, health, look }) {
     }
 }
 
-// UPDATE MONEY
+// UPDATE MONEY (Working on it)
 export async function updateMoney(userid, money) {
     if (!document) {
         throw new Error("Please provide a document ID for the new document.");
