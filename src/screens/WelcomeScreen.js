@@ -19,7 +19,7 @@ function WelcomeScreen({ navigation }) {
                     <FormBtn title={'Register'} onTap={() => navigation.navigate('RegisterScreen')} />
                 </View>
                 <Image
-                    source={require('../assets/images/bg-welcome.png')}
+                    source={require('../assets/images/bg-welcome.jpg')}
                     resizeMode='cover'
                     style={imageStyle}
                 />
