@@ -31,11 +31,12 @@ function LoginScreen({ navigation }) {
         setPassword(password)
     }
     const onLoginPressed = async () => {
-        // console.log(email, password);
         // if good credentila => allow 
         if (email && password) {
             const userId = await signInWithPassword(email, password);
-            authContext.authenticate(userId);
+            const userName = await AsyncStorage.getItem(userId);
+            console.log("uname", userName);
+            authContext.authenticate(userId,userName);
         }
         else {
             // disable button 

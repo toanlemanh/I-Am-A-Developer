@@ -213,7 +213,7 @@ export default function App() {
     fetchuserId();
   }, []);
 
-  if (isTryingLogin) return <ActivityIndicator size="large" color="#00ff00" />;
+  if (isTryingLogin) return <ActivityIndicator animating={isTryingLogin} size="small" color="#00ff00" />;
   else
     return (
       <AuthContextProvider>

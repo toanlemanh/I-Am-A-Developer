@@ -1,17 +1,34 @@
 import { AntDesign, Ionicons, MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FlatList, Platform, Pressable, StyleSheet, Text, View } from 'react-native';
 import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import CustomAvatar from '../components/CustomAvatar';
 import PercentageBar from '../components/ProgressBar';
 import RandomPopup from '../components/eventsPopup/RandomPopup';
 import data from '../data/userData.json';
+import { AuthContext } from '../context/auth';
+import { useContext } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 export default function HomeScreen() {
+    const [userName, setUserName] = useState("Tom")
+    const authContext = useContext(AuthContext);
+    const userId = authContext.userId;
     const navigation = useNavigation();
+     
+    React.useEffect(() => {
+        async function loadUserName () {
+           console.log(authContext.userName);
+            setUserName(await AsyncStorage.getItem(userId));
+        }
+        loadUserName();
+    }, [userId])
+    const characterName = userName;
+
     const [lifeStage, setLifeStage] = useState('Infant');
+    const [modalVisible, setModalVisible] = useState(false);
     let age = data.Info.age
     useEffect(() => {
         if (age <= 1) {
@@ -21,11 +38,8 @@ export default function HomeScreen() {
         } else if (age <= 19) {
             setLifeStage("Teenager")
         } else setLifeStage("Adult")
-    }, [])
-    const characterName = data.Info.name;
-
-
-    const [modalVisible, setModalVisible] = useState(false);
+    }, [age])
+    
 
     const closeModal = () => {
         setModalVisible(false);
