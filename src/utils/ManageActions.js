@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Text, View } from "react-native";
 import AlertPopup from "../components/eventsPopup/AlertPopup";
+
 export default function ManageActions() {
 
     const [modalVisible, setModalVisible] = useState(false);
