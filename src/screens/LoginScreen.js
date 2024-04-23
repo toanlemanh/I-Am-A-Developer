@@ -34,9 +34,8 @@ function LoginScreen({ navigation }) {
         // console.log(email, password);
         // if good credentila => allow 
         if (email && password) {
-            const token = await signInWithPassword(email, password);
-            // console.log(token);
-            authContext.authenticate(token);
+            const userId = await signInWithPassword(email, password);
+            authContext.authenticate(userId);
         }
         else {
             // disable button 

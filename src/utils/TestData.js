@@ -31,8 +31,8 @@ const TestData = ({ userid, collection }) => {
 
     return (
         <View>
-            <Text>Name: {data.name}</Text>
-            <Text>Age: {data.age}</Text>
+            <Text>Name: {data?.name}</Text>
+            <Text>Age: {data?.age}</Text>
         </View>
     );
 };

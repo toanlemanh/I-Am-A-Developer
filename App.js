@@ -201,16 +201,16 @@ export default function App() {
   const [isTryingLogin, setIsTryingLogin] = useState(true);
 
   React.useEffect(() => {
-    async function fetchToken() {
+    async function fetchuserId() {
       //store on the device
-      const storedToken = await AsyncStorage.getItem("token");
-      if (storedToken) {
-        authContext.authenticate(storedToken);
+      const storeduserId = await AsyncStorage.getItem("userId");
+      if (storeduserId) {
+        authContext.authenticate(storeduserId);
       }
       setIsTryingLogin(false);
     }
 
-    fetchToken();
+    fetchuserId();
   }, []);
 
   if (isTryingLogin) return <ActivityIndicator size="large" color="#00ff00" />;

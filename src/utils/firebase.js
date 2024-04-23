@@ -13,7 +13,7 @@ const authenticate = async (mode, email, password) => {
       }
     );
     console.log(response.data)
-    return response.data.idToken;
+    return response.data.localId;
   } catch (err) {
     console.log("[Error] firebase", err.message);
   }

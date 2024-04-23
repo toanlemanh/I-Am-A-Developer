@@ -56,6 +56,11 @@
                 "price": "250,000 USD"
             },
             {
+                "group": "Cars",
+                "name": "Kia Morning",
+                "price": "20,000 USD"
+            },
+            {
                 "group": "Real Estate",
                 "name": "West Lake Mansion",
                 "price": "50,000 USD"

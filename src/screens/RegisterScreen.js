@@ -74,10 +74,10 @@ function RegisterScreen({ navigation }) {
     setConfirm('');
 
 // redirect to home 
-    const token = await signUp(email, passsword);
-    if (token) authContext.authenticate(token)
+    const userId = await signUp(email, passsword);
+    if (userId) authContext.authenticate(userId)
   
-    console.log("new token :", token);
+    console.log("new userId :", userId);
   }
   return (
     <ScrollView style={styles.container}>
