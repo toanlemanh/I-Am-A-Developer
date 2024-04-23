@@ -1,9 +1,7 @@
-
 import React, { useContext, useState } from "react";
 import {
   ActivityIndicator,
   Pressable,
-  StyleSheet,
   Text,
   View
 } from "react-native";
@@ -51,6 +49,7 @@ function AuthenticateScreen() {
     </Stack.Navigator>
   );
 }
+
 function AuthenticatedScreen() {
   const authContext = useContext(AuthContext);
   return (
@@ -119,9 +118,6 @@ function AuthenticatedScreen() {
         component={SchoolScreen}
         options={({ navigation }) => ({
           title: "EDUCATION",
-
-
-
         })}
       />
       <Stack.Screen
@@ -134,6 +130,7 @@ function AuthenticatedScreen() {
     </Stack.Navigator>
   );
 }
+
 function DrawerNav() {
   const authContext = useContext(AuthContext);
   return (
@@ -185,6 +182,7 @@ function DrawerNav() {
     </Drawer.Navigator>
   );
 }
+
 function RNContainer() {
   const authContext = useContext(AuthContext);
 
@@ -196,6 +194,7 @@ function RNContainer() {
     </NavigationContainer>
   );
 }
+
 export default function App() {
   const authContext = useContext(AuthContext);
   const [isTryingLogin, setIsTryingLogin] = useState(true);
@@ -221,12 +220,3 @@ export default function App() {
       </AuthContextProvider>
     );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});

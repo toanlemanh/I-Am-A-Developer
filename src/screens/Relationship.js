@@ -3,6 +3,7 @@ import { ScrollView, StyleSheet, View } from 'react-native';
 import Card from '../components/Card';
 import CustomDataLabel from '../components/CustomDataLabel';
 import data from "../data/userData.json";
+
 const relationships2 = data.Relationships;
 
 export default function RelationshipScreen({ navigation }) {
@@ -15,13 +16,13 @@ export default function RelationshipScreen({ navigation }) {
     return acc;
   }, {});
 
-  function handleCard(group, name,relationshipType,relationshipLevel,occupation) {
+  function handleCard(group, name, relationshipType, relationshipLevel, occupation) {
     navigation.navigate('ManageRelationship', {
       group: group,
       dataName: name,
-      relationshipType:relationshipType,
-      relationshipLevel:relationshipLevel,
-      occupation:occupation,
+      relationshipType: relationshipType,
+      relationshipLevel: relationshipLevel,
+      occupation: occupation,
 
     });
   }
@@ -33,7 +34,7 @@ export default function RelationshipScreen({ navigation }) {
           {groupItems.map((item, itemIndex) => (
             <Card
               key={itemIndex}
-              onPress={() => handleCard(group, item.name,item.relationshipType,item.relationshipLevel,item.occupation)}
+              onPress={() => handleCard(group, item.name, item.relationshipType, item.relationshipLevel, item.occupation)}
               percentage={item.relationshipLevel}
               showDetail={false}
             >
