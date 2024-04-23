@@ -7,12 +7,23 @@ export const fetchData = async (userid, collection) => {
     if (docSnap.exists()) {
         console.log("Document data:", docSnap.data().name);
     } else {
-        // docSnap.data() will be undefined in this case
         console.log("No such document!");
     }
     return docSnap.data()
 }
 
+export async function postData(userid, collection, data) {
+    if (!document) {
+        throw new Error("Please provide a document ID for the new document.");
+    }
+
+    try {
+        await setDoc(doc(db, collection, userid), data);
+        console.log("Document written with ID:", document);
+    } catch (e) {
+        console.error("Error adding document:", e);
+    }
+}
 
 
 //INIT USER
@@ -37,7 +48,7 @@ export async function updateStatus(userid, { happiness, health, look }) {
     }
 
     try {
-        await updateDoc(doc(db, 'status', userid), {
+        await updateDoc(doc(db, 'characters', userid), {
             status: {
                 happiness: happiness,
                 health: health,
