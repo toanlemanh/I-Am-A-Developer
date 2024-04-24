@@ -1,7 +1,7 @@
 import { createContext, useState } from 'react';
 
 const initialUserState = {
-    id: "",
+    id: "123123",
     UserDailyLogin: {
         lastLoginDate: "",
         currentLoginDate: "",
@@ -72,6 +72,12 @@ export const UserContext = createContext(initialUserState);
 const UserProvider = ({ children }) => {
     const [userState, setUserState] = useState(initialUserState);
 
+    const updateUser = (NewUserData) => {
+        setUserState({
+            ...NewUserData,
+        });
+    };
+
     const updateUserLogin = (newLoginData) => {
         setUserState({
             ...userState,
@@ -89,8 +95,8 @@ const UserProvider = ({ children }) => {
     const updateUserMoney = (newMoney) => {
         setUserState({
             ...userState,
-            Info: {
-                ...userState.Info,
+            character: {
+                ...userState.character,
                 money: newMoney,
             },
         });
@@ -98,7 +104,7 @@ const UserProvider = ({ children }) => {
 
 
     return (
-        <UserContext.Provider value={{ userState, updateUserLogin, updateUserMoney, updateCharacterStatus }}>
+        <UserContext.Provider value={{ userState, updateUserLogin, updateUserMoney, updateCharacterStatus, updateUser }}>
             {children}
         </UserContext.Provider>
     );
