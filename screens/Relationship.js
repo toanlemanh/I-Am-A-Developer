@@ -1,20 +1,20 @@
-import React from 'react';
-import { ScrollView, StyleSheet, View } from 'react-native';
-import Card from '../components/Card';
-import CustomDataLabel from '../components/CustomDataLabel';
-import data from "../data/userData.json";
+import React from 'react'
+import { ScrollView, StyleSheet, View } from 'react-native'
+import Card from '../components/Card'
+import CustomDataLabel from '../components/CustomDataLabel'
+import data from "../data/userData.json"
 
-const relationships2 = data.Relationships;
+const relationships2 = data.Relationships
 
 export default function RelationshipScreen({ navigation }) {
   // Grouping relationships by group name
   const groupedRelationships = relationships2.reduce((acc, item) => {
     if (!acc[item.group]) {
-      acc[item.group] = [];
+      acc[item.group] = []
     }
-    acc[item.group].push(item);
-    return acc;
-  }, {});
+    acc[item.group].push(item)
+    return acc
+  }, {})
 
   function handleCard(group, name, relationshipType, relationshipLevel, occupation) {
     navigation.navigate('ManageRelationship', {
@@ -24,7 +24,7 @@ export default function RelationshipScreen({ navigation }) {
       relationshipLevel: relationshipLevel,
       occupation: occupation,
 
-    });
+    })
   }
   return (
     <ScrollView style={styles.container}>
@@ -44,7 +44,7 @@ export default function RelationshipScreen({ navigation }) {
         </View>
       ))}
     </ScrollView>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -52,4 +52,4 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     backgroundColor: '#FFF1E7'
   },
-});
+})
