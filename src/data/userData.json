@@ -12,7 +12,7 @@
         }
     },
     "Info": {
-        "age": 2,
+        "age": 0,
         "name": "William Smith",
         "currentOccupation": "",
         "money": 999,
@@ -74,6 +74,21 @@
                 "group": "Laptop",
                 "name": "Dell Inspiron 5580",
                 "price": "900 USD"
+            },
+            {
+                "group": "Laptop",
+                "name": "Asus ROG",
+                "price": "1,500 USD"
+            },
+            {
+                "group":"Iphone",
+                "name":"Iphone 15 promax",
+                "price":"1,500 USD"
+            },
+            {
+                "group":"Iphone",
+                "name":"Iphone 12 pro",
+                "price":"500 USD"
             }
         ],
         "Houses": [
