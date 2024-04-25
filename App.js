@@ -1,3 +1,8 @@
+import { AntDesign } from "@expo/vector-icons";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { createDrawerNavigator } from "@react-navigation/drawer";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React, { useContext, useState } from "react";
 import {
   ActivityIndicator,
@@ -5,13 +10,8 @@ import {
   Text,
   View
 } from "react-native";
-
-import { AntDesign } from "@expo/vector-icons";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { createDrawerNavigator } from "@react-navigation/drawer";
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import AuthContextProvider, { AuthContext } from "./src/context/auth";
+import UserProvider from "./src/context/user-context";
 import ActivitiesScreen from "./src/screens/ActivitiesScreen";
 import AssetScreen from "./src/screens/AssetScreen";
 import HomeScreen from "./src/screens/HomeScreen";
@@ -212,11 +212,13 @@ export default function App() {
     fetchuserId();
   }, []);
 
-  if (isTryingLogin) return <ActivityIndicator size="large" color="#00ff00" />;
+  if (isTryingLogin) return <ActivityIndicator animating={isTryingLogin} size="small" color="#00ff00" />;
   else
     return (
       <AuthContextProvider>
-        <RNContainer />
+        <UserProvider>
+          <RNContainer />
+        </UserProvider>
       </AuthContextProvider>
     );
 }

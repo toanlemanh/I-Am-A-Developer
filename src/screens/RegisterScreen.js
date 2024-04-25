@@ -16,6 +16,7 @@ import FormInput from "../components/FormInput";
 import DividerLine from "../components/DividerLine";
 import { AuthContext } from "../context/auth";
 import { Alert } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 function RegisterScreen({ navigation }) {
   const authContext = useContext(AuthContext);
@@ -66,17 +67,21 @@ function RegisterScreen({ navigation }) {
     // console.log('Registration successful!');
     console.log('email:', email);
     console.log('Password:', passsword);
+    console.log('Username:', username);
 
     // Clear the input fields after registration
-    setUsername('');
     setEmail('');
     setPassword('');
     setConfirm('');
 
 // redirect to home 
     const userId = await signUp(email, passsword);
-    if (userId) authContext.authenticate(userId)
-  
+    // lưu userName trong AsyncStorage
+    if (userId) {
+      authContext.authenticate(userId, username);
+      AsyncStorage.setItem(userId, username);
+    } 
+    
     console.log("new userId :", userId);
   }
   return (

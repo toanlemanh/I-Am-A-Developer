@@ -1,17 +1,34 @@
 import { AntDesign, Ionicons, MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FlatList, Platform, Pressable, StyleSheet, Text, View } from 'react-native';
 import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import CustomAvatar from '../components/CustomAvatar';
 import PercentageBar from '../components/ProgressBar';
 import RandomPopup from '../components/eventsPopup/RandomPopup';
 import data from '../data/userData.json';
+import { AuthContext } from '../context/auth';
+import { useContext } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 export default function HomeScreen() {
+    const [userName, setUserName] = useState("Tom")
+    const authContext = useContext(AuthContext);
+    const userId = authContext.userId;
     const navigation = useNavigation();
+     
+    React.useEffect(() => {
+        async function loadUserName () {
+           console.log(authContext.userName);
+            setUserName(await AsyncStorage.getItem(userId));
+        }
+        loadUserName();
+    }, [userId])
+    const characterName = userName;
+
     const [lifeStage, setLifeStage] = useState('Infant');
+<<<<<<< HEAD
     let age = data.Info.age;
     const [ageLogs, setAgeLogs] = useState([
         {
@@ -23,6 +40,10 @@ export default function HomeScreen() {
    
   
     const [getAge,setAge] =useState(age);
+=======
+    const [modalVisible, setModalVisible] = useState(false);
+    let age = data.Info.age
+>>>>>>> cdc5d80246dc28d9670d77200fdb14600630e6e9
     useEffect(() => {
         if (getAge <= 1) {
             setLifeStage("Infant")
@@ -31,6 +52,7 @@ export default function HomeScreen() {
         } else if (getAge <= 19) {
             setLifeStage("Teenager")
         } else setLifeStage("Adult")
+<<<<<<< HEAD
     }, [getAge]);
     const characterName = data.Info.name;
     
@@ -48,6 +70,11 @@ export default function HomeScreen() {
             ] }
         ]);
     }
+=======
+    }, [age])
+    
+
+>>>>>>> cdc5d80246dc28d9670d77200fdb14600630e6e9
     const closeModal = () => {
         setModalVisible(false);
     };
