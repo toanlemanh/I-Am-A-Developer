@@ -2,63 +2,10 @@ import { useState } from "react";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 import Card from "../components/Card";
 import AlertPopup from "../components/eventsPopup/AlertPopup";
-export default function ActivitiesScreen() {
-    const activities = [
-        {
-            name: "Go for a walk",
-            cost: 0,
-            effects: {
-                happiness: 10,
-                health: 10,
-                look: 1,
-            }
-        },
-        {
-            name: "Go to the Gym",
-            cost: 30,
-            effects: {
-                happiness: 10,
-                health: 10,
-                look: 5,
-            }
-        },
-        {
-            name: "Visit Doctor",
-            cost: 200,
-            effects: {
-                happiness: 10,
-                health: 20,
-                look: 0,
-            }
-        }, {
-            name: "Get a haircut",
-            cost: 50,
-            effects: {
-                happiness: 10,
-                health: 0,
-                look: 10,
-            }
-        },
-        {
-            name: "Get a Massage",
-            cost: 30,
-            effects: {
-                happiness: 10,
-                health: 10,
-                look: 2,
-            }
-        },
-        {
-            name: "Find Love",
-            cost: 0,
-            effects: {
-                happiness: 10,
-                health: 10,
-                look: 1,
-            }
-        },
-    ];
+import data from "../data/data.json";
 
+export default function ActivitiesScreen() {
+    const activities = data.activities.data;
 
     const [selectedActivity, setSelectedActivity] = useState(null); // Track currently selected job
     const [modalVisible, setModalVisible] = useState(false);
