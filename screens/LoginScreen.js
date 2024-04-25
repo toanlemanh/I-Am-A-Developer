@@ -1,42 +1,42 @@
-import React, { useContext } from 'react';
-import { Alert, Platform, StyleSheet, Text, TouchableOpacity, View, ScrollView } from 'react-native';
+import React, { useContext } from 'react'
+import { Alert, Platform, StyleSheet, Text, TouchableOpacity, View, ScrollView } from 'react-native'
 
-import DividerLine from '../components/DividerLine';
-import FormBtn from '../components/FormBtn';
-import FormInput from '../components/FormInput';
-import SocialBtn from '../components/SocialBtn';
-import { signInWithPassword } from '../utils/firebase';
+import DividerLine from '../components/DividerLine'
+import FormBtn from '../components/FormBtn'
+import FormInput from '../components/FormInput'
+import SocialBtn from '../components/SocialBtn'
+import { signInWithPassword } from '../config/firebase'
 
-import { Ionicons } from '@expo/vector-icons';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Ionicons } from '@expo/vector-icons'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 import { AuthContext } from "./../context/auth"
-import Animated, { FadeIn, ZoomIn, FadeOut, ZoomOut } from 'react-native-reanimated';
+import Animated, { FadeIn, ZoomIn, FadeOut, ZoomOut } from 'react-native-reanimated'
 
 //1. Input handler 
 //2. Connect firebase 
 
 function LoginScreen({ navigation }) {
     const authContext = useContext(AuthContext)
-    const [email, setEmail] = React.useState();
-    const [password, setPassword] = React.useState();
+    const [email, setEmail] = React.useState()
+    const [password, setPassword] = React.useState()
 
     function onEmailChangeHandler(email) {
-        console.log(email);
-        email = email.trim();
+        console.log(email)
+        email = email.trim()
         setEmail(email)
     }
     function onPasswordChangeHandler(password) {
-        password = password.trim();
-        console.log(password);
+        password = password.trim()
+        console.log(password)
         setPassword(password)
     }
     const onLoginPressed = async () => {
         // if good credentila => allow 
         if (email && password) {
-            const userId = await signInWithPassword(email, password);
-            const userName = await AsyncStorage.getItem(userId);
-            console.log("uname", userName);
-            authContext.authenticate(userId,userName);
+            const userId = await signInWithPassword(email, password)
+            const userName = await AsyncStorage.getItem(userId)
+            console.log("uname", userName)
+            authContext.authenticate(userId, userName)
         }
         else {
             // disable button 
