@@ -14,6 +14,7 @@ const TestData = ({ userid, collection }) => {
     const BACKEND_URL =
         'https://i-am-a-developer-30661-default-rtdb.asia-southeast1.firebasedatabase.app/';
     // axios.post(BACKEND_URL + `/${userData.id}.json`, userData);
+
     useEffect(() => {
         async function fetchData() {
             try {
@@ -24,7 +25,7 @@ const TestData = ({ userid, collection }) => {
                         setData(current)
                         user.updateUser(current)
                         user.updateCharacterStatus({
-                            happiness: 10,
+                            happiness: 22,
                             health: 2,
                             look: 30
                         })

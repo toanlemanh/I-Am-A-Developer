@@ -1,5 +1,5 @@
 import React from 'react';
-import { Dimensions, Image, Platform, SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import { Dimensions, Platform, SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import FormBtn from '../components/FormBtn';
 
 function WelcomeScreen({ navigation }) {
@@ -18,11 +18,11 @@ function WelcomeScreen({ navigation }) {
                     <FormBtn title={'Login'} onTap={() => navigation.navigate('LoginScreen')} />
                     <FormBtn title={'Register'} onTap={() => navigation.navigate('RegisterScreen')} />
                 </View>
-                <Image
+                {/* <Image
                     source={require('../assets/images/bg-welcome.jpg')}
                     resizeMode='cover'
                     style={imageStyle}
-                />
+                /> */}
             </View>
         </SafeAreaView>
     );
