@@ -1,22 +1,22 @@
-import axios from 'axios';
+import axios from 'axios'
 
 const BACKEND_URL =
-    'https://i-am-a-developer-30661-default-rtdb.asia-southeast1.firebasedatabase.app/';
+    'https://i-am-a-developer-30661-default-rtdb.asia-southeast1.firebasedatabase.app/'
 
 export async function storeExpense(data, dataname) {
-    await axios.post(BACKEND_URL + `/${dataname}.json`, data);
-
+    await axios.post(BACKEND_URL + `/${dataname}.json`, data)
+    Í
 }
 
 export async function fetchUserData(uid) {
-    const response = await axios.get(BACKEND_URL + `/users/${uid}.json`);
-    return response;
+    const response = await axios.get(BACKEND_URL + `/users/${uid}.json`)
+    return response
 }
 
 export async function fetchExpenses() {
-    const response = await axios.get(BACKEND_URL + '/expenses.json');
+    const response = await axios.get(BACKEND_URL + '/expenses.json')
 
-    const expenses = [];
+    const expenses = []
 
     for (const key in response.data) {
         const expenseObj = {
@@ -24,19 +24,19 @@ export async function fetchExpenses() {
             amount: response.data[key].amount,
             date: new Date(response.data[key].date),
             description: response.data[key].description
-        };
-        expenses.push(expenseObj);
+        }
+        expenses.push(expenseObj)
     }
 
-    return expenses;
+    return expenses
 }
 
 export function updateExpense(id, expenseData) {
-    return axios.put(BACKEND_URL + `/expenses/${id}.json`, expenseData);
+    return axios.put(BACKEND_URL + `/expenses/${id}.json`, expenseData)
 }
 
 export function deleteExpense(id) {
-    return axios.delete(BACKEND_URL + `/expenses/${id}.json`);
+    return axios.delete(BACKEND_URL + `/expenses/${id}.json`)
 }
 
 

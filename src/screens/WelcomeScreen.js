@@ -1,12 +1,13 @@
-import React from 'react';
-import { Dimensions, Platform, SafeAreaView, StyleSheet, Text, View } from 'react-native';
-import FormBtn from '../components/FormBtn';
+import React from 'react'
+import { Dimensions, Image, Platform, SafeAreaView, StyleSheet, Text, View } from 'react-native'
+import FormBtn from '../components/FormBtn'
 
 function WelcomeScreen({ navigation }) {
     const imageStyle = Platform.select({
         ios: styles.image,
-        android: { ...styles.image, width: Dimensions.get('window').width, height: Dimensions.get('window').height * 0.6 }
-    });
+        android: { ...styles.image, width: Dimensions.get('window').width, height: Dimensions.get('window').height * 0.6 },
+        web: { ...styles.image, width: Dimensions.get('window').width, height: Dimensions.get('window').height * 0.6 }
+    })
 
     return (
         <SafeAreaView style={styles.container}>
@@ -14,21 +15,23 @@ function WelcomeScreen({ navigation }) {
                 <View style={styles.textBox}>
                     <Text style={styles.text}>I'm a Developer</Text>
                 </View>
+
                 <View style={styles.btnBox}>
                     <FormBtn title={'Login'} onTap={() => navigation.navigate('LoginScreen')} />
                     <FormBtn title={'Register'} onTap={() => navigation.navigate('RegisterScreen')} />
                 </View>
-                {/* <Image
+
+                <Image
                     source={require('../assets/images/bg-welcome.jpg')}
                     resizeMode='cover'
                     style={imageStyle}
-                /> */}
+                />
             </View>
         </SafeAreaView>
     );
 }
 
-export default WelcomeScreen;
+export default WelcomeScreen
 
 const styles = StyleSheet.create({
     container: {
@@ -53,4 +56,4 @@ const styles = StyleSheet.create({
         width: "100%",
         height: '60%',
     }
-});
+})
