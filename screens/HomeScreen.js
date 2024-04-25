@@ -20,11 +20,11 @@ export default function HomeScreen() {
      
     React.useEffect(() => {
         async function loadUserName () {
-           console.log(authContext.userName);
+           console.log("auth",authContext.userName);
             setUserName(await AsyncStorage.getItem(userId));
         }
         loadUserName();
-    }, [userId])
+    }, [userId, userName])
     const characterName = userName;
 
     const [lifeStage, setLifeStage] = useState('Infant');

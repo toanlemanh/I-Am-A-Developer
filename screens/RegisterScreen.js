@@ -19,15 +19,18 @@ import { Alert } from "react-native"
 import AsyncStorage from "@react-native-async-storage/async-storage"
 
 function RegisterScreen({ navigation }) {
+  let  USER_ID;
   const authContext = useContext(AuthContext)
   const [email, setEmail] = useState()
   const [passsword, setPassword] = useState()
   const [username, setUsername] = useState()
   const [confirm, setConfirm] = useState()
-  const [match, setMatch] = useState(true)
+  const [match, setMatch] = useState(true);
+  const [userId, setUserId] = useState();
 
   function onEmailChangeHandler(email) {
     console.log(email)
+    email = email.trim();
     setEmail(email)
   }
   function onUsernameChangeHandler(username) {
@@ -48,6 +51,13 @@ function RegisterScreen({ navigation }) {
       setMatch(passsword === confirm)
     }
   }, [passsword, confirm, match])
+
+  useEffect(() => {
+    if (userId) {
+      authContext.authenticate(userId, username)
+      AsyncStorage.setItem(userId, username)
+    }
+  }, [userId])
 
   //  function to register a new user account
   async function onRegisterHandler() {
@@ -75,14 +85,9 @@ function RegisterScreen({ navigation }) {
     setConfirm('')
 
     // redirect to home 
-    const userId = await signUp(email, passsword)
+      USER_ID = await signUp(email, passsword)
     // lưu userName trong AsyncStorage
-    if (userId) {
-      authContext.authenticate(userId, username)
-      AsyncStorage.setItem(userId, username)
-    }
-
-    console.log("new userId :", userId)
+     setUserId(USER_ID);
   }
   return (
     <ScrollView style={styles.container}>

@@ -35,8 +35,9 @@ function LoginScreen({ navigation }) {
         if (email && password) {
             const userId = await signInWithPassword(email, password)
             const userName = await AsyncStorage.getItem(userId)
+            
+            authContext.authenticate(userId, userName);
             console.log("uname", userName)
-            authContext.authenticate(userId, userName)
         }
         else {
             // disable button 
