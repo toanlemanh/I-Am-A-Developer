@@ -1,29 +1,33 @@
 import { createContext, useState } from 'react';
 
 const initialUserState = {
-    id: "123123",
-    UserDailyLogin: {
-        lastLoginDate: "",
-        currentLoginDate: "",
-        rewards: {
-            money: 0,
-        },
+    userDailyLogin: {
+        // after comparison: lastlogin = currentlogin
+        lastLoginDate: new Date(),
+        // set current login date
+        currentLoginDate: new Date(),
+        rewards: 100,
     },
     character: {
         name: "Username",
         money: 0,
         age: 0,
-        occupation: "",
+        occupation: {
+            name: "",
+            salary: 0,
+        },
 
         inSchool: false,
-        inUni: false,
+        inUniversity: false,
     },
     status: {
         health: 100,
         happiness: 100,
-        look: 100,
+        appearance: 100,
     },
     ageLogs: {
+        0: [],
+
 
 
     },
@@ -72,39 +76,129 @@ export const UserContext = createContext(initialUserState);
 const UserProvider = ({ children }) => {
     const [userState, setUserState] = useState(initialUserState);
 
-    const updateUser = (NewUserData) => {
+    const updateUser = (newUserState) => {
         setUserState({
-            ...NewUserData,
+            ...newUserState,
         });
     };
 
+
+    // Handle User Login Rewards
+    // Must be call at the time user login
     const updateUserLogin = (newLoginData) => {
         setUserState({
             ...userState,
-            UserDailyLogin: newLoginData,
+            userDailyLogin: {
+                currentLoginDate: new Date()
+            },
         });
-    };
-
-    const updateCharacterStatus = (newStatusData) => {
+        if (userState.userDailyLogin.currentLoginDate !== userState.userDailyLogin.lastLoginDate) {
+            setUserState({
+                ...userState,
+                character: {
+                    money: userState.character.money + userState.userDailyLogin.rewards
+                },
+            });
+            updateCharacterMoney(userState.userDailyLogin.rewards, false)
+        }
         setUserState({
             ...userState,
-            status: newStatusData,
-        });
-    };
-
-    const updateUserMoney = (newMoney) => {
-        setUserState({
-            ...userState,
-            character: {
-                ...userState.character,
-                money: newMoney,
+            UserDailyLogin: {
+                lastLoginDate: new Date()
             },
         });
     };
 
+    function levelupEducation() {
+        for (var subject in userState.education) {
+            setUserState({ ...userState, education: { ...userState.education, [subject]: userState.education[subject] + 1 } })
+        }
+    }
+
+
+    // Increase Progress
+    function startProgress() {
+        setInterval(() => {
+            // replace by constraints.speed
+            updateProgress(0.2)
+        }, 1000)
+        if (userState.progress === 100) {
+            updateCharacterAge(1)
+            resetProgress()
+        }
+    }
+
+    function drainStatus() {
+        setInterval(() => {
+            // replace by constraints.speed
+            updateStatus({
+                health: userState.status.health - 0.1,
+                happiness: userState.status.happiness - 0.1
+            })
+        }, 1000)
+        if (userState.status.health === 0) {
+            console.log('ded')
+        }
+    }
+
+
+    const updateStatus = ({ newStatusData }) => {
+        // GET CONSTRAINTS FROM constraints.js
+        // for (let i in newStatusData) {
+        //     if (i > constraints.maxStatusPoint) {
+        //         value = max
+        //     }
+        // }
+        setUserState({
+            ...userState,
+            status: { ...newStatusData },
+        });
+    };
+
+    // update Money
+    // False = increase
+    const updateCharacterMoney = (newMoney, decrease) => {
+        setUserState({
+            ...userState,
+            character: {
+                ...userState.character,
+                // increase or decrease money
+                money: !decrease ? userState.money + newMoney : userState.money - newMoney
+            },
+        });
+    };
+
+    // update age
+    const updateCharacterAge = (value) => {
+        setUserState({
+            ...userState,
+            character: {
+                ...userState.character,
+                // increase age
+                age: userState.character.age + value
+            },
+        });
+    };
+
+    // reset progress
+    const resetProgress = () => {
+        setUserState({
+            ...userState,
+            progress: 0,
+        });
+    };
+    const updateProgress = (value) => {
+        setUserState({
+            ...userState,
+            progress: userState.progress += value
+        });
+    };
+
+
+
 
     return (
-        <UserContext.Provider value={{ userState, updateUserLogin, updateUserMoney, updateCharacterStatus, updateUser }}>
+        <UserContext.Provider value={{ userState, updateUserLogin, updateCharacterMoney, updateStatus, updateUser, drainStatus, updateCharacterAge, startProgress }}>
             {children}
         </UserContext.Provider>
     );
