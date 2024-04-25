@@ -28,7 +28,7 @@ export default function HomeScreen() {
     const characterName = userName;
 
     const [lifeStage, setLifeStage] = useState('Infant');
-<<<<<<< HEAD
+
     let age = data.Info.age;
     const [ageLogs, setAgeLogs] = useState([
         {
@@ -40,10 +40,7 @@ export default function HomeScreen() {
    
   
     const [getAge,setAge] =useState(age);
-=======
-    const [modalVisible, setModalVisible] = useState(false);
-    let age = data.Info.age
->>>>>>> cdc5d80246dc28d9670d77200fdb14600630e6e9
+
     useEffect(() => {
         if (getAge <= 1) {
             setLifeStage("Infant")
@@ -52,9 +49,9 @@ export default function HomeScreen() {
         } else if (getAge <= 19) {
             setLifeStage("Teenager")
         } else setLifeStage("Adult")
-<<<<<<< HEAD
+
     }, [getAge]);
-    const characterName = data.Info.name;
+   
     
 
     const [modalVisible, setModalVisible] = useState(false);
@@ -70,11 +67,7 @@ export default function HomeScreen() {
             ] }
         ]);
     }
-=======
-    }, [age])
-    
 
->>>>>>> cdc5d80246dc28d9670d77200fdb14600630e6e9
     const closeModal = () => {
         setModalVisible(false);
     };
