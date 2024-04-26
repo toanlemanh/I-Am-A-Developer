@@ -17,10 +17,10 @@ export default function GoingOffline() {
                 console.log(user.status.health)
             }}></Button>
             <Button title="save data" onPress={() => {
-                userContext.saveUserDataToStorage()
+                userContext.saveUserDataToStorage('123123')
             }}></Button>
             <Button title="load data" onPress={() => {
-                userContext.loadUserDataFromStorage()
+                userContext.loadUserDataFromStorage('123123')
             }}></Button>
         </View>
     )

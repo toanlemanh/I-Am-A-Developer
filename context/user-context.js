@@ -327,19 +327,19 @@ const UserProvider = ({ children }) => {
     }
 
 
-    async function saveUserDataToStorage() {
+    async function saveUserDataToStorage(uid) {
         if (!userState.gameJustStarted)
             try {
-                await AsyncStorage.setItem('userState', JSON.stringify(userState));
+                await AsyncStorage.setItem(uid, JSON.stringify(userState));
                 console.log('USER Data saved successfully!');
             } catch (error) {
                 console.log('Error saving data: ', error);
             }
     };
 
-    async function loadUserDataFromStorage() {
+    async function loadUserDataFromStorage(uid) {
         try {
-            const storedData = await AsyncStorage.getItem('userState');
+            const storedData = await AsyncStorage.getItem(uid);
             if (storedData !== null) {
                 const parsedData = JSON.parse(storedData);
                 setUserState(parsedData)
@@ -347,6 +347,7 @@ const UserProvider = ({ children }) => {
                 updateUser({ gameJustStarted: false })
             }
         } catch (error) {
+            updateUser({ gameJustStarted: false })
             console.log('Error loading data: ', error);
         }
     };
