@@ -4,6 +4,8 @@ import CustomDataLabel from '../components/CustomDataLabel';
 import data from '../data/userData.json';
 import { useState } from 'react';
 import AlertPopup from '../components/eventsPopup/AlertPopup';
+import { styles } from '../Style/screenStyles/AssetsScreenStyle';
+
 
 export default function AssetScreen() {
   const assets = data.Properties.assets;
@@ -49,7 +51,7 @@ export default function AssetScreen() {
   return (
     <ScrollView style={styles.container}>
       {Object.entries(groupedAssets).map(([group, groupItems], index) => (
-        <View key={index} style={{ alignItems: 'center' }}>
+        <View key={index} style={styles.innerScrollView}>
           <CustomDataLabel>{group}</CustomDataLabel>
           {groupItems.map((item, itemIndex) => (
             <View key={itemIndex}>
@@ -76,13 +78,3 @@ export default function AssetScreen() {
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flexGrow: 1,
-    backgroundColor: '#FFF1E7',
-  },
-  label: {
-    fontWeight: 'bold',
-    fontSize:16
-  },
-});

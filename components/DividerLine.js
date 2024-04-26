@@ -1,6 +1,6 @@
 import React from 'react'
-import { View, Text, StyleSheet } from 'react-native'
-
+import { View, Text } from 'react-native'
+import { styles } from '../Style/componentStyle/DividerStyle'
 function DividerLine({ children }) {
     return (
         <View style={styles.dividerContainer}>
@@ -12,22 +12,3 @@ function DividerLine({ children }) {
 }
 
 export default DividerLine
-
-const styles = StyleSheet.create({
-    dividerContainer: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        marginVertical: 20,
-    },
-
-    dividerLine: {
-        flex: 1,
-        height: 1,
-        backgroundColor: '#d3d2d2',
-    },
-
-    dividerText: {
-        marginHorizontal: 10,
-        color: '#6A707C',
-    },
-});
