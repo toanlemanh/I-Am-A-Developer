@@ -1,6 +1,35 @@
-import { createContext, useState } from 'react';
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { createContext, useState } from "react";
 const initialUserState = {
+
+    userName: "name",
+    gameJustStarted: true,
+    userDailyLogin: {
+        lastLoginDate: "",
+        currentLoginDate: "",
+        rewards: {
+            money: 0,
+        },
+    },
+    character: {
+        name: "Username",
+        money: 0,
+        age: 20,
+        occupation: {
+            name: "",
+            salary: 0,
+        },
+
+        inSchool: false,
+        inUni: false,
+    },
+    status: {
+        health: 100,
+        happiness: 100,
+        look: 100,
+    },
+    ageLogs: {},
+
     userDailyLogin: {
         // after comparison: lastlogin = currentlogin
         lastLoginDate: new Date(),
@@ -25,13 +54,7 @@ const initialUserState = {
         happiness: 100,
         appearance: 100,
     },
-    ageLogs: {
-        0: [],
-
-
-
-    },
-
+    // currentDiseases in an array of diseases objects
     currentDiseases: [],
     education: {
         math: 0,
@@ -43,7 +66,7 @@ const initialUserState = {
         music: 0,
         physicalEducation: 0,
         computerScience: 0,
-        english: 0
+        english: 0,
     },
     higherEducation: {
         computerScience: 0,
@@ -63,29 +86,53 @@ const initialUserState = {
         testing: 0,
         softwareDevelopment: 0,
         userExperience: 0,
-        userInterface: 0
+        userInterface: 0,
     },
-    assets: {
 
+    relationships: {
+        parents: [
+            {
+                name: "William Jones",
+                group: "Parents",
+                relationshipType: "Father",
+                relationshipLevel: 100,
+                occupation: "Doctor"
+            },
+            {
+                name: "Emily Taylor",
+                group: "Parents",
+                relationshipType: "Mother",
+                relationshipLevel: 100,
+                occupation: "Teacher"
+            },
+        ],
+        siblings: [
+
+        ],
+        love: [
+
+        ],
     },
+    assets: {},
     progress: 0,
 };
 
 export const UserContext = createContext(initialUserState);
 
 const UserProvider = ({ children }) => {
+
     const [userState, setUserState] = useState(initialUserState);
 
-    const updateUser = (newUserState) => {
-        setUserState({
-            ...newUserState,
-        });
+    function updateUser(newUserState) {
+        setUserState((prev) => ({
+            ...prev, ...newUserState,
+        }));
     };
 
 
     // Handle User Login Rewards
     // Must be call at the time user login
-    const updateUserLogin = (newLoginData) => {
+    function updateUserLogin(newLoginData) {
         setUserState({
             ...userState,
             userDailyLogin: {
@@ -109,6 +156,14 @@ const UserProvider = ({ children }) => {
         });
     };
 
+    // function levelupSubject(subject) {
+    //     for (var subject in userState.education) {
+    //         setUserState({ ...userState, education: { ...userState.education, [subject]: userState.education[subject] + 1 } })
+    //     }
+    // }
+
+
+    // each one increase by one level
     function levelupEducation() {
         for (var subject in userState.education) {
             setUserState({ ...userState, education: { ...userState.education, [subject]: userState.education[subject] + 1 } })
@@ -141,8 +196,8 @@ const UserProvider = ({ children }) => {
         }
     }
 
-
-    const updateStatus = ({ newStatusData }) => {
+    // set
+    function setStatus({ newStatusData }) {
         // GET CONSTRAINTS FROM constraints.js
         // for (let i in newStatusData) {
         //     if (i > constraints.maxStatusPoint) {
@@ -151,13 +206,31 @@ const UserProvider = ({ children }) => {
         // }
         setUserState({
             ...userState,
-            status: { ...newStatusData },
+            status: { ...userState.status, ...newStatusData },
+        });
+    };
+
+    // Subtract or Add
+    function updateStatus({ health, happiness, appearance }) {
+        // GET CONSTRAINTS FROM constraints.js
+        // for (let i in newStatusData) {
+        //     if (i > constraints.maxStatusPoint) {
+        //         value = max
+        //     }
+        // }
+        setUserState({
+            ...userState,
+            status: {
+                health: health ? userState.status.health + health : userState.status.health,
+                happiness: happiness ? userState.status.happiness + happiness : userState.status.happiness,
+                appearance: appearance ? userState.status.appearance + appearance : appearance
+            },
         });
     };
 
     // update Money
     // False = increase
-    const updateCharacterMoney = (newMoney, decrease) => {
+    function updateCharacterMoney(newMoney, decrease) {
         setUserState({
             ...userState,
             character: {
@@ -169,7 +242,7 @@ const UserProvider = ({ children }) => {
     };
 
     // update age
-    const updateCharacterAge = (value) => {
+    function updateCharacterAge(value) {
         setUserState({
             ...userState,
             character: {
@@ -181,27 +254,130 @@ const UserProvider = ({ children }) => {
     };
 
     // reset progress
-    const resetProgress = () => {
+    function resetProgress() {
         setUserState({
             ...userState,
             progress: 0,
         });
     };
-    const updateProgress = (value) => {
+    function updateProgress(value) {
         setUserState({
             ...userState,
             progress: userState.progress += value
         });
     };
 
+    function setDiseases(diseases) {
+        setUserState({
+            ...userState, currentDiseases: diseases
+        })
+    }
+
+    function removeDisease(targetName) {
+        setDiseases((prev) => [
+            prev.findAll((disease) => disease.name !== targetName)
+        ])
+    }
 
 
+
+    // disease object can be added with format:
+    // {
+    //     name: "disease1",
+    //     effects: {
+    //         health: -20,
+    //         happiness: -20,
+    //         appearance: -20
+    //     }
+    //     cureCost: 100,
+    // }
+    function addDisease(newDisease) {
+        setDiseases((prev) => [
+            ...prev, newDisease
+        ])
+    }
+
+    // called everytime character ages up
+    function affectedByDiseases() {
+        const diseases = userState.currentDiseases
+        for (let disease in diseases) {
+            updateStatus(disease.effects)
+        }
+    }
+
+    function setRelationships(newRelationships) {
+        setUserState({
+            ...userState, relationships: newRelationships
+        })
+    }
+    // update a specific realtionship by their group and key
+    function updateRelationshipLevel(group, key, level) {
+        setUserState((prevState) => {
+            const relationships = {
+                ...prevState.relationships,
+                [group]: {
+                    ...prevState.relationships[group] || {},
+                    [key]: {
+                        relationshipLevel: level,
+                    },
+                },
+            };
+            return { ...prevState, relationships };
+        });
+    }
+
+
+    async function saveUserDataToStorage(uid) {
+        if (!userState.gameJustStarted)
+            try {
+                await AsyncStorage.setItem(uid, JSON.stringify(userState));
+                console.log('USER Data saved successfully!');
+            } catch (error) {
+                console.log('Error saving data: ', error);
+            }
+    };
+
+    async function loadUserDataFromStorage(uid) {
+        try {
+            const storedData = await AsyncStorage.getItem(uid);
+            if (storedData !== null) {
+                const parsedData = JSON.parse(storedData);
+                setUserState(parsedData)
+                console.log('Data loaded: ' + userState.status.health)
+                updateUser({ gameJustStarted: false })
+            }
+        } catch (error) {
+            updateUser({ gameJustStarted: false })
+            console.log('Error loading data: ', error);
+        }
+    };
 
     return (
-        <UserContext.Provider value={{ userState, updateUserLogin, updateCharacterMoney, updateStatus, updateUser, drainStatus, updateCharacterAge, startProgress }}>
+        <UserContext.Provider value=
+            {
+                {
+                    userState,
+                    updateUserLogin,
+                    updateCharacterMoney,
+                    updateStatus,
+                    updateUser,
+                    drainStatus,
+                    updateCharacterAge,
+                    startProgress,
+                    levelupEducation,
+                    setStatus,
+                    removeDisease,
+                    addDisease,
+                    affectedByDiseases,
+                    updateRelationshipLevel,
+                    saveUserDataToStorage,
+                    loadUserDataFromStorage
+                }
+            }>
             {children}
         </UserContext.Provider>
     );
+
 };
 
 export default UserProvider;

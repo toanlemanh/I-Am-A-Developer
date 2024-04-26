@@ -1,26 +1,31 @@
 import { AntDesign, Ionicons, MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/native';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { FlatList, Platform, Pressable, StyleSheet, Text, View } from 'react-native';
 import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import CustomAvatar from '../components/CustomAvatar';
 import PercentageBar from '../components/ProgressBar';
 import RandomPopup from '../components/eventsPopup/RandomPopup';
-import data from '../data/userData.json';
 import { AuthContext } from '../context/auth';
-import { useContext } from 'react';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { postUserId } from '../context/axios';
+import { UserContext } from '../context/user-context';
+import data from '../data/userData.json';
 
 
 export default function HomeScreen() {
     const [userName, setUserName] = useState("Tom")
     const authContext = useContext(AuthContext);
     const userId = authContext.userId;
+    const userContext = useContext(UserContext);
     const navigation = useNavigation();
-     
+
     React.useEffect(() => {
-        async function loadUserName () {
-           console.log(authContext.userName);
+        async function loadUserName() {
+            //    console.log("auth",authContext.userName);
+            //    console.log("auth",userContext.userState);
+            // post here with updated user name and other user state
+            postUserId(userId, userContext.userState);
             setUserName(await AsyncStorage.getItem(userId));
         }
         loadUserName();
@@ -33,13 +38,13 @@ export default function HomeScreen() {
     const [ageLogs, setAgeLogs] = useState([
         {
             age: age,
-            events:[`You are at the age of ${age}`]
+            events: [`You are at the age of ${age}`]
         }
     ]);
-  
-   
-  
-    const [getAge,setAge] =useState(age);
+
+
+
+    const [getAge, setAge] = useState(age);
 
     useEffect(() => {
         if (getAge <= 1) {
@@ -51,8 +56,8 @@ export default function HomeScreen() {
         } else setLifeStage("Adult")
 
     }, [getAge]);
-   
-    
+
+
 
     const [modalVisible, setModalVisible] = useState(false);
     function handleAgePress() {
@@ -61,10 +66,12 @@ export default function HomeScreen() {
         // Add a new object to the ageLogs array
         setAgeLogs(prevLogs => [
             ...prevLogs,
-            { age: newAge, events: [
-                `You are at the age of ${newAge}`,
-                `You are at the age of ${newAge}`
-            ] }
+            {
+                age: newAge, events: [
+                    `You are at the age of ${newAge}`,
+                    `You are at the age of ${newAge}`
+                ]
+            }
         ]);
     }
 
@@ -73,7 +80,7 @@ export default function HomeScreen() {
     };
 
     const eventData = data.userAgeLogs
-    function renderItem({item}) {
+    function renderItem({ item }) {
         return (
             <View style={styles.eventContainer} >
                 <Text style={styles.ageText}> Age: {item.age} </Text>
@@ -146,7 +153,7 @@ export default function HomeScreen() {
                     <View style={styles.outterContainer}>
                         <Pressable
                             style={({ pressed }) => pressed && styles.pressed}
-                            onPress={handleAgePress} 
+                            onPress={handleAgePress}
                         >
                             <View style={styles.buttonContainer}>
                                 <Text style={{ fontWeight: '600', color: 'white', fontSize: 24 }}>+</Text>

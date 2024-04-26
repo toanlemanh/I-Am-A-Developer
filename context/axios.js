@@ -1,11 +1,10 @@
 import axios from 'axios'
 
 const BACKEND_URL =
-    'https://i-am-a-developer-30661-default-rtdb.asia-southeast1.firebasedatabase.app/'
+    'https://fb-login-demo-93174-default-rtdb.firebaseio.com/'
 
 export async function storeExpense(data, dataname) {
-    await axios.post(BACKEND_URL + `/${dataname}.json`, data)
-    Í
+    await axios.post(BACKEND_URL + `/${dataname}.json`, data);
 }
 
 export async function fetchUserData(uid) {
@@ -39,4 +38,6 @@ export function deleteExpense(id) {
     return axios.delete(BACKEND_URL + `/expenses/${id}.json`)
 }
 
-
+export function postUserId( userId, data) {
+     axios.post(BACKEND_URL + `/${userId}.json`, data).then((response) => console.log(">>>response::",response));
+}

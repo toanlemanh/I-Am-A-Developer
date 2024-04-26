@@ -28,7 +28,7 @@ function WelcomeScreen({ navigation }) {
                 />
             </View>
         </SafeAreaView>
-    )
+    );
 }
 
 export default WelcomeScreen
