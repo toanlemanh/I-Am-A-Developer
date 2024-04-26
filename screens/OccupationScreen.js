@@ -6,7 +6,7 @@ import { useState, useContext } from 'react';
 import { FontAwesome } from '@expo/vector-icons';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import { UserContext } from '../context/user-context';
-
+import {styles} from '../Style/screenStyles/OccupationStyle'
 export default function OccupationScreen({ navigation }) {
 
   const { userState, setUserState } = useContext(UserContext);
@@ -67,7 +67,7 @@ export default function OccupationScreen({ navigation }) {
       ))}
       </View> */}
 
-      <View style={{ alignItems: 'center' }}>
+      <View style={styles.buttonOutterContainer}>
         <TouchableOpacity onPress={openModal}>
           <Text style={styles.jobTitle}>{userState.currentJob ? userState.currentJob.job : "No Current Job"}</Text>
         </TouchableOpacity>
@@ -86,7 +86,7 @@ export default function OccupationScreen({ navigation }) {
           navigation.navigate('Job Market')
         }}>
           <View style={styles.buttonContainer}>
-            <Text style={{ color: 'white' }}>Find jobs</Text>
+            <Text style={styles.findjob}>Find jobs</Text>
             <FontAwesome name="search" size={21} color="white" />
           </View>
         </ButtonComponent>
@@ -94,51 +94,3 @@ export default function OccupationScreen({ navigation }) {
     </ScrollView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flexGrow: 1,
-    backgroundColor: '#FFF1E7',
-
-  },
-  buttonOutterContainer: {
-    alignItems: 'center',
-  },
-  buttonContainer: {
-    marginVertical: 12,
-    flexDirection: 'row',
-    justifyContent: 'space-evenly',
-    alignItems: 'center',
-    width: wp('33%'),
-    height: hp('8%'),
-    borderRadius: 12,
-    backgroundColor: '#878DD8',
-    elevation: 7,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.3,
-    shadowRadius: 4,
-  },
-  jobTitle: {
-    marginTop: 20,
-    fontSize: 24,
-    fontWeight: 'bold',
-  },
-  detailsContainer: {
-    padding: 20,
-  },
-  label: {
-    fontWeight: 'bold',
-  },
-  quitButton: {
-    marginTop: 10,
-    backgroundColor: 'red',
-    padding: 10,
-    borderRadius: 5,
-  },
-  quitButtonText: {
-    color: 'white',
-    textAlign: 'center',
-    fontWeight: 'bold',
-  },
-});
