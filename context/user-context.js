@@ -175,25 +175,28 @@ const UserProvider = ({ children }) => {
     function startProgress() {
         setInterval(() => {
             // replace by constraints.speed
-            updateProgress(0.2)
-        }, 1000)
-        if (userState.progress === 100) {
-            updateCharacterAge(1)
-            resetProgress()
-        }
+            updateProgress(1000 / 720)
+            if (userState.progress >= 20) {
+                updateCharacterAge(5)
+                updateProgress(-20)
+            }
+        }, 250)
+
     }
 
     function drainStatus() {
         setInterval(() => {
             // replace by constraints.speed
             updateStatus({
-                health: userState.status.health - 0.1,
-                happiness: userState.status.happiness - 0.1
+                health: -0.2,
+                happiness: -0.2,
+                appearance: -0.1
             })
+            if (userState.status.health <= 0) {
+                console.log('ded')
+            }
         }, 1000)
-        if (userState.status.health === 0) {
-            console.log('ded')
-        }
+
     }
 
     // set
@@ -221,9 +224,9 @@ const UserProvider = ({ children }) => {
         setUserState({
             ...userState,
             status: {
-                health: health ? userState.status.health + health : userState.status.health,
-                happiness: happiness ? userState.status.happiness + happiness : userState.status.happiness,
-                appearance: appearance ? userState.status.appearance + appearance : appearance
+                health: health ? userState.status.health += health : userState.status.health,
+                happiness: happiness ? userState.status.happiness += happiness : userState.status.happiness,
+                appearance: appearance ? userState.status.appearance += appearance : appearance
             },
         });
     };
@@ -248,9 +251,10 @@ const UserProvider = ({ children }) => {
             character: {
                 ...userState.character,
                 // increase age
-                age: userState.character.age + value
+                age: userState.character.age += value
             },
         });
+        console.log(userState.character)
     };
 
     // reset progress
