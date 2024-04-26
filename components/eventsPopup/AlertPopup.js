@@ -1,8 +1,8 @@
 import React from 'react';
 import { Modal, StyleSheet, Text, Pressable, View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import { widthPercentageToDP as wp ,heightPercentageToDP as hp } from 'react-native-responsive-screen';
-function AlertPopup({ modalVisible, closeModal,title,content,buttonText }) {
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+function AlertPopup({ modalVisible, closeModal, title, content, buttonText, buttonOnPress }) {
     return (
         <Modal
             animationType="slide"
@@ -15,6 +15,13 @@ function AlertPopup({ modalVisible, closeModal,title,content,buttonText }) {
             <View style={styles.centeredView}>
 
                 <View style={styles.outerBoderPopup}>
+
+                    <Pressable
+                        style={styles.cancelIcon}
+                        onPress={closeModal}>
+                        <Text style={styles.cancelIconText}>✖️</Text>
+                    </Pressable>
+
                     <View style={styles.innerBoderPopup}>
 
                         <View style={{ width: wp('62%') }}>
@@ -31,7 +38,7 @@ function AlertPopup({ modalVisible, closeModal,title,content,buttonText }) {
 
                             <Pressable
                                 style={styles.button}
-                                onPress={closeModal}>
+                                onPress={buttonOnPress || closeModal}>
                                 <Text style={styles.textButtonStyle}>{buttonText}</Text>
                             </Pressable>
 
@@ -55,6 +62,18 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         // borderWidth: 2,
         backgroundColor: 'rgba(0, 0, 0, 0.7)'
+    },
+    cancelIcon: {
+        position: 'absolute',
+        top: 10,
+        right: wp('66%'),
+        backgroundColor: 'transparent',
+        zIndex: 1, // ensures the pressable is above other elements
+    },
+    cancelIconText: {
+        fontSize: 17,
+        color: '#000',
+        fontWeight: "300",
     },
     outerBoderPopup: {
         margin: 20,
@@ -87,7 +106,7 @@ const styles = StyleSheet.create({
         shadowRadius: 4,
         // elevation: 5,
         borderWidth: 1,
-       
+
     },
     gradient: {
         borderRadius: 20,
@@ -106,12 +125,6 @@ const styles = StyleSheet.create({
         color: 'white',
         fontWeight: 'bold',
         textAlign: 'center',
-    },
-    eventTit: {
-        marginBottom: 10,
-        textAlign: 'left',
-        fontSize: 24,
-        fontWeight: 'bold'
     },
     eventTitle: {
         marginBottom: 10,
