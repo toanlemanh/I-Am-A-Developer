@@ -30,10 +30,8 @@ function RegisterScreen({ navigation }) {
   const [confirm, setConfirm] = useState();
   const [match, setMatch] = useState(true);
   const [userId, setUserId] = useState();
-  const [isSigned, setIsSigned] = useState(true);
 
   function onEmailChangeHandler(email) {
-    console.log(email);
     email = email.trim();
     setEmail(email);
   }
@@ -41,7 +39,6 @@ function RegisterScreen({ navigation }) {
     setUsername(username);
   }
   function onPasswordChangeHandler(password) {
-    console.log(password);
     setPassword(password);
   }
   function onConfirmChangeHandler(confirm) {
@@ -60,22 +57,13 @@ function RegisterScreen({ navigation }) {
       if (userId) {
         authContext.authenticate(userId, username);
         const data = { userName: username };
-        console.log("data", data);
+        console.log(">>>>data", data);
         userContext.updateUser(data); ///console.log => current job  it's set state again in context but it not rerender here
         AsyncStorage.setItem(userId, username);
       }
     }
     fetchUserData();
   }, [userId]);
-
-  useEffect(() => {
-      const user = userContext.userState;
-      console.log("user effect", user);
-      //post data into realtime database
-      postUserId(userId, user);
-    // }
-  }, [ userContext.userState])
-  
 
   //  function to register a new user account
   async function onRegisterHandler() {
@@ -95,14 +83,8 @@ function RegisterScreen({ navigation }) {
       return;
     }
 
-    // Perform registration (e.g., send data to backend API)
-    //  logging the data here
-    // console.log('Registration successful!');
-    console.log("email:", email);
-    console.log("Password:", passsword);
-    console.log("Username:", username);
 
-    // Clear the input fields after registration
+    // Clear the input fields after registration, do not clear username
     setEmail("");
     setPassword("");
     setConfirm("");
@@ -110,9 +92,7 @@ function RegisterScreen({ navigation }) {
     // redirect to home
     USER_ID = await signUp(email, passsword);
     setUserId(USER_ID);
-    //setIsSigned(!isSigned);
   }
-
 
   return (
     <ScrollView style={styles.container}>

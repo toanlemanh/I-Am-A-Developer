@@ -69,12 +69,10 @@ const UserProvider = ({ children }) => {
 
   const updateUser = (newUserData) => {
     setUserState((prev) => {
-        console.log(prev);
         const obj = {
             ...prev,
         ...newUserData,
         }
-        console.log("current obj",obj);
       return obj;
     });
   };

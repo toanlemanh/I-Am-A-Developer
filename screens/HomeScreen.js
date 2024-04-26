@@ -10,21 +10,27 @@ import data from '../data/userData.json';
 import { AuthContext } from '../context/auth';
 import { useContext } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { UserContext } from '../context/user-context';
+import { postUserId } from '../context/axios';
 
 
 export default function HomeScreen() {
     const [userName, setUserName] = useState("Tom")
     const authContext = useContext(AuthContext);
     const userId = authContext.userId;
+    const userContext = useContext(UserContext);
     const navigation = useNavigation();
-     
+    
     React.useEffect(() => {
         async function loadUserName () {
-           console.log("auth",authContext.userName);
+        //    console.log("auth",authContext.userName);
+        //    console.log("auth",userContext.userState);
+        // post here with updated user name and other user state
+           postUserId(userId, userContext.userState);
             setUserName(await AsyncStorage.getItem(userId));
         }
         loadUserName();
-    }, [userId, userName])
+    }, [userId])
     const characterName = userName;
 
     const [lifeStage, setLifeStage] = useState('Infant');

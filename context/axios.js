@@ -39,5 +39,5 @@ export function deleteExpense(id) {
 }
 
 export function postUserId( userId, data) {
-     axios.post(BACKEND_URL + `/${userId}.json`, data).then((response) => console.log("res",response));
+     axios.post(BACKEND_URL + `/${userId}.json`, data).then((response) => console.log(">>>response::",response));
 }

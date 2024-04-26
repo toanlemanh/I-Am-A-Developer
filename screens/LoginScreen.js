@@ -21,13 +21,13 @@ function LoginScreen({ navigation }) {
     const [password, setPassword] = React.useState()
 
     function onEmailChangeHandler(email) {
-        console.log(email)
+     //   console.log(email)
         email = email.trim()
         setEmail(email)
     }
     function onPasswordChangeHandler(password) {
         password = password.trim()
-        console.log(password)
+      //  console.log(password)
         setPassword(password)
     }
     const onLoginPressed = async () => {
