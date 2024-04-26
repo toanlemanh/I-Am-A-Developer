@@ -107,9 +107,9 @@
       {
         "id": 1,
         "name": "Software Engineer",
-        "requirement": {
-          "ComputerScience": 5,
-          "SoftwareEngineering": 4
+        "requirements": {
+          "computerScience": 5,
+          "softwareEngineering": 4
         },
         "salary": 100000,
         "subjectRequirements": {
@@ -120,8 +120,8 @@
       {
         "id": 12,
         "name": "Web Developer",
-        "requirement": {
-          "ComputerScience": 4,
+        "requirements": {
+          "computerScience": 4,
           "Design": 3
         },
         "salary": 70000,
@@ -132,8 +132,8 @@
       {
         "id": 13,
         "name": "Technical Writer",
-        "requirement": {
-          "ComputerScience": 2,
+        "requirements": {
+          "computerScience": 2,
           "InformationTechnology": 3
         },
         "salary": 60000,
@@ -145,8 +145,8 @@
       {
         "id": 18,
         "name": "Cartographer",
-        "requirement": {
-          "ComputerScience": 2,
+        "requirements": {
+          "computerScience": 2,
           "InformationTechnology": 3
         },
         "salary": 70000,
@@ -157,8 +157,8 @@
       {
         "id": 19,
         "name": "Graphic Designer",
-        "requirement": {
-          "ComputerScience": 2,
+        "requirements": {
+          "computerScience": 2,
           "Design": 5
         },
         "salary": 65000,
@@ -169,7 +169,7 @@
       {
         "id": 20,
         "name": "Network Administrator",
-        "requirement": {
+        "requirements": {
           "InformationTechnology": 2,
           "Networking": 4,
           "Security": 3
@@ -183,8 +183,8 @@
       {
         "id": 21,
         "name": "Cybersecurity Analyst",
-        "requirement": {
-          "ComputerScience": 3,
+        "requirements": {
+          "computerScience": 3,
           "Cybersecurity": 4,
           "Security": 5
         },
@@ -196,8 +196,8 @@
       {
         "id": 22,
         "name": "Data Analyst",
-        "requirement": {
-          "ComputerScience": 3,
+        "requirements": {
+          "computerScience": 3,
           "DataScience": 4,
           "SQL": 3,
           "Statistics": 4
@@ -210,7 +210,7 @@
       {
         "id": 23,
         "name": "Database Administrator",
-        "requirement": {
+        "requirements": {
           "DatabaseManagement": 3,
           "InformationTechnology": 2,
           "SQL": 4
@@ -223,7 +223,7 @@
       {
         "id": 24,
         "name": "IT Project Manager",
-        "requirement": {
+        "requirements": {
           "Communication": 4,
           "InformationTechnology": 4,
           "ProjectManagement": 5
@@ -237,9 +237,9 @@
       {
         "id": 25,
         "name": "Systems Analyst",
-        "requirement": {
+        "requirements": {
           "BusinessAnalysis": 4,
-          "ComputerScience": 2,
+          "computerScience": 2,
           "InformationTechnology": 3
         },
         "salary": 80000,
@@ -251,8 +251,8 @@
       {
         "id": 26,
         "name": "QA Tester",
-        "requirement": {
-          "ComputerScience": 2,
+        "requirements": {
+          "computerScience": 2,
           "SoftwareDevelopment": 2,
           "Testing": 2
         },
@@ -264,7 +264,7 @@
       {
         "id": 27,
         "name": "UX/UI Designer",
-        "requirement": {
+        "requirements": {
           "Design": 2,
           "UserExperience": 2,
           "UserInterface": 2
@@ -925,13 +925,13 @@
             "description": "Learning about essential oils and their potential benefits.",
             "healthEffect": 5,
             "happinessEffect": 10,
-            "lookEffect": "You leave the workshop feeling refreshed and with a newfound knowledge of essential oils."
+            "result": "You leave the workshop feeling refreshed and with a newfound knowledge of essential oils."
           },
           {
             "description": "Sticking to your usual routine. Aromatherapy isn't really your thing.",
             "healthEffect": 0,
             "happinessEffect": 5,
-            "lookEffect": "The flyer piques your curiosity for a moment, then you move on."
+            "result": "The flyer piques your curiosity for a moment, then you move on."
           }
         ]
       },
@@ -942,13 +942,13 @@
             "description": "Treat yourself to a crystal that resonates with you.",
             "healthEffect": 0,
             "happinessEffect": 15,
-            "lookEffect": "You proudly wear your new crystal pendant, believing it brings good luck."
+            "result": "You proudly wear your new crystal pendant, believing it brings good luck."
           },
           {
             "description": "Browse the selection but decide against buying anything.",
             "healthEffect": 0,
             "happinessEffect": 5,
-            "lookEffect": "You admire the various crystals but don't feel drawn to any in particular."
+            "result": "You admire the various crystals but don't feel drawn to any in particular."
           }
         ]
       },
@@ -959,13 +959,13 @@
             "description": "Learn about manifesting your desires through positive affirmations.",
             "healthEffect": 5,
             "happinessEffect": 10,
-            "lookEffect": "You leave the workshop with a notebook full of affirmations and a positive outlook."
+            "result": "You leave the workshop with a notebook full of affirmations and a positive outlook."
           },
           {
             "description": "Decline politely, unsure about the Law of Attraction principles.",
             "healthEffect": 0,
             "happinessEffect": 5,
-            "lookEffect": "You thank your friend for the invite but explain you're not interested in the workshop."
+            "result": "You thank your friend for the invite but explain you're not interested in the workshop."
           }
         ]
       },
@@ -976,13 +976,13 @@
             "description": "Explore your past lives through guided meditation and hypnosis.",
             "healthEffect": -5,
             "happinessEffect": 15,
-            "lookEffect": "You spend the session in a relaxed state, guided by the therapist's voice."
+            "result": "You spend the session in a relaxed state, guided by the therapist's voice."
           },
           {
             "description": "Decline politely, feeling skeptical about past life regression.",
             "healthEffect": 0,
             "happinessEffect": 5,
-            "lookEffect": "You thank the therapist but explain you're not comfortable with the technique."
+            "result": "You thank the therapist but explain you're not comfortable with the technique."
           }
         ]
       },
@@ -993,13 +993,13 @@
             "description": "Immerse yourself in the sounds of gongs, singing bowls, and other instruments for deep relaxation.",
             "healthEffect": 15,
             "happinessEffect": 10,
-            "lookEffect": "You spend the weekend lying comfortably, surrounded by soothing soundscapes."
+            "result": "You spend the weekend lying comfortably, surrounded by soothing soundscapes."
           },
           {
             "description": "Stick to your usual routine. Meditation retreats aren't your preferred method of relaxation.",
             "healthEffect": 0,
             "happinessEffect": 5,
-            "lookEffect": "The retreat sounds appealing, but you decide to pass on it this time."
+            "result": "The retreat sounds appealing, but you decide to pass on it this time."
           }
         ]
       }
