@@ -77,7 +77,10 @@ function RegisterScreen({ navigation }) {
       Alert.alert("Error", "All fields are required.");
       return;
     }
-
+    if (passsword.length <= 3){
+      Alert.alert("Error", "Password is too short!");
+      return;
+    }
     if (!match) {
       Alert.alert("Error", "Password and confirm password do not match.");
       return;

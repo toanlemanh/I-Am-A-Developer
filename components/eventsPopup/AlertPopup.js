@@ -1,8 +1,8 @@
 import React from 'react';
 import { Modal, StyleSheet, Text, Pressable, View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import { styles } from '../../Style/componentStyle/popupStyle/AlertPopStyle';
-function AlertPopup({ modalVisible, closeModal,title,content,buttonText }) {
+import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+function AlertPopup({ modalVisible, closeModal, title, content, buttonText, buttonOnPress }) {
     return (
         <Modal
             animationType="slide"
@@ -15,9 +15,16 @@ function AlertPopup({ modalVisible, closeModal,title,content,buttonText }) {
             <View style={styles.centeredView}>
 
                 <View style={styles.outerBoderPopup}>
+
+                    <Pressable
+                        style={styles.cancelIcon}
+                        onPress={closeModal}>
+                        <Text style={styles.cancelIconText}>✖️</Text>
+                    </Pressable>
+
                     <View style={styles.innerBoderPopup}>
 
-                        <View style={styles.insideModal}>
+                        <View style={{ width: wp('62%') }}>
                             <Text style={styles.eventTitle}>{title}</Text>
                             <Text style={styles.eventText}>{content}</Text>
                         </View>
@@ -31,7 +38,7 @@ function AlertPopup({ modalVisible, closeModal,title,content,buttonText }) {
 
                             <Pressable
                                 style={styles.button}
-                                onPress={closeModal}>
+                                onPress={buttonOnPress || closeModal}>
                                 <Text style={styles.textButtonStyle}>{buttonText}</Text>
                             </Pressable>
 
@@ -47,3 +54,89 @@ function AlertPopup({ modalVisible, closeModal,title,content,buttonText }) {
 
 export default AlertPopup;
 
+const styles = StyleSheet.create({
+    //modal frame
+    centeredView: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        // borderWidth: 2,
+        backgroundColor: 'rgba(0, 0, 0, 0.7)'
+    },
+    cancelIcon: {
+        position: 'absolute',
+        top: 10,
+        right: wp('66%'),
+        backgroundColor: 'transparent',
+        zIndex: 1, // ensures the pressable is above other elements
+    },
+    cancelIconText: {
+        fontSize: 17,
+        color: '#000',
+        fontWeight: "300",
+    },
+    outerBoderPopup: {
+        margin: 20,
+        backgroundColor: '#F0E5E5',
+        borderRadius: 20,
+        alignItems: 'center',
+        shadowColor: '#000',
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+        elevation: 5,
+        borderWidth: 2,
+    },
+
+    innerBoderPopup: {
+        margin: 5,
+        backgroundColor: '#F0E5E5',
+        borderRadius: 15,
+        padding: 20,
+        alignItems: 'center',
+        shadowColor: '#000',
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+        // elevation: 5,
+        borderWidth: 1,
+
+    },
+    gradient: {
+        borderRadius: 20,
+        width: 200,
+        overflow: 'hidden',
+        elevation: 2,
+
+    },
+    button: {
+        borderRadius: 20,
+        padding: 10,
+        elevation: 2,
+        width: 200
+    },
+    textButtonStyle: {
+        color: 'white',
+        fontWeight: 'bold',
+        textAlign: 'center',
+    },
+    eventTitle: {
+        marginBottom: 10,
+        textAlign: 'center',
+        fontSize: 24,
+        fontWeight: 'bold'
+
+    },
+    eventText: {
+        marginBottom: 30,
+        textAlign: 'center',
+        fontSize: 15,
+        fontWeight: '500'
+    },
+});    
