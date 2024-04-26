@@ -14,7 +14,10 @@ const initialUserState = {
         name: "Username",
         money: 0,
         age: 20,
-        occupation: "",
+        occupation: {
+            name: "",
+            salary: 0,
+        },
 
         inSchool: false,
         inUni: false,
@@ -50,14 +53,7 @@ const initialUserState = {
         happiness: 100,
         appearance: 100,
     },
-    ageLogs: {
-        0: [],
-
-
-
-    },
-
-
+    // currentDiseases in an array of diseases objects
     currentDiseases: [],
     education: {
         math: 0,
@@ -91,6 +87,31 @@ const initialUserState = {
         userExperience: 0,
         userInterface: 0,
     },
+
+    relationships: {
+        parents: [
+            {
+                name: "William Jones",
+                group: "Parents",
+                relationshipType: "Father",
+                relationshipLevel: 100,
+                occupation: "Doctor"
+            },
+            {
+                name: "Emily Taylor",
+                group: "Parents",
+                relationshipType: "Mother",
+                relationshipLevel: 100,
+                occupation: "Teacher"
+            },
+        ],
+        siblings: [
+
+        ],
+        love: [
+
+        ],
+    },
     assets: {},
     progress: 0,
 };
@@ -101,7 +122,7 @@ const UserProvider = ({ children }) => {
 
     const [userState, setUserState] = useState(initialUserState);
 
-    const updateUser = (newUserState) => {
+    function updateUser(newUserState) {
         setUserState((prev) => ({
             ...prev, ...newUserState,
         }));
@@ -110,7 +131,7 @@ const UserProvider = ({ children }) => {
 
     // Handle User Login Rewards
     // Must be call at the time user login
-    const updateUserLogin = (newLoginData) => {
+    function updateUserLogin(newLoginData) {
         setUserState({
             ...userState,
             userDailyLogin: {
@@ -175,7 +196,7 @@ const UserProvider = ({ children }) => {
     }
 
     // set
-    const setStatus = ({ newStatusData }) => {
+    function setStatus({ newStatusData }) {
         // GET CONSTRAINTS FROM constraints.js
         // for (let i in newStatusData) {
         //     if (i > constraints.maxStatusPoint) {
@@ -189,7 +210,7 @@ const UserProvider = ({ children }) => {
     };
 
     // Subtract or Add
-    const updateStatus = ({ health, happiness, appearance }) => {
+    function updateStatus({ health, happiness, appearance }) {
         // GET CONSTRAINTS FROM constraints.js
         // for (let i in newStatusData) {
         //     if (i > constraints.maxStatusPoint) {
@@ -208,7 +229,7 @@ const UserProvider = ({ children }) => {
 
     // update Money
     // False = increase
-    const updateCharacterMoney = (newMoney, decrease) => {
+    function updateCharacterMoney(newMoney, decrease) {
         setUserState({
             ...userState,
             character: {
@@ -220,7 +241,7 @@ const UserProvider = ({ children }) => {
     };
 
     // update age
-    const updateCharacterAge = (value) => {
+    function updateCharacterAge(value) {
         setUserState({
             ...userState,
             character: {
@@ -232,24 +253,98 @@ const UserProvider = ({ children }) => {
     };
 
     // reset progress
-    const resetProgress = () => {
+    function resetProgress() {
         setUserState({
             ...userState,
             progress: 0,
         });
     };
-    const updateProgress = (value) => {
+    function updateProgress(value) {
         setUserState({
             ...userState,
             progress: userState.progress += value
         });
     };
 
+    function setDiseases(diseases) {
+        setUserState({
+            ...userState, currentDiseases: diseases
+        })
+    }
+
+    function removeDisease(targetName) {
+        setDiseases((prev) => [
+            prev.findAll((disease) => disease.name !== targetName)
+        ])
+    }
 
 
+
+    // disease object can be added with format:
+    // {
+    //     name: "disease1",
+    //     effects: {
+    //         health: -20,
+    //         happiness: -20,
+    //         appearance: -20
+    //     }
+    //     cureCost: 100,
+    // }
+    function addDisease(newDisease) {
+        setDiseases((prev) => [
+            ...prev, newDisease
+        ])
+    }
+
+    // called everytime character ages up
+    function affectedByDiseases() {
+        const diseases = userState.currentDiseases
+        for (let disease in diseases) {
+            updateStatus(disease.effects)
+        }
+    }
+
+    function setRelationships(newRelationships) {
+        setUserState({
+            ...userState, relationships: newRelationships
+        })
+    }
+    // update a specific realtionship by their group and key
+    function updateRelationshipLevel(group, key, level) {
+        setUserState((prevState) => {
+            const relationships = {
+                ...prevState.relationships,
+                [group]: {
+                    ...prevState.relationships[group] || {},
+                    [key]: {
+                        relationshipLevel: level,
+                    },
+                },
+            };
+            return { ...prevState, relationships };
+        });
+    }
 
     return (
-        <UserContext.Provider value={{ userState, updateUserLogin, updateCharacterMoney, updateStatus, updateUser, drainStatus, updateCharacterAge, startProgress, levelupEducation, setStatus }}>
+        <UserContext.Provider value=
+            {
+                {
+                    userState,
+                    updateUserLogin,
+                    updateCharacterMoney,
+                    updateStatus,
+                    updateUser,
+                    drainStatus,
+                    updateCharacterAge,
+                    startProgress,
+                    levelupEducation,
+                    setStatus,
+                    removeDisease,
+                    addDisease,
+                    affectedByDiseases,
+                    updateRelationshipLevel
+                }
+            }>
             {children}
         </UserContext.Provider>
     );
