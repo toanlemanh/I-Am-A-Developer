@@ -98,57 +98,7 @@ const initialUserState = {
 export const UserContext = createContext(initialUserState);
 
  const UserProvider = ({ children }) => {
-// <<<<<<< toan
-//   const [userState, setUserState] = useState(initialUserState);
 
-//   const updateUser = (newUserData) => {
-//     setUserState((prev) => {
-//         const obj = {
-//             ...prev,
-//         ...newUserData,
-//         }
-//       return obj;
-//     });
-//   };
-
-//   const updateUserLogin = (newLoginData) => {
-//     setUserState({
-//       ...userState,
-//       UserDailyLogin: newLoginData,
-//     });
-//   };
-
-//   const updateCharacterStatus = (newStatusData) => {
-//     setUserState({
-//       ...userState,
-//       status: newStatusData,
-//     });
-//   };
-
-//   const updateUserMoney = (newMoney) => {
-//     setUserState({
-//       ...userState,
-//       character: {
-//         ...userState.character,
-//         money: newMoney,
-//       },
-//     });
-//   };
-
-//   return (
-//     <UserContext.Provider
-//       value={{
-//         userState,
-//         updateUserLogin,
-//         updateUserMoney,
-//         updateCharacterStatus,
-//         updateUser,
-//       }}
-//     >
-//       {children}
-//     </UserContext.Provider>
-//   );
-// =======
     const [userState, setUserState] = useState(initialUserState);
 
     const updateUser = (newUserState) => {
