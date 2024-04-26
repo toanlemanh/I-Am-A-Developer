@@ -3,7 +3,7 @@ import { ScrollView, StyleSheet, View } from 'react-native'
 import Card from '../components/Card'
 import CustomDataLabel from '../components/CustomDataLabel'
 import data from "../data/userData.json"
-
+import { styles } from '../Style/screenStyles/RelationshipStyle';
 const relationships2 = data.Relationships
 
 export default function RelationshipScreen({ navigation }) {
@@ -29,7 +29,7 @@ export default function RelationshipScreen({ navigation }) {
   return (
     <ScrollView style={styles.container}>
       {Object.entries(groupedRelationships).map(([group, groupItems], index) => (
-        <View key={index} style={{ alignItems: 'center' }}>
+        <View key={index} style={styles.insideScrollView}>
           <CustomDataLabel>{group}</CustomDataLabel>
           {groupItems.map((item, itemIndex) => (
             <Card
@@ -47,9 +47,3 @@ export default function RelationshipScreen({ navigation }) {
   )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flexGrow: 1,
-    backgroundColor: '#FFF1E7'
-  },
-})

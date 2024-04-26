@@ -2,7 +2,7 @@ import { AntDesign, Ionicons, MaterialCommunityIcons, MaterialIcons } from '@exp
 import { useNavigation } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
 import { FlatList, Platform, Pressable, StyleSheet, Text, View } from 'react-native';
-import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
+
 import CustomAvatar from '../components/CustomAvatar';
 import PercentageBar from '../components/ProgressBar';
 import RandomPopup from '../components/eventsPopup/RandomPopup';
@@ -12,6 +12,7 @@ import { useContext } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { UserContext } from '../context/user-context';
 import { postUserId } from '../context/axios';
+import { styles } from '../Style/screenStyles/HomeScreenStyle';
 
 
 export default function HomeScreen() {
@@ -36,6 +37,7 @@ export default function HomeScreen() {
     const [lifeStage, setLifeStage] = useState('Infant');
 
     let age = data.Info.age;
+    
     const [ageLogs, setAgeLogs] = useState([
         {
             age: age,
@@ -43,7 +45,7 @@ export default function HomeScreen() {
         }
     ]);
   
-   
+   console.log(userId);
   
     const [getAge,setAge] =useState(age);
 
@@ -84,7 +86,7 @@ export default function HomeScreen() {
             <View style={styles.eventContainer} >
                 <Text style={styles.ageText}> Age: {item.age} </Text>
                 {item.events.map((event, id) => <Text key={id} style={styles.eventText}>{event}</Text>)}
-
+                
             </View>
         )
     }
@@ -109,13 +111,13 @@ export default function HomeScreen() {
                             <Text>{getAge}</Text>
                         </View>
                     </View>
-                    <View style={{ marginTop: 17 }}>
+                    <View style={styles.characterNameContainer}>
                         <Text style={styles.stageStyle}> {lifeStage}</Text>
                         <Text style={styles.username}>{characterName}</Text>
                     </View>
                 </View>
                 <View>
-                    <Text style={{ fontWeight: 300 }}>Balance:</Text>
+                    <Text style={styles.balance}>Balance:</Text>
                     <Text style={styles.money}>${data.Info.money}</Text>
                 </View>
             </View>
@@ -133,20 +135,20 @@ export default function HomeScreen() {
             <View style={styles.underhalf}>
                 <View style={styles.utility}>
                     <Pressable style={({ pressed }) => pressed && styles.pressed} >
-                        <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+                        <View style={styles.iconNavigateStyle}>
                             <MaterialIcons name="work" size={24} color="black" onPress={() => {
                                 navigation.navigate('Occupation')
                             }} />
-                            <Text style={{ fontSize: 10 }}>Occupation</Text>
+                            <Text style={styles.navigateText}>Occupation</Text>
                         </View>
                     </Pressable>
 
                     <Pressable style={({ pressed }) => pressed && styles.pressed} onPress={() => {
                         navigation.navigate('Assets')
                     }}>
-                        <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+                        <View style={styles.iconNavigateStyle}>
                             <MaterialCommunityIcons name="sack" size={24} color="black" />
-                            <Text style={{ fontSize: 10 }}>Assets</Text>
+                            <Text style={styles.navigateText}>Assets</Text>
                         </View>
                     </Pressable>
                     <View style={styles.outterContainer}>
@@ -155,8 +157,8 @@ export default function HomeScreen() {
                             onPress={handleAgePress} 
                         >
                             <View style={styles.buttonContainer}>
-                                <Text style={{ fontWeight: '600', color: 'white', fontSize: 24 }}>+</Text>
-                                <Text style={{ fontWeight: '500', color: 'white', fontSize: 20 }}>Age</Text>
+                                <Text style={styles.incrementAge}>+</Text>
+                                <Text style={styles.incrementAge}>Age</Text>
                             </View>
                         </Pressable >
                         {/* random modal component */}
@@ -166,16 +168,16 @@ export default function HomeScreen() {
                     <Pressable style={({ pressed }) => pressed && styles.pressed} onPress={() => {
                         navigation.navigate('Relationship');
                     }}>
-                        <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+                        <View style={styles.iconNavigateStyle}>
                             <AntDesign name="heart" size={24} color="black" />
-                            <Text style={{ fontSize: 10 }}>Relationship</Text>
+                            <Text style={styles.navigateText}>Relationship</Text>
                         </View>
                     </Pressable>
 
                     <Pressable style={({ pressed }) => pressed && styles.pressed} onPress={() => navigation.navigate("SchoolScreen")}>
-                        <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+                        <View style={styles.iconNavigateStyle}>
                             <Ionicons name="school" size={24} color="black" />
-                            <Text style={{ fontSize: 10 }}>Education</Text>
+                            <Text style={styles.navigateText}>Education</Text>
                         </View>
                     </Pressable>
                 </View>
@@ -217,124 +219,3 @@ export default function HomeScreen() {
         </View>
     )
 }
-
-const styles = StyleSheet.create({
-    container: {
-        backgroundColor: '#FFF1E7'
-    },
-    topContainer: {
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        flexDirection: 'row',
-        width: "100%",
-        height: 55,
-        backgroundColor: '#FFFFFF',
-        marginTop: -11
-
-    },
-    underhalf: {
-        backgroundColor: 'white',
-        flex: 1
-
-    },
-    userInfo: {
-        flexDirection: 'row',
-        paddingLeft: 40
-
-    },
-    level: {
-        position: 'absolute',
-        right: 0,
-        bottom: 0,
-        width: 30,
-        height: 30,
-        borderRadius: 15,
-        backgroundColor: 'lightgrey',
-        marginRight: -15,
-        marginBottom: -15,
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
-    username: {
-        fontSize: 20,
-        fontWeight: '700',
-        color: '#083C4C',
-    },
-    money: {
-        fontSize: 20,
-        marginRight: 20,
-        textAlign: 'center',
-        fontWeight: '500',
-        color: '#083C4C',
-    },
-    ageText: {
-        color: 'darkblue',
-        fontWeight: 'bold',
-        fontSize: 16,
-    },
-    eventText: {
-        fontSize: 12,
-        fontWeight: '300',
-    },
-    eventContainer: {
-        marginVertical: 20,
-    },
-    eventsContainer: {
-        height: hp('55%'),
-        paddingLeft: 15,
-        // flex: 1,
-
-    },
-    allStatusContainer: {
-        width: '100%',
-        height: 205,
-        justifyContent: 'center',
-
-    },
-
-    statusContainer: {
-        flexDirection: 'row',
-        justifyContent: 'space-around',
-    },
-    statusText: {
-        fontWeight: '300',
-        color: 'darkblue'
-    },
-    stageStyle: {
-        color: '#083C4C',
-        fontSize: 13,
-        fontWeight: '300'
-    },
-    utility: {
-        flexDirection: 'row',
-        width: '100%',
-        height: 50,
-        backgroundColor: '#EB9F4A',
-        alignItems: 'center',
-        justifyContent: 'space-evenly'
-    },
-    buttonContainer: {
-        width: 70,
-        height: 70,
-        borderRadius: 35,
-        backgroundColor: '#2B9939',
-        alignItems: 'center',
-        justifyContent: 'center',
-        shadowColor: '#171717',
-        shadowOffset: { width: -2, height: 4 },
-        shadowOpacity: 0.2,
-        shadowRadius: 3,
-    },
-    pressed: {
-        opacity: 0.65
-    },
-    outterContainer: {
-        width: 76,
-        height: 76, borderRadius: 38, backgroundColor: 'white', justifyContent: 'center', alignItems: 'center',
-        elevation: 7,
-        shadowColor: '#171717',
-        shadowOffset: { width: -2, height: 4 },
-        shadowOpacity: 0.2,
-        shadowRadius: 3,
-    }
-})

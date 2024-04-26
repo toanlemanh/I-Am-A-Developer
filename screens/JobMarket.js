@@ -2,6 +2,8 @@ import { View,Text,ScrollView,StyleSheet } from "react-native";
 import { useState } from "react";
 import Card from "../components/Card";
 import AlertPopup from "../components/eventsPopup/AlertPopup";
+import { styles } from "../Style/screenStyles/JobMarketStyle";
+
 export default function JobMarket(){
     const techJobs = [
         {
@@ -63,7 +65,7 @@ export default function JobMarket(){
     
     const renderJD = (enterprise,require,salary,rate)=>{
         return(
-            <View style={{flexGrow:1,flexWrap:'wrap'}}>
+            <View style={styles.JDContainer}>
                 <Text><Text style={styles.label}>Enterprise:</Text> {enterprise}</Text>
                 <Text><Text style={styles.label}>Requirement:</Text> {require}</Text>
                 <Text><Text style={styles.label}>Salary:</Text> {salary}</Text>
@@ -103,16 +105,3 @@ export default function JobMarket(){
     )
 }
 
-const styles= StyleSheet.create({
-    container:{
-        flexGrow:1,
-        backgroundColor: '#FFF1E7',
-    },
-    list:{
-        alignItems:'center'
-    },
-    label: {
-        fontWeight: 'bold',
-    },
-     
-})

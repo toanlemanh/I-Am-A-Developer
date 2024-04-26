@@ -17,9 +17,9 @@ import DividerLine from "../components/DividerLine";
 import { AuthContext } from "../context/auth";
 import { Alert } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { postUserId } from "../context/axios";
-import { UserContext } from "../context/user-context";
 
+import { UserContext } from "../context/user-context";
+import { styles } from "../Style/screenStyles/RegisterStyles";
 function RegisterScreen({ navigation }) {
   let USER_ID;
   const authContext = useContext(AuthContext);
@@ -148,7 +148,7 @@ function RegisterScreen({ navigation }) {
       </View>
 
       <View style={styles.registerContainer}>
-        <Text style={{ fontSize: 16 }}>Already have an account? </Text>
+        <Text style={styles.optionsText}>Already have an account? </Text>
 
         <TouchableOpacity onPress={() => navigation.navigate("LoginScreen")}>
           <Text style={styles.registerLink}>Login Now</Text>
@@ -160,55 +160,3 @@ function RegisterScreen({ navigation }) {
 
 export default RegisterScreen;
 
-const styles = StyleSheet.create({
-  container: {
-    width: "100%",
-    height: "100%",
-    paddingHorizontal: 20,
-  },
-
-  iconContainer: {
-    borderRadius: 10,
-    alignSelf: "flex-start",
-    marginTop: 70,
-    marginBottom: 20,
-    backgroundColor: "white",
-  },
-
-  icon: {
-    width: "100%",
-    padding: 10,
-    borderWidth: 1,
-    borderColor: "#E8ECF4",
-    borderRadius: 10,
-  },
-
-  title: {
-    color: "#77B29F",
-    fontWeight: "bold",
-    fontSize: 36,
-    marginBottom: 10,
-  },
-
-  boxInput: {
-    width: "100%",
-    marginVertical: 10,
-  },
-
-  socialBox: {
-    flexDirection: "row",
-    justifyContent: "center",
-  },
-
-  registerContainer: {
-    marginVertical: 20,
-    flexDirection: "row",
-    justifyContent: "center",
-  },
-
-  registerLink: {
-    fontWeight: "bold",
-    color: "#EB9F4A",
-    fontSize: 16,
-  },
-});

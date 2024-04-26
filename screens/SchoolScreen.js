@@ -9,7 +9,7 @@ import Card from "../components/Card";
 import PercentageBar from "../components/ProgressBar";
 import AlertPopup from "../components/eventsPopup/AlertPopup";
 import data from "../data/data.json";
-
+import { styles } from "../Style/screenStyles/SchoolStyle";
 function SchoolScreen() {
 
   const subjects = data.subjects.data;
@@ -39,10 +39,10 @@ function SchoolScreen() {
     <ScrollView style={styles.container}>
       {/* Progress bar */}
       <View style={styles.learningContainer}>
-        <Text style={{ fontWeight: "bold", fontSize: 16 }}>
+        <Text style={styles.tuluyenText}>
           Currently tu luyện {subjects[1].name}
         </Text>
-        <Text style={{ fontWeight: "bold", fontSize: 16 }}>{subjects[1].duration} years</Text>
+        <Text style={styles.yearText}>{subjects[1].duration} years</Text>
       </View>
 
       <PercentageBar
@@ -82,26 +82,7 @@ function SchoolScreen() {
 }
 export default SchoolScreen;
 
-const styles = StyleSheet.create({
-  container: {
-    padding: 10,
-    backgroundColor: "#FFF1E7",
-    flex: 1,
-  },
-  learningContainer: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    marginBottom: 10,
-  },
-  subjectsContainer: {
-    flexDirection: "column",
-    alignItems: 'center',
-  },
-  label: {
-    fontWeight: 'bold',
-    fontSize: 16
-  },
-});
+
 // create progress bar => current subject (time)
 // currently tu luyen
 // const subjects

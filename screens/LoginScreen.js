@@ -11,7 +11,7 @@ import { Ionicons } from '@expo/vector-icons'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { AuthContext } from "./../context/auth"
 import Animated, { FadeIn, ZoomIn, FadeOut, ZoomOut } from 'react-native-reanimated'
-
+import { styles } from '../Style/screenStyles/LoginScreenStyle'
 //1. Input handler 
 //2. Connect firebase 
 
@@ -71,7 +71,7 @@ function LoginScreen({ navigation }) {
             </View>
 
             <View style={styles.registerContainer}>
-                <Text style={{ fontSize: 16 }}>
+                <Text style={styles.optionText}>
                     Don't have an account?{' '}
                 </Text>
                 <TouchableOpacity
@@ -86,58 +86,5 @@ function LoginScreen({ navigation }) {
     )
 }
 
-export default LoginScreen
+export default LoginScreen;
 
-const styles = StyleSheet.create({
-    container: {
-        width: "100%",
-        height: "100%",
-        paddingHorizontal: 20,
-    },
-
-    // Icon Box
-    iconContainer: {
-        borderRadius: 10,
-        alignSelf: 'flex-start',
-        marginTop: 70,
-        marginBottom: 20,
-        backgroundColor: 'white',
-    },
-
-    icon: {
-        width: '100%',
-        padding: 10,
-        borderWidth: 1,
-        borderColor: '#E8ECF4',
-        borderRadius: 10,
-    },
-
-    title: {
-        color: '#77B29F',
-        fontWeight: 'bold',
-        fontSize: 36,
-        marginBottom: 10,
-    },
-
-    boxInput: {
-        width: '100%',
-        marginVertical: 20,
-    },
-
-    socialBox: {
-        flexDirection: 'row',
-        justifyContent: 'center',
-    },
-
-    registerContainer: {
-        marginVertical: 20,
-        flexDirection: 'row',
-        justifyContent: 'center',
-    },
-
-    registerLink: {
-        fontWeight: 'bold',
-        color: '#EB9F4A',
-        fontSize: 16,
-    },
-})

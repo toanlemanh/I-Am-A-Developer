@@ -3,6 +3,7 @@ import { ScrollView, StyleSheet, Text, View } from "react-native";
 import Card from "../components/Card";
 import CustomDataLabel from "../components/CustomDataLabel";
 import ManageActions from "../utils/ManageActions";
+import { styles } from "../Style/screenStyles/ManageRelaStyle";
 export default function ManageRelationship({ route, navigation }) {
 
 
@@ -46,15 +47,3 @@ export default function ManageRelationship({ route, navigation }) {
         </ScrollView>
     )
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flexGrow: 1,
-        backgroundColor: '#FFF1E7',
-        alignItems: 'center',
-    },
-    actionsContainer: {
-        width: '100%',
-        alignItems: 'center',
-    },
-})
