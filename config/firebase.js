@@ -18,7 +18,7 @@ const authenticate = async (mode, email, password) => {
     console.log(response.data)
     return response.data.localId
   } catch (err) {
-    Alert.alert("[Error] firebase", err.message)
+    Alert.alert("Wrong Credential! Let's try!", err.message)
   }
 }
 

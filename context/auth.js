@@ -1,38 +1,43 @@
-import { createContext, useState, useEffect } from "react"
-import AsyncStorage from "@react-native-async-storage/async-storage"
+import { createContext, useState, useEffect } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export const AuthContext = createContext({
-  userId: '',
-  userName: '',
+  userId: "",
+  userName: "",
   isAuthenticated: false,
-  authenticate: (userId, userName) => { },
-  logout: () => { },
-})
+  authenticate: (userId, userName) => {},
+  logout: () => {},
+});
 
 function AuthContextProvider({ children, storedUserId }) {
-  const [authUserId, setAuthUserId] = useState(null)
-  const [userName, setUserName] = useState('')
+  const [authUserId, setAuthUserId] = useState(null);
+  const [userName, setUserName] = useState("");
 
   useEffect(() => {
     // If storedUserId is available, authenticate the user right away
-    if (storedUserId) {
-      authenticate(storedUserId)
+    async function autoLogin(storedUserId) {
+      if (storedUserId) {
+        authenticate(storedUserId, await AsyncStorage.getItem(storedUserId));
+      }
+      autoLogin(storedUserId);
     }
-  }, [storedUserId])
+  }, [storedUserId]);
 
- function authenticate(userId, userName = '') {
-    setAuthUserId(userId)
-    setUserName(userName)
-    AsyncStorage.setItem('userId', userId)
-    if (userName) {
-       AsyncStorage.setItem(userId, userName);
+  function authenticate(userId, userName = "") {
+    if (userId) {
+      setAuthUserId(userId);
+      setUserName(userName);
+      AsyncStorage.setItem("userId", userId);
+      if (userName) {
+        AsyncStorage.setItem(userId, userName);
+      }
     }
   }
 
   function logout() {
-    setAuthUserId(null)
-    setUserName('')
-    AsyncStorage.removeItem('userId')
+    setAuthUserId(null);
+    setUserName("");
+    AsyncStorage.removeItem("userId");
     //AsyncStorage.removeItem('userName')
   }
 
@@ -42,13 +47,9 @@ function AuthContextProvider({ children, storedUserId }) {
     isAuthenticated: !!authUserId,
     authenticate: authenticate,
     logout: logout,
-  }
+  };
 
-  return (
-    <AuthContext.Provider value={value}>
-      {children}
-    </AuthContext.Provider>
-  )
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
 
-export default AuthContextProvider
+export default AuthContextProvider;

@@ -34,13 +34,15 @@ function LoginScreen({ navigation }) {
         // if good credentila => allow 
         if (email && password) {
             const userId = await signInWithPassword(email, password)
-            const userName = await AsyncStorage.getItem(userId)
+            if (userId) {
+                const userName = await AsyncStorage.getItem(userId)
             authContext.authenticate(userId, userName);
             console.log("uname", userName)
+            } 
         }
         else {
             // disable button 
-            Alert.alert("Error", "Bad credential")
+            Alert.alert("Error", "Email/Password is required!")
         }
     }
 
