@@ -2,29 +2,29 @@ import { createContext, useState } from "react";
 
 const initialUserState = {
 
-  userName: "",
-  UserDailyLogin: {
-    lastLoginDate: "",
-    currentLoginDate: "",
-    rewards: {
-      money: 0,
+    userName: "",
+    UserDailyLogin: {
+        lastLoginDate: "",
+        currentLoginDate: "",
+        rewards: {
+            money: 0,
+        },
     },
-  },
-  character: {
-    name: "Username",
-    money: 0,
-    age: 0,
-    occupation: "",
+    character: {
+        name: "Username",
+        money: 0,
+        age: 20,
+        occupation: "",
 
-    inSchool: false,
-    inUni: false,
-  },
-  status: {
-    health: 100,
-    happiness: 100,
-    look: 100,
-  },
-  ageLogs: {},
+        inSchool: false,
+        inUni: false,
+    },
+    status: {
+        health: 100,
+        happiness: 100,
+        look: 100,
+    },
+    ageLogs: {},
 
     userDailyLogin: {
         // after comparison: lastlogin = currentlogin
@@ -58,46 +58,46 @@ const initialUserState = {
     },
 
 
-  currentDiseases: [],
-  education: {
-    math: 0,
-    literature: 0,
-    history: 0,
-    science: 0,
-    geography: 0,
-    art: 0,
-    music: 0,
-    physicalEducation: 0,
-    computerScience: 0,
-    english: 0,
-  },
-  higherEducation: {
-    computerScience: 0,
-    softwareEngineering: 0,
-    informationTechnology: 0,
-    cybersecurity: 0,
-    dataScience: 0,
-    design: 0,
-    networking: 0,
-    security: 0,
-    statistics: 0,
-    sQL: 0,
-    databaseManagement: 0,
-    projectManagement: 0,
-    communication: 0,
-    businessAnalysis: 0,
-    testing: 0,
-    softwareDevelopment: 0,
-    userExperience: 0,
-    userInterface: 0,
-  },
-  assets: {},
-  progress: 0,
+    currentDiseases: [],
+    education: {
+        math: 0,
+        literature: 0,
+        history: 0,
+        science: 0,
+        geography: 0,
+        art: 0,
+        music: 0,
+        physicalEducation: 0,
+        computerScience: 0,
+        english: 0,
+    },
+    higherEducation: {
+        computerScience: 0,
+        softwareEngineering: 0,
+        informationTechnology: 0,
+        cybersecurity: 0,
+        dataScience: 0,
+        design: 0,
+        networking: 0,
+        security: 0,
+        statistics: 0,
+        sQL: 0,
+        databaseManagement: 0,
+        projectManagement: 0,
+        communication: 0,
+        businessAnalysis: 0,
+        testing: 0,
+        softwareDevelopment: 0,
+        userExperience: 0,
+        userInterface: 0,
+    },
+    assets: {},
+    progress: 0,
 };
 
 export const UserContext = createContext(initialUserState);
 
- const UserProvider = ({ children }) => {
+const UserProvider = ({ children }) => {
 
     const [userState, setUserState] = useState(initialUserState);
 
@@ -134,6 +134,14 @@ export const UserContext = createContext(initialUserState);
         });
     };
 
+    // function levelupSubject(subject) {
+    //     for (var subject in userState.education) {
+    //         setUserState({ ...userState, education: { ...userState.education, [subject]: userState.education[subject] + 1 } })
+    //     }
+    // }
+
+
+    // each one increase by one level
     function levelupEducation() {
         for (var subject in userState.education) {
             setUserState({ ...userState, education: { ...userState.education, [subject]: userState.education[subject] + 1 } })
@@ -166,8 +174,8 @@ export const UserContext = createContext(initialUserState);
         }
     }
 
-
-    const updateStatus = ({ newStatusData }) => {
+    // set
+    const setStatus = ({ newStatusData }) => {
         // GET CONSTRAINTS FROM constraints.js
         // for (let i in newStatusData) {
         //     if (i > constraints.maxStatusPoint) {
@@ -176,11 +184,12 @@ export const UserContext = createContext(initialUserState);
         // }
         setUserState({
             ...userState,
-            status: { ...newStatusData },
+            status: { ...userState.status, ...newStatusData },
         });
     };
 
-    const modifyStatus = ({ health, happiness, appearance }) => {
+    // Subtract or Add
+    const updateStatus = ({ health, happiness, appearance }) => {
         // GET CONSTRAINTS FROM constraints.js
         // for (let i in newStatusData) {
         //     if (i > constraints.maxStatusPoint) {
@@ -190,9 +199,9 @@ export const UserContext = createContext(initialUserState);
         setUserState({
             ...userState,
             status: {
-                health: userState.status.health + health,
-                happiness: userState.status.happiness + happiness,
-                appearance: userState.status.appearance + appearance
+                health: health ? userState.status.health + health : userState.status.health,
+                happiness: happiness ? userState.status.happiness + happiness : userState.status.happiness,
+                appearance: appearance ? userState.status.appearance + appearance : appearance
             },
         });
     };
@@ -240,7 +249,7 @@ export const UserContext = createContext(initialUserState);
 
 
     return (
-        <UserContext.Provider value={{ userState, updateUserLogin, updateCharacterMoney, updateStatus, updateUser, drainStatus, updateCharacterAge, startProgress }}>
+        <UserContext.Provider value={{ userState, updateUserLogin, updateCharacterMoney, updateStatus, updateUser, drainStatus, updateCharacterAge, startProgress, levelupEducation, setStatus }}>
             {children}
         </UserContext.Provider>
     );
