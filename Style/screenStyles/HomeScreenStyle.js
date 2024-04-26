@@ -1,12 +1,12 @@
 import { StyleSheet } from "react-native";
 import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
-export  const styles= StyleSheet.create({
+export const styles = StyleSheet.create({
     container: {
         backgroundColor: '#FFF1E7'
     },
-    userInfo:{
-         marginTop: 17 
-    },  
+    userInfo: {
+        marginTop: 17
+    },
     topContainer: {
         alignItems: 'center',
         justifyContent: 'space-between',
@@ -52,8 +52,8 @@ export  const styles= StyleSheet.create({
         fontWeight: '500',
         color: '#083C4C',
     },
-    balance:{
-         fontWeight: '300'
+    balance: {
+        fontWeight: '300'
     },
     ageText: {
         color: 'darkblue',
@@ -79,10 +79,19 @@ export  const styles= StyleSheet.create({
         justifyContent: 'center',
 
     },
-
     statusContainer: {
         flexDirection: 'row',
-        justifyContent: 'space-around',
+        justifyContent: 'center',
+    },
+    statusTextContainer: {
+        borderWidth: 1,
+        justifyContent: 'space-between',
+        alignItems: 'flex-end'
+    },
+    statusBarContainer: {
+        borderWidth: 1,
+        justifyContent: 'space-between',
+        alignItems: 'flex-start'
     },
     statusText: {
         fontWeight: '300',
@@ -125,19 +134,20 @@ export  const styles= StyleSheet.create({
         shadowOpacity: 0.2,
         shadowRadius: 3,
     },
-    incrementAge:{
-        fontWeight: '500', 
-        color: 'white', 
-        fontSize: 24 
+    incrementAge: {
+        fontWeight: '500',
+        color: 'white',
+        fontSize: 24
     },
-    navigateText:{
-        fontSize:10,
+    navigateText: {
+        fontSize: 10,
     },
-    iconNavigateStyle:{
-        justifyContent: 'center', 
+    iconNavigateStyle: {
+        justifyContent: 'center',
         alignItems: 'center'
     },
-    characterNameContainer:{
+    characterNameContainer: {
         marginTop: 17
-    }
+    },
+
 })

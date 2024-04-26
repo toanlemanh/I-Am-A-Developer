@@ -1,17 +1,20 @@
 import { AntDesign, Ionicons, MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useNavigation } from '@react-navigation/native';
 import React, { useContext, useEffect, useState } from 'react';
-import { FlatList, Platform, Pressable, StyleSheet, Text, View } from 'react-native';
-import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
-import CustomAvatar from '../components/CustomAvatar';
-import PercentageBar from '../components/ProgressBar';
-import RandomPopup from '../components/eventsPopup/RandomPopup';
+import { Pressable, Text, View } from 'react-native';
+
+import { useNavigation } from '@react-navigation/native';
 import { AuthContext } from '../context/auth';
 import { postUserId } from '../context/axios';
 import { UserContext } from '../context/user-context';
-import data from '../data/userData.json';
-import {styles} from "../Style/screenStyles/HomeScreenStyle"
+
+import { styles } from "../Style/screenStyles/HomeScreenStyle";
+
+import CharacterStatus from '../components/CharacterStatus';
+import CustomAvatar from '../components/CustomAvatar';
+import PercentageBar from '../components/ProgressBar';
+import RandomPopup from '../components/eventsPopup/RandomPopup';
+
 
 export default function HomeScreen() {
     const [userName, setUserName] = useState("Tom")
@@ -19,6 +22,7 @@ export default function HomeScreen() {
     const userId = authContext.userId;
     const userContext = useContext(UserContext);
     const navigation = useNavigation();
+    const user = userContext.userState
 
     React.useEffect(() => {
         async function loadUserName() {
@@ -34,61 +38,34 @@ export default function HomeScreen() {
 
     const [lifeStage, setLifeStage] = useState('Infant');
 
-    let age = data.Info.age;
-    const [ageLogs, setAgeLogs] = useState([
-        {
-            age: age,
-            events: [`You are at the age of ${age}`]
-        }
-    ]);
-
-
-
-    const [getAge, setAge] = useState(age);
-
     useEffect(() => {
-        if (getAge <= 1) {
+        if (user.character.age <= 1) {
             setLifeStage("Infant")
-        } else if (getAge <= 9) {
+        } else if (user.character.age <= 9) {
             setLifeStage("Kid")
-        } else if (getAge <= 19) {
+        } else if (user.character.age <= 19) {
             setLifeStage("Teenager")
         } else setLifeStage("Adult")
 
-    }, [getAge]);
+    }, [user.character.age]);
 
+
+    // Start progressing and status draining
+    useEffect(() => {
+        userContext.drainStatus()
+        userContext.startProgress()
+    }, []);
 
 
     const [modalVisible, setModalVisible] = useState(false);
     function handleAgePress() {
-        const newAge = getAge + 1;
-        setAge(newAge);
-        // Add a new object to the ageLogs array
-        setAgeLogs(prevLogs => [
-            ...prevLogs,
-            {
-                age: newAge, events: [
-                    `You are at the age of ${newAge}`,
-                    `You are at the age of ${newAge}`
-                ]
-            }
-        ]);
+        userContext.updateCharacterAge(1)
+
     }
 
     const closeModal = () => {
         setModalVisible(false);
     };
-
-    const eventData = data.userAgeLogs
-    function renderItem({ item }) {
-        return (
-            <View style={styles.eventContainer} >
-                <Text style={styles.ageText}> Age: {item.age} </Text>
-                {item.events.map((event, id) => <Text key={id} style={styles.eventText}>{event}</Text>)}
-
-            </View>
-        )
-    }
 
     return (
         <View style={styles.container}>
@@ -98,7 +75,7 @@ export default function HomeScreen() {
                 height={12}
                 backgroundColor={'#E0E9F2'}
                 completedColor={'#EB9F4A'}
-                percentage={data.Info.progress}
+                percentage={user.progress}
             />
 
             {/* Top container will contain avatar, age and balance*/}
@@ -107,7 +84,7 @@ export default function HomeScreen() {
                     <View >
                         <CustomAvatar width={54} height={54} />
                         <View style={styles.level}>
-                            <Text>{getAge}</Text>
+                            <Text>{user.character.age}</Text>
                         </View>
                     </View>
                     <View style={styles.characterNameContainer}>
@@ -117,17 +94,13 @@ export default function HomeScreen() {
                 </View>
                 <View>
                     <Text style={styles.balance}>Balance:</Text>
-                    <Text style={styles.money}>${data.Info.money}</Text>
+                    <Text style={styles.money}>${user.character.money}</Text>
                 </View>
             </View>
 
             {/* Container of user's events and different age */}
             <View style={styles.eventsContainer}>
-                <FlatList
-                    data={ageLogs}
-                    renderItem={renderItem}
-                    keyExtractor={item => item.age}
-                />
+                {/* Replace to Coding activities */}
             </View>
 
             {/* Container of navigators and the status progress bar */}
@@ -180,40 +153,8 @@ export default function HomeScreen() {
                         </View>
                     </Pressable>
                 </View>
-
-                <View style={Platform.OS === 'ios' ? styles.allStatusContainer : [styles.allStatusContainer, { paddingBottom: 50 }]}>
-                    <View style={styles.statusContainer} >
-                        <Text style={styles.ageText}>Happiness:</Text>
-                        <PercentageBar
-                            height={15}
-                            backgroundColor='grey'
-                            completedColor="#009A34"
-                            percentage={data.Condition.Happiness}
-                            width={200}
-                        />
-                    </View>
-                    <View style={styles.statusContainer} >
-                        <Text style={styles.ageText}>      Health:</Text>
-                        <PercentageBar
-                            height={15}
-                            backgroundColor='grey'
-                            completedColor="#EED817"
-                            percentage={data.Condition.Health}
-                            width={200}
-
-                        />
-                    </View>
-                    <View style={styles.statusContainer} >
-                        <Text style={styles.ageText}>      Look:</Text>
-                        <PercentageBar
-                            height={15}
-                            backgroundColor='grey'
-                            completedColor="#FD7C1F"
-                            percentage={data.Condition.Looks}
-                            width={200}
-                        />
-                    </View>
-                </View>
+                {/*  Character status bars */}
+                <CharacterStatus />
             </View>
         </View>
     )

@@ -24,9 +24,9 @@ const initialUserState = {
         inUni: false,
     },
     status: {
-        health: 100,
-        happiness: 100,
-        look: 100,
+        health: 50,
+        happiness: 50,
+        look: 50,
     },
     ageLogs: {},
 
@@ -114,7 +114,7 @@ const initialUserState = {
         ],
     },
     assets: {},
-    progress: 0,
+    progress: 20,
 };
 
 export const UserContext = createContext(initialUserState);
@@ -254,7 +254,6 @@ const UserProvider = ({ children }) => {
                 age: userState.character.age += value
             },
         });
-        console.log(userState.character)
     };
 
     // reset progress
