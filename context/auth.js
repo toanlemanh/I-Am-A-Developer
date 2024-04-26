@@ -20,12 +20,12 @@ function AuthContextProvider({ children, storedUserId }) {
     }
   }, [storedUserId])
 
-  function authenticate(userId, userName = '') {
+ function authenticate(userId, userName = '') {
     setAuthUserId(userId)
     setUserName(userName)
     AsyncStorage.setItem('userId', userId)
     if (userName) {
-      AsyncStorage.setItem('userName', userName)
+       AsyncStorage.setItem(userId, userName);
     }
   }
 
@@ -33,7 +33,7 @@ function AuthContextProvider({ children, storedUserId }) {
     setAuthUserId(null)
     setUserName('')
     AsyncStorage.removeItem('userId')
-    AsyncStorage.removeItem('userName')
+    //AsyncStorage.removeItem('userName')
   }
 
   const value = {

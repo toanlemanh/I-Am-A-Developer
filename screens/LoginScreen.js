@@ -21,13 +21,13 @@ function LoginScreen({ navigation }) {
     const [password, setPassword] = React.useState()
 
     function onEmailChangeHandler(email) {
-        console.log(email)
+     //   console.log(email)
         email = email.trim()
         setEmail(email)
     }
     function onPasswordChangeHandler(password) {
         password = password.trim()
-        console.log(password)
+      //  console.log(password)
         setPassword(password)
     }
     const onLoginPressed = async () => {
@@ -35,8 +35,8 @@ function LoginScreen({ navigation }) {
         if (email && password) {
             const userId = await signInWithPassword(email, password)
             const userName = await AsyncStorage.getItem(userId)
+            authContext.authenticate(userId, userName);
             console.log("uname", userName)
-            authContext.authenticate(userId, userName)
         }
         else {
             // disable button 
