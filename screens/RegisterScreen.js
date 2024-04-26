@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext } from "react"
 import {
   View,
   StyleSheet,
@@ -6,83 +6,83 @@ import {
   Platform,
   Text,
   ScrollView,
-} from "react-native";
-import { Ionicons } from "@expo/vector-icons";
-import { signUp } from "../utils/firebase";
-import { useState } from "react";
-import SocialBtn from "../components/SocialBtn";
-import FormBtn from "../components/FormBtn";
-import FormInput from "../components/FormInput";
-import DividerLine from "../components/DividerLine";
-import { AuthContext } from "../context/auth";
-import { Alert } from "react-native";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+} from "react-native"
+import { Ionicons } from "@expo/vector-icons"
+import { signUp } from "../config/firebase"
+import { useState } from "react"
+import SocialBtn from "../components/SocialBtn"
+import FormBtn from "../components/FormBtn"
+import FormInput from "../components/FormInput"
+import DividerLine from "../components/DividerLine"
+import { AuthContext } from "../context/auth"
+import { Alert } from "react-native"
+import AsyncStorage from "@react-native-async-storage/async-storage"
 
 function RegisterScreen({ navigation }) {
-  const authContext = useContext(AuthContext);
-  const [email, setEmail] = useState();
-  const [passsword, setPassword] = useState();
-  const [username, setUsername] = useState();
-  const [confirm, setConfirm] = useState();
-  const [match, setMatch] = useState(true);
+  const authContext = useContext(AuthContext)
+  const [email, setEmail] = useState()
+  const [passsword, setPassword] = useState()
+  const [username, setUsername] = useState()
+  const [confirm, setConfirm] = useState()
+  const [match, setMatch] = useState(true)
 
   function onEmailChangeHandler(email) {
-    console.log(email);
-    setEmail(email);
+    console.log(email)
+    setEmail(email)
   }
   function onUsernameChangeHandler(username) {
-    setUsername(username);
+    setUsername(username)
   }
   function onPasswordChangeHandler(password) {
-    console.log(password);
-    setPassword(password);
+    console.log(password)
+    setPassword(password)
   }
   function onConfirmChangeHandler(confirm) {
-    setConfirm(confirm);
+    setConfirm(confirm)
   }
 
 
   //  confirm password whenever password changed
   useEffect(() => {
     if (passsword !== '' && confirm !== '') {
-      setMatch(passsword === confirm);
+      setMatch(passsword === confirm)
     }
-  }, [passsword, confirm, match]);
+  }, [passsword, confirm, match])
 
   //  function to register a new user account
   async function onRegisterHandler() {
     //  check all input whether empty or not 
-    if (username.trim() === ''|| email.trim() === '' || passsword.trim() === '' || confirm.trim() === '') {
-      Alert.alert('Error', 'All fields are required.');
-      return;
+    if (username.trim() === '' || email.trim() === '' || passsword.trim() === '' || confirm.trim() === '') {
+      Alert.alert('Error', 'All fields are required.')
+      return
     }
 
     if (!match) {
-      Alert.alert('Error', 'Password and confirm password do not match.');
-      return;
+      Alert.alert('Error', 'Password and confirm password do not match.')
+      return
     }
 
     // Perform registration (e.g., send data to backend API)
     //  logging the data here
     // console.log('Registration successful!');
-    console.log('email:', email);
-    console.log('Password:', passsword);
-    console.log('Username:', username);
+    console.log('email:', email)
+    console.log('Password:', passsword)
+    console.log('Username:', username)
 
     // Clear the input fields after registration
-    setEmail('');
-    setPassword('');
-    setConfirm('');
+    setEmail('')
+    setPassword('')
+    setConfirm('')
 
-// redirect to home 
-    const userId = await signUp(email, passsword);
+    // redirect to home 
+    const userId = await signUp(email, passsword)
     // lưu userName trong AsyncStorage
     if (userId) {
-      authContext.authenticate(userId, username);
-      AsyncStorage.setItem(userId, username);
-    } 
-    
-    console.log("new userId :", userId);
+      authContext.authenticate(userId, username)
+      AsyncStorage.setItem(userId, username)
+    }
+
+    console.log("new userId :", userId)
   }
   return (
     <ScrollView style={styles.container}>
@@ -145,10 +145,10 @@ function RegisterScreen({ navigation }) {
         </TouchableOpacity>
       </View>
     </ScrollView>
-  );
+  )
 }
 
-export default RegisterScreen;
+export default RegisterScreen
 
 const styles = StyleSheet.create({
   container: {
@@ -201,4 +201,4 @@ const styles = StyleSheet.create({
     color: "#EB9F4A",
     fontSize: 16,
   },
-});
+})
