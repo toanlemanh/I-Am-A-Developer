@@ -1,9 +1,10 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { createContext, useState } from "react";
-
 const initialUserState = {
 
-    userName: "",
-    UserDailyLogin: {
+    userName: "name",
+    gameJustStarted: true,
+    userDailyLogin: {
         lastLoginDate: "",
         currentLoginDate: "",
         rewards: {
@@ -325,6 +326,31 @@ const UserProvider = ({ children }) => {
         });
     }
 
+
+    async function saveUserDataToStorage() {
+        if (!userState.gameJustStarted)
+            try {
+                await AsyncStorage.setItem('userState', JSON.stringify(userState));
+                console.log('USER Data saved successfully!');
+            } catch (error) {
+                console.log('Error saving data: ', error);
+            }
+    };
+
+    async function loadUserDataFromStorage() {
+        try {
+            const storedData = await AsyncStorage.getItem('userState');
+            if (storedData !== null) {
+                const parsedData = JSON.parse(storedData);
+                setUserState(parsedData)
+                console.log('Data loaded: ' + userState.status.health)
+                updateUser({ gameJustStarted: false })
+            }
+        } catch (error) {
+            console.log('Error loading data: ', error);
+        }
+    };
+
     return (
         <UserContext.Provider value=
             {
@@ -342,7 +368,9 @@ const UserProvider = ({ children }) => {
                     removeDisease,
                     addDisease,
                     affectedByDiseases,
-                    updateRelationshipLevel
+                    updateRelationshipLevel,
+                    saveUserDataToStorage,
+                    loadUserDataFromStorage
                 }
             }>
             {children}
