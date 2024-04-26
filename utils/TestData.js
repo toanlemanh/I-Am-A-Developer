@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { ActivityIndicator, Button, Text, View } from 'react-native';
 import { UserContext } from '../context/user-context';
 const TestData = ({ userid, collection }) => {
+
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
     const [data, setData] = useState(null);
@@ -12,36 +13,35 @@ const TestData = ({ userid, collection }) => {
     const userData = user.userState
     let current = {}
     const BACKEND_URL =
-        'https://i-am-a-developer-30661-default-rtdb.asia-southeast1.firebasedatabase.app/';
+        'https://fb-login-demo-93174-default-rtdb.firebaseio.com/';
     // axios.post(BACKEND_URL + `/${userData.id}.json`, userData);
 
     useEffect(() => {
-        async function fetchData() {
-            try {
-                await axios.get(BACKEND_URL + `/${userData.id}.json`)
-                    .then(response => {
-                        // Parse response data into an object
-                        current = Object.values(response.data)[0]
-                        setData(current)
-                        user.updateUser(current)
-                        user.updateCharacterStatus({
-                            happiness: 22,
-                            health: 2,
-                            look: 30
-                        })
-                        setCurrentKey(Object.keys(response.data)[0])
-                        console.log(currentKey + 'as')
+        try {
+            axios.get(BACKEND_URL + `/${userData.id}.json`)
+                .then(response => {
+                    // Parse response data into an object
+                    current = Object.values(response.data)[0]
+                    setData(current)
+                    user.updateUser(current)
+                    user.updateCharacterStatus({
+                        happiness: 22,
+                        health: 2,
+                        look: 30
                     })
+                    setCurrentKey(Object.keys(response.data)[0])
+                    console.log(currentKey + 'as')
+                })
 
-            } catch (err) {
-                setError(err);
-            } finally {
-                setIsLoading(false);
-            }
+        } catch (err) {
+            setError(err);
+        } finally {
+            setIsLoading(false);
         }
-        fetchData()
 
         return () => {
+            console.log("Component unmount")
+            axios.put(BACKEND_URL + `/123123/${currentKey}.json`, user.userState);
 
         }
     }, [])
