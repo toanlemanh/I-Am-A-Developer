@@ -62,7 +62,7 @@ const initialUserState = {
         history: 0,
         science: 0,
         geography: 0,
-        art: 0,
+        art: 5,
         music: 0,
         physicalEducation: 0,
         computerScience: 0,
@@ -74,7 +74,7 @@ const initialUserState = {
         informationTechnology: 0,
         cybersecurity: 0,
         dataScience: 0,
-        design: 0,
+        design: 2,
         networking: 0,
         security: 0,
         statistics: 0,
@@ -85,8 +85,8 @@ const initialUserState = {
         businessAnalysis: 0,
         testing: 0,
         softwareDevelopment: 0,
-        userExperience: 0,
-        userInterface: 0,
+        userExperience: 2,
+        userInterface: 2,
     },
 
     relationships: {
@@ -332,6 +332,7 @@ const UserProvider = ({ children }) => {
             try {
                 await AsyncStorage.setItem(uid, JSON.stringify(userState));
                 console.log('USER Data saved successfully!');
+                console.log(userState);
             } catch (error) {
                 console.log('Error saving data: ', error);
             }
@@ -344,12 +345,12 @@ const UserProvider = ({ children }) => {
                 const parsedData = JSON.parse(storedData);
                 setUserState(parsedData)
                 console.log('Data loaded: ' + userState.status.health)
-                updateUser({ gameJustStarted: false })
             }
         } catch (error) {
-            updateUser({ gameJustStarted: false })
+
             console.log('Error loading data: ', error);
         }
+        updateUser({ gameJustStarted: false })
     };
 
     return (
