@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react"
+import React, { useEffect, useContext } from "react";
 import {
   View,
   StyleSheet,
@@ -6,89 +6,114 @@ import {
   Platform,
   Text,
   ScrollView,
-} from "react-native"
-import { Ionicons } from "@expo/vector-icons"
-import { signUp } from "../config/firebase"
-import { useState } from "react"
-import SocialBtn from "../components/SocialBtn"
-import FormBtn from "../components/FormBtn"
-import FormInput from "../components/FormInput"
-import DividerLine from "../components/DividerLine"
-import { AuthContext } from "../context/auth"
-import { Alert } from "react-native"
-import AsyncStorage from "@react-native-async-storage/async-storage"
+} from "react-native";
+import { Ionicons } from "@expo/vector-icons";
+import { signUp } from "../config/firebase";
+import { useState } from "react";
+import SocialBtn from "../components/SocialBtn";
+import FormBtn from "../components/FormBtn";
+import FormInput from "../components/FormInput";
+import DividerLine from "../components/DividerLine";
+import { AuthContext } from "../context/auth";
+import { Alert } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { postUserId } from "../context/axios";
+import { UserContext } from "../context/user-context";
 
 function RegisterScreen({ navigation }) {
-  let  USER_ID;
-  const authContext = useContext(AuthContext)
-  const [email, setEmail] = useState()
-  const [passsword, setPassword] = useState()
-  const [username, setUsername] = useState()
-  const [confirm, setConfirm] = useState()
+  let USER_ID;
+  const authContext = useContext(AuthContext);
+  const userContext = useContext(UserContext);
+  const [email, setEmail] = useState();
+  const [passsword, setPassword] = useState();
+  const [username, setUsername] = useState();
+  const [confirm, setConfirm] = useState();
   const [match, setMatch] = useState(true);
   const [userId, setUserId] = useState();
+  const [isSigned, setIsSigned] = useState(true);
 
   function onEmailChangeHandler(email) {
-    console.log(email)
+    console.log(email);
     email = email.trim();
-    setEmail(email)
+    setEmail(email);
   }
   function onUsernameChangeHandler(username) {
-    setUsername(username)
+    setUsername(username);
   }
   function onPasswordChangeHandler(password) {
-    console.log(password)
-    setPassword(password)
+    console.log(password);
+    setPassword(password);
   }
   function onConfirmChangeHandler(confirm) {
-    setConfirm(confirm)
+    setConfirm(confirm);
   }
-
 
   //  confirm password whenever password changed
   useEffect(() => {
-    if (passsword !== '' && confirm !== '') {
-      setMatch(passsword === confirm)
+    if (passsword !== "" && confirm !== "") {
+      setMatch(passsword === confirm);
     }
-  }, [passsword, confirm, match])
+  }, [passsword, confirm, match]);
 
   useEffect(() => {
-    if (userId) {
-      authContext.authenticate(userId, username)
-      AsyncStorage.setItem(userId, username)
+    function fetchUserData() {
+      if (userId) {
+        authContext.authenticate(userId, username);
+        const data = { userName: username };
+        console.log("data", data);
+        userContext.updateUser(data); ///console.log => current job  it's set state again in context but it not rerender here
+        AsyncStorage.setItem(userId, username);
+      }
     }
-  }, [userId])
+    fetchUserData();
+  }, [userId]);
+
+  useEffect(() => {
+      const user = userContext.userState;
+      console.log("user effect", user);
+      //post data into realtime database
+      postUserId(userId, user);
+    // }
+  }, [ userContext.userState])
+  
 
   //  function to register a new user account
   async function onRegisterHandler() {
-    //  check all input whether empty or not 
-    if (username.trim() === '' || email.trim() === '' || passsword.trim() === '' || confirm.trim() === '') {
-      Alert.alert('Error', 'All fields are required.')
-      return
+    //  check all input whether empty or not
+    if (
+      username.trim() === "" ||
+      email.trim() === "" ||
+      passsword.trim() === "" ||
+      confirm.trim() === ""
+    ) {
+      Alert.alert("Error", "All fields are required.");
+      return;
     }
 
     if (!match) {
-      Alert.alert('Error', 'Password and confirm password do not match.')
-      return
+      Alert.alert("Error", "Password and confirm password do not match.");
+      return;
     }
 
     // Perform registration (e.g., send data to backend API)
     //  logging the data here
     // console.log('Registration successful!');
-    console.log('email:', email)
-    console.log('Password:', passsword)
-    console.log('Username:', username)
+    console.log("email:", email);
+    console.log("Password:", passsword);
+    console.log("Username:", username);
 
     // Clear the input fields after registration
-    setEmail('')
-    setPassword('')
-    setConfirm('')
+    setEmail("");
+    setPassword("");
+    setConfirm("");
 
-    // redirect to home 
-      USER_ID = await signUp(email, passsword)
-    // lưu userName trong AsyncStorage
-     setUserId(USER_ID);
+    // redirect to home
+    USER_ID = await signUp(email, passsword);
+    setUserId(USER_ID);
+    //setIsSigned(!isSigned);
   }
+
+
   return (
     <ScrollView style={styles.container}>
       <TouchableOpacity
@@ -150,10 +175,10 @@ function RegisterScreen({ navigation }) {
         </TouchableOpacity>
       </View>
     </ScrollView>
-  )
+  );
 }
 
-export default RegisterScreen
+export default RegisterScreen;
 
 const styles = StyleSheet.create({
   container: {
@@ -206,4 +231,4 @@ const styles = StyleSheet.create({
     color: "#EB9F4A",
     fontSize: 16,
   },
-})
+});
