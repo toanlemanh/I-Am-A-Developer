@@ -44,6 +44,7 @@ const initialUserState = {
             name: "",
             salary: 0,
         },
+        // occupation: null,
 
         inSchool: false,
         inUniversity: false,

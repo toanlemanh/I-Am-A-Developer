@@ -18,6 +18,12 @@ export default function OccupationScreen({ navigation }) {
     console.log("Occupation updated to:", occupation);
   }, [occupation]);
 
+  useEffect(() => {
+    if (occupation && occupation.name === '' && occupation.salary === 0) {
+      updateUser({ character: { ...userState.character, occupation: null } });
+    }
+  }, [occupation]);
+
   const [modalVisible, setModalVisible] = useState(false);
   const openModal = () => {
     setModalVisible(true);
@@ -34,15 +40,12 @@ export default function OccupationScreen({ navigation }) {
   };
 
   const renderJobDetails = (job) => {
-    if (!job) return <Text>No Job Assigned</Text>;
+    if (!job) return <Text>Go find a job</Text>;
     return (
       <View style={styles.detailsContainer}>
         <Text><Text style={styles.label}>Job:</Text> {job.job}</Text>
         <Text><Text style={styles.label}>Years:</Text> {job.years}</Text>
         <Text><Text style={styles.label}>Salary:</Text> {job.salary}</Text>
-        <TouchableOpacity style={styles.quitButton} onPress={quitJob}>
-          <Text style={styles.quitButtonText}>Quit Job</Text>
-        </TouchableOpacity>
       </View>
     );
   };
@@ -74,13 +77,11 @@ export default function OccupationScreen({ navigation }) {
 
       <AlertPopup
         modalVisible={modalVisible}
-        // closeModal={closeModal}
-        closeModal={quitJob}
+        closeModal={closeModal} // General close modal function
         title={occupation?.name || "No Current Job"}
         content={renderJobDetails(occupation)}
-        buttonText={"OK"}
-        // buttonOnPress={occupation ? closeModal : quitJob}
-        buttonOnPress={closeModal}
+        buttonText={occupation ? "Quit Job" : "OK"}  // Text changes based on occupation presence
+        buttonOnPress={occupation ? quitJob : closeModal}  // Function changes based on occupation presence
       />
       <View style={styles.buttonOutterContainer}>
         <ButtonComponent onPress={() => {
