@@ -30,6 +30,7 @@ function RegisterScreen({ navigation }) {
   const [confirm, setConfirm] = useState();
   const [match, setMatch] = useState(true);
   const [userId, setUserId] = useState();
+  const [initialState, setInitialState] = useState(userContext.userState)
 
   function onEmailChangeHandler(email) {
     email = email.trim();
@@ -52,18 +53,30 @@ function RegisterScreen({ navigation }) {
     }
   }, [passsword, confirm, match]);
 
+  function updateInitialState(data){
+    console.log("data", data)
+    setInitialState((prev) => ({
+      ...prev, ...data
+    }))
+  }
   useEffect(() => {
-    function fetchUserData() {
-      if (userId) {
-        authContext.authenticate(userId, username);
-        const data = { userName: username };
-        console.log(">>>>data", data);
-        userContext.updateUser(data); ///console.log => current job  it's set state again in context but it not rerender here
-        AsyncStorage.setItem(userId, username);
-      }
-    }
-    fetchUserData();
-  }, [userId]);
+    function registerUserName() {
+     if (userId) {
+       console.log("init",userId, initialState);
+    //  authContext.authenticate(userId, username);
+       const data = { userName: username };
+       userContext.updateUser(data);
+       try {
+         postUserId(userId, initialState);
+         navigation.navigate("LoginScreen")
+       }
+       catch(err) {
+         Alert.alert("Error", "Wrong Credential!")
+       }        
+     }
+   }
+   registerUserName();
+ }, [initialState]);
 
   //  function to register a new user account
   async function onRegisterHandler() {
@@ -95,6 +108,7 @@ function RegisterScreen({ navigation }) {
     // redirect to home
     USER_ID = await signUp(email, passsword);
     setUserId(USER_ID);
+    updateInitialState({userName: username});
   }
 
   return (

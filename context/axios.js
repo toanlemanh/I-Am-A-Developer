@@ -49,4 +49,4 @@ export function getUserId( userId ) {
         const key = (Object.keys(response.data)[0]);
         console.log(key + "as");
         return {key, current}
-      });
+      })};

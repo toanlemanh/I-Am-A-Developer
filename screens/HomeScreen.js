@@ -46,7 +46,7 @@ export default function HomeScreen() {
           userContext.saveUserDataToStorage(userId);
         }
     }
-    loadUserName();
+  }loadUserName();
   }, [userId])
 
 
@@ -109,7 +109,7 @@ export default function HomeScreen() {
           </View>
           <View style={styles.characterNameContainer}>
             <Text style={styles.stageStyle}> {lifeStage}</Text>
-            <Text style={styles.}>{user.}</Text>
+            <Text style={styles.username}>{user.userName}</Text>
           </View>
         </View>
         <View>
