@@ -4,6 +4,7 @@ import {
   MaterialCommunityIcons,
   MaterialIcons,
 } from "@expo/vector-icons";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useNavigation } from "@react-navigation/native";
 import React, { useContext, useEffect, useState } from "react";
 import {
@@ -32,6 +33,7 @@ export default function HomeScreen() {
   const userContext = useContext(UserContext);
   const navigation = useNavigation();
   const user = userContext.userState
+  let progressId = ""
   React.useEffect(() => {
     async function loadUserName() {
       // load based on user Id
@@ -50,6 +52,7 @@ export default function HomeScreen() {
           console.log(err.message);
         } finally {
           setIsLoading(false);
+          userContext.loadProgress(userId)
           userContext.loadUserDataFromStorage(userId);
           userContext.saveUserDataToStorage(userId);
         }
@@ -60,9 +63,18 @@ export default function HomeScreen() {
   }, [userId]);
   const [lifeStage, setLifeStage] = useState("Infant");
   useEffect(() => {
-    userContext.drainStatus()
-    userContext.startProgress()
+    progressId = userContext.startProgress()
+    return () => { clearInterval(progressId) }
   }, []);
+
+  useEffect(() => {
+    AsyncStorage.setItem("progress" + userId, userContext.progress.toString())
+    if (userContext.progress >= 100) {
+      userContext.updateProgress(-100)
+      userContext.updateCharacterAge(1)
+      userContext.updateStatus({ health: -10, happiness: -10, appearance: -5 })
+    }
+  }, [userContext.progress]);
 
   useEffect(() => {
     if (user.character.age <= 1) {
@@ -99,7 +111,7 @@ export default function HomeScreen() {
         height={12}
         backgroundColor={"#E0E9F2"}
         completedColor={"#EB9F4A"}
-        percentage={user.progress}
+        percentage={Math.round(userContext.progress, 2)}
       />
 
       {/* Top container will contain avatar, age and balance*/}
@@ -114,6 +126,7 @@ export default function HomeScreen() {
           <View style={styles.characterNameContainer}>
             <Text style={styles.stageStyle}> {lifeStage}</Text>
             <Text style={styles.username}>{user.userName}</Text>
+            <Text style={styles.username}>{Math.round(userContext.progress)}</Text>
           </View>
         </View>
         <View>
@@ -148,6 +161,7 @@ export default function HomeScreen() {
             style={({ pressed }) => pressed && styles.pressed}
             onPress={() => {
               navigation.navigate("Assets");
+              console.log(progress)
             }}
           >
             <View style={{ justifyContent: "center", alignItems: "center" }}>
