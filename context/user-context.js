@@ -128,6 +128,32 @@ const UserProvider = ({ children }) => {
         }));
     };
 
+    function updateUserName(newUserName) {
+        setUserState((prev) => ({
+            ...prev,
+            userName: newUserName
+        }));
+    };
+
+    function updateInSchool() {
+        setUserState((prev) => ({
+            ...prev,
+            character: {
+                ...prev.character,
+                inSchool: prev.character.inSchool ? false : true
+            }
+        }));
+    }
+
+    function updateInUniversity() {
+        setUserState((prev) => ({
+            ...prev,
+            character: {
+                ...prev.character,
+                inUniversity: prev.character.inUniversity ? false : true
+            }
+        }));
+    }
 
     // Handle User Login Rewards
     // Must be call at the time user login
@@ -364,6 +390,9 @@ const UserProvider = ({ children }) => {
                     updateCharacterMoney,
                     updateStatus,
                     updateUser,
+                    updateUserName,
+                    updateInSchool,
+                    updateInUniversity,
                     drainStatus,
                     updateCharacterAge,
                     startProgress,
