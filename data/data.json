@@ -7,7 +7,7 @@
         "effects": {
           "happiness": 10,
           "health": 10,
-          "look": 1
+          "appearance": 1
         }
       },
       {
@@ -16,7 +16,7 @@
         "effects": {
           "happiness": 10,
           "health": 10,
-          "look": 5
+          "appearance": 5
         }
       },
       {
@@ -25,7 +25,7 @@
         "effects": {
           "happiness": 10,
           "health": 20,
-          "look": 0
+          "appearance": 0
         }
       },
       {
@@ -34,7 +34,7 @@
         "effects": {
           "happiness": 50,
           "health": 0,
-          "look": 10
+          "appearance": 10
         }
       },
       {
@@ -43,7 +43,7 @@
         "effects": {
           "happiness": 10,
           "health": 10,
-          "look": 2
+          "appearance": 2
         }
       },
       {
@@ -52,7 +52,7 @@
         "effects": {
           "happiness": 10,
           "health": 10,
-          "look": 1
+          "appearance": 1
         }
       }
     ]

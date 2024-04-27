@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { ScrollView, StyleSheet, Text, View } from "react-native";
+import { ScrollView, Text, View } from "react-native";
+import { styles } from "../Style/screenStyles/ActivitiesStyle";
 import Card from "../components/Card";
 import AlertPopup from "../components/eventsPopup/AlertPopup";
 import data from "../data/data.json";
-import { styles } from "../Style/screenStyles/ActivitiesStyle";
 export default function ActivitiesScreen() {
     const activities = data.activities.data;
 
@@ -19,15 +19,15 @@ export default function ActivitiesScreen() {
         setSelectedActivity(null); // Clear selected job on close
     };
 
-    const renderActivity = (cost, happiness, health, look) => {
+    const renderActivity = (cost, happiness, health, appearance) => {
         return (
             <View style={styles.horizontalContainer}>
                 <View style={styles.labelContainer}>
-                    <Text style={styles.label}>Cost:</Text>
+                    <Text style={styles.label}>Cost: $</Text>
                     <Text style={styles.label}>Effects:</Text>
                     <Text style={styles.effect}>Happiness:</Text>
                     <Text style={styles.effect}>Health:</Text>
-                    <Text style={styles.effect}>Look:</Text>
+                    <Text style={styles.effect}>Appearance:</Text>
                 </View>
 
                 <View style={styles.valueContainer}>
@@ -35,7 +35,7 @@ export default function ActivitiesScreen() {
                     <Text> </Text>
                     <Text> {happiness}</Text>
                     <Text> {health}</Text>
-                    <Text> {look}</Text>
+                    <Text> {appearance}</Text>
                 </View>
             </View>
         )
@@ -64,7 +64,7 @@ export default function ActivitiesScreen() {
                     selectedActivity?.cost,
                     selectedActivity?.effects.happiness,
                     selectedActivity?.effects.health,
-                    selectedActivity?.effects.look,
+                    selectedActivity?.effects.appearance,
                 )}
                 buttonText={"Do it!"}
             />
