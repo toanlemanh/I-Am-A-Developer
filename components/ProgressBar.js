@@ -20,7 +20,7 @@ const PercentageBar = ({
             width: width,
             height: height,
             marginVertical: 0,
-            borderRadius: 5,
+           
             borderColor: backgroundColor,
 
             backgroundColor: '#E0E9F2'
@@ -31,7 +31,7 @@ const PercentageBar = ({
             width: `${percentage}%`,
             height: height,
             marginVertical: 0,
-            borderRadius: 5,
+            
             backgroundColor: completedColor,
             position: 'absolute',
             bottom: height

@@ -193,9 +193,9 @@ const UserProvider = ({ children }) => {
                 appearance: -0.1
             })
             if (userState.status.health <= 0) {
-                console.log('ded')
+               
             }
-        }, 1000)
+        }, 20000)
 
     }
 

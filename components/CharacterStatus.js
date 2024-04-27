@@ -12,11 +12,7 @@ export default function CharacterStatus() {
     return (
         <View style={Platform.OS === 'ios' ? styles.allStatusContainer : [styles.allStatusContainer, { paddingBottom: 50 }]}>
             <View style={styles.statusContainer} >
-                <View style={styles.statusTextContainer}>
-                    <Text style={styles.ageText}>Happiness:</Text>
-                    <Text style={styles.ageText}>Appearance:</Text>
-                    <Text style={styles.ageText}>Health:</Text>
-                </View>
+                <Text style={styles.ageText}>  Happiness:</Text>
                 <View style={styles.statusBarContainer}>
                     <PercentageBar
                         height={15}
@@ -25,15 +21,11 @@ export default function CharacterStatus() {
                         percentage={user.status.happiness}
                         width={200}
                     />
-
-                    <PercentageBar
-                        height={15}
-                        backgroundColor='grey'
-                        completedColor="#EED817"
-                        percentage={user.status.health}
-                        width={200}
-                    />
-
+                </View>   
+            </View>
+            <View style={styles.statusContainer}>
+                <Text style={styles.ageText}>Appearance:</Text>
+                <View style={styles.statusBarContainer}>
                     <PercentageBar
                         height={15}
                         backgroundColor='grey'
@@ -41,7 +33,19 @@ export default function CharacterStatus() {
                         percentage={user.status.appearance}
                         width={200}
                     />
-                </View>
+                </View>   
+            </View>
+            <View style={styles.statusContainer}>
+                <Text style={styles.ageText}>         Health:</Text>
+                <View style={styles.statusBarContainer}>
+                    <PercentageBar
+                        height={15}
+                        backgroundColor='grey'
+                        completedColor="#EED817"
+                        percentage={user.status.health}
+                        width={200}
+                    />
+                </View>   
             </View>
         </View>
     )

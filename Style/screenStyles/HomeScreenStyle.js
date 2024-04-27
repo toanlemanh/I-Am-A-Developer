@@ -84,14 +84,18 @@ export const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     statusTextContainer: {
-        borderWidth: 1,
+        
         justifyContent: 'space-between',
-        alignItems: 'flex-end'
+        alignItems: 'flex-end',
+        
     },
     statusBarContainer: {
-        borderWidth: 1,
+        
         justifyContent: 'space-between',
-        alignItems: 'flex-start'
+        alignItems: 'flex-start',
+        marginTop:5,
+        marginHorizontal:7
+       
     },
     statusText: {
         fontWeight: '300',
