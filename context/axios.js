@@ -41,3 +41,12 @@ export function deleteExpense(id) {
 export function postUserId( userId, data) {
      axios.post(BACKEND_URL + `/${userId}.json`, data).then((response) => console.log(">>>response::",response));
 }
+export function getUserId( userId ) {
+    return axios.get(BACKEND_URL + `/${userId}.json`).then((response) => {
+        // Parse response data into an object
+        const current = Object.values(response.data)[0];
+        console.log("current", current);
+        const key = (Object.keys(response.data)[0]);
+        console.log(key + "as");
+        return {key, current}
+      });
