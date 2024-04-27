@@ -17,7 +17,7 @@ import DividerLine from "../components/DividerLine";
 import { AuthContext } from "../context/auth";
 import { Alert } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-
+import { postUserId } from "../context/axios";
 import { UserContext } from "../context/user-context";
 import { styles } from "../Style/screenStyles/RegisterStyles";
 function RegisterScreen({ navigation }) {
@@ -30,7 +30,7 @@ function RegisterScreen({ navigation }) {
   const [confirm, setConfirm] = useState();
   const [match, setMatch] = useState(true);
   const [userId, setUserId] = useState();
-  const [initialState, setInitialState] = useState(userContext.userState)
+  const [initialState, setInitialState] = useState(userContext.userState);
 
   function onEmailChangeHandler(email) {
     email = email.trim();
