@@ -21,18 +21,22 @@ import RandomPopup from "../components/eventsPopup/RandomPopup";
 import { AuthContext } from "../context/auth";
 import { getUserId } from "../context/axios";
 import { UserContext } from "../context/user-context";
-
+import SelectionPopup from "../components/eventsPopup/SelectionPopup";
+import data from "../data/data.json"
 
 export default function HomeScreen() {
   const [isLoading, setIsLoading] = useState(true);
   //const [userName, setUserName] = useState("Tom");
-  const [currentUser, setCurrentUser] = useState();
+ ;
   const [currentKey, setCurrentKey] = useState();
   const authContext = useContext(AuthContext);
   const userId = authContext.userId;
   const userContext = useContext(UserContext);
   const navigation = useNavigation();
   const user = userContext.userState
+  const [modalVisible, setModalVisible] = useState(false);
+  const [randomIndex, setRandomIndex] = useState(0);
+
   let progressId = ""
   React.useEffect(() => {
     async function loadUserName() {
@@ -52,7 +56,7 @@ export default function HomeScreen() {
           console.log(err.message);
         } finally {
           setIsLoading(false);
-          userContext.loadProgress(userId)
+          //userContext.loadProgress(userId)
           userContext.loadUserDataFromStorage(userId);
           userContext.saveUserDataToStorage(userId);
         }
@@ -62,9 +66,12 @@ export default function HomeScreen() {
     loadUserName();
   }, [userId]);
   const [lifeStage, setLifeStage] = useState("Infant");
+  
   useEffect(() => {
     progressId = userContext.startProgress()
+   
     return () => { clearInterval(progressId) }
+    
   }, []);
 
   useEffect(() => {
@@ -75,7 +82,7 @@ export default function HomeScreen() {
       userContext.updateStatus({ health: -10, happiness: -10, appearance: -5 })
     }
   }, [userContext.progress]);
-
+    
   useEffect(() => {
     if (user.character.age <= 1) {
       setLifeStage("Infant")
@@ -87,22 +94,43 @@ export default function HomeScreen() {
 
   }, [user.character.age]);
 
-  const [modalVisible, setModalVisible] = useState(false);
+  //condition for modal to show when level-up (progress =100)
+  useEffect(() => {
+    if (userContext.progress >= 100) {
+      const eventsLength = data.newAgeEvents.data.length;
+      const index = Math.floor(Math.random() * eventsLength);
+     
+      setRandomIndex(index);
+      setModalVisible(true);
+    }
+  }, [userContext.progress]);
+
   function handleAgePress() {
-    userContext.updateCharacterAge(1)
+    userContext.updateCharacterAge(1);
+    setModalVisible(true);
+    const eventsLength = data.newAgeEvents.data.length;
+    const index = Math.floor(Math.random() * eventsLength);
+    setRandomIndex(index);
   }
 
   const closeModal = () => {
     setModalVisible(false);
   };
-
+  
   if (isLoading) {
     return (
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
         <ActivityIndicator size="large" color="#0000ff" />
       </View>
     );
-  }
+  } 
+  const title = data.newAgeEvents.data[randomIndex].description;
+  const choice1 =data.newAgeEvents.data[randomIndex].choice[0].description;
+  const choice2 =data.newAgeEvents.data[randomIndex].choice[1].description;
+  const choice3 = data.newAgeEvents.data[randomIndex].choice.length === 3 ? 
+    data.newAgeEvents.data[randomIndex].choice[2].description : null;
+
+   
   return (
     <View style={styles.container}>
       {/* Level progress bar*/}
@@ -161,7 +189,7 @@ export default function HomeScreen() {
             style={({ pressed }) => pressed && styles.pressed}
             onPress={() => {
               navigation.navigate("Assets");
-              console.log(progress)
+             
             }}
           >
             <View style={{ justifyContent: "center", alignItems: "center" }}>
@@ -179,8 +207,16 @@ export default function HomeScreen() {
                 <Text style={styles.incrementAge}>Age</Text>
               </View>
             </Pressable>
-            {/* random modal component */}
-            <RandomPopup modalVisible={modalVisible} closeModal={closeModal} />
+            {/*  modal component */}
+            
+            <SelectionPopup 
+              modalVisible={modalVisible} 
+              closeModal={closeModal} 
+              title={title}
+              choice1={choice1}
+              choice2={choice2}
+              choice3={choice3}
+              />
           </View>
 
           <Pressable
@@ -205,7 +241,7 @@ export default function HomeScreen() {
             </View>
           </Pressable>
         </View>
-        <CharacterStatus></CharacterStatus>
+        <CharacterStatus/>
       </View>
 
     </View>
