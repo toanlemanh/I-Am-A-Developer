@@ -418,6 +418,7 @@ const UserProvider = ({ children }) => {
                     updateUserName,
                     updateInSchool,
                     updateInUniversity,
+                    updateOccupation,
                     drainStatus,
                     updateCharacterAge,
                     startProgress,
