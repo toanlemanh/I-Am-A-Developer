@@ -1,11 +1,11 @@
 import { AntDesign, Ionicons, MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, { useContext, useEffect, useState } from 'react';
-import { Pressable, Text, View } from 'react-native';
+import { Pressable, Text, View, ActivityIndicator } from 'react-native';
 
 import { useNavigation } from '@react-navigation/native';
 import { AuthContext } from '../context/auth';
-import { postUserId } from '../context/axios';
+import { getUserId } from '../context/axios';
 import { UserContext } from '../context/user-context';
 
 import { styles } from "../Style/screenStyles/HomeScreenStyle";
@@ -17,7 +17,8 @@ import RandomPopup from '../components/eventsPopup/RandomPopup';
 
 
 export default function HomeScreen() {
-  const [userName, setUserName] = useState("Tom")
+  const [isLoading, setIsLoading] = useState(true);
+  const [currentKey, setCurrentKey] = useState();
   const authContext = useContext(AuthContext);
   const userId = authContext.userId;
   const userContext = useContext(UserContext);
@@ -26,15 +27,28 @@ export default function HomeScreen() {
 
   React.useEffect(() => {
     async function loadUserName() {
-      //    console.log("auth",authContext.userName);
-      //    console.log("auth",userContext.userState);
-      // post here with updated user name and other user state
-      postUserId(userId, userContext.userState);
-      setUserName(await AsyncStorage.getItem(userId));
+      // load based on user Id
+      if (userId) {
+        // console.log("username: ", await AsyncStorage.getItem(userId));
+        try {
+          await getUserId(userId).then(({ key, current }) => {
+            console.log("key current", key, current);
+            setCurrentKey(key);
+            userContext.updateUser(current);
+
+          });
+
+        } catch (err) {
+          console.log(err.message);
+        } finally {
+          setIsLoading(false);
+          userContext.loadUserDataFromStorage(userId);
+          userContext.saveUserDataToStorage(userId);
+        }
     }
     loadUserName();
   }, [userId])
-  const characterName = userName;
+
 
   const [lifeStage, setLifeStage] = useState('Infant');
 
@@ -66,7 +80,13 @@ export default function HomeScreen() {
   const closeModal = () => {
     setModalVisible(false);
   };
-
+  if (isLoading) {
+    return (
+      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+        <ActivityIndicator size="large" color="#0000ff" />
+      </View>
+    );
+  }
   return (
     <View style={styles.container}>
       {/* Level progress bar*/}
@@ -89,7 +109,7 @@ export default function HomeScreen() {
           </View>
           <View style={styles.characterNameContainer}>
             <Text style={styles.stageStyle}> {lifeStage}</Text>
-            <Text style={styles.username}>{user.userName}</Text>
+            <Text style={styles.}>{user.}</Text>
           </View>
         </View>
         <View>
