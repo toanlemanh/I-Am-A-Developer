@@ -3,12 +3,18 @@ import React, { useState } from 'react';
 import { View, } from 'react-native';
 
 const PercentageBar = ({
+  navigation,
   percentage,
   height,
   backgroundColor,
   completedColor,
   width
 }) => {
+
+
+  // const [getPercentage, setPercentage] = useState(percentage);
+ 
+
 
 
   return (

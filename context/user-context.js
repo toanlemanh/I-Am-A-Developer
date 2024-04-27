@@ -176,9 +176,9 @@ const UserProvider = ({ children }) => {
         setInterval(() => {
             // replace by constraints.speed
             updateProgress(1000 / 720)
-            if (userState.progress >= 20) {
+            if (userState.progress >= 100) {
                 updateCharacterAge(1)
-                updateProgress(-20)
+                updateProgress(-100)
             }
         }, 1000)
 
