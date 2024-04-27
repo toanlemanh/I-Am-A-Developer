@@ -5,6 +5,7 @@ import AlertPopup from "../components/eventsPopup/AlertPopup";
 import data from "../data/data.json";
 import { UserContext } from "../context/user-context";
 import { styles } from "../Style/screenStyles/JobMarketStyle";
+
 export default function JobMarket() {
 
   const jobs = data.jobs.data;
@@ -37,17 +38,20 @@ export default function JobMarket() {
     // Retrieve the user's qualifications from the user state
     const { higherEducation } = userState;
 
+    console.log("Higher Education:", higherEducation);
+    console.log("Job Requirements:", job.requirements);
+
     // Check if the user meets all the job's subject requirements
     const isEligible = Object.entries(job.requirements).every(([subject, requiredLevel]) => {
-      const userLevel = higherEducation[subject.toLowerCase()] || 0;
+      const userLevel = higherEducation[subject] || 0;
       return userLevel >= requiredLevel;
     });
 
     if (isEligible) {
       // User is eligible, update their status
       // This would be a function similar to the updateUserLogin from your context
-      updateUser({ occupation: job });
-
+      updateUser({ character: { ...userState.character, occupation: job } });
+      alert('You have successfully applied for the job!');
     } else {
       // User is not eligible, show a notification
       // This would depend on how you want to implement notifications - Alert, Modal, Snackbar, etc.

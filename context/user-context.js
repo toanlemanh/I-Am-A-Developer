@@ -128,6 +128,15 @@ const UserProvider = ({ children }) => {
             ...prev, ...newUserState,
         }));
     };
+    // function updateUser(newUserState) {
+    //     setUserState((prev) => ({
+    //         ...prev,
+    //         character: {
+    //             ...prev.character,
+    //             ...newUserState.character
+    //         }
+    //     }));
+    // };
 
 
     // Handle User Login Rewards
@@ -193,7 +202,7 @@ const UserProvider = ({ children }) => {
                 appearance: -0.1
             })
             if (userState.status.health <= 0) {
-               
+
             }
         }, 20000)
 
