@@ -121,7 +121,7 @@ export const UserContext = createContext(initialUserState);
 const UserProvider = ({ children }) => {
 
     const [userState, setUserState] = useState(initialUserState);
-
+    const [progress, setProgress] = useState(0)
     function updateUser(newUserState) {
         setUserState((prev) => ({
             ...prev, ...newUserState,
@@ -223,14 +223,21 @@ const UserProvider = ({ children }) => {
 
     // Increase Progress
     function startProgress() {
-        setInterval(() => {
+
+        const id = setInterval(() => {
             // replace by constraints.speed
-            updateProgress(1000 / 720)
-            if (userState.progress >= 100) {
-                updateCharacterAge(1)
-                updateProgress(-100)
-            }
-        }, 1000)
+            setProgress((prev) => prev += (100 / 720 * 3))
+        }, 3000)
+        return id
+    }
+
+    function loadProgress(uid) {
+        try {
+            const loadedProgress = AsyncStorage.getItem("progress" + uid)
+            setProgress(JSON.parse(loadedProgress))
+        } catch (error) {
+            console.log('Error saving data: ', error);
+        }
 
     }
 
@@ -238,14 +245,14 @@ const UserProvider = ({ children }) => {
         setInterval(() => {
             // replace by constraints.speed
             updateStatus({
-                health: -0.2,
-                happiness: -0.2,
-                appearance: -0.1
+                health: -10,
+                happiness: -10,
+                appearance: -10
             })
             if (userState.status.health <= 0) {
 
             }
-        }, 20000)
+        }, 5000)
 
     }
 
@@ -306,18 +313,9 @@ const UserProvider = ({ children }) => {
         });
     };
 
-    // reset progress
-    function resetProgress() {
-        setUserState({
-            ...userState,
-            progress: 0,
-        });
-    };
+
     function updateProgress(value) {
-        setUserState({
-            ...userState,
-            progress: userState.progress += value
-        });
+        setProgress((prev) => prev + value);
     };
 
     function setDiseases(diseases) {
@@ -411,6 +409,7 @@ const UserProvider = ({ children }) => {
             {
                 {
                     userState,
+                    progress,
                     updateUserLogin,
                     updateCharacterMoney,
                     updateStatus,
@@ -422,6 +421,8 @@ const UserProvider = ({ children }) => {
                     drainStatus,
                     updateCharacterAge,
                     startProgress,
+                    updateProgress,
+                    loadProgress,
                     levelupEducation,
                     setStatus,
                     removeDisease,

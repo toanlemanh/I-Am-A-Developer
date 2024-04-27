@@ -5,7 +5,6 @@ import { AuthContext } from '../context/auth'
 
 import ActivitiesScreen from '../screens/ActivitiesScreen'
 import HomeScreen from '../screens/HomeScreen'
-import GoingOffline from '../store/GoingOffline'
 import TestData from '../utils/TestData'
 const Drawer = createDrawerNavigator()
 
@@ -58,7 +57,7 @@ function DrawerStack() {
 
                 }}
             />
-            <Drawer.Screen
+            {/* <Drawer.Screen
                 name="GoingOffline"
                 component={GoingOffline}
                 options={{
@@ -69,7 +68,7 @@ function DrawerStack() {
                     headerTitleAlign: "center",
 
                 }}
-            />
+            /> */}
         </Drawer.Navigator>
     )
 }

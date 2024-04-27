@@ -1,58 +1,80 @@
-import { AntDesign, Ionicons, MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
-import React, { useContext, useEffect, useState } from 'react';
-import { ActivityIndicator, Pressable, Text, View } from 'react-native';
-
-import { useNavigation } from '@react-navigation/native';
-import { AuthContext } from '../context/auth';
-import { getUserId } from '../context/axios';
-import { UserContext } from '../context/user-context';
-
+import {
+  AntDesign,
+  Ionicons,
+  MaterialCommunityIcons,
+  MaterialIcons,
+} from "@expo/vector-icons";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useNavigation } from "@react-navigation/native";
+import React, { useContext, useEffect, useState } from "react";
+import {
+  ActivityIndicator,
+  Pressable,
+  Text,
+  View
+} from "react-native";
 import { styles } from "../Style/screenStyles/HomeScreenStyle";
-
 import CharacterStatus from '../components/CharacterStatus';
-import CustomAvatar from '../components/CustomAvatar';
-import PercentageBar from '../components/ProgressBar';
-import RandomPopup from '../components/eventsPopup/RandomPopup';
+import CustomAvatar from "../components/CustomAvatar";
+import PercentageBar from "../components/ProgressBar";
+import RandomPopup from "../components/eventsPopup/RandomPopup";
+import { AuthContext } from "../context/auth";
+import { getUserId } from "../context/axios";
+import { UserContext } from "../context/user-context";
 
 
 export default function HomeScreen() {
   const [isLoading, setIsLoading] = useState(true);
+  //const [userName, setUserName] = useState("Tom");
+  const [currentUser, setCurrentUser] = useState();
   const [currentKey, setCurrentKey] = useState();
   const authContext = useContext(AuthContext);
   const userId = authContext.userId;
   const userContext = useContext(UserContext);
   const navigation = useNavigation();
   const user = userContext.userState
-
+  let progressId = ""
   React.useEffect(() => {
     async function loadUserName() {
       // load based on user Id
       if (userId) {
         // console.log("username: ", await AsyncStorage.getItem(userId));
+        // setUserName(await AsyncStorage.getItem(userId));
         try {
           await getUserId(userId).then(({ key, current }) => {
             console.log("key current", key, current);
             setCurrentKey(key);
-            userContext.updateUser(userContext.userState.userName);
-
+            userContext.updateUser(current);
 
           });
 
         } catch (err) {
           console.log(err.message);
         } finally {
-          console.log("finally" + userContext.userState.userName)
           setIsLoading(false);
+          userContext.loadProgress(userId)
           userContext.loadUserDataFromStorage(userId);
           userContext.saveUserDataToStorage(userId);
         }
+
       }
     }
     loadUserName();
-  }, [userId])
+  }, [userId]);
+  const [lifeStage, setLifeStage] = useState("Infant");
+  useEffect(() => {
+    progressId = userContext.startProgress()
+    return () => { clearInterval(progressId) }
+  }, []);
 
-
-  const [lifeStage, setLifeStage] = useState('Infant');
+  useEffect(() => {
+    AsyncStorage.setItem("progress" + userId, userContext.progress.toString())
+    if (userContext.progress >= 100) {
+      userContext.updateProgress(-100)
+      userContext.updateCharacterAge(1)
+      userContext.updateStatus({ health: -10, happiness: -10, appearance: -5 })
+    }
+  }, [userContext.progress]);
 
   useEffect(() => {
     if (user.character.age <= 1) {
@@ -65,23 +87,15 @@ export default function HomeScreen() {
 
   }, [user.character.age]);
 
-
-  // Start progressing and status draining
-  useEffect(() => {
-    userContext.drainStatus()
-    userContext.startProgress()
-  }, []);
-
-
   const [modalVisible, setModalVisible] = useState(false);
   function handleAgePress() {
     userContext.updateCharacterAge(1)
-
   }
 
   const closeModal = () => {
     setModalVisible(false);
   };
+
   if (isLoading) {
     return (
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
@@ -93,17 +107,17 @@ export default function HomeScreen() {
     <View style={styles.container}>
       {/* Level progress bar*/}
       <PercentageBar
-        width={'100%'}
+        width={"100%"}
         height={12}
-        backgroundColor={'#E0E9F2'}
-        completedColor={'#EB9F4A'}
-        percentage={user.progress}
+        backgroundColor={"#E0E9F2"}
+        completedColor={"#EB9F4A"}
+        percentage={Math.round(userContext.progress, 2)}
       />
 
       {/* Top container will contain avatar, age and balance*/}
-      <View style={styles.topContainer} >
+      <View style={styles.topContainer}>
         <View style={styles.userInfo}>
-          <View >
+          <View>
             <CustomAvatar width={54} height={54} />
             <View style={styles.level}>
               <Text>{user.character.age}</Text>
@@ -112,6 +126,7 @@ export default function HomeScreen() {
           <View style={styles.characterNameContainer}>
             <Text style={styles.stageStyle}> {lifeStage}</Text>
             <Text style={styles.username}>{user.userName}</Text>
+            <Text style={styles.username}>{Math.round(userContext.progress)}</Text>
           </View>
         </View>
         <View>
@@ -122,25 +137,34 @@ export default function HomeScreen() {
 
       {/* Container of user's events and different age */}
       <View style={styles.eventsContainer}>
-        {/* Replace to Coding activities */}
+
       </View>
 
       {/* Container of navigators and the status progress bar */}
       <View style={styles.underhalf}>
         <View style={styles.utility}>
-          <Pressable style={({ pressed }) => pressed && styles.pressed} >
+          <Pressable style={({ pressed }) => pressed && styles.pressed}>
             <View style={styles.iconNavigateStyle}>
-              <MaterialIcons name="work" size={24} color="black" onPress={() => {
-                navigation.navigate('Occupation')
-              }} />
+              <MaterialIcons
+                name="work"
+                size={24}
+                color="black"
+                onPress={() => {
+                  navigation.navigate("Occupation");
+                }}
+              />
               <Text style={styles.navigateText}>Occupation</Text>
             </View>
           </Pressable>
 
-          <Pressable style={({ pressed }) => pressed && styles.pressed} onPress={() => {
-            navigation.navigate('Assets')
-          }}>
-            <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+          <Pressable
+            style={({ pressed }) => pressed && styles.pressed}
+            onPress={() => {
+              navigation.navigate("Assets");
+              console.log(progress)
+            }}
+          >
+            <View style={{ justifyContent: "center", alignItems: "center" }}>
               <MaterialCommunityIcons name="sack" size={24} color="black" />
               <Text style={styles.navigateText}>Assets</Text>
             </View>
@@ -154,31 +178,36 @@ export default function HomeScreen() {
                 <Text style={styles.incrementAge}>+</Text>
                 <Text style={styles.incrementAge}>Age</Text>
               </View>
-            </Pressable >
+            </Pressable>
             {/* random modal component */}
             <RandomPopup modalVisible={modalVisible} closeModal={closeModal} />
           </View>
 
-          <Pressable style={({ pressed }) => pressed && styles.pressed} onPress={() => {
-            navigation.navigate('Relationship');
-          }}>
+          <Pressable
+            style={({ pressed }) => pressed && styles.pressed}
+            onPress={() => {
+              navigation.navigate("Relationship");
+            }}
+          >
             <View style={styles.iconNavigateStyle}>
               <AntDesign name="heart" size={24} color="black" />
               <Text style={styles.navigateText}>Relationship</Text>
             </View>
           </Pressable>
 
-          <Pressable style={({ pressed }) => pressed && styles.pressed} onPress={() => navigation.navigate("SchoolScreen")}>
+          <Pressable
+            style={({ pressed }) => pressed && styles.pressed}
+            onPress={() => navigation.navigate("SchoolScreen")}
+          >
             <View style={styles.iconNavigateStyle}>
               <Ionicons name="school" size={24} color="black" />
               <Text style={styles.navigateText}>Education</Text>
             </View>
           </Pressable>
         </View>
-        {/*  Character status bars */}
-        <CharacterStatus />
+        <CharacterStatus></CharacterStatus>
       </View>
-    </View>
-  )
-}
 
+    </View>
+  );
+}
