@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { Alert, Platform, StyleSheet, Text, TouchableOpacity, View, ScrollView } from 'react-native'
+import { Alert, Platform, ScrollView, Text, TouchableOpacity, View } from 'react-native'
 
 import DividerLine from '../components/DividerLine'
 import FormBtn from '../components/FormBtn'
@@ -9,9 +9,9 @@ import { signInWithPassword } from '../config/firebase'
 
 import { Ionicons } from '@expo/vector-icons'
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import { AuthContext } from "./../context/auth"
-import Animated, { FadeIn, ZoomIn, FadeOut, ZoomOut } from 'react-native-reanimated'
+import Animated, { ZoomIn, ZoomOut } from 'react-native-reanimated'
 import { styles } from '../Style/screenStyles/LoginScreenStyle'
+import { AuthContext } from "./../context/auth"
 //1. Input handler 
 //2. Connect firebase 
 
@@ -21,13 +21,13 @@ function LoginScreen({ navigation }) {
     const [password, setPassword] = React.useState()
 
     function onEmailChangeHandler(email) {
-     //   console.log(email)
+        //   console.log(email)
         email = email.trim()
         setEmail(email)
     }
     function onPasswordChangeHandler(password) {
         password = password.trim()
-      //  console.log(password)
+        //  console.log(password)
         setPassword(password)
     }
     const onLoginPressed = async () => {
@@ -35,10 +35,13 @@ function LoginScreen({ navigation }) {
         if (email && password) {
             const userId = await signInWithPassword(email, password)
             if (userId) {
+                console.log("UID", userId)
                 const userName = await AsyncStorage.getItem(userId)
-            authContext.authenticate(userId, userName);
-            console.log("uname", userName)
-            } 
+                console.log("uname", userName)
+
+                authContext.authenticate(userId, userName);
+
+            }
         }
         else {
             // disable button 

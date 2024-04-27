@@ -1,12 +1,12 @@
-import { createContext, useState, useEffect } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { createContext, useEffect, useState } from "react";
 
 export const AuthContext = createContext({
   userId: "",
   userName: "",
   isAuthenticated: false,
-  authenticate: (userId, userName) => {},
-  logout: () => {},
+  authenticate: (userId, userName) => { },
+  logout: () => { },
 });
 
 function AuthContextProvider({ children, storedUserId }) {
@@ -23,13 +23,12 @@ function AuthContextProvider({ children, storedUserId }) {
     }
   }, [storedUserId]);
 
-  function authenticate(userId, userName = "") {
+  function authenticate(userId, username) {
     if (userId) {
       setAuthUserId(userId);
-      setUserName(userName);
       AsyncStorage.setItem("userId", userId);
-      if (userName) {
-        AsyncStorage.setItem(userId, userName);
+      if (username) {
+        setUserName(username);
       }
     }
   }

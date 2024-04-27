@@ -1,7 +1,6 @@
 import { AntDesign, Ionicons, MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, { useContext, useEffect, useState } from 'react';
-import { Pressable, Text, View, ActivityIndicator } from 'react-native';
+import { ActivityIndicator, Pressable, Text, View } from 'react-native';
 
 import { useNavigation } from '@react-navigation/native';
 import { AuthContext } from '../context/auth';
@@ -34,19 +33,22 @@ export default function HomeScreen() {
           await getUserId(userId).then(({ key, current }) => {
             console.log("key current", key, current);
             setCurrentKey(key);
-            userContext.updateUser(current);
+            userContext.updateUser(userContext.userState.userName);
+
 
           });
 
         } catch (err) {
           console.log(err.message);
         } finally {
+          console.log("finally" + userContext.userState.userName)
           setIsLoading(false);
           userContext.loadUserDataFromStorage(userId);
           userContext.saveUserDataToStorage(userId);
         }
+      }
     }
-  }loadUserName();
+    loadUserName();
   }, [userId])
 
 

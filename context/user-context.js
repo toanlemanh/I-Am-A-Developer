@@ -1,7 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { createContext, useState } from "react";
 const initialUserState = {
-
     userName: "name",
     gameJustStarted: true,
     userDailyLogin: {
@@ -193,7 +192,7 @@ const UserProvider = ({ children }) => {
                 appearance: -0.1
             })
             if (userState.status.health <= 0) {
-               
+
             }
         }, 20000)
 

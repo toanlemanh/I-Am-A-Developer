@@ -1,25 +1,23 @@
-import React, { useEffect, useContext } from "react";
-import {
-  View,
-  StyleSheet,
-  TouchableOpacity,
-  Platform,
-  Text,
-  ScrollView,
-} from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import { signUp } from "../config/firebase";
-import { useState } from "react";
-import SocialBtn from "../components/SocialBtn";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import React, { useContext, useEffect, useState } from "react";
+import {
+  Alert,
+  Platform,
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  View
+} from "react-native";
+import { styles } from "../Style/screenStyles/RegisterStyles";
+import DividerLine from "../components/DividerLine";
 import FormBtn from "../components/FormBtn";
 import FormInput from "../components/FormInput";
-import DividerLine from "../components/DividerLine";
+import SocialBtn from "../components/SocialBtn";
+import { signUp } from "../config/firebase";
 import { AuthContext } from "../context/auth";
-import { Alert } from "react-native";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import { postUserId } from "../context/axios";
 import { UserContext } from "../context/user-context";
-import { styles } from "../Style/screenStyles/RegisterStyles";
 function RegisterScreen({ navigation }) {
   let USER_ID;
   const authContext = useContext(AuthContext);
@@ -53,7 +51,7 @@ function RegisterScreen({ navigation }) {
     }
   }, [passsword, confirm, match]);
 
-  function updateInitialState(data){
+  function updateInitialState(data) {
     console.log("data", data)
     setInitialState((prev) => ({
       ...prev, ...data
@@ -61,22 +59,23 @@ function RegisterScreen({ navigation }) {
   }
   useEffect(() => {
     function registerUserName() {
-     if (userId) {
-       console.log("init",userId, initialState);
-    //  authContext.authenticate(userId, username);
-       const data = { userName: username };
-       userContext.updateUser(data);
-       try {
-         postUserId(userId, initialState);
-         navigation.navigate("LoginScreen")
-       }
-       catch(err) {
-         Alert.alert("Error", "Wrong Credential!")
-       }        
-     }
-   }
-   registerUserName();
- }, [initialState]);
+      if (userId) {
+        console.log("init", userId, initialState);
+        //  authContext.authenticate(userId, username);
+        const data = { userName: username };
+        AsyncStorage.setItem(userId, username);
+        console.log(username)
+        try {
+          postUserId(userId, initialState);
+          navigation.navigate("LoginScreen")
+        }
+        catch (err) {
+          Alert.alert("Error", "Wrong Credential!")
+        }
+      }
+    }
+    registerUserName();
+  }, [initialState]);
 
   //  function to register a new user account
   async function onRegisterHandler() {
@@ -90,7 +89,7 @@ function RegisterScreen({ navigation }) {
       Alert.alert("Error", "All fields are required.");
       return;
     }
-    if (passsword.length <= 3){
+    if (passsword.length <= 3) {
       Alert.alert("Error", "Password is too short!");
       return;
     }
@@ -108,7 +107,7 @@ function RegisterScreen({ navigation }) {
     // redirect to home
     USER_ID = await signUp(email, passsword);
     setUserId(USER_ID);
-    updateInitialState({userName: username});
+    updateInitialState({ userName: username });
   }
 
   return (
