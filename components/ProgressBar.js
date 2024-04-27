@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import { View, } from 'react-native';
 
 const PercentageBar = ({
-  navigation,
   percentage,
   height,
   backgroundColor,
@@ -12,10 +11,6 @@ const PercentageBar = ({
 }) => {
 
 
-  const [getPercentage, setPercentage] = useState(percentage);
-  const [getheight, setHeight] = useState(height);
-  const [getBackgroundColor, setBackgroundColor] = useState(backgroundColor);
-  const [getCompletedColor, setCompletedColor] = useState(completedColor);
   return (
     <View>
       <View style={{ justifyContent: 'center' }}>
@@ -23,29 +18,29 @@ const PercentageBar = ({
           style={{
 
             width: width,
-            height: getheight,
+            height: height,
             marginVertical: 0,
             borderRadius: 5,
-            borderColor: getBackgroundColor,
+            borderColor: backgroundColor,
 
             backgroundColor: '#E0E9F2'
           }}
         />
         <View
           style={{
-            width: `${getPercentage}%`,
-            height: getheight,
+            width: `${percentage}%`,
+            height: height,
             marginVertical: 0,
             borderRadius: 5,
-            backgroundColor: getCompletedColor,
+            backgroundColor: completedColor,
             position: 'absolute',
             bottom: height
           }}
         />
         <View
           style={{
-            width: `${getPercentage}%`,
-            height: getheight,
+            width: `${percentage}%`,
+            height: height,
             bottom: 10
           }}>
 
