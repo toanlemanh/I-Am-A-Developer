@@ -127,6 +127,15 @@ const UserProvider = ({ children }) => {
             ...prev, ...newUserState,
         }));
     };
+    // function updateUser(newUserState) {
+    //     setUserState((prev) => ({
+    //         ...prev,
+    //         character: {
+    //             ...prev.character,
+    //             ...newUserState.character
+    //         }
+    //     }));
+    // };
 
     function updateUserName(newUserName) {
         setUserState((prev) => ({
