@@ -38,10 +38,8 @@ export default function OccupationScreen({ navigation }) {
     return (
       <View style={styles.detailsContainer}>
         <Text><Text style={styles.label}>Job:</Text> {job.job}</Text>
-        <Text><Text style={styles.label}>Enterprise:</Text> {job.enterprise}</Text>
         <Text><Text style={styles.label}>Years:</Text> {job.years}</Text>
         <Text><Text style={styles.label}>Salary:</Text> {job.salary}</Text>
-        <Text><Text style={styles.label}>Rate:</Text> {job.rate}</Text>
         <TouchableOpacity style={styles.quitButton} onPress={quitJob}>
           <Text style={styles.quitButtonText}>Quit Job</Text>
         </TouchableOpacity>
@@ -50,56 +48,6 @@ export default function OccupationScreen({ navigation }) {
   };
 
   const ButtonComponent = Platform.OS === 'android' ? TouchableNativeFeedback : TouchableOpacity;
-
-  // return (
-  //   <ScrollView style={styles.container}>
-  //     {/* <View style={{ alignItems:'center'}}>
-  //     {occupations.map((occupation) => ( 
-  //       <Card key={occupation.job} barHidden={true} showDetail={true} onPress={()=> openModal(occupation)}>
-  //         <Text>{occupation.job}</Text>
-  //       </Card>
-  //     ))}
-  //     </View> */}
-
-  //     <View style={styles.buttonOutterContainer}>
-  //       {occupation ? (
-  //         <Card
-  //           onPress={openModal}
-  //           barHidden={false}
-  //           showDetail={true}
-  //         >
-  //           {occupation.name ? occupation.name : "No Current Job"}
-  //         </Card>
-  //       ) : (
-  //         <Card
-  //           onPress={openModal}
-  //           barHidden={true}
-  //           showDetail={false}
-  //         >
-  //           No Current Job
-  //         </Card>
-  //       )}
-  //     </View>
-  //     <AlertPopup
-  //       modalVisible={modalVisible}
-  //       closeModal={closeModal}
-  //       title={occupation?.name || "No Current Job"}
-  //       content={renderJobDetails(occupation)}
-  //       buttonText={"OK"}
-  //       buttonOnPress={closeModal}
-  //     />
-  //     <View style={styles.buttonOutterContainer}>
-  //       <ButtonComponent onPress={() => {
-  //         navigation.navigate('Job Market')
-  //       }}>
-  //         <View style={styles.buttonContainer}>
-  //           <Text style={styles.findjob}>Find jobs</Text>
-  //           <FontAwesome name="search" size={21} color="white" />
-  //         </View>
-  //       </ButtonComponent>
-  //     </View>
-  //   </ScrollView>
-  // );
 
   return (
     <ScrollView style={styles.container}>
@@ -126,10 +74,12 @@ export default function OccupationScreen({ navigation }) {
 
       <AlertPopup
         modalVisible={modalVisible}
-        closeModal={closeModal}
+        // closeModal={closeModal}
+        closeModal={quitJob}
         title={occupation?.name || "No Current Job"}
         content={renderJobDetails(occupation)}
         buttonText={"OK"}
+        // buttonOnPress={occupation ? closeModal : quitJob}
         buttonOnPress={closeModal}
       />
       <View style={styles.buttonOutterContainer}>

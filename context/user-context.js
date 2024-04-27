@@ -56,10 +56,10 @@ const initialUserState = {
     // currentDiseases in an array of diseases objects
     currentDiseases: [],
     education: {
-        math: 0,
+        math: 10,
         literature: 0,
         history: 0,
-        science: 0,
+        science: 10,
         geography: 0,
         art: 5,
         music: 0,
@@ -68,8 +68,8 @@ const initialUserState = {
         english: 0,
     },
     higherEducation: {
-        computerScience: 0,
-        softwareEngineering: 0,
+        computerScience: 10,
+        softwareEngineering: 10,
         informationTechnology: 0,
         cybersecurity: 0,
         dataScience: 0,
