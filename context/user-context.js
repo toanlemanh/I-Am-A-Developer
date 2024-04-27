@@ -145,12 +145,28 @@ const UserProvider = ({ children }) => {
         }));
     }
 
+
+
     function updateInUniversity() {
         setUserState((prev) => ({
             ...prev,
             character: {
                 ...prev.character,
                 inUniversity: prev.character.inUniversity ? false : true
+            }
+        }));
+    }
+
+    function updateOccupation(name, salary) {
+        setUserState((prev) => ({
+            ...prev,
+            character: {
+                ...prev.character,
+                occupation:
+                {
+                    name: name,
+                    salary: salary,
+                }
             }
         }));
     }
