@@ -1,10 +1,10 @@
-import { View, Text, ScrollView, StyleSheet } from "react-native";
-import { useState, useContext } from "react";
+import { useContext, useState } from "react";
+import { ScrollView, Text, View } from "react-native";
+import { styles } from "../Style/screenStyles/JobMarketStyle";
 import Card from "../components/Card";
 import AlertPopup from "../components/eventsPopup/AlertPopup";
-import data from "../data/data.json";
 import { UserContext } from "../context/user-context";
-import { styles } from "../Style/screenStyles/JobMarketStyle";
+import data from "../data/data.json";
 
 export default function JobMarket() {
 
@@ -25,9 +25,20 @@ export default function JobMarket() {
   const renderJD = (job) => {
     return (
       <View style={styles.JDContainer}>
-        <Text><Text style={styles.label}>Requirement:</Text> {Object.entries(job.requirements).map(([key, value]) => `${key}: ${value}`).join(', ')}</Text>
-        <Text><Text style={styles.label}>Subject Requirements:</Text> {Object.entries(job.subjectRequirements).map(([key, value]) => `${key}: ${value}`).join(', ')}</Text>
-        <Text><Text style={styles.label}>Salary:</Text> {job.salary}</Text>
+        <View>
+          <Text style={styles.label}>Requirements:</Text>
+          <View>
+            {Object.entries(job.requirements).map(([key, value]) => <Text>{key}: {value}</Text>)}
+          </View>
+        </View>
+
+        <View>
+          <Text style={styles.label}>Subject Requirements:</Text>
+          <View>
+            {Object.entries(job.subjectRequirements).map(([key, value]) => <Text>{key}: {value}</Text>)}
+          </View>
+        </View>
+        <Text><Text style={styles.label}>Salary:</Text> ${job.salary}</Text>
       </View>
     )
   }
