@@ -2,6 +2,7 @@ import { StyleSheet } from "react-native";
 import { COLOR } from "../../constants/GlobalColor";
 
 export const styles = StyleSheet.create({
+
     container: {
       padding: 10,
       backgroundColor: COLOR.homeBackgound,
@@ -30,3 +31,4 @@ export const styles = StyleSheet.create({
     }
   
   });
+
