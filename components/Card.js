@@ -3,6 +3,7 @@ import { View, StyleSheet, Text, Pressable } from 'react-native';
 import PercentageBar from './ProgressBar';
 import CustomAvatar from './CustomAvatar';
 import { styles } from '../Style/componentStyle/CardStyle';
+import { COLOR } from '../constants/GlobalColor';
 /**
  * 
  *This component include the avatar of the card, the name of the card, and two optional prop 
@@ -23,7 +24,7 @@ export default function Card({ percentage,onPress,barHidden,showDetail,children 
                   height={15}
                   width={210}
                   backgroundColor={'#E0E9F2'}
-                  completedColor={'#009A34'}
+                   completedColor={COLOR.happinessColor}
                 />
               ) : null}
               {showDetail ? (

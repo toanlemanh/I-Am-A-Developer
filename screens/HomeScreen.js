@@ -23,6 +23,7 @@ import { getUserId } from "../context/axios";
 import { UserContext } from "../context/user-context";
 import data from "../data/data.json";
 import { CONSTRAINTS } from "../utils/constraints";
+import { COLOR } from "../constants/GlobalColor";
 export default function HomeScreen() {
   const [isLoading, setIsLoading] = useState(true);
   //const [userName, setUserName] = useState("Tom");
@@ -141,7 +142,7 @@ export default function HomeScreen() {
         width={"100%"}
         height={12}
         backgroundColor={"#E0E9F2"}
-        completedColor={"#EB9F4A"}
+        completedColor={COLOR.happinessColor}
         percentage={Math.round(userContext.progress, 2)}
       />
 
