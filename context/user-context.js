@@ -1,5 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { createContext, useState } from "react";
+import { CONSTRAINTS } from '../utils/constraints';
 const initialUserState = {
     userName: "name",
     gameJustStarted: true,
@@ -252,20 +253,6 @@ const UserProvider = ({ children }) => {
 
     }
 
-    function drainStatus() {
-        setInterval(() => {
-            // replace by constraints.speed
-            updateStatus({
-                health: -10,
-                happiness: -10,
-                appearance: -10
-            })
-            if (userState.status.health <= 0) {
-
-            }
-        }, 5000)
-
-    }
 
     // set
     function setStatus({ newStatusData }) {
@@ -420,6 +407,12 @@ const UserProvider = ({ children }) => {
         }
         updateUser({ gameJustStarted: false })
     };
+    function isAlive () {
+       if ( userState.status.health <= CONSTRAINTS.health.minHealthValue ) {
+            return false;
+       }
+       return true;
+    }
 
     return (
         <UserContext.Provider value=
@@ -435,7 +428,6 @@ const UserProvider = ({ children }) => {
                     updateInSchool,
                     updateInUniversity,
                     updateOccupation,
-                    drainStatus,
                     updateCharacterAge,
                     startProgress,
                     updateProgress,
@@ -454,6 +446,7 @@ const UserProvider = ({ children }) => {
             }>
             {children}
             {console.log("userstate eve", userState)}
+            {isAlive()}
         </UserContext.Provider>
     );
 
