@@ -28,8 +28,8 @@ function DrawerStack() {
             headerTitleAlign: "center",
             headerRight: () => (
                 <Pressable
-                    style={{ backgroundColor: 'blue', padding: 5, borderRadius: 10, alignItems: 'center', justifyContent: 'center', marginRight: 10 }}
-                    title="put"
+                    style={{ backgroundColor: '#243bec', padding: 5, borderRadius: 10, alignItems: 'center', justifyContent: 'center', marginRight: 10 }}
+                    title="Savebutton"
                     onPress={ async () => {
                         if(authContext.userId){
                             const key = await AsyncStorage.getItem("key");
@@ -38,7 +38,7 @@ function DrawerStack() {
                         }
                     }}
                 >
-                    <View><Text style={{ color: 'white', textAlign: 'center' }}>Put Data</Text></View>
+                    <View><Text style={{ color: 'white', textAlign: 'center' }}>Save</Text></View>
                 </Pressable>
             ),
         }}>
