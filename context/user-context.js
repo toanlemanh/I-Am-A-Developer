@@ -278,7 +278,6 @@ const UserProvider = ({ children }) => {
                 appearance: appearance ? (userState.status.happiness += happiness) < 0 ? 0 : ((userState.status.appearance += appearance) > 100 ? 100 : (userState.status.appearance += appearance)) : userState.status.appearance
             },
         });
-
     };
 
 

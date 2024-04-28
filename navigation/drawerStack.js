@@ -7,6 +7,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import { Alert } from 'react-native'
 import CustomDrawerContent from '../components/CustomDrawerContent'
 import { COLOR } from '../constants/GlobalColor'
+import MyAssetScreen from '../screens/MyAssetsScreen'
 import { putUserData } from '../context/axios'
 import { UserContext } from '../context/user-context'
 import ActivitiesScreen from '../screens/ActivitiesScreen'
@@ -70,6 +71,11 @@ function DrawerStack() {
                 name="TestData"
                 component={TestData}
 
+            />
+            <Drawer.Screen
+                name="My Assets"
+                component={MyAssetScreen}
+               
             />
             {/* <Drawer.Screen
                 name="GoingOffline"
