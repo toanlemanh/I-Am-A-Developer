@@ -28,6 +28,7 @@ function RegisterScreen({ navigation }) {
   const [confirm, setConfirm] = useState();
   const [match, setMatch] = useState(true);
   const [userId, setUserId] = useState();
+ // userContext.refresh();
   const [initialState, setInitialState] = useState(userContext.userState);
 
   function onEmailChangeHandler(email) {
@@ -62,15 +63,17 @@ function RegisterScreen({ navigation }) {
       if (userId) {
         console.log("init", userId, initialState);
         //  authContext.authenticate(userId, username);
-        const data = { userName: username };
-        AsyncStorage.setItem(userId, username);
-        console.log(username)
+        //const data = { userName: username };
         try {
           postUserId(userId, initialState);
-          navigation.navigate("LoginScreen")
+          navigation.navigate("LoginScreen");
         }
         catch (err) {
           Alert.alert("Error", "Wrong Credential!")
+        }
+        finally {
+    //thieu async
+        AsyncStorage.setItem("username"+userId, username);
         }
       }
     }

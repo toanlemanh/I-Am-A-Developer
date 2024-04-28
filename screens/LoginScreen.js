@@ -36,7 +36,7 @@ function LoginScreen({ navigation }) {
             const userId = await signInWithPassword(email, password)
             if (userId) {
                 console.log("UID", userId)
-                const userName = await AsyncStorage.getItem(userId)
+                const userName = await AsyncStorage.getItem("username"+userId)
                 console.log("uname", userName)
 
                 authContext.authenticate(userId, userName);
