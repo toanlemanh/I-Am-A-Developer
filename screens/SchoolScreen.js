@@ -18,8 +18,8 @@ function SchoolScreen() {
   const universitySubjects = user.higherEducation;
   const [selectedSubject, setSelectedSubject] = useState("");
   const [modalVisible, setModalVisible] = useState(false);
-  const learningState = userContext.learningState;
   const [learningSubject, setLearningSubject] = useState("")
+  const [intervalId, setIntervalId] = useState("")
   useEffect(() => {
     if (user.character.age < 6) {
       Alert.alert("Not Eligible", "You are not old enough to attend school.");
@@ -33,12 +33,10 @@ function SchoolScreen() {
 
   const openModal = (subject) => {
     setSelectedSubject(subject)
-    console.log(userContext.learningState)
     setModalVisible(true);
   };
 
   const closeModal = () => {
-    console.log(userContext.learningState)
     setModalVisible(false);
   };
 
@@ -61,28 +59,22 @@ function SchoolScreen() {
     userContext.updateOccupation("", 0)
   };
 
-  const quitUniversity = () => {
-    setIsEnrolledInUniversity(false);
-    Alert.alert("Notice", "You have successfully quit university.");
-  };
-
   const startLearning = (subject) => {
-    if (!learningState.isLearning) {
+    if (learningSubject === "") {
       setLearningSubject(subject)
-      userContext.setLearningState({ ...learningState, isLearning: true })
+
       const id = setInterval(() => {
         userContext.setLearningProgress((prev) => prev + 10)
       }, 1000)
-      userContext.setLearningState({ ...learningState, intervalId: id })
+      setIntervalId(id)
     }
   }
 
 
   useEffect(() => {
     if (userContext.learningProgress >= 100) {
-      clearInterval(learningState.intervalId)
-      userContext.setLearningState({ ...learningState, isLearning: false })
-      console.log(userContext.learningState)
+      clearInterval(intervalId)
+
       if (user.character.age >= 6 && user.character.age < 18 && !user.character.inUniversity)
         userContext.levelupEducation(learningSubject)
       console.log(learningSubject)
@@ -172,6 +164,7 @@ function SchoolScreen() {
           ) : null}
           buttonOnPress={() => {
             startLearning(selectedSubject)
+            closeModal()
           }}
           buttonText={"Start Learning"}
         />

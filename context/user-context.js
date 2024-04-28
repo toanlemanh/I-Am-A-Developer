@@ -108,10 +108,9 @@ const UserProvider = ({ children }) => {
     const [userState, setUserState] = useState(initialUserState);
     const [progress, setProgress] = useState(0)
     const [learningState, setLearningState] = useState({
-        isLearning: false,
         intervalId: "",
     })
-    const [learningProgress, setLearningProgress] = useState(20)
+    const [learningProgress, setLearningProgress] = useState(0)
     function refresh() {
         setUserState(initialUserState);
     }
@@ -186,21 +185,17 @@ const UserProvider = ({ children }) => {
     }
     // Handle User Login Rewards
     // Must be call at the time user login
-    function updateUserLogin(newLoginData) {
+    function updateUserLogin() {
         setUserState({
             ...userState,
             userDailyLogin: {
                 currentLoginDate: formatDate(new Date())
             },
         });
-        if (userState.userDailyLogin.currentLoginDate !== userState.userDailyLogin.lastLoginDate) {
-            setUserState({
-                ...userState,
-                character: {
-                    money: userState.character.money + userState.userDailyLogin.rewards
-                },
-            });
+        if (userState.userDailyLogin.currentLoginDate !== userState.userDailyLogin.lastLoginDate || !userState.userDailyLogin.lastLoginDate) {
+
             updateCharacterMoney(-userState.userDailyLogin.rewards)
+            return `You have received $${userState.userDailyLogin.rewards} from daily login rewards!`
         }
         setUserState({
             ...userState,
@@ -208,6 +203,7 @@ const UserProvider = ({ children }) => {
                 lastLoginDate: formatDate(new Date())
             },
         });
+        return "You have successfully logged in!"
     };
     // each one increase by one level
     function levelupAllEducation() {
@@ -277,12 +273,11 @@ const UserProvider = ({ children }) => {
         setUserState({
             ...userState,
             status: {
-                health: health ? ((userState.status.health += health) > 100 ? 100 : (userState.status.health += health)) : userState.status.health,
-                happiness: happiness ? ((userState.status.happiness += happiness) > 100 ? 100 : (userState.status.happiness += happiness)) : userState.status.happiness,
-                appearance: appearance ? ((userState.status.appearance += appearance) > 100 ? 100 : (userState.status.appearance += appearance)) : userState.status.appearance
+                health: health ? (userState.status.health += health) < 0 ? 0 : ((userState.status.health += health) > 100 ? 100 : (userState.status.health += health)) : userState.status.health,
+                happiness: happiness ? (userState.status.happiness += happiness) < 0 ? 0 : ((userState.status.happiness += happiness) > 100 ? 100 : (userState.status.happiness += happiness)) : userState.status.happiness,
+                appearance: appearance ? (userState.status.happiness += happiness) < 0 ? 0 : ((userState.status.appearance += appearance) > 100 ? 100 : (userState.status.appearance += appearance)) : userState.status.appearance
             },
         });
-
     };
 
 
