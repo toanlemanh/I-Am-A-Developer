@@ -82,7 +82,7 @@ export default function HomeScreen() {
     if (userContext.progress > CONSTRAINTS.age.max) {
       userContext.updateProgress(-100)
       userContext.updateCharacterAge(1)
-      updateAge
+      updateAge()
     }
   }, [userContext.progress]);
 

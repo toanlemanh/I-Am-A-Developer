@@ -246,7 +246,7 @@ const UserProvider = ({ children }) => {
     async function loadProgress(uid) {
         try {
             const loadedProgress = await AsyncStorage.getItem("progress" + uid);
-            console.log( "progressId  :",loadedProgress, uid);
+            console.log("progressId  :", loadedProgress, uid);
             setProgress(JSON.parse(loadedProgress))
         } catch (error) {
             console.log('Error progress saving data: ', error);
@@ -291,25 +291,27 @@ const UserProvider = ({ children }) => {
         //         value = max
         //     }
         // }
+
         setUserState({
             ...userState,
             status: {
-                health: health ? userState.status.health += health : userState.status.health,
-                happiness: happiness ? userState.status.happiness += happiness : userState.status.happiness,
-                appearance: appearance ? userState.status.appearance += appearance : appearance
+                health: health ? ((userState.status.health += health) > 100 ? 100 : (userState.status.health += health)) : userState.status.health,
+                happiness: happiness ? ((userState.status.happiness += happiness) > 100 ? 100 : (userState.status.happiness += happiness)) : userState.status.happiness,
+                appearance: appearance ? ((userState.status.appearance += appearance) > 100 ? 100 : (userState.status.appearance += appearance)) : userState.status.appearance
             },
         });
+
     };
 
     // update Money
     // False = increase
-    function updateCharacterMoney(newMoney, decrease) {
+    function updateCharacterMoney(newMoney) {
         setUserState({
             ...userState,
             character: {
                 ...userState.character,
                 // increase or decrease money
-                money: !decrease ? userState.money + newMoney : userState.money - newMoney
+                money: userState.character.money -= newMoney
             },
         });
     };
@@ -395,10 +397,10 @@ const UserProvider = ({ children }) => {
         if (!userState.gameJustStarted)
             try {
                 let strData = ""
-                console.log("saving as",  strData =  JSON.stringify (userState))
-            if (strData) await AsyncStorage.setItem(uid, strData);
+                console.log("saving as", strData = JSON.stringify(userState))
+                if (strData) await AsyncStorage.setItem(uid, strData);
                 //console.log('USER Data saved successfully!');
-                console.log("save data",userState);
+                console.log("save data", userState);
             } catch (error) {
                 console.log('Error saving data: ', error);
             }
@@ -407,10 +409,10 @@ const UserProvider = ({ children }) => {
     async function loadUserDataFromStorage(uid) {
         try {
             const storedData = await AsyncStorage.getItem(uid);
-            console.log("stored ",storedData);
+            console.log("stored ", storedData);
             if (storedData !== null) {
                 const parsedData = JSON.parse(storedData);
-                console.log("storedata",typeof parsedData);
+                console.log("storedata", typeof parsedData);
                 setUserState(parsedData)
                 console.log('Data loaded: ' + userState.status.health)
             }
