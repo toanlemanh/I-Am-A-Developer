@@ -1,6 +1,6 @@
-import React from 'react';
-import { Modal, StyleSheet, Text, Pressable, View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import React from 'react';
+import { Modal, Pressable, Text, View } from 'react-native';
 import { styles } from '../../Style/componentStyle/popupStyle/AlertPopStyle';
 function AlertPopup({ modalVisible, closeModal, title, content, buttonText, buttonOnPress }) {
     return (

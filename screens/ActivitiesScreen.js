@@ -1,12 +1,13 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { ScrollView, Text, View } from "react-native";
 import { styles } from "../Style/screenStyles/ActivitiesStyle";
 import Card from "../components/Card";
 import AlertPopup from "../components/eventsPopup/AlertPopup";
+import { UserContext } from "../context/user-context";
 import data from "../data/data.json";
 export default function ActivitiesScreen() {
     const activities = data.activities.data;
-
+    const userContext = useContext(UserContext)
     const [selectedActivity, setSelectedActivity] = useState(null); // Track currently selected job
     const [modalVisible, setModalVisible] = useState(false);
     const openModal = (activity) => {
@@ -18,6 +19,17 @@ export default function ActivitiesScreen() {
         setModalVisible(false);
         setSelectedActivity(null); // Clear selected job on close
     };
+
+    const activityHandler = () => {
+        setModalVisible(false);
+        setSelectedActivity(null);
+        userContext.updateCharacterMoney(selectedActivity.cost)
+        userContext.updateStatus({
+            health: selectedActivity.effects.health,
+            happiness: selectedActivity.effects.happiness,
+            appearance: selectedActivity.effects.appearance,
+        })
+    }
 
     const renderActivity = (cost, happiness, health, appearance) => {
         return (
@@ -60,6 +72,7 @@ export default function ActivitiesScreen() {
                 modalVisible={modalVisible}
                 closeModal={closeModal}
                 title={selectedActivity?.name}
+                buttonOnPress={activityHandler}
                 content={renderActivity(
                     selectedActivity?.cost,
                     selectedActivity?.effects.happiness,

@@ -82,7 +82,7 @@ export default function HomeScreen() {
     if (userContext.progress > CONSTRAINTS.age.max) {
       userContext.updateProgress(-100)
       userContext.updateCharacterAge(1)
-      userContext.updateStatus({ health: -10, happiness: -10, appearance: -5 })
+      updateAge()
     }
   }, [userContext.progress]);
 
@@ -107,13 +107,16 @@ export default function HomeScreen() {
       setModalVisible(true);
     }
   }, [userContext.progress]);
-
-  function handleAgePress() {
+  function updateAge() {
     userContext.updateCharacterAge(1);
     setModalVisible(true);
     const eventsLength = data.newAgeEvents.data.length;
     const index = Math.floor(Math.random() * eventsLength);
     setRandomIndex(index);
+    userContext.updateStatus({ health: -10, happiness: -10, appearance: -5 })
+  }
+  function handleAgePress() {
+    updateAge()
   }
 
   const closeModal = () => {
