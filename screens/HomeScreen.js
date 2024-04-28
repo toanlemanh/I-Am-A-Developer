@@ -108,7 +108,7 @@ export default function HomeScreen() {
     const eventsLength = data.newAgeEvents.data.length;
     const index = Math.floor(Math.random() * eventsLength);
     setRandomIndex(index);
-    userContext.updateStatus({ health: -7, happiness: -7, appearance: -5 });
+    userContext.updateStatus({ health: -7, happiness: -10, appearance: -5 });
   }
   function handleAgePress() {
     updateAge();
