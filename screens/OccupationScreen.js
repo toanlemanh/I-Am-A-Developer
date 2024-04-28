@@ -1,28 +1,21 @@
-import React from 'react';
-import { View, Text, ScrollView, Platform, TouchableNativeFeedback, TouchableOpacity } from 'react-native';
+import { FontAwesome } from '@expo/vector-icons';
+import React, { useContext, useEffect, useState } from 'react';
+import { Platform, ScrollView, Text, TouchableNativeFeedback, TouchableOpacity, View } from 'react-native';
+import { styles } from '../Style/screenStyles/OccupationStyle';
 import Card from '../components/Card';
 import AlertPopup from '../components/eventsPopup/AlertPopup';
-import { useState, useContext, useEffect } from 'react';
-import { FontAwesome } from '@expo/vector-icons';
-import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import { UserContext } from '../context/user-context';
-import { styles } from '../Style/screenStyles/OccupationStyle'
 
 export default function OccupationScreen({ navigation }) {
 
-  const { userState, updateUser } = useContext(UserContext);
+  const userContext = useContext(UserContext);
 
-  const { occupation } = userState.character;
+  const occupation = userContext.userState.character.occupation;
 
   useEffect(() => {
     console.log("Occupation updated to:", occupation);
   }, [occupation]);
 
-  useEffect(() => {
-    if (occupation && occupation.name === '' && occupation.salary === 0) {
-      updateUser({ character: { ...userState.character, occupation: null } });
-    }
-  }, [occupation]);
 
   const [modalVisible, setModalVisible] = useState(false);
   const openModal = () => {
@@ -35,7 +28,7 @@ export default function OccupationScreen({ navigation }) {
   };
   const quitJob = () => {
     // Function to call when user quits their job
-    updateUser({ character: { ...userState.character, occupation: null } });
+    userContext.updateOccupation("", 0)
     closeModal();
   };
 
@@ -56,11 +49,11 @@ export default function OccupationScreen({ navigation }) {
     <ScrollView style={styles.container}>
 
       <View style={styles.buttonOutterContainer}>
-        {occupation ? (
+        {occupation.salary !== 0 ? (
           <Card
             onPress={openModal}
-            barHidden={false}
-            showDetail={true}
+            barHidden={true}
+            showDetail={false}
           >
             {occupation.name ? occupation.name : "No Current Job"}
           </Card>
@@ -74,7 +67,6 @@ export default function OccupationScreen({ navigation }) {
           </Card>
         )}
       </View>
-
       <AlertPopup
         modalVisible={modalVisible}
         closeModal={closeModal} // General close modal function
