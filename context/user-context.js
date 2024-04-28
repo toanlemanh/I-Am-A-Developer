@@ -66,7 +66,7 @@ const initialUserState = {
         music: 0,
         physicalEducation: 0,
         computerScience: 0,
-        english: 0,
+        english: 4,
     },
     higherEducation: {
         computerScience: 10,
@@ -214,11 +214,19 @@ const UserProvider = ({ children }) => {
     // }
 
 
+
     // each one increase by one level
     function levelupEducation() {
-        for (var subject in userState.education) {
-            setUserState({ ...userState, education: { ...userState.education, [subject]: userState.education[subject] + 1 } })
+        const updatedEducation = { ...userState.education };
+        console.log(updatedEducation)
+        for (const subject in updatedEducation) {
+            updatedEducation[subject] += 1;
         }
+
+        setUserState(prevState => ({
+            ...prevState,
+            education: updatedEducation
+        }));
     }
 
 
