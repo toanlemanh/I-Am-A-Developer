@@ -37,7 +37,7 @@ export default function AssetScreen() {
   }, {});
 
   const buttonText = (text) => {
-    return <Text> Look for: {text} </Text>; 
+    return <Text>  Buy now {text} </Text>; 
   };
   
   const renderContent =(name,price)=>{

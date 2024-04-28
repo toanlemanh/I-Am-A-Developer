@@ -29,6 +29,7 @@ function AuthContextProvider({ children, storedUserId }) {
       AsyncStorage.setItem("userId", userId);
       if (username) {
         setUserName(username);
+        //AsyncStorage.setItem(userId, userName)
       }
     }
   }
@@ -36,7 +37,9 @@ function AuthContextProvider({ children, storedUserId }) {
   function logout() {
     setAuthUserId(null);
     setUserName("");
+    // AsyncStorage.removeItem(authUserId)
     AsyncStorage.removeItem("userId");
+    AsyncStorage.removeItem("key");
     //AsyncStorage.removeItem('userName')
   }
 

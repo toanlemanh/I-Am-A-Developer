@@ -8,6 +8,7 @@ export const CONSTRAINTS = {
         retirement: 65, // Age at which players can retire
         max: 100,
         min: 0,
+
     },
     financial: {
         initialMoneyFromParents: 10000,

@@ -21,7 +21,7 @@ import RandomPopup from "../components/eventsPopup/RandomPopup";
 import { AuthContext } from "../context/auth";
 import { getUserId } from "../context/axios";
 import { UserContext } from "../context/user-context";
-
+import {CONSTRAINTS } from "../utils/constraints"
 
 export default function HomeScreen() {
   const [isLoading, setIsLoading] = useState(true);
@@ -44,6 +44,7 @@ export default function HomeScreen() {
           await getUserId(userId).then(({ key, current }) => {
             console.log("key current", key, current);
             setCurrentKey(key);
+            AsyncStorage.setItem("key", key);
             userContext.updateUser(current);
 
           });
@@ -52,9 +53,11 @@ export default function HomeScreen() {
           console.log(err.message);
         } finally {
           setIsLoading(false);
-          userContext.loadProgress(userId)
-          userContext.loadUserDataFromStorage(userId);
-          userContext.saveUserDataToStorage(userId);
+          userContext.loadProgress(userId);
+          // userContext.loadUserDataFromStorage(userId);
+          //  userContext.saveUserDataToStorage(userId);
+           
+         
         }
 
       }
@@ -68,14 +71,15 @@ export default function HomeScreen() {
   }, []);
 
   useEffect(() => {
-    AsyncStorage.setItem("progress" + userId, userContext.progress.toString())
-    if (userContext.progress >= 100) {
+     AsyncStorage.setItem("progress" + userId, userContext?.progress.toString());
+    //console.log("sucess set progress")
+    if (userContext.progress > CONSTRAINTS.age.max ) {
       userContext.updateProgress(-100)
       userContext.updateCharacterAge(1)
       userContext.updateStatus({ health: -10, happiness: -10, appearance: -5 })
     }
   }, [userContext.progress]);
-
+//hjkhghghghfg
   useEffect(() => {
     if (user.character.age <= 1) {
       setLifeStage("Infant")
@@ -161,7 +165,7 @@ export default function HomeScreen() {
             style={({ pressed }) => pressed && styles.pressed}
             onPress={() => {
               navigation.navigate("Assets");
-              console.log(progress)
+             // console.log(progress)
             }}
           >
             <View style={{ justifyContent: "center", alignItems: "center" }}>
