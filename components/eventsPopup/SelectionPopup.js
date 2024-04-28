@@ -2,7 +2,18 @@ import React from 'react';
 import { Modal, Text, Pressable, View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { styles } from '../../Style/componentStyle/popupStyle/SelectPopStyle';
-function SelectionPopup({ modalVisible, closeModal,title,choice1,choice2,choice3 }) {
+function SelectionPopup({ 
+    modalVisible, 
+    closeModal,
+    title,
+    choice1,
+    choice2,
+    choice3,
+    handleChoice1,
+    handleChoice2,
+    handleChoice3 
+
+    }) {
     return (
         <Modal
             animationType="slide"
@@ -32,7 +43,7 @@ function SelectionPopup({ modalVisible, closeModal,title,choice1,choice2,choice3
 
                                 <Pressable
                                     style={styles.button}
-                                    onPress={closeModal}>
+                                    onPress={handleChoice1}>
                                     <Text style={styles.textButtonStyle}>{choice1}</Text>
                                 </Pressable>
                             </LinearGradient>
@@ -48,7 +59,7 @@ function SelectionPopup({ modalVisible, closeModal,title,choice1,choice2,choice3
 
                                 <Pressable
                                     style={styles.button}
-                                    onPress={closeModal}>
+                                    onPress={handleChoice2}>
                                     <Text style={styles.textButtonStyle}>{choice2}</Text>
                                 </Pressable>
                             </LinearGradient>
@@ -66,7 +77,7 @@ function SelectionPopup({ modalVisible, closeModal,title,choice1,choice2,choice3
    
                                    <Pressable
                                        style={styles.button}
-                                       onPress={closeModal}>
+                                       onPress={handleChoice3}>
                                        <Text style={styles.textButtonStyle}>{choice3}</Text>
                                    </Pressable>
                                </LinearGradient>
