@@ -421,7 +421,21 @@ const UserProvider = ({ children }) => {
                 }
             }>
             {children}
-            {console.log("userstate eve", userState)}           
+            {console.log("userstate eve", userState)} 
+            {!isAlive && <AlertPopup 
+            modalVisible={true}
+            //closeModal={}
+            title={"R.I.P"}
+            content={"You're dead"}
+           // content={renderContent(selectedAsset?.name,selectedAsset?.price)}
+            buttonText={"Restart"}
+            buttonOnPress={async() => {
+                const authContext = useContext(AuthContext);
+                refresh();
+                postUserId(authContext.userId, userState)
+                authContext.logout();
+            }}         
+            />}          
         </UserContext.Provider>
     );
 
