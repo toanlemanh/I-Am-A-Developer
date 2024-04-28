@@ -12,6 +12,7 @@ import { putUserData } from '../context/axios'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import CustomDrawerContent from '../components/CustomDrawerContent'
 import { COLOR } from '../constants/GlobalColor'
+import MyAssetScreen from '../screens/MyAssetsScreen'
 const Drawer = createDrawerNavigator()
 
 function DrawerStack() {
@@ -56,6 +57,11 @@ function DrawerStack() {
             <Drawer.Screen
                 name="TestData"
                 component={TestData}
+               
+            />
+            <Drawer.Screen
+                name="My Assets"
+                component={MyAssetScreen}
                
             />
             {/* <Drawer.Screen

@@ -1,12 +1,11 @@
 import { View, Text, StyleSheet, ScrollView, Alert, Image } from "react-native";
 import Card from "../components/Card";
 import CustomDataLabel from "../components/CustomDataLabel";
-import data from "../data/userData.json";
 import { useState, useContext } from "react";
 import AlertPopup from "../components/eventsPopup/AlertPopup";
 import { styles } from "../Style/screenStyles/AssetsScreenStyle";
 import { UserContext } from "../context/user-context";
-import { buy } from "../utils/transaction";
+
 
 export default function MyAssetScreen() {
   const userContext = useContext(UserContext);
@@ -58,15 +57,15 @@ export default function MyAssetScreen() {
   if (assets.length === 0) {
     return (
       <ScrollView style={styles.container}>
-        <View key={index} style={styles.innerScrollView}>
-            <Image style={{resizeMode: 'contain', width: '100%', height: '70%'}} source={require("../assets/images/empty-cart-2")} />
+        <View style={styles.emptyContainer}>
+            <Image style={styles.empty} source={require("../assets/images/empty-cart-girl.png")} />
         </View>
       </ScrollView>
     );
   }
   return (
     <ScrollView style={styles.container}>
-      <View key={index} style={styles.innerScrollView}>
+      <View style={styles.innerScrollView}>
         {assets.length > 0 &&
           assets.map((item, id) => (
             <View key={id}>
@@ -74,9 +73,9 @@ export default function MyAssetScreen() {
                 key={id}
                 //onPress={() => openModal(item)}
                 barHidden={true}
-                showDetail={true}
+                //showDetail={true}
               >
-                {item.name}
+                {item}
               </Card>
             </View>
           ))}
