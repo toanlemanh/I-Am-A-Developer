@@ -1,5 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { createContext, useState } from "react";
+
 const initialUserState = {
     userName: "name",
     gameJustStarted: true,
@@ -14,9 +15,9 @@ const initialUserState = {
 
     userDailyLogin: {
         // after comparison: lastlogin = currentlogin
-        lastLoginDate: new Date(),
+        lastLoginDate: "",
         // set current login date
-        currentLoginDate: new Date(),
+        currentLoginDate: "",
         rewards: 100,
     },
     character: {
@@ -40,24 +41,24 @@ const initialUserState = {
     // currentDiseases in an array of diseases objects
     currentDiseases: [],
     education: {
-        math: 10,
+        math: 0,
         literature: 0,
         history: 0,
-        science: 10,
+        science: 0,
         geography: 0,
-        art: 5,
+        art: 0,
         music: 0,
         physicalEducation: 0,
         computerScience: 0,
-        english: 4,
+        english: 0,
     },
     higherEducation: {
-        computerScience: 10,
-        softwareEngineering: 10,
+        computerScience: 0,
+        softwareEngineering: 0,
         informationTechnology: 0,
         cybersecurity: 0,
         dataScience: 0,
-        design: 2,
+        design: 0,
         networking: 0,
         security: 0,
         statistics: 0,
@@ -68,8 +69,8 @@ const initialUserState = {
         businessAnalysis: 0,
         testing: 0,
         softwareDevelopment: 0,
-        userExperience: 2,
-        userInterface: 2,
+        userExperience: 0,
+        userInterface: 0,
     },
 
     relationships: {
@@ -97,7 +98,7 @@ const initialUserState = {
         ],
     },
     assets: [],
-    progress: 20,
+    progress: 0,
 };
 
 export const UserContext = createContext(initialUserState);
@@ -106,6 +107,11 @@ const UserProvider = ({ children }) => {
 
     const [userState, setUserState] = useState(initialUserState);
     const [progress, setProgress] = useState(0)
+    const [learningState, setLearningState] = useState({
+        isLearning: false,
+        intervalId: "",
+    })
+    const [learningProgress, setLearningProgress] = useState(20)
     function refresh() {
         setUserState(initialUserState);
     }
@@ -123,15 +129,15 @@ const UserProvider = ({ children }) => {
     //         }
     //     }));
     // };
-   function updateAsset(asset){
-    console.log("asset: ",asset)
-     setUserState((prev) => (
+    function updateAsset(asset) {
+        console.log("asset: ", asset)
+        setUserState((prev) => (
             {
-                ...prev, 
-                assets : [...prev.assets, asset],
+                ...prev,
+                assets: [...prev.assets, asset],
             }
-     ))
-   }
+        ))
+    }
     function updateUserName(newUserName) {
         setUserState((prev) => ({
             ...prev,
@@ -171,14 +177,20 @@ const UserProvider = ({ children }) => {
             }
         }));
     }
+    function formatDate(date) {
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0'); // Month is zero-indexed
+        const day = String(date.getDate()).padStart(2, '0');
 
+        return `${year}/${month}/${day}`;
+    }
     // Handle User Login Rewards
     // Must be call at the time user login
     function updateUserLogin(newLoginData) {
         setUserState({
             ...userState,
             userDailyLogin: {
-                currentLoginDate: new Date()
+                currentLoginDate: formatDate(new Date())
             },
         });
         if (userState.userDailyLogin.currentLoginDate !== userState.userDailyLogin.lastLoginDate) {
@@ -188,12 +200,12 @@ const UserProvider = ({ children }) => {
                     money: userState.character.money + userState.userDailyLogin.rewards
                 },
             });
-            updateCharacterMoney(userState.userDailyLogin.rewards, false)
+            updateCharacterMoney(-userState.userDailyLogin.rewards)
         }
         setUserState({
             ...userState,
             UserDailyLogin: {
-                lastLoginDate: new Date()
+                lastLoginDate: formatDate(new Date())
             },
         });
     };
@@ -203,10 +215,10 @@ const UserProvider = ({ children }) => {
     //             ...userState,
     //             ...assets.push(asset),
     //         });
-            
+
     //     }
     //     }
-    
+
 
     // function levelupSubject(subject) {
     //     for (var subject in userState.education) {
@@ -217,16 +229,35 @@ const UserProvider = ({ children }) => {
 
 
     // each one increase by one level
-    function levelupEducation() {
+    function levelupAllEducation() {
         const updatedEducation = { ...userState.education };
-        console.log(updatedEducation)
         for (const subject in updatedEducation) {
-            updatedEducation[subject] += 1;
+            updatedEducation[subject] += 2;
+            if (updatedEducation[subject] > 5) updatedEducation[subject] = 5;
         }
+        setUserState(prevState => ({
+            ...prevState,
+            education: updatedEducation,
+        }));
+    }
 
+    function levelupEducation(subject) {
+        const updatedEducation = { ...userState.education };
+        updatedEducation[subject] += 1;
+        if (updatedEducation[subject] > 5) updatedEducation[subject] = 5;
         setUserState(prevState => ({
             ...prevState,
             education: updatedEducation
+        }));
+    }
+
+    function levelupHigherEducation(subject) {
+        const updatedEducation = { ...userState.higherEducation };
+        updatedEducation[subject] += 1;
+        if (updatedEducation[subject] > 5) updatedEducation[subject] = 5;
+        setUserState(prevState => ({
+            ...prevState,
+            higherEducation: updatedEducation
         }));
     }
 
@@ -254,7 +285,7 @@ const UserProvider = ({ children }) => {
 
     function drainStatus() {
         setInterval(() => {
-            // replace by constraints.speed
+
             updateStatus({
                 health: -10,
                 happiness: -10,
@@ -267,28 +298,14 @@ const UserProvider = ({ children }) => {
 
     }
 
-    // set
     function setStatus({ newStatusData }) {
-        // GET CONSTRAINTS FROM constraints.js
-        // for (let i in newStatusData) {
-        //     if (i > constraints.maxStatusPoint) {
-        //         value = max
-        //     }
-        // }
         setUserState({
             ...userState,
             status: { ...userState.status, ...newStatusData },
         });
     };
 
-    // Subtract or Add
     function updateStatus({ health, happiness, appearance }) {
-        // GET CONSTRAINTS FROM constraints.js
-        // for (let i in newStatusData) {
-        //     if (i > constraints.maxStatusPoint) {
-        //         value = max
-        //     }
-        // }
 
         setUserState({
             ...userState,
@@ -301,26 +318,22 @@ const UserProvider = ({ children }) => {
 
     };
 
-    // update Money
-    // False = increase
+
     function updateCharacterMoney(newMoney) {
         setUserState({
             ...userState,
             character: {
                 ...userState.character,
-                // increase or decrease money
                 money: userState.character.money -= newMoney
             },
         });
     };
 
-    // update age
     function updateCharacterAge(value) {
         setUserState({
             ...userState,
             character: {
                 ...userState.character,
-                // increase age
                 age: userState.character.age += value
             },
         });
@@ -343,18 +356,6 @@ const UserProvider = ({ children }) => {
         ])
     }
 
-
-
-    // disease object can be added with format:
-    // {
-    //     name: "disease1",
-    //     effects: {
-    //         health: -20,
-    //         happiness: -20,
-    //         appearance: -20
-    //     }
-    //     cureCost: 100,
-    // }
     function addDisease(newDisease) {
         setDiseases((prev) => [
             ...prev, newDisease
@@ -427,6 +428,10 @@ const UserProvider = ({ children }) => {
                 {
                     userState,
                     progress,
+                    learningState,
+                    learningProgress,
+                    setLearningProgress,
+                    setLearningState,
                     updateUserLogin,
                     updateCharacterMoney,
                     updateStatus,
@@ -440,7 +445,9 @@ const UserProvider = ({ children }) => {
                     startProgress,
                     updateProgress,
                     loadProgress,
+                    levelupAllEducation,
                     levelupEducation,
+                    levelupHigherEducation,
                     setStatus,
                     removeDisease,
                     addDisease,
@@ -453,7 +460,6 @@ const UserProvider = ({ children }) => {
                 }
             }>
             {children}
-            {console.log("userstate eve", userState)}
         </UserContext.Provider>
     );
 
