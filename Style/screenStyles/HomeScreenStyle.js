@@ -23,6 +23,12 @@ export const styles = StyleSheet.create({
         flex: 1
 
     },
+    avatarContainer:{
+        overflow:'hidden', paddingTop:'30%'
+    },
+    avatar:{
+        resizeMode:"contain", width: '100%', height: '80%'
+    },
     userInfo: {
         flexDirection: 'row',
         paddingLeft: 40

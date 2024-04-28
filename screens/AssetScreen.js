@@ -49,6 +49,7 @@ export default function AssetScreen() {
     userContext.updateCharacterMoney(price, true);
     userContext.updateAsset(name);
     Alert.alert("Successful!", message);
+    closeModal();
    }
    else {
     console.log("Eorr trans")

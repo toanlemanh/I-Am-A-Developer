@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { createContext, useState } from "react";
-
+import { CONSTRAINTS } from '../utils/constraints';
 const initialUserState = {
     userName: "name",
     gameJustStarted: true,
@@ -21,7 +21,7 @@ const initialUserState = {
         rewards: 100,
     },
     character: {
-        name: "Username",
+        img: "",
         money: 20000000,
         age: 0,
         occupation: {
@@ -209,25 +209,6 @@ const UserProvider = ({ children }) => {
             },
         });
     };
-    // function updateAsset (asset) {
-    //     if (asset) {
-    //         setUserState({
-    //             ...userState,
-    //             ...assets.push(asset),
-    //         });
-
-    //     }
-    //     }
-
-
-    // function levelupSubject(subject) {
-    //     for (var subject in userState.education) {
-    //         setUserState({ ...userState, education: { ...userState.education, [subject]: userState.education[subject] + 1 } })
-    //     }
-    // }
-
-
-
     // each one increase by one level
     function levelupAllEducation() {
         const updatedEducation = { ...userState.education };
@@ -283,20 +264,6 @@ const UserProvider = ({ children }) => {
 
     }
 
-    function drainStatus() {
-        setInterval(() => {
-
-            updateStatus({
-                health: -10,
-                happiness: -10,
-                appearance: -10
-            })
-            if (userState.status.health <= 0) {
-
-            }
-        }, 5000)
-
-    }
 
     function setStatus({ newStatusData }) {
         setUserState({
@@ -421,6 +388,13 @@ const UserProvider = ({ children }) => {
         }
         updateUser({ gameJustStarted: false })
     };
+    function isAlive() {
+        if (userState.status.health <= CONSTRAINTS.health.minHealthValue) {
+            console.log("Chet")
+            return false;
+        }
+        return true;
+    }
 
     return (
         <UserContext.Provider value=
@@ -440,7 +414,6 @@ const UserProvider = ({ children }) => {
                     updateInSchool,
                     updateInUniversity,
                     updateOccupation,
-                    drainStatus,
                     updateCharacterAge,
                     startProgress,
                     updateProgress,
