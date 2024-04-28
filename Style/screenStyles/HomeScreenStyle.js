@@ -1,8 +1,9 @@
 import { StyleSheet } from "react-native";
 import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import { COLOR } from "../../constants/GlobalColor";
 export const styles = StyleSheet.create({
     container: {
-        backgroundColor: '#FFF1E7'
+        backgroundColor: COLOR.homeBackgound
     },
     userInfo: {
         marginTop: 17
@@ -43,14 +44,14 @@ export const styles = StyleSheet.create({
     username: {
         fontSize: 20,
         fontWeight: '700',
-        color: '#083C4C',
+        color: COLOR.textColor,
     },
     money: {
         fontSize: 20,
         marginRight: 20,
         textAlign: 'center',
         fontWeight: '500',
-        color: '#083C4C',
+        color: COLOR.textColor,
     },
     balance: {
         fontWeight: '300'
@@ -102,7 +103,7 @@ export const styles = StyleSheet.create({
         color: 'darkblue'
     },
     stageStyle: {
-        color: '#083C4C',
+        color: COLOR.textColor,
         fontSize: 13,
         fontWeight: '300'
     },
@@ -110,7 +111,7 @@ export const styles = StyleSheet.create({
         flexDirection: 'row',
         width: '100%',
         height: 50,
-        backgroundColor: '#EB9F4A',
+        backgroundColor: COLOR.authButton,
         alignItems: 'center',
         justifyContent: 'space-evenly'
     },
@@ -118,10 +119,10 @@ export const styles = StyleSheet.create({
         width: 70,
         height: 70,
         borderRadius: 35,
-        backgroundColor: '#2B9939',
+        backgroundColor: COLOR.happinessColor,
         alignItems: 'center',
         justifyContent: 'center',
-        shadowColor: '#171717',
+        shadowColor: COLOR.shadowColor,
         shadowOffset: { width: -2, height: 4 },
         shadowOpacity: 0.2,
         shadowRadius: 3,
@@ -133,7 +134,7 @@ export const styles = StyleSheet.create({
         width: 76,
         height: 76, borderRadius: 38, backgroundColor: 'white', justifyContent: 'center', alignItems: 'center',
         elevation: 7,
-        shadowColor: '#171717',
+        shadowColor: COLOR.shadowColor,
         shadowOffset: { width: -2, height: 4 },
         shadowOpacity: 0.2,
         shadowRadius: 3,

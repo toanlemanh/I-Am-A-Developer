@@ -1,9 +1,10 @@
 import { StyleSheet } from "react-native";
+import { COLOR } from "../../constants/GlobalColor";
 
 export const  styles = StyleSheet.create({
     container:{
         width:'85%',
-        backgroundColor:'#413A3A',
+       backgroundColor:COLOR.titleBackground,
         borderRadius: 7,
         justifyContent:'center',
         alignItems:'center',

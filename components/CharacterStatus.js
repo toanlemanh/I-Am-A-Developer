@@ -3,6 +3,7 @@ import { Platform, Text, View } from 'react-native';
 import { styles } from "../Style/screenStyles/HomeScreenStyle";
 import PercentageBar from '../components/ProgressBar';
 import { UserContext } from '../context/user-context';
+import { COLOR } from '../constants/GlobalColor';
 
 
 
@@ -17,7 +18,7 @@ export default function CharacterStatus() {
                     <PercentageBar
                         height={15}
                         backgroundColor='grey'
-                        completedColor="#009A34"
+                        completedColor={COLOR.happinessColor}
                         percentage={user.status.happiness}
                         width={200}
                     />
@@ -29,7 +30,7 @@ export default function CharacterStatus() {
                     <PercentageBar
                         height={15}
                         backgroundColor='grey'
-                        completedColor="#FD7C1F"
+                        completedColor={COLOR.lookColor}
                         percentage={user.status.appearance}
                         width={200}
                     />
@@ -41,7 +42,7 @@ export default function CharacterStatus() {
                     <PercentageBar
                         height={15}
                         backgroundColor='grey'
-                        completedColor="#EED817"
+                        completedColor= {COLOR.healthColor}
                         percentage={user.status.health}
                         width={200}
                     />
