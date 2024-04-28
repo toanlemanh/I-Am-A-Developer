@@ -145,24 +145,24 @@ const UserProvider = ({ children }) => {
         }));
     };
 
-    function updateInSchool() {
+    function updateInSchool(newStatus) {
         setUserState((prev) => ({
             ...prev,
             character: {
                 ...prev.character,
-                inSchool: prev.character.inSchool ? false : true
+                inSchool: newStatus
             }
         }));
     }
 
 
 
-    function updateInUniversity() {
+    function updateInUniversity(newStatus) {
         setUserState((prev) => ({
             ...prev,
             character: {
                 ...prev.character,
-                inUniversity: prev.character.inUniversity ? false : true
+                inUniversity: newStatus
             }
         }));
     }
