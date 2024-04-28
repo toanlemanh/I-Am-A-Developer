@@ -11,6 +11,7 @@ import { UserContext } from '../context/user-context'
 import { putUserData } from '../context/axios'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import CustomDrawerContent from '../components/CustomDrawerContent'
+import { COLOR } from '../constants/GlobalColor'
 const Drawer = createDrawerNavigator()
 
 function DrawerStack() {
@@ -22,13 +23,13 @@ function DrawerStack() {
         drawerContent={props => <CustomDrawerContent {...props} />}
         screenOptions={{
             headerStyle: {
-                backgroundColor: "#77B29F",
+                backgroundColor: COLOR.headerBackground,
             },
-            headerTintColor: "#EED817",
+            headerTintColor: COLOR.headerTinColor,
             headerTitleAlign: "center",
             headerRight: () => (
                 <Pressable
-                    style={{ backgroundColor: '#243bec', padding: 5, borderRadius: 10, alignItems: 'center', justifyContent: 'center', marginRight: 10 }}
+                    style={{ backgroundColor: '#243bec', padding: 7, borderRadius: 10, alignItems: 'center', justifyContent: 'center', marginRight: 10 }}
                     title="Savebutton"
                     onPress={ async () => {
                         if(authContext.userId){
@@ -50,33 +51,19 @@ function DrawerStack() {
             <Drawer.Screen
                 name="Activities"
                 component={ActivitiesScreen}
-                options={{
-                    headerStyle: {
-                        backgroundColor: "#77B29F",
-                    },
-                    headerTintColor: "#EED817",
-                    headerTitleAlign: "center",
-
-                }}
+               
             />
             <Drawer.Screen
                 name="TestData"
                 component={TestData}
-                options={{
-                    headerStyle: {
-                        backgroundColor: "#77B29F",
-                    },
-                    headerTintColor: "#EED817",
-                    headerTitleAlign: "center",
-
-                }}
+               
             />
             {/* <Drawer.Screen
                 name="GoingOffline"
                 component={GoingOffline}
                 options={{
                     headerStyle: {
-                        backgroundColor: "#77B29F",
+                        backgroundColor: COLOR.headerBackground,
                     },
                     headerTintColor: "#EED817",
                     headerTitleAlign: "center",

@@ -1,9 +1,10 @@
 import { StyleSheet } from "react-native";
+import { COLOR } from "../../constants/GlobalColor";
 export const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'center',
-        backgroundColor: '#fde8cd',
+        backgroundColor: COLOR.welcomeBackground,
     },
     textBox: {
         marginVertical: 40,
@@ -11,7 +12,7 @@ export const styles = StyleSheet.create({
     },
     text: {
         fontSize: 40,
-        color: '#77B29F',
+        color: COLOR.headerBackground,
         fontWeight: '700',
     },
     btnBox: {

@@ -1,9 +1,10 @@
 import { StyleSheet } from "react-native";
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
+import { COLOR } from "../../constants/GlobalColor";
 export const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
-    backgroundColor: '#FFF1E7',
+    backgroundColor: COLOR.homeBackgound,
 
   },
   buttonOutterContainer: {

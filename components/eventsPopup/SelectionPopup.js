@@ -24,7 +24,7 @@ function SelectionPopup({ modalVisible, closeModal,title,choice1,choice2,choice3
 
                         <View style={{  }}>
                             <LinearGradient
-                                colors={['#005D63', '#77B29F', '#005D63']}
+                               colors={['#005D63', '#77B29F', '#005D63']}
                                 style={styles.gradient}
                                 start={{ x: 0, y: 0 }}
                                 end={{ x: 1, y: 1 }}

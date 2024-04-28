@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import { COLOR } from "../../constants/GlobalColor";
 
 export const styles = StyleSheet.create({
     container: {
@@ -25,7 +26,7 @@ export const styles = StyleSheet.create({
     },
 
     title: {
-        color: '#77B29F',
+        color: COLOR.headerBackground,
         fontWeight: 'bold',
         fontSize: 36,
         marginBottom: 10,
@@ -49,7 +50,7 @@ export const styles = StyleSheet.create({
 
     registerLink: {
         fontWeight: 'bold',
-        color: '#EB9F4A',
+        color: COLOR.authButton,
         fontSize: 16,
     },
     optionText:{

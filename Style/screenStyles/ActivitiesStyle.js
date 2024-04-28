@@ -1,9 +1,10 @@
 import { StyleSheet } from "react-native";
+import { COLOR } from "../../constants/GlobalColor";
  
 export  const styles = StyleSheet.create({
     container: {
         flexGrow: 1,
-        backgroundColor: '#FFF1E7',
+        backgroundColor: COLOR.hom,
     },
     horizontalContainer: {
         flexDirection: 'row'
