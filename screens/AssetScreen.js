@@ -1,11 +1,11 @@
-import { View, Text, StyleSheet, ScrollView, Alert } from 'react-native';
+import { useContext, useState } from 'react';
+import { Alert, ScrollView, Text, View } from 'react-native';
+import { styles } from '../Style/screenStyles/AssetsScreenStyle';
 import Card from '../components/Card';
 import CustomDataLabel from '../components/CustomDataLabel';
-import data from '../data/userData.json';
-import { useState, useContext } from 'react';
 import AlertPopup from '../components/eventsPopup/AlertPopup';
-import { styles } from '../Style/screenStyles/AssetsScreenStyle';
 import { UserContext } from '../context/user-context';
+import data from '../data/userData.json';
 import { buy } from '../utils/transaction';
 
 export default function AssetScreen() {
@@ -40,27 +40,27 @@ export default function AssetScreen() {
   }, {});
 
   const buttonText = (text) => {
-    return <Text>  Buy now {text} </Text>; 
+    return <Text>  Buy now {text} </Text>;
   };
-  function handleTransaction (name, price){
-   let message = buy(money, name, price);
-   if (message){
-    // console.log(message);
-    userContext.updateCharacterMoney(price, true);
-    userContext.updateAsset(name);
-    Alert.alert("Successful!", message);
-    closeModal();
-   }
-   else {
-    console.log("Eorr trans")
-   }
+  function handleTransaction(name, price) {
+    let message = buy(money, name, price);
+    if (message) {
+      // console.log(message);
+      userContext.updateCharacterMoney(price);
+      userContext.updateAsset(name);
+      Alert.alert("Successful!", message);
+      closeModal();
+    }
+    else {
+      console.log("Eorr trans")
+    }
   }
-  
-  const renderContent =(name,price)=>{
-    return(
+
+  const renderContent = (name, price) => {
+    return (
       <View>
         <Text><Text style={styles.label}>Brand Name: :</Text> {name}</Text>
-         <Text><Text style={styles.label}>Price:</Text> {price}</Text>
+        <Text><Text style={styles.label}>Price:</Text> {price}</Text>
       </View>
     )
   }
@@ -73,7 +73,7 @@ export default function AssetScreen() {
             <View key={itemIndex}>
               <Card
                 key={itemIndex}
-                onPress={() => openModal(item)} 
+                onPress={() => openModal(item)}
                 barHidden={true}
                 showDetail={true}
               >
@@ -86,8 +86,8 @@ export default function AssetScreen() {
       <AlertPopup
         modalVisible={modalVisible}
         closeModal={closeModal}
-        title={selectedAsset?.group} 
-        content={renderContent(selectedAsset?.name,selectedAsset?.price)}
+        title={selectedAsset?.group}
+        content={renderContent(selectedAsset?.name, selectedAsset?.price)}
         buttonText={buttonText(selectedAsset?.group)}
         buttonOnPress={() => handleTransaction(selectedAsset?.name, selectedAsset?.price)}
       />
