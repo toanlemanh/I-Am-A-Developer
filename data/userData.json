@@ -106,10 +106,10 @@
             "occupation": "Doctor",
             "actions": [
                 {
-                    "actionTitle": "Spend time",
-                    "health": 5,
+                    "actionTitle": "Go to mall for clothes",
+                    "health": 1,
                     "happiness": 10,
-                    "look": 0,
+                    "look": 10,
                     "relationshipLevel": 10
                 },
                 {
@@ -120,10 +120,10 @@
                     "relationshipLevel": 8
                 },
                 {
-                    "actionTitle": "Go for a medical checkup together",
+                    "actionTitle": "Go to barber shop ",
                     "health": 10,
                     "happiness": 2,
-                    "look": 0,
+                    "look": 10,
                     "relationshipLevel": 12
                 },
                 {
@@ -178,7 +178,7 @@
                     "relationshipLevel": 10
                 },
                 {
-                    "actionTitle": "Watch a movie as a family",
+                    "actionTitle": "Watch a movie ",
                     "health": 2,
                     "happiness": 10,
                     "look": 0,

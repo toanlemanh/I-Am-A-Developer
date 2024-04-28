@@ -1,55 +1,50 @@
-import { useLayoutEffect, useState } from "react";
+import { act, useLayoutEffect, useState,useContext } from "react";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 import Card from "../components/Card";
 import CustomDataLabel from "../components/CustomDataLabel";
-import  ManageActions,{  } from "../utils/ManageActions";
-import { styles } from "../Style/screenStyles/ManageRelaStyle";
 import AlertPopup from "../components/eventsPopup/AlertPopup";
-import { spendTime } from "../utils/ManageActions";
+import data from "../data/userData.json";
+import { styles } from "../Style/screenStyles/ManageRelaStyle";
+import { UserContext } from "../context/user-context";
 export default function ManageRelationship({ route, navigation }) {
   const [modalVisible, setModalVisible] = useState(false);
-  const [actionModal,setActionModal] = useState(false);
+  const [actionModal, setActionModal] = useState(false);
   const [relationship, setRelationship] = useState({
     name: route.params.dataName,
     type: route.params.relationshipType,
     level: route.params.relationshipLevel,
     job: route.params.occupation,
   });
-  const [action ,setAction] = useState('')
-
-  const actions = [
-    "suck my dick",
-    "play lol",
-    "Kiss",
-    "Invite drinking",
-    "action 4",
-    "Playing football",
-    "Do some thing",
-  ];
-
+  const [actionText, setActionText] = useState('');
+  const [actionName,setActionName] = useState('');
+  // Retrieve all relationships from data
+  const relationships = data.Relationships;
+  const userContext = useContext(UserContext);
+  // Function to open modal
   const openModal = () => {
- // Set the selected asset before opening modal
     setModalVisible(true);
   };
 
+  // Function to close modal
   const closeModal = () => {
     setModalVisible(false);
-// Clear selected asset on close
   };
-  const closeActionModal =()=>{
+
+
+  // Function to close action modal
+  const closeActionModal = () => {
     setActionModal(false);
-  }
-  const buttonText = () => {
-    return <Text> OK </Text>; 
   };
 
-  useLayoutEffect(() => {
-    const group = route.params.group;
-
-    navigation.setOptions({
-      title: group.toUpperCase(),
-    });
-  });
+  // Function to render modal content for actions
+  const actionModalContent = (content) => {
+    return (
+      <View>
+        <Text>{content}</Text>
+        
+      </View>
+    );
+  };
 
   const renderContent = (level, job, type) => {
     return (
@@ -67,83 +62,75 @@ export default function ManageRelationship({ route, navigation }) {
     );
   };
 
-  const actionModalContent = (content) => {
-    return(
-      <View>
-        <Text>{content}</Text>
-      </View>
-    )
-  };
-  const  spendTime =(name)=> {
-    setActionModal(true);
-    const effects = {
-      health: 0,
-      happiness: 20,
-      look: 0,
-      relationshipLevel: 20,
-    };
-    
-    const content = "You spent some time with " + name + ". You have gain: ";
-    if (effects.relationshipLevel !== 0)
-      content + " Relationship level: " + effects.relationshipLevel;
-    if (effects.health !== 0) content + " health: " + effects.health;
-    if (effects.happiness !== 0) content + " happiness: " + effects.happiness;
-    if (effects.look !== 0) content + " look: " + effects.look;
-    content + ".";
-    //updateStatus(name, effects);
-    setAction(content);
-  
-  }
+  // Function to spend time with the person
+  // Filter actions based on the name of the person
+  const filteredActions =relationships.find((person) => person.name === relationship.name)?.actions ||[];
+
+// Function to handle action click
+const handleActionClick = (action) => {
+  setActionText(generateActionContent(action));
+  setActionModal(true);
+  setActionName(action.actionTitle);
+  userContext.updateStatus({
+      health:action.health,
+      happiness:action.happiness,
+      appearance:action.look
+  })
+  console.log(action.health,action.happiness,action.look,action.relationshipLevel);
+};
+
+// Function to generate action content
+const generateActionContent = (action) => {
+  let content = action.actionTitle + " with your " + relationship.type;
+  if (action.health !== undefined) content += "\nHealth: " + action.health;
+  if (action.happiness !== undefined) content += "\nHappiness: " + action.happiness;
+  if (action.look !== undefined) content += "\nLook: " + action.look;
+  if (action.relationshipLevel !== undefined) content += "\nRelationship Level: " + action.relationshipLevel;
+  return content;
+};
 
 
-
-  return (
-    <ScrollView contentContainerStyle={styles.container}>
-      <Card barHidden={true} showDetail={true} onPress={openModal}>
-        {relationship.name}
-      </Card>
-      {/* <Text>
-        {type},{level},{job}
-      </Text> */}
-      <CustomDataLabel>Action List</CustomDataLabel>
-      <Card barHidden={true} onPress={() => spendTime(relationship.name)}>
-        Spend Time With
-      </Card>
+return (
+<ScrollView contentContainerStyle={styles.container}>
+  <Card barHidden={true} showDetail={true} onPress={openModal}>
+    {relationship.name}
+  </Card>
+  <CustomDataLabel>Action List</CustomDataLabel>
+  {/* Render actions based on the name of the person */}
+  {filteredActions.map((action, index) => (
+    <View key={index}>
       <Card
         barHidden={true}
-        //showDetail={true}
-        onPress={() => partyTogether(relationship.name)}
+        onPress={() => handleActionClick(action)} // Pass action to handleActionClick
+        showDetail={true}
       >
-        Party Together
+        {action.actionTitle}
       </Card>
-      
-      <View style={styles.actionsContainer}>
-        {/* {() => spendTime(name)} */}
-        {actions.map((action, index) => (
-          <Card key={index} barHidden={true} showDetail={true}>
-            {action}
-          </Card>
-        ))}
-      </View>
+    </View>
+  ))}
 
-      <AlertPopup
-        modalVisible={actionModal}
-        closeModal={closeActionModal}
-        title={"Spend Time"}
-        content={actionModalContent(action)}
-        buttonText={"OK"}
-      />
+  {/* Render action modal */}
+  <AlertPopup
+    modalVisible={actionModal}
+    closeModal={closeActionModal}
+    title={actionName} // Assuming you want to display the name of the person
+    content={actionModalContent(actionText)} // Pass actionText as content
+    buttonText={"OK"}
+  />
 
+  {/* Render relationship modal */}
+  <AlertPopup
+    modalVisible={modalVisible}
+    closeModal={closeModal}
+    title={relationship.name}
+    content={renderContent(
+      relationship.level,
+      relationship.job,
+      relationship.type
+    )}
+    buttonText={"OK"}
+  />
+</ScrollView>
+);
 
-
-      <AlertPopup
-        modalVisible={modalVisible}
-        closeModal={closeModal}
-        title={relationship.name}
-        content={renderContent(relationship.level, relationship.job, relationship.type)}
-        buttonText={buttonText()}
-        //buttonOnPress={() => handleTransaction(selectedAsset?.name, selectedAsset?.price)}
-      />
-    </ScrollView>
-  );
 }
