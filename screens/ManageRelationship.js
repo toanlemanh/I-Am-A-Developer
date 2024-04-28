@@ -5,14 +5,17 @@ import CustomDataLabel from "../components/CustomDataLabel";
 import  ManageActions,{  } from "../utils/ManageActions";
 import { styles } from "../Style/screenStyles/ManageRelaStyle";
 import AlertPopup from "../components/eventsPopup/AlertPopup";
+import { spendTime } from "../utils/ManageActions";
 export default function ManageRelationship({ route, navigation }) {
   const [modalVisible, setModalVisible] = useState(false);
+  const [actionModal,setActionModal] = useState(false);
   const [relationship, setRelationship] = useState({
     name: route.params.dataName,
     type: route.params.relationshipType,
     level: route.params.relationshipLevel,
     job: route.params.occupation,
   });
+  const [action ,setAction] = useState('')
 
   const actions = [
     "suck my dick",
@@ -33,6 +36,9 @@ export default function ManageRelationship({ route, navigation }) {
     setModalVisible(false);
 // Clear selected asset on close
   };
+  const closeActionModal =()=>{
+    setActionModal(false);
+  }
   const buttonText = () => {
     return <Text> OK </Text>; 
   };
@@ -60,6 +66,37 @@ export default function ManageRelationship({ route, navigation }) {
       </View>
     );
   };
+
+  const actionModalContent = (content) => {
+    return(
+      <View>
+        <Text>{content}</Text>
+      </View>
+    )
+  };
+  const  spendTime =(name)=> {
+    setActionModal(true);
+    const effects = {
+      health: 0,
+      happiness: 20,
+      look: 0,
+      relationshipLevel: 20,
+    };
+    
+    const content = "You spent some time with " + name + ". You have gain: ";
+    if (effects.relationshipLevel !== 0)
+      content + " Relationship level: " + effects.relationshipLevel;
+    if (effects.health !== 0) content + " health: " + effects.health;
+    if (effects.happiness !== 0) content + " happiness: " + effects.happiness;
+    if (effects.look !== 0) content + " look: " + effects.look;
+    content + ".";
+    //updateStatus(name, effects);
+    setAction(content);
+  
+  }
+
+
+
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <Card barHidden={true} showDetail={true} onPress={openModal}>
@@ -75,7 +112,7 @@ export default function ManageRelationship({ route, navigation }) {
       <Card
         barHidden={true}
         //showDetail={true}
-        onPress={() => ManageActions.partyTogether(relationship.name)}
+        onPress={() => partyTogether(relationship.name)}
       >
         Party Together
       </Card>
@@ -89,6 +126,13 @@ export default function ManageRelationship({ route, navigation }) {
         ))}
       </View>
 
+      <AlertPopup
+        modalVisible={actionModal}
+        closeModal={closeActionModal}
+        title={"Spend Time"}
+        content={actionModalContent(action)}
+        buttonText={"OK"}
+      />
 
 
 
