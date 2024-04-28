@@ -1,6 +1,9 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { createContext, useState } from "react";
+import { createContext, useState, useContext } from "react";
 import { CONSTRAINTS } from '../utils/constraints';
+import AlertPopup from '../components/eventsPopup/AlertPopup';
+import { AuthContext } from './auth';
+import { postUserId } from './axios';
 const initialUserState = {
     userName: "name",
     gameJustStarted: true,
@@ -115,15 +118,6 @@ const UserProvider = ({ children }) => {
             ...prev, ...newUserState,
         }));
     };
-    // function updateUser(newUserState) {
-    //     setUserState((prev) => ({
-    //         ...prev,
-    //         character: {
-    //             ...prev.character,
-    //             ...newUserState.character
-    //         }
-    //     }));
-    // };
    function updateAsset(asset){
     console.log("asset: ",asset)
      setUserState((prev) => (
@@ -198,25 +192,6 @@ const UserProvider = ({ children }) => {
             },
         });
     };
-    // function updateAsset (asset) {
-    //     if (asset) {
-    //         setUserState({
-    //             ...userState,
-    //             ...assets.push(asset),
-    //         });
-            
-    //     }
-    //     }
-    
-
-    // function levelupSubject(subject) {
-    //     for (var subject in userState.education) {
-    //         setUserState({ ...userState, education: { ...userState.education, [subject]: userState.education[subject] + 1 } })
-    //     }
-    // }
-
-
-
     // each one increase by one level
     function levelupEducation() {
         const updatedEducation = { ...userState.education };
@@ -409,6 +384,7 @@ const UserProvider = ({ children }) => {
     };
     function isAlive () {
        if ( userState.status.health <= CONSTRAINTS.health.minHealthValue ) {
+        console.log("Chet")
             return false;
        }
        return true;
@@ -445,8 +421,7 @@ const UserProvider = ({ children }) => {
                 }
             }>
             {children}
-            {console.log("userstate eve", userState)}
-            {isAlive()}
+            {console.log("userstate eve", userState)}           
         </UserContext.Provider>
     );
 
