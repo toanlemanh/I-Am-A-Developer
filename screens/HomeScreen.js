@@ -17,17 +17,16 @@ import { styles } from "../Style/screenStyles/HomeScreenStyle";
 import CharacterStatus from '../components/CharacterStatus';
 import CustomAvatar from "../components/CustomAvatar";
 import PercentageBar from "../components/ProgressBar";
-import RandomPopup from "../components/eventsPopup/RandomPopup";
+import SelectionPopup from "../components/eventsPopup/SelectionPopup";
 import { AuthContext } from "../context/auth";
 import { getUserId } from "../context/axios";
 import { UserContext } from "../context/user-context";
-import SelectionPopup from "../components/eventsPopup/SelectionPopup";
-import data from "../data/data.json"
-
+import data from "../data/data.json";
+import { CONSTRAINTS } from "../utils/constraints";
 export default function HomeScreen() {
   const [isLoading, setIsLoading] = useState(true);
   //const [userName, setUserName] = useState("Tom");
- ;
+  ;
   const [currentKey, setCurrentKey] = useState();
   const authContext = useContext(AuthContext);
   const userId = authContext.userId;
@@ -48,6 +47,7 @@ export default function HomeScreen() {
           await getUserId(userId).then(({ key, current }) => {
             console.log("key current", key, current);
             setCurrentKey(key);
+            AsyncStorage.setItem("key", key);
             userContext.updateUser(current);
 
           });
@@ -56,9 +56,11 @@ export default function HomeScreen() {
           console.log(err.message);
         } finally {
           setIsLoading(false);
-          //userContext.loadProgress(userId)
-          userContext.loadUserDataFromStorage(userId);
-          userContext.saveUserDataToStorage(userId);
+          userContext.loadProgress(userId);
+          // userContext.loadUserDataFromStorage(userId);
+          //  userContext.saveUserDataToStorage(userId);
+
+
         }
 
       }
@@ -66,23 +68,24 @@ export default function HomeScreen() {
     loadUserName();
   }, [userId]);
   const [lifeStage, setLifeStage] = useState("Infant");
-  
+
   useEffect(() => {
     progressId = userContext.startProgress()
-   
+
     return () => { clearInterval(progressId) }
-    
+
   }, []);
 
   useEffect(() => {
-    AsyncStorage.setItem("progress" + userId, userContext.progress.toString())
-    if (userContext.progress >= 100) {
+    AsyncStorage.setItem("progress" + userId, userContext?.progress.toString());
+    //console.log("sucess set progress")
+    if (userContext.progress > CONSTRAINTS.age.max) {
       userContext.updateProgress(-100)
       userContext.updateCharacterAge(1)
       userContext.updateStatus({ health: -10, happiness: -10, appearance: -5 })
     }
   }, [userContext.progress]);
-    
+
   useEffect(() => {
     if (user.character.age <= 1) {
       setLifeStage("Infant")
@@ -99,7 +102,7 @@ export default function HomeScreen() {
     if (userContext.progress >= 100) {
       const eventsLength = data.newAgeEvents.data.length;
       const index = Math.floor(Math.random() * eventsLength);
-     
+
       setRandomIndex(index);
       setModalVisible(true);
     }
@@ -116,21 +119,21 @@ export default function HomeScreen() {
   const closeModal = () => {
     setModalVisible(false);
   };
-  
+
   if (isLoading) {
     return (
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
         <ActivityIndicator size="large" color="#0000ff" />
       </View>
     );
-  } 
+  }
   const title = data.newAgeEvents.data[randomIndex].description;
-  const choice1 =data.newAgeEvents.data[randomIndex].choice[0].description;
-  const choice2 =data.newAgeEvents.data[randomIndex].choice[1].description;
-  const choice3 = data.newAgeEvents.data[randomIndex].choice.length === 3 ? 
+  const choice1 = data.newAgeEvents.data[randomIndex].choice[0].description;
+  const choice2 = data.newAgeEvents.data[randomIndex].choice[1].description;
+  const choice3 = data.newAgeEvents.data[randomIndex].choice.length === 3 ?
     data.newAgeEvents.data[randomIndex].choice[2].description : null;
 
-   
+
   return (
     <View style={styles.container}>
       {/* Level progress bar*/}
@@ -189,7 +192,7 @@ export default function HomeScreen() {
             style={({ pressed }) => pressed && styles.pressed}
             onPress={() => {
               navigation.navigate("Assets");
-             
+
             }}
           >
             <View style={{ justifyContent: "center", alignItems: "center" }}>
@@ -208,15 +211,15 @@ export default function HomeScreen() {
               </View>
             </Pressable>
             {/*  modal component */}
-            
-            <SelectionPopup 
-              modalVisible={modalVisible} 
-              closeModal={closeModal} 
+
+            <SelectionPopup
+              modalVisible={modalVisible}
+              closeModal={closeModal}
               title={title}
               choice1={choice1}
               choice2={choice2}
               choice3={choice3}
-              />
+            />
           </View>
 
           <Pressable
@@ -241,7 +244,7 @@ export default function HomeScreen() {
             </View>
           </Pressable>
         </View>
-        <CharacterStatus/>
+        <CharacterStatus />
       </View>
 
     </View>
