@@ -1,13 +1,16 @@
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, Alert } from 'react-native';
 import Card from '../components/Card';
 import CustomDataLabel from '../components/CustomDataLabel';
 import data from '../data/userData.json';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import AlertPopup from '../components/eventsPopup/AlertPopup';
 import { styles } from '../Style/screenStyles/AssetsScreenStyle';
-
+import { UserContext } from '../context/user-context';
+import { buy } from '../utils/transaction';
 
 export default function AssetScreen() {
+  const userContext = useContext(UserContext);
+  const money = userContext.userState.character.money;
   const assets = data.Properties.assets;
   const [selectedAsset, setSelectedAsset] = useState(null); // Track currently selected asset
   const [modalVisible, setModalVisible] = useState(false);
@@ -39,6 +42,17 @@ export default function AssetScreen() {
   const buttonText = (text) => {
     return <Text>  Buy now {text} </Text>; 
   };
+  function handleTransaction (name, price){
+   let message = buy(money, name, price);
+   if (message){
+    // console.log(message);
+    userContext.updateCharacterMoney(price, true);
+    Alert.alert("Successful!", message);
+   }
+   else {
+    console.log("Eorr trans")
+   }
+  }
   
   const renderContent =(name,price)=>{
     return(
@@ -73,6 +87,7 @@ export default function AssetScreen() {
         title={selectedAsset?.group} 
         content={renderContent(selectedAsset?.name,selectedAsset?.price)}
         buttonText={buttonText(selectedAsset?.group)}
+        buttonOnPress={() => handleTransaction(selectedAsset?.name, selectedAsset?.price)}
       />
     </ScrollView>
   );

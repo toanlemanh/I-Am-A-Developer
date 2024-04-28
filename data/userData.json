@@ -53,42 +53,42 @@
             {
                 "group": "Cars",
                 "name": "Mustang",
-                "price": "250,000 USD"
+                "price": "250000"
             },
             {
                 "group": "Cars",
                 "name": "Kia Morning",
-                "price": "20,000 USD"
+                "price": "20000"
             },
             {
                 "group": "Real Estate",
                 "name": "West Lake Mansion",
-                "price": "50,000 USD"
+                "price": "50000"
             },
             {
                 "group": "Paintings",
                 "name": "Apple painting",
-                "price": "1,000 USD"
+                "price": "1000"
             },
             {
                 "group": "Laptop",
                 "name": "Dell Inspiron 5580",
-                "price": "900 USD"
+                "price": "900"
             },
             {
                 "group": "Laptop",
                 "name": "Asus ROG",
-                "price": "1,500 USD"
+                "price": "1500"
             },
             {
                 "group":"Iphone",
                 "name":"Iphone 15 promax",
-                "price":"1,500 USD"
+                "price":"1500"
             },
             {
                 "group":"Iphone",
                 "name":"Iphone 12 pro",
-                "price":"500 USD"
+                "price":"500"
             }
         ],
         "Houses": [

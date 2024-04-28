@@ -10,23 +10,6 @@ const initialUserState = {
             money: 0,
         },
     },
-    character: {
-        name: "Username",
-        money: 0,
-        age: 20,
-        occupation: {
-            name: "",
-            salary: 0,
-        },
-
-        inSchool: false,
-        inUni: false,
-    },
-    status: {
-        health: 50,
-        happiness: 50,
-        look: 50,
-    },
     ageLogs: {},
 
     userDailyLogin: {
@@ -38,7 +21,7 @@ const initialUserState = {
     },
     character: {
         name: "Username",
-        money: 0,
+        money: 20000000,
         age: 0,
         occupation: {
             name: "",
