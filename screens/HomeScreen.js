@@ -109,12 +109,47 @@ export default function HomeScreen() {
     const eventsLength = data.newAgeEvents.data.length;
     const index = Math.floor(Math.random() * eventsLength);
     setRandomIndex(index);
-    userContext.updateStatus({ health: -10, happiness: -10, appearance: -5 });
+    userContext.updateStatus({ health: -7, happiness: -7, appearance: -5 });
   }
   function handleAgePress() {
     updateAge();
+    
+  }
+  function handleChoice1(){
+    setModalVisible(false);
+    const health = data.newAgeEvents.data[randomIndex].choice[0].healthEffect;
+    const happiness =data.newAgeEvents.data[randomIndex].choice[0].happinessEffect;
+    userContext.updateStatus({
+      health:health,
+      happiness:happiness
+    })
+
+    console.log(health,happiness);  
+  }
+  function handleChoice2(){
+    setModalVisible(false);
+    const health = data.newAgeEvents.data[randomIndex].choice[1].healthEffect;
+    const happiness =data.newAgeEvents.data[randomIndex].choice[1].happinessEffect;
+    userContext.updateStatus({
+      health:health,
+      happiness:happiness
+    })
+    console.log(health,happiness);  
   }
 
+  function handleChoice3(){
+    setModalVisible(false);
+    const health = data.newAgeEvents.data[randomIndex].choice.length === 3
+    ? data.newAgeEvents.data[randomIndex].choice[2].healthEffect: 0;
+    
+    const happiness =data.newAgeEvents.data[randomIndex].choice.length === 3
+    ? data.newAgeEvents.data[randomIndex].choice[2].happinessEffect: 0
+    userContext.updateStatus({
+      health:health,
+      happiness:happiness
+    })
+    console.log(health,happiness);  
+  }
   const closeModal = () => {
     setModalVisible(false);
   };
@@ -227,6 +262,9 @@ export default function HomeScreen() {
               choice1={choice1}
               choice2={choice2}
               choice3={choice3}
+              handleChoice1={handleChoice1}
+              handleChoice2={handleChoice2}
+              handleChoice3={handleChoice3}
             />
           </View>
 
