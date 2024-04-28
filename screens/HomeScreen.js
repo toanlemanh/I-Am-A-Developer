@@ -8,20 +8,19 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useNavigation } from "@react-navigation/native";
 import React, { useContext, useEffect, useState } from "react";
 import { ActivityIndicator, Image, Pressable, Text, View } from "react-native";
+import Animated, { BounceIn, BounceOut } from "react-native-reanimated";
 import { styles } from "../Style/screenStyles/HomeScreenStyle";
 import CharacterStatus from "../components/CharacterStatus";
 import CustomAvatar from "../components/CustomAvatar";
 import PercentageBar from "../components/ProgressBar";
 import SelectionPopup from "../components/eventsPopup/SelectionPopup";
+import { COLOR } from "../constants/GlobalColor";
 import { AuthContext } from "../context/auth";
 import { getUserId } from "../context/axios";
 import { UserContext } from "../context/user-context";
 import data from "../data/data.json";
-import { CONSTRAINTS } from "../utils/constraints";
-import { COLOR } from "../constants/GlobalColor";
 import { AVATARS } from "../utils/avatars";
-
-import Animated, { BounceIn, BounceOut } from "react-native-reanimated";
+import { CONSTRAINTS } from "../utils/constraints";
 const AnimatedImage = Animated.createAnimatedComponent(Image);
 export default function HomeScreen() {
   const [isLoading, setIsLoading] = useState(true);
@@ -113,42 +112,42 @@ export default function HomeScreen() {
   }
   function handleAgePress() {
     updateAge();
-    
+
   }
-  function handleChoice1(){
+  function handleChoice1() {
     setModalVisible(false);
     const health = data.newAgeEvents.data[randomIndex].choice[0].healthEffect;
-    const happiness =data.newAgeEvents.data[randomIndex].choice[0].happinessEffect;
+    const happiness = data.newAgeEvents.data[randomIndex].choice[0].happinessEffect;
     userContext.updateStatus({
-      health:health,
-      happiness:happiness
+      health: health,
+      happiness: happiness
     })
 
-    console.log(health,happiness);  
+    console.log(health, happiness);
   }
-  function handleChoice2(){
+  function handleChoice2() {
     setModalVisible(false);
     const health = data.newAgeEvents.data[randomIndex].choice[1].healthEffect;
-    const happiness =data.newAgeEvents.data[randomIndex].choice[1].happinessEffect;
+    const happiness = data.newAgeEvents.data[randomIndex].choice[1].happinessEffect;
     userContext.updateStatus({
-      health:health,
-      happiness:happiness
+      health: health,
+      happiness: happiness
     })
-    console.log(health,happiness);  
+    console.log(health, happiness);
   }
 
-  function handleChoice3(){
+  function handleChoice3() {
     setModalVisible(false);
     const health = data.newAgeEvents.data[randomIndex].choice.length === 3
-    ? data.newAgeEvents.data[randomIndex].choice[2].healthEffect: 0;
-    
-    const happiness =data.newAgeEvents.data[randomIndex].choice.length === 3
-    ? data.newAgeEvents.data[randomIndex].choice[2].happinessEffect: 0
+      ? data.newAgeEvents.data[randomIndex].choice[2].healthEffect : 0;
+
+    const happiness = data.newAgeEvents.data[randomIndex].choice.length === 3
+      ? data.newAgeEvents.data[randomIndex].choice[2].happinessEffect : 0
     userContext.updateStatus({
-      health:health,
-      happiness:happiness
+      health: health,
+      happiness: happiness
     })
-    console.log(health,happiness);  
+    console.log(health, happiness);
   }
   const closeModal = () => {
     setModalVisible(false);

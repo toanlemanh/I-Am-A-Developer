@@ -29,6 +29,8 @@ export default function OccupationScreen({ navigation }) {
   const quitJob = () => {
     // Function to call when user quits their job
     userContext.updateOccupation("", 0)
+    userContext.levelupAllEducation()
+    console.log(userContext.userState.education)
     closeModal();
   };
 

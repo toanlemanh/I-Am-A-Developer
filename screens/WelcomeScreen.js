@@ -22,7 +22,7 @@ function WelcomeScreen({ navigation }) {
                 </View>
 
                 <Image
-                    source={require('../assets/images/kid.png')}
+                    source={require('../assets/images/bg-welcome.jpg')}
                     resizeMode='cover'
                     style={imageStyle}
                 />

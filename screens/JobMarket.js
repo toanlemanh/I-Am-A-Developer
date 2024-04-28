@@ -43,8 +43,9 @@ export default function JobMarket() {
     )
   }
 
-  const { userState, updateUser } = useContext(UserContext);
+  const userContext = useContext(UserContext);
 
+  const userState = userContext.userState
   const checkEligibilityAndUpdateStatus = (job) => {
     // Retrieve the user's qualifications from the user state
     const { higherEducation } = userState;
@@ -61,7 +62,9 @@ export default function JobMarket() {
     if (isEligible) {
       // User is eligible, update their status
       // This would be a function similar to the updateUserLogin from your context
-      updateUser({ character: { ...userState.character, occupation: job } });
+      userContext.updateUser({ character: { ...userState.character, occupation: job } });
+      userContext.updateInUniversity(false)
+      console.log
       alert('You have successfully applied for the job!');
     } else {
       // User is not eligible, show a notification
