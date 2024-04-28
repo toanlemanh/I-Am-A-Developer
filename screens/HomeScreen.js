@@ -20,6 +20,7 @@ import data from "../data/data.json";
 import { CONSTRAINTS } from "../utils/constraints";
 import { COLOR } from "../constants/GlobalColor";
 import { AVATARS } from "../utils/avatars";
+
 import Animated, { BounceIn, BounceOut } from "react-native-reanimated";
 const AnimatedImage = Animated.createAnimatedComponent(Image);
 export default function HomeScreen() {
