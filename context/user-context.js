@@ -21,7 +21,7 @@ const initialUserState = {
         rewards: 100,
     },
     character: {
-        name: "Username",
+        img: "",
         money: 20000000,
         age: 0,
         occupation: {
