@@ -96,7 +96,7 @@ const initialUserState = {
 
         ],
     },
-    assets: {},
+    assets: [],
     progress: 20,
 };
 
@@ -123,7 +123,15 @@ const UserProvider = ({ children }) => {
     //         }
     //     }));
     // };
-
+   function updateAsset(asset){
+    console.log("asset: ",asset)
+     setUserState((prev) => (
+            {
+                ...prev, 
+                assets : [...prev.assets, asset],
+            }
+     ))
+   }
     function updateUserName(newUserName) {
         setUserState((prev) => ({
             ...prev,
@@ -140,9 +148,6 @@ const UserProvider = ({ children }) => {
             }
         }));
     }
-
-
-
     function updateInUniversity(newStatus) {
         setUserState((prev) => ({
             ...prev,
@@ -192,6 +197,16 @@ const UserProvider = ({ children }) => {
             },
         });
     };
+    // function updateAsset (asset) {
+    //     if (asset) {
+    //         setUserState({
+    //             ...userState,
+    //             ...assets.push(asset),
+    //         });
+            
+    //     }
+    //     }
+    
 
     // function levelupSubject(subject) {
     //     for (var subject in userState.education) {
@@ -433,7 +448,8 @@ const UserProvider = ({ children }) => {
                     updateRelationshipLevel,
                     saveUserDataToStorage,
                     loadUserDataFromStorage,
-                    refresh
+                    refresh,
+                    updateAsset
                 }
             }>
             {children}

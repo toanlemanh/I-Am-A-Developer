@@ -47,6 +47,7 @@ export default function AssetScreen() {
    if (message){
     // console.log(message);
     userContext.updateCharacterMoney(price, true);
+    userContext.updateAsset(name);
     Alert.alert("Successful!", message);
    }
    else {

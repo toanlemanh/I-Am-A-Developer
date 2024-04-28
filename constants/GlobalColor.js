@@ -1,11 +1,10 @@
-import WelcomeScreen from "../screens/WelcomeScreen";
+
 
 export const COLOR = {
-    // orangeButton: "",
+
     homeBackgound: "#FFF1E7",
     headerBackground: "#77B29F",
     headerTinColor: "#EED817",
-    //progressBar: "",
     greenButton: "",
     headerItemBackground: "",
     happinessColor: "#009A34",
@@ -13,7 +12,7 @@ export const COLOR = {
     lookColor: "#FD7C1F",
     authButton: "#EB9F4A",
     welcomeBackground: '#fde8cd',
-    textColor: "'#083C4C",
+    textColor: "#083C4C",
     shadowColor: "#171717",
     titleBackground: '#413A3A',
    
