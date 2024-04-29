@@ -84,7 +84,7 @@ const handleActionClick = (action) => {
   })
   setRelationshipLevel(action.relationshipLevel);
   //Update relationship level here
-  //userContext.updateRelationshipLevel(relationship.group, relationship.name, action.relationshipLevel)
+  userContext.updateRelationshipLevel(relationship.name, action.relationshipLevel)
   console.log(action.health,action.happiness,action.look,action.relationshipLevel);
 };
 function modalOnPress(){

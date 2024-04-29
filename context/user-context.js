@@ -595,12 +595,13 @@ const UserProvider = ({ children }) => {
     // update a specific realtionship by their group and key
     function updateRelationshipLevel(name, level) {
         for (let i = 0; i < userState.relationships.length; i++) {
-            for (let j = 0; i < userState.relationships[i].length; j++) {
-                if (userState.relationships[i][j].name === name)
-                    userState.relationships[i][j].relationshipLevel += level
+            for (let j = 0; j < userState.relationships[i].actions.length; j++) {
+                if (userState.relationships[i].actions[j].actionTitle === name)
+                    userState.relationships[i].actions[j].relationshipLevel += level;
             }
         }
     }
+    
 
 
     async function saveUserDataToStorage(uid) {
