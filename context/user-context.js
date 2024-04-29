@@ -320,27 +320,28 @@ const UserProvider = ({ children }) => {
     }
 
     function updateStatus({ health, happiness, appearance }) {
+
         setUserState({
             ...userState,
             status: {
                 health: health
-                    ? (userState.status.health += health) < 0
+                    ? (userState.status.health + health) < 0
                         ? 0
-                        : (userState.status.health += health) > 100
+                        : ((userState.status.health + health) > 100
                             ? 100
-                            : (userState.status.health += health)
+                            : (userState.status.health += health))
                     : userState.status.health,
                 happiness: happiness
-                    ? (userState.status.happiness += happiness) < 0
+                    ? (userState.status.happiness + happiness) < 0
                         ? 0
-                        : (userState.status.happiness += happiness) > 100
+                        : (userState.status.happiness + happiness) > 100
                             ? 100
                             : (userState.status.happiness += happiness)
                     : userState.status.happiness,
                 appearance: appearance
-                    ? (userState.status.happiness += happiness) < 0
+                    ? (userState.status.happiness + happiness) < 0
                         ? 0
-                        : (userState.status.appearance += appearance) > 100
+                        : (userState.status.appearance + appearance) > 100
                             ? 100
                             : (userState.status.appearance += appearance)
                     : userState.status.appearance,
