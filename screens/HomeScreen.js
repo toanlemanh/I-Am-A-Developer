@@ -61,7 +61,13 @@ export default function HomeScreen() {
     loadUserName();
   }, [userId]);
   const [lifeStage, setLifeStage] = useState("Infant");
+  useEffect(() => {
+    if (user.character.age === 18 && !user.character.inShool && !user.character.inUniversity && user.character.occupation.salary === 0) {
+      userContext.levelupAllEducation()
+      user.character.money += 10000
+    }
 
+  }, [user.character.age])
   useEffect(() => {
     progressId = userContext.startProgress();
 

@@ -7,17 +7,27 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import { Alert } from 'react-native'
 import CustomDrawerContent from '../components/CustomDrawerContent'
 import { COLOR } from '../constants/GlobalColor'
-import MyAssetScreen from '../screens/MyAssetsScreen'
 import { putUserData } from '../context/axios'
 import { UserContext } from '../context/user-context'
 import ActivitiesScreen from '../screens/ActivitiesScreen'
 import HomeScreen from '../screens/HomeScreen'
-import TestData from '../utils/TestData'
+import MyAssetScreen from '../screens/MyAssetsScreen'
 const Drawer = createDrawerNavigator()
 
 function DrawerStack() {
     const authContext = useContext(AuthContext)
     const userContext = useContext(UserContext);
+    const userState = userContext.userState
+    function loginRewardsHandler() {
+        userState.userDailyLogin.currentLoginDate = userContext.formatDate()
+        if (userState.userDailyLogin.lastLoginDate !== userState.userDailyLogin.currentLoginDate || userState.userDailyLogin.lastLoginDate === "") {
+            userState.character.money += userState.userDailyLogin.rewards
+            userState.userDailyLogin.lastLoginDate = userContext.formatDate()
+            return `You have received $${userState.userDailyLogin.rewards} from daily login rewards`
+        }
+        userState.userDailyLogin.lastLoginDate = userContext.formatDate()
+    }
+
 
     return (
         <Drawer.Navigator
@@ -29,18 +39,18 @@ function DrawerStack() {
                 headerTintColor: COLOR.headerTinColor,
                 headerTitleAlign: "center",
 
-                headerRight: () => (<View>
+                headerRight: () => (<View style={{ flexDirection: 'row' }}>
                     <Pressable
-                        style={{ backgroundColor: '#243bec', padding: 7, borderRadius: 10, alignItems: 'center', justifyContent: 'center', marginRight: 10 }}
+                        style={{ backgroundColor: COLOR.titleBackground, padding: 5, alignItems: 'center', justifyContent: 'center', marginRight: 10 }}
                         onPress={() => {
-                            const rewardsNotification = userContext.updateUserLogin()
-                            if (rewardsNotification) Alert.alert(rewardsNotification);
+                            const rewardsNoti = loginRewardsHandler()
+                            if (rewardsNoti) Alert.alert(rewardsNoti);
                         }}
                     >
-                        <View><Text style={{ color: 'white', textAlign: 'center' }}>Rewards</Text></View>
+                        <View><Text style={{ color: 'white', textAlign: 'center', fontSize: 10 }}>Rewards</Text></View>
                     </Pressable>
                     <Pressable
-                        style={{ backgroundColor: '#243bec', padding: 7, borderRadius: 10, alignItems: 'center', justifyContent: 'center', marginRight: 10 }}
+                        style={{ backgroundColor: COLOR.titleBackground, padding: 5, alignItems: 'center', justifyContent: 'center', marginRight: 10 }}
                         title="Savebutton"
                         onPress={async () => {
                             if (authContext.userId) {
@@ -51,7 +61,7 @@ function DrawerStack() {
                             }
                         }}
                     >
-                        <View><Text style={{ color: 'white', textAlign: 'center' }}>Save</Text></View>
+                        <View><Text style={{ color: 'white', textAlign: 'center', fontSize: 10 }}>Save</Text></View>
                     </Pressable>
                 </View>
 
@@ -68,14 +78,9 @@ function DrawerStack() {
 
             />
             <Drawer.Screen
-                name="TestData"
-                component={TestData}
-
-            />
-            <Drawer.Screen
                 name="My Assets"
                 component={MyAssetScreen}
-               
+
             />
             {/* <Drawer.Screen
                 name="GoingOffline"

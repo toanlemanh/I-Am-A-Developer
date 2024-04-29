@@ -4,13 +4,6 @@ import { CONSTRAINTS } from '../utils/constraints';
 const initialUserState = {
     userName: "name",
     gameJustStarted: true,
-    userDailyLogin: {
-        lastLoginDate: "",
-        currentLoginDate: "",
-        rewards: {
-            money: 0,
-        },
-    },
     ageLogs: {},
 
     userDailyLogin: {
@@ -62,7 +55,7 @@ const initialUserState = {
         networking: 0,
         security: 0,
         statistics: 0,
-        sQL: 0,
+        sql: 0,
         databaseManagement: 0,
         projectManagement: 0,
         communication: 0,
@@ -108,9 +101,11 @@ const UserProvider = ({ children }) => {
     const [userState, setUserState] = useState(initialUserState);
     const [progress, setProgress] = useState(0)
     const [learningState, setLearningState] = useState({
-        intervalId: "",
+        learningSubject: "",
+        learningProgress: 0,
+        intervalId: ""
     })
-    const [learningProgress, setLearningProgress] = useState(0)
+    // const [learningProgress, setLearningProgress] = useState(0)
     function refresh() {
         setUserState(initialUserState);
     }
@@ -119,6 +114,27 @@ const UserProvider = ({ children }) => {
             ...prev, ...newUserState,
         }));
     };
+
+    function updateLearningProgress(modifier) {
+        setLearningState(prev => ({
+            ...prev,
+            learningProgress: prev.learningProgress += modifier
+        }))
+    }
+
+    function updateLearningSubject(subject) {
+        setLearningState(prev => ({
+            ...prev,
+            learningSubject: subject
+        }))
+    }
+
+    function updateLearningId(id) {
+        setLearningState(prev => ({
+            ...prev,
+            intervalId: id
+        }))
+    }
     // function updateUser(newUserState) {
     //     setUserState((prev) => ({
     //         ...prev,
@@ -176,33 +192,56 @@ const UserProvider = ({ children }) => {
             }
         }));
     }
-    function formatDate(date) {
+    function formatDate() {
+        let date = new Date()
         const year = date.getFullYear();
         const month = String(date.getMonth() + 1).padStart(2, '0'); // Month is zero-indexed
         const day = String(date.getDate()).padStart(2, '0');
-
-        return `${year}/${month}/${day}`;
+        date = `${year}/${month}/${day}`
+        return date;
+    }
+    function updateLastLoginDate() {
+        setUserState(prev => ({
+            ...prev,
+            userDailyLogin: {
+                ...prev.userDailyLogin,
+                rewards: 300
+            }
+        }))
     }
     // Handle User Login Rewards
     // Must be call at the time user login
     function updateUserLogin() {
-        setUserState({
-            ...userState,
-            userDailyLogin: {
-                currentLoginDate: formatDate(new Date())
-            },
-        });
-        if (userState.userDailyLogin.currentLoginDate !== userState.userDailyLogin.lastLoginDate || !userState.userDailyLogin.lastLoginDate) {
 
+        setUserState(prev => ({
+            ...prev,
+            userDailyLogin: {
+                ...userState.userDailyLogin,
+                rewards: 200
+            },
+        }))
+        updateLastLoginDate()
+        console.log("state" + userState.userDailyLogin.rewards)
+        if (userState.userDailyLogin.currentLoginDate !== userState.userDailyLogin.lastLoginDate || !userState.userDailyLogin.lastLoginDate) {
+            setUserState(prev => ({
+                ...prev,
+                userDailyLogin: {
+                    ...prev.userDailyLogin,
+                    rewards: 200
+                },
+            }));
+            console.log(userState.userDailyLogin.currentLoginDate)
             updateCharacterMoney(-userState.userDailyLogin.rewards)
             return `You have received $${userState.userDailyLogin.rewards} from daily login rewards!`
         }
         setUserState({
             ...userState,
-            UserDailyLogin: {
-                lastLoginDate: formatDate(new Date())
+            userDailyLogin: {
+                ...userState.userDailyLogin,
+                lastLoginDate: userState.userDailyLogin.currentLoginDate
             },
         });
+
         return "You have successfully logged in!"
     };
     // each one increase by one level
@@ -244,8 +283,8 @@ const UserProvider = ({ children }) => {
 
         const id = setInterval(() => {
             // replace by constraints.speed
-            setProgress((prev) => prev += (100 / 720 * 3))
-        }, 3000)
+            setProgress((prev) => prev += (100 / 720))
+        }, 1000)
         return id
     }
 
@@ -398,8 +437,10 @@ const UserProvider = ({ children }) => {
                     userState,
                     progress,
                     learningState,
-                    learningProgress,
-                    setLearningProgress,
+                    formatDate,
+                    updateLearningId,
+                    updateLearningSubject,
+                    updateLearningProgress,
                     setLearningState,
                     updateUserLogin,
                     updateCharacterMoney,
