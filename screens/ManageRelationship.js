@@ -18,7 +18,7 @@ export default function ManageRelationship({ route, navigation }) {
   const [actionText, setActionText] = useState('');
   const [actionName,setActionName] = useState('');
   // Retrieve all relationships from data
-  
+  const [relationshipLevel,setRelationshipLevel] = useState(0); 
   const userContext = useContext(UserContext);
   const [status,setStatus] = useState({
     health:0,
@@ -82,7 +82,7 @@ const handleActionClick = (action) => {
       happiness:action.happiness,
       appearance:action.look
   })
-  
+  setRelationshipLevel(action.relationshipLevel);
   //Update relationship level here
   //userContext.updateRelationshipLevel(relationship.group, relationship.name, action.relationshipLevel)
   console.log(action.health,action.happiness,action.look,action.relationshipLevel);
@@ -93,7 +93,9 @@ function modalOnPress(){
     health:status.health,
     happiness:status.happiness,
     appearance:status.look
-});
+  });
+  userContext.updateRelationshipLevel(relationship.name,relationshipLevel)
+  console.log(status.health,status.happiness,status.appearance);
 }
 
 // Function to generate action content

@@ -70,7 +70,7 @@ const initialUserState = {
             name: "William Jones",
             group: "Parents",
             relationshipType: "Father",
-            relationshipLevel: 100,
+            relationshipLevel: 20,
             occupation: "Doctor",
             actions: [
                 {
@@ -135,7 +135,7 @@ const initialUserState = {
             name: "Emily Taylor",
             group: "Parents",
             relationshipType: "Mother",
-            relationshipLevel: 100,
+            relationshipLevel: 20,
             occupation: "Teacher",
             actions: [
                 {
@@ -200,7 +200,7 @@ const initialUserState = {
             name: "John Jones",
             group: "Siblings",
             relationshipType: "Brother",
-            relationshipLevel: 75,
+            relationshipLevel: 20,
             age: 20,
             occupation: "Student",
             actions: [
@@ -238,7 +238,7 @@ const initialUserState = {
             name: "Max",
             group: "Pets",
             relationshipType: "Dog",
-            relationshipLevel: 90,
+            relationshipLevel: 20,
             age: 3,
             actions: [
                 {

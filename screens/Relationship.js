@@ -2,7 +2,7 @@ import React from 'react'
 import { ScrollView, StyleSheet, View } from 'react-native'
 import Card from '../components/Card'
 import CustomDataLabel from '../components/CustomDataLabel'
-import data from "../data/userData.json"
+
 import { styles } from '../Style/screenStyles/RelationshipStyle';
 import { UserContext } from '../context/user-context'
 import { useContext } from 'react'
