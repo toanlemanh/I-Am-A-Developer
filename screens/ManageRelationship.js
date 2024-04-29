@@ -11,7 +11,7 @@ export default function ManageRelationship({ route, navigation }) {
   const [actionModal, setActionModal] = useState(false);
   const [relationship, setRelationship] = useState({
     name: route.params.dataName,
-    type: route.params.relationshipType,
+    group: route.params.relationshipType,
     level: route.params.relationshipLevel,
     job: route.params.occupation,
   });
@@ -46,11 +46,11 @@ export default function ManageRelationship({ route, navigation }) {
     );
   };
 
-  const renderContent = (level, job, type) => {
+  const renderContent = (level, job, group) => {
     return (
       <View>
         <Text>
-          <Text style={styles.label}>Type:</Text> {type}
+          <Text style={styles.label}>Group:</Text> {group}
         </Text>
         <Text>
           <Text style={styles.label}>Level:</Text> {level}
@@ -75,13 +75,15 @@ const handleActionClick = (action) => {
       health:action.health,
       happiness:action.happiness,
       appearance:action.look
-  })
+  });
+  //Update relationship level here
+  userContext.updateRelationshipLevel(relationship.group, relationship.name, action.relationshipLevel)
   console.log(action.health,action.happiness,action.look,action.relationshipLevel);
 };
 
 // Function to generate action content
 const generateActionContent = (action) => {
-  let content = action.actionTitle + " with your " + relationship.type;
+  let content = action.actionTitle + " with your " + relationship.group;
   if (action.health !== undefined) content += "\nHealth: " + action.health;
   if (action.happiness !== undefined) content += "\nHappiness: " + action.happiness;
   if (action.look !== undefined) content += "\nLook: " + action.look;
@@ -126,7 +128,7 @@ return (
     content={renderContent(
       relationship.level,
       relationship.job,
-      relationship.type
+      relationship.group
     )}
     buttonText={"OK"}
   />

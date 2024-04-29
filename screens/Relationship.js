@@ -4,7 +4,8 @@ import Card from '../components/Card'
 import CustomDataLabel from '../components/CustomDataLabel'
 import data from "../data/userData.json"
 import { styles } from '../Style/screenStyles/RelationshipStyle';
-const relationships2 = data.Relationships
+import { UserContext } from '../context/user-context'
+const relationships2 = data.Relationships;
 
 export default function RelationshipScreen({ navigation }) {
   // Grouping relationships by group name

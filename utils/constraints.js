@@ -1,6 +1,10 @@
 
 export const CONSTRAINTS = {
     age: {
+        infant: 1,
+        kid: 9,
+        teen: 19,
+        adult: 65,
         minimumEducationStart: 5,
         receiveMoneyFromParents: 18,
         legalAdult: 18,
@@ -71,6 +75,10 @@ export const CONSTRAINTS = {
         school: 3000,
         higherEducation: 20000,
 
+    },
+    relationship:{
+        max:100,
+        min: 0
     },
     dynamicEvents: {
         // Probability and effects of random life events

@@ -4,6 +4,7 @@ import {
   MaterialCommunityIcons,
   MaterialIcons,
 } from "@expo/vector-icons";
+import {loadingStyle} from "../Style/componentStyle/LoadingStyle"
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useNavigation } from "@react-navigation/native";
 import React, { useContext, useEffect, useState } from "react";
@@ -16,7 +17,7 @@ import PercentageBar from "../components/ProgressBar";
 import SelectionPopup from "../components/eventsPopup/SelectionPopup";
 import { COLOR } from "../constants/GlobalColor";
 import { AuthContext } from "../context/auth";
-import { getUserId } from "../context/axios";
+import { getUserId } from "../api/axios";
 import { UserContext } from "../context/user-context";
 import data from "../data/data.json";
 import { AVATARS } from "../utils/avatars";
@@ -62,7 +63,7 @@ export default function HomeScreen() {
   }, [userId]);
   const [lifeStage, setLifeStage] = useState("Infant");
   useEffect(() => {
-    if (user.character.age === 18 && !user.character.inShool && !user.character.inUniversity && user.character.occupation.salary === 0) {
+    if (user.character.age === CONSTRAINTS.age.legalAdult && !user.character.inShool && !user.character.inUniversity && user.character.occupation.salary === 0) {
       userContext.levelupAllEducation()
       user.character.money += 10000
     }
@@ -87,20 +88,20 @@ export default function HomeScreen() {
   }, [userContext.progress]);
 
   useEffect(() => {
-    if (user.character.age <= 1) {
+    if (user.character.age <= CONSTRAINTS.age.infant) {
       setLifeStage("Infant");
-    } else if (user.character.age <= 9) {
+    } else if (user.character.age <= CONSTRAINTS.age.kid) {
       setLifeStage("Kid");
-    } else if (user.character.age <= 19) {
+    } else if (user.character.age <= CONSTRAINTS.age.teen) {
       setLifeStage("Teenager");
-    } else if (user.character.age <= 60) {
+    } else if (user.character.age <= CONSTRAINTS.age.adult) {
       setLifeStage("Adult");
     } else setLifeStage("Old");
   }, [user.character.age]);
 
   //condition for modal to show when level-up (progress =100)
   useEffect(() => {
-    if (userContext.progress >= 100) {
+    if (userContext.progress >= CONSTRAINTS.age.max) {
       const eventsLength = data.newAgeEvents.data.length;
       const index = Math.floor(Math.random() * eventsLength);
 
@@ -161,7 +162,7 @@ export default function HomeScreen() {
 
   if (isLoading) {
     return (
-      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+      <View style={loadingStyle.container}>
         <ActivityIndicator size="large" color="#0000ff" />
       </View>
     );
