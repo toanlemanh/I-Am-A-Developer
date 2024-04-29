@@ -56,8 +56,9 @@ export default function ActivitiesScreen() {
     return (
         <ScrollView style={styles.container}>
             <View style={styles.list}>
-                {activities.map((activity) => (
+                {activities.map((activity, itemIndex) => (
                     <Card
+                        time={itemIndex}
                         key={activity.name}
                         barHidden={true}
                         showDetail={true}

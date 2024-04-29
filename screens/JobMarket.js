@@ -76,8 +76,9 @@ export default function JobMarket() {
   return (
     <ScrollView style={styles.container}>
       <View style={styles.list}>
-        {jobs.map((job) => (
+        {jobs.map((job, itemIndex) => (
           <Card
+            time={itemIndex}
             key={job.id}
             barHidden={true}
             showDetail={true}

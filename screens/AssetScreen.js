@@ -72,6 +72,7 @@ export default function AssetScreen() {
           {groupItems.map((item, itemIndex) => (
             <View key={itemIndex}>
               <Card
+                time={itemIndex}
                 key={itemIndex}
                 onPress={() => openModal(item)}
                 barHidden={true}

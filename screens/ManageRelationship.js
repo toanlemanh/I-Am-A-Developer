@@ -102,6 +102,7 @@ return (
   {filteredActions.map((action, index) => (
     <View key={index}>
       <Card
+        time={index}
         barHidden={true}
         onPress={() => handleActionClick(action)} // Pass action to handleActionClick
         showDetail={true}

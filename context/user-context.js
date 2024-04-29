@@ -15,7 +15,7 @@ const initialUserState = {
     },
     character: {
         img: "",
-        money: 20000000,
+        money: 0,
         age: 0,
         occupation: {
             name: "",
@@ -67,7 +67,7 @@ const initialUserState = {
     },
 
     relationships: {
-        parents: [
+        motherinlaw: [
             {
                 name: "William Jones",
                 group: "Parents",
