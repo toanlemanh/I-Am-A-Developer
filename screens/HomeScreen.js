@@ -109,6 +109,12 @@ export default function HomeScreen() {
       setModalVisible(true);
     }
   }, [userContext.progress]);
+  useEffect(() => {
+    if (!user.isAlive) {
+      Alert.alert("You are Dead!")
+      navigation.navigate('EndGameScreen')
+    }
+  }, [user.isAlive])
   function updateAge() {
     if (user.isAlive) {
       userContext.updateCharacterAge(1);
@@ -117,9 +123,6 @@ export default function HomeScreen() {
       const index = Math.floor(Math.random() * eventsLength);
       setRandomIndex(index);
       userContext.updateStatus({ health: -7, happiness: -10, appearance: -5 });
-    } else {
-      Alert.alert("You are Dead!")
-      navigation.navigate('EndGameScreen')
     }
   }
   function handleAgePress() {
