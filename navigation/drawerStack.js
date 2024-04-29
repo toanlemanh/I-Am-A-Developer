@@ -60,7 +60,7 @@ function DrawerStack() {
                                 const key = await AsyncStorage.getItem("key");
                                 const userState = userContext.userState;
                                 putUserData(authContext.userId, key, userState);
-
+                                Alert.alert("Data saved")
                             }
                         }}
                     >

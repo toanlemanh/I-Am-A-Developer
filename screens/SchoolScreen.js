@@ -61,8 +61,8 @@ function SchoolScreen() {
     if (learningSubject === "" && learningState.learningProgress === CONSTRAINTS.education.learningProgess.min) {
       userContext.updateLearningSubject(subject)
       const id = setInterval(() => {
-        userContext.updateLearningProgress(10)
-      }, 1000)
+        userContext.updateLearningProgress(200 / 240)
+      }, 2000)
       userContext.updateLearningId(id)
     }
     closeModal()
@@ -81,7 +81,7 @@ function SchoolScreen() {
     }
   }, [learningState.learningProgress])
   if (learningState.learningProgress >= CONSTRAINTS.education.learningProgess.max) {
-    userContext.updateLearningProgress(-CONSTRAINTS.education.learningProgess.max)
+    userContext.updateLearningProgress()
     userContext.updateLearningSubject("")
   }
 
@@ -101,7 +101,7 @@ function SchoolScreen() {
         <Text style={styles.tuluyenText}>
           Currently cultivating {transformText(learningSubject)}
         </Text>
-        <Text style={styles.yearText}>{learningState.learningProgress}% </Text>
+        <Text style={styles.yearText}>{Math.round(learningState.learningProgress, 2)}% </Text>
       </View>
       <PercentageBar
         width={"100%"}
