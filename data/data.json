@@ -826,241 +826,264 @@
       }
     ]
   },
-  "newAgeEvents": {
-    "data": [
-      {
-        "description": "You wake up feeling strangely energetic. You could:",
-        "choice": [
-          {
-            "description": "Meditate and find your inner peace.",
-            "healthEffect": 15,
-            "happinessEffect": 10,
-            "result": "You feel a radiant glow emanating from you."
-          },
-          {
-            "description": "Go for a crystal healing session.",
-            "healthEffect": 5,
-            "happinessEffect": 15,
-            "result": "The crystals leave you feeling centered, but maybe a little woozy."
-          },
-          {
-            "description": "Ignore the strange energy and go about your day.",
-            "healthEffect": 0,
-            "happinessEffect": 5,
-            "result": "The strange feeling fades away throughout the day."
-          }
-        ]
-      },
-      {
-        "description": "You encounter a street psychic. They offer to read your palm for a small fee. Do you:",
-        "choice": [
-          {
-            "description": "Pay for the palm reading.",
-            "healthEffect": 0,
-            "happinessEffect": 10,
-            "result": "The psychic reveals some intriguing things about your future."
-          },
-          {
-            "description": "Decline politely and walk away.",
-            "healthEffect": 0,
-            "happinessEffect": 5,
-            "result": "The psychic shrugs and moves on to the next person."
-          }
-        ]
-      },
-      {
-        "description": "You hear about a local yoga retreat happening this weekend. Are you interested in:",
-        "choice": [
-          {
-            "description": "Joining the yoga retreat for some mindfulness training.",
-            "healthEffect": 10,
-            "happinessEffect": 15,
-            "result": "You return from the retreat feeling refreshed and rejuvenated."
-          },
-          {
-            "description": "Sticking to your usual routine. Maybe yoga isn't your thing.",
-            "healthEffect": 0,
-            "happinessEffect": 5,
-            "result": "You miss out on a potentially relaxing experience."
-          }
-        ]
-      },
-      {
-        "description": "It's a full moon tonight! You feel a surge of creative energy. Will you:",
-        "choice": [
-          {
-            "description": "Write down your dreams and see if they hold any meaning.",
-            "healthEffect": 5,
-            "happinessEffect": 10,
-            "result": "You spend the night with a pen and notebook, lost in thought."
-          },
-          {
-            "description": "Channel your energy into creating art or music.",
-            "healthEffect": -5,
-            "happinessEffect": 15,
-            "result": "You become engrossed in your artistic expression."
-          },
-          {
-            "description": "Do some calming yoga or meditation to balance the lunar energy.",
-            "healthEffect": 10,
-            "happinessEffect": 10,
-            "result": "You feel centered and grounded after your practice."
-          }
-        ]
-      },
-      {
-        "description": "You meet a friend who offers to do an aura reading for you. Do you:",
-        "choice": [
-          {
-            "description": "Let your friend read your aura and see what they discover.",
-            "healthEffect": 0,
-            "happinessEffect": 10,
-            "result": "Your friend studies your aura with a focused gaze."
-          },
-          {
-            "description": "Politely decline, unsure about aura readings.",
-            "healthEffect": 0,
-            "happinessEffect": 5,
-            "result": "Your friend shrugs it off and you move on with your conversation."
-          }
-        ]
-      },
-      {
-        "description": "You come across an advertisement for a past life regression therapy session. Are you interested in:",
-        "choice": [
-          {
-            "description": "Undergoing past life regression to explore your past lives.",
-            "healthEffect": -5,
-            "happinessEffect": 15,
-            "result": "You spend the session in a relaxed state, guided by the therapist."
-          },
-          {
-            "description": "Skipping the regression and sticking to your present life.",
-            "healthEffect": 0,
-            "happinessEffect": 5,
-            "result": "The ad piques your curiosity for a moment, then you move on."
-          }
-        ]
-      },
-      {
-        "description": "You come across an advertisement for a past life regression therapy session. Are you interested in:",
-        "choice": [
-          {
-            "description": "Undergoing past life regression to explore your past lives.",
-            "healthEffect": -5,
-            "happinessEffect": 15,
-            "result": "You spend the session in a relaxed state, guided by the therapist."
-          },
-          {
-            "description": "Skipping the regression and sticking to your present life.",
-            "healthEffect": 0,
-            "happinessEffect": 5,
-            "result": "The ad piques your curiosity for a moment, then you move on."
-          }
-        ]
-      },
-      {
-        "description": "You hear about a sound bath meditation session advertised for stress relief. Are you interested in:",
-        "choice": [
-          {
-            "description": "Participating in the sound bath meditation to experience deep relaxation.",
-            "healthEffect": 15,
-            "happinessEffect": 10,
-            "result": "You lie down in a comfortable position, surrounded by soothing sounds."
-          },
-          {
-            "description": "Sticking to your usual routine. Meditation isn't your preferred method of relaxation.",
-            "healthEffect": 0,
-            "happinessEffect": 5,
-            "result": "You miss out on a potentially stress-reducing experience."
-          }
-        ]
-      },
-      {
-        "description": "You see a flyer for an aromatherapy workshop. Are you interested in:",
-        "choice": [
-          {
-            "description": "Learning about essential oils and their potential benefits.",
-            "healthEffect": 5,
-            "happinessEffect": 10,
-            "result": "You leave the workshop feeling refreshed and with a newfound knowledge of essential oils."
-          },
-          {
-            "description": "Sticking to your usual routine. Aromatherapy isn't really your thing.",
-            "healthEffect": 0,
-            "happinessEffect": 5,
-            "result": "The flyer piques your curiosity for a moment, then you move on."
-          }
-        ]
-      },
-      {
-        "description": "You stumble upon a beautiful crystal shop overflowing with gemstones. Do you:",
-        "choice": [
-          {
-            "description": "Treat yourself to a crystal that resonates with you.",
-            "healthEffect": 0,
-            "happinessEffect": 15,
-            "result": "You proudly wear your new crystal pendant, believing it brings good luck."
-          },
-          {
-            "description": "Browse the selection but decide against buying anything.",
-            "healthEffect": 0,
-            "happinessEffect": 5,
-            "result": "You admire the various crystals but don't feel drawn to any in particular."
-          }
-        ]
-      },
-      {
-        "description": "A friend invites you to a Law of Attraction workshop. Do you want to:",
-        "choice": [
-          {
-            "description": "Learn about manifesting your desires through positive affirmations.",
-            "healthEffect": 5,
-            "happinessEffect": 10,
-            "result": "You leave the workshop with a notebook full of affirmations and a positive outlook."
-          },
-          {
-            "description": "Decline politely, unsure about the Law of Attraction principles.",
-            "healthEffect": 0,
-            "happinessEffect": 5,
-            "result": "You thank your friend for the invite but explain you're not interested in the workshop."
-          }
-        ]
-      },
-      {
-        "description": "A therapist offers you a past life regression therapy session. Are you interested in:",
-        "choice": [
-          {
-            "description": "Explore your past lives through guided meditation and hypnosis.",
-            "healthEffect": -5,
-            "happinessEffect": 15,
-            "result": "You spend the session in a relaxed state, guided by the therapist's voice."
-          },
-          {
-            "description": "Decline politely, feeling skeptical about past life regression.",
-            "healthEffect": 0,
-            "happinessEffect": 5,
-            "result": "You thank the therapist but explain you're not comfortable with the technique."
-          }
-        ]
-      },
-      {
-        "description": "You come across a weekend retreat focused on sound bath meditation. Do you:",
-        "choice": [
-          {
-            "description": "Immerse yourself in the sounds of gongs, singing bowls, and other instruments for deep relaxation.",
-            "healthEffect": 15,
-            "happinessEffect": 10,
-            "result": "You spend the weekend lying comfortably, surrounded by soothing soundscapes."
-          },
-          {
-            "description": "Stick to your usual routine. Meditation retreats aren't your preferred method of relaxation.",
-            "healthEffect": 0,
-            "happinessEffect": 5,
-            "result": "The retreat sounds appealing, but you decide to pass on it this time."
-          }
-        ]
-      }
-    ]
-  }
-}
+    "newAgeEvents": {
+      "data": [
+        {
+          "description": "You wake up feeling strangely energized. What should you do?",
+          "choice": [
+            {
+              "description": "Close your eyes, breathe deeply, and think happy thoughts to feel even better.",
+              "healthEffect": 15,
+              "happinessEffect": 10,
+              "result": "You feel a warm, happy glow inside you."
+            },
+            {
+              "description": "Snuggle with your favorite stuffed animal while imagining it's giving you magic healing powers.",
+              "healthEffect": 5,
+              "happinessEffect": 15,
+              "result": "You feel cozy and content, like you're surrounded by love and positive energy."
+            },
+            {
+              "description": "Jump out of bed and dance around your room to shake off the weird feeling.",
+              "healthEffect": 0,
+              "happinessEffect": 5,
+              "result": "The strange feeling fades away as you dance and have fun."
+            }
+          ]
+        },
+        {
+          "description": "You find a shiny rock on your way home. What do you do?",
+          "choice": [
+            {
+              "description": "Keep the rock and imagine it brings you good luck.",
+              "healthEffect": 5,
+              "happinessEffect": 10,
+              "result": "You feel a little boost of confidence and happiness."
+            },
+            {
+              "description": "Give the rock to a friend as a symbol of your friendship.",
+              "healthEffect": 0,
+              "happinessEffect": 15,
+              "result": "Your friend is super grateful, and you feel really good about making them happy."
+            },
+            {
+              "description": "Leave the rock where you found it and continue on your way.",
+              "healthEffect": 0,
+              "happinessEffect": 0,
+              "result": "You feel indifferent, but maybe someone else will find joy in discovering the rock."
+            }
+          ]
+        },
+        {
+          "description": "You see a rainbow after the rain. What's your reaction?",
+          "choice": [
+            {
+              "description": "Run outside and try to touch the rainbow.",
+              "healthEffect": 0,
+              "happinessEffect": 10,
+              "result": "You laugh and feel joyous, even though you can't touch it."
+            },
+            {
+              "description": "Take a picture of the rainbow to share with your friends.",
+              "healthEffect": 0,
+              "happinessEffect": 15,
+              "result": "Your friends love the picture, and you feel proud of capturing such a beautiful moment."
+            },
+            {
+              "description": "Just admire the rainbow from your window and continue what you were doing.",
+              "healthEffect": 0,
+              "happinessEffect": 5,
+              "result": "You smile at the rainbow and feel a sense of peace."
+            }
+          ]
+        },
+        {
+          "description": "You hear a strange noise coming from your closet at night. What do you do?",
+          "choice": [
+            {
+              "description": "Investigate the noise to make sure there are no monsters hiding.",
+              "healthEffect": -5,
+              "happinessEffect": 0,
+              "result": "You find nothing but clothes and toys, but your imagination runs wild."
+            },
+            {
+              "description": "Stay under your covers and pretend you didn't hear anything.",
+              "healthEffect": 0,
+              "happinessEffect": 5,
+              "result": "You feel safe and snug under your blankets, even if you're a little scared."
+            },
+            {
+              "description": "Turn on the light and ask your parents to check the closet.",
+              "healthEffect": 10,
+              "happinessEffect": 0,
+              "result": "Your parents reassure you that everything's okay, and you feel relieved."
+            }
+          ]
+        },
+        {
+          "description": "You spot a shooting star during a camping trip. What's your wish?",
+          "choice": [
+            {
+              "description": "Wish for a magical adventure.",
+              "healthEffect": 0,
+              "happinessEffect": 10,
+              "result": "You feel excited about the possibilities ahead."
+            },
+            {
+              "description": "Wish for good grades or success in a hobby.",
+              "healthEffect": 0,
+              "happinessEffect": 15,
+              "result": "You feel determined to work hard and make your wish come true."
+            },
+            {
+              "description": "Decide not to make a wish and just enjoy the moment.",
+              "healthEffect": 0,
+              "happinessEffect": 5,
+              "result": "You feel content and grateful for the chance to witness such a beautiful sight."
+            }
+          ]
+        },
+        {
+          "description": "You receive an anonymous compliment. How do you react?",
+          "choice": [
+            {
+              "description": "Smile and feel good about yourself.",
+              "healthEffect": 5,
+              "happinessEffect": 10,
+              "result": "You walk with a little spring in your step, feeling confident and appreciated."
+            },
+            {
+              "description": "Try to guess who the compliment came from and thank them.",
+              "healthEffect": 0,
+              "happinessEffect": 15,
+              "result": "You feel grateful for the kind words and happy to know someone thinks highly of you."
+            },
+            {
+              "description": "Brush it off and assume it was a mistake.",
+              "healthEffect": 0,
+              "happinessEffect": 5,
+              "result": "You feel a bit unsure but carry on with your day."
+            }
+          ]
+        },
+        {
+          "description": "You come across an injured bird on the sidewalk. What do you do?",
+          "choice": [
+            {
+              "description": "Carefully pick up the bird and take it to a nearby animal shelter.",
+              "healthEffect": 10,
+              "happinessEffect": 15,
+              "result": "You feel like a hero for helping the bird, and it warms your heart to see it get better."
+            },
+            {
+              "description": "Find a safe spot for the bird and leave some food and water for it.",
+              "healthEffect": 5,
+              "happinessEffect": 10,
+              "result": "You feel relieved knowing you've done what you can to help, and you hope the bird gets better soon."
+            },
+            {
+              "description": "Walk past the bird and hope it finds help on its own.",
+              "healthEffect": 0,
+              "happinessEffect": 0,
+              "result": "You feel a little guilty but convince yourself that someone else will help the bird."
+            }
+          ]
+        },
+        {
+          "description": "You're invited to a costume party. What will you dress up as?",
+          "choice": [
+            {
+              "description": "A magical unicorn or fairy.",
+              "healthEffect": 0,
+              "happinessEffect": 10,
+              "result": "You feel enchanting and full of wonder in your mystical costume."
+            },
+            {
+              "description": "Your favorite superhero or character from a movie.",
+              "healthEffect": 0,
+              "happinessEffect": 15,
+              "result": "You feel powerful and excited to embody your favorite character for the night."
+            },
+            {
+              "description": "Just wear something simple and comfortable.",
+              "healthEffect": 0,
+              "happinessEffect": 5,
+              "result": "You feel relaxed and confident in your own skin, ready to enjoy the party."
+            }
+          ]
+        },
+        {
+          "description": "You find a stray kitten outside your house. What do you do?",
+          "choice": [
+            {
+              "description": "Bring the kitten inside and give it food, water, and lots of cuddles.",
+              "healthEffect": 10,
+              "happinessEffect": 15,
+              "result": "You feel overjoyed to have a new furry friend, and the kitten purrs in contentment."
+            },
+            {
+              "description": "Take the kitten to a nearby animal shelter to find it a loving home.",
+              "healthEffect": 5,
+              "happinessEffect": 10,
+              "result": "You feel proud knowing you're helping the kitten find a safe and caring family."
+            },
+            {
+              "description": "Leave the kitten outside and hope it finds its way home.",
+              "healthEffect": 0,
+              "happinessEffect": 0,
+              "result": "You feel a little sad but convince yourself that the kitten will be okay on its own."
+            }
+          ]
+        },
+        {
+          "description": "You're feeling stressed about a big test. What do you do to relax?",
+          "choice": [
+            {
+              "description": "Take a break and listen to your favorite music or watch a funny video.",
+              "healthEffect": 10,
+              "happinessEffect": 15,
+              "result": "You feel refreshed and ready to tackle your studies with a positive mindset."
+            },
+            {
+              "description": "Do some deep breathing exercises or practice mindfulness to calm your nerves.",
+              "healthEffect": 15,
+              "happinessEffect": 10,
+              "result": "You feel centered and focused, ready to approach your test with a clear head."
+            },
+            {
+              "description": "Keep studying and try to push through the stress.",
+              "healthEffect": 0,
+              "happinessEffect": 5,
+              "result": "You feel a bit drained, but you're determined to do your best on the test."
+            }
+          ]
+        },
+        {
+          "description": "You're feeling down because your favorite team lost a game. How do you cheer yourself up?",
+          "choice": [
+            {
+              "description": "Watch highlights of your team's past victories to boost your spirits.",
+              "healthEffect": 5,
+              "happinessEffect": 10,
+              "result": "You feel proud to support your team and optimistic about their future games."
+            },
+            {
+              "description": "Go outside and play your favorite sport or game to take your mind off the loss.",
+              "healthEffect": 10,
+              "happinessEffect": 15,
+              "result": "You feel energized and happy to be active, regardless of the game's outcome."
+            },
+            {
+              "description": "Talk to a friend or family member about how you're feeling to get some support.",
+              "healthEffect": 0,
+              "happinessEffect": 5,
+              "result": "You feel better after sharing your feelings and receiving some encouragement."
+            }
+          ]
+        }
+      ]
+    }
+      
+    }
+  
+  

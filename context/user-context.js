@@ -75,64 +75,6 @@ const initialUserState = {
             relationshipType: "Father",
             relationshipLevel: 20,
             occupation: "Doctor",
-            actions: [
-                {
-                    actionTitle: "Go to mall for clothes",
-                    health: 1,
-                    happiness: 10,
-                    look: 10,
-                    relationshipLevel: 10
-                },
-                {
-                    actionTitle: "Meet teacher",
-                    health: -3,
-                    happiness: 5,
-                    look: 0,
-                    relationshipLevel: 8
-                },
-                {
-                    actionTitle: "Go to barber shop ",
-                    health: 10,
-                    happiness: 2,
-                    look: 10,
-                    relationshipLevel: 12
-                },
-                {
-                    actionTitle: "Family Game Night",
-                    health: 2,
-                    happiness: 9,
-                    look: 0,
-                    relationshipLevel: 10
-                },
-                {
-                    actionTitle: "Cook and Share a Meal",
-                    health: 4,
-                    happiness: 7,
-                    look: 0,
-                    relationshipLevel: 11
-                },
-                {
-                    actionTitle: "Create a Family Scrapbook",
-                    health: 1,
-                    happiness: 8,
-                    look: 0,
-                    relationshipLevel: 9
-                },
-                {
-                    actionTitle: "Volunteer Together",
-                    health: 3,
-                    happiness: 6,
-                    look: 0,
-                    relationshipLevel: 10
-                },
-                {
-                    actionTitle: "Plan a Family Day Trip",
-                    health: 5,
-                    happiness: 9,
-                    look: 0,
-                    relationshipLevel: 12
-                }
-            ]
         },
         {
             name: "Emily Taylor",
@@ -140,64 +82,7 @@ const initialUserState = {
             relationshipType: "Mother",
             relationshipLevel: 20,
             occupation: "Teacher",
-            actions: [
-                {
-                    actionTitle: "Spend time baking together",
-                    health: 3,
-                    happiness: 8,
-                    look: 0,
-                    relationshipLevel: 10
-                },
-                {
-                    actionTitle: "Watch a movie ",
-                    health: 2,
-                    happiness: 10,
-                    look: 0,
-                    relationshipLevel: 9
-                },
-                {
-                    actionTitle: "Take a walk in the park",
-                    health: 5,
-                    happiness: 7,
-                    look: 0,
-                    relationshipLevel: 11
-                },
-                {
-                    actionTitle: "Family Game Night",
-                    health: 2,
-                    happiness: 9,
-                    look: 0,
-                    relationshipLevel: 10
-                },
-                {
-                    actionTitle: "Cook and Share a Meal",
-                    health: 4,
-                    happiness: 7,
-                    look: 0,
-                    relationshipLevel: 11
-                },
-                {
-                    actionTitle: "Create a Family Scrapbook",
-                    health: 1,
-                    happiness: 8,
-                    look: 0,
-                    relationshipLevel: 9
-                },
-                {
-                    actionTitle: "Volunteer Together",
-                    health: 3,
-                    happiness: 6,
-                    look: 0,
-                    relationshipLevel: 10
-                },
-                {
-                    actionTitle: "Plan a Family Day Trip",
-                    health: 5,
-                    happiness: 9,
-                    look: 0,
-                    relationshipLevel: 12
-                }
-            ]
+            
         },
         {
             name: "John Jones",
@@ -206,36 +91,7 @@ const initialUserState = {
             relationshipLevel: 20,
             age: 20,
             occupation: "Student",
-            actions: [
-                {
-                    actionTitle: "Play video games",
-                    health: 2,
-                    happiness: 7,
-                    look: 0,
-                    relationshipLevel: 8
-                },
-                {
-                    actionTitle: "Study together",
-                    health: 3,
-                    happiness: 5,
-                    look: 0,
-                    relationshipLevel: 7
-                },
-                {
-                    actionTitle: "Go for a run",
-                    health: 5,
-                    happiness: 8,
-                    look: 0,
-                    relationshipLevel: 9
-                },
-                {
-                    actionTitle: "Attend a sports event",
-                    health: 3,
-                    happiness: 9,
-                    look: 0,
-                    relationshipLevel: 8
-                }
-            ]
+           
         },
         {
             name: "Max",
@@ -243,36 +99,7 @@ const initialUserState = {
             relationshipType: "Dog",
             relationshipLevel: 20,
             age: 3,
-            actions: [
-                {
-                    actionTitle: "Go for a walk",
-                    health: 5,
-                    happiness: 10,
-                    look: 0,
-                    relationshipLevel: 10
-                },
-                {
-                    actionTitle: "Play fetch",
-                    health: 3,
-                    happiness: 8,
-                    look: 0,
-                    relationshipLevel: 9
-                },
-                {
-                    actionTitle: "Give belly rubs",
-                    health: 2,
-                    happiness: 9,
-                    look: 0,
-                    relationshipLevel: 9
-                },
-                {
-                    actionTitle: "Grooming session",
-                    health: 4,
-                    happiness: 7,
-                    look: 0,
-                    relationshipLevel: 8
-                }
-            ]
+           
         }
     ],
     assets: [],
@@ -289,7 +116,6 @@ const UserProvider = ({ children }) => {
         learningProgress: 0,
         intervalId: "",
     });
-    // const [learningProgress, setLearningProgress] = useState(0)
     function refresh() {
         const name = userState.userName
         setUserState(() => ({
@@ -341,15 +167,6 @@ const UserProvider = ({ children }) => {
             intervalId: id,
         }));
     }
-    // function updateUser(newUserState) {
-    //     setUserState((prev) => ({
-    //         ...prev,
-    //         character: {
-    //             ...prev.character,
-    //             ...newUserState.character
-    //         }
-    //     }));
-    // };
     function updateAsset(asset) {
         console.log("asset: ", asset);
         setUserState((prev) => ({
@@ -521,7 +338,6 @@ const UserProvider = ({ children }) => {
                             ? 100
                             : (userState.status.health += health))
                     : userState.status.health,
-                // <= cai nay chua toi depth 4 dau thay oi
                 happiness: happiness
                     ? (userState.status.happiness + happiness) < 0
                         ? 0
