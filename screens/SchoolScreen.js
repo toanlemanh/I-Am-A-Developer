@@ -136,10 +136,11 @@ function SchoolScreen() {
         ) : null}
 
         {user.character.inUniversity && (
-          Object.keys(universitySubjects).map((subject) => {
+          Object.keys(universitySubjects).map((subject, id) => {
             const subjectName = transformText([subject][0])
             return (
               <Card
+                time={id}
                 key={[subject]}
                 percentage={universitySubjects[subject] * 20}  // Assuming fixed percentage
                 showDetail={true}
