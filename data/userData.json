@@ -66,9 +66,64 @@
                 "price": "50000"
             },
             {
-                "group": "Paintings",
-                "name": "Apple painting",
+                "group": "Smartphones",
+                "name": "Samsung Galaxy S22 Ultra",
+                "price": "1200"
+            },
+            {
+                "group": "Smartphones",
+                "name": "Google Pixel 7 Pro",
                 "price": "1000"
+            },
+            {
+                "group": "Laptop",
+                "name": "HP Spectre x360",
+                "price": "1500"
+            },
+            {
+                "group": "Laptop",
+                "name": "Lenovo ThinkPad X1 Carbon",
+                "price": "2000"
+            },
+            {
+                "group": "Tablets",
+                "name": "iPad Pro 12.9-inch (5th generation)",
+                "price": "1200"
+            },
+            {
+                "group": "Tablets",
+                "name": "Samsung Galaxy Tab S8+",
+                "price": "1000"
+            },
+            {
+                "group": "Smartwatches",
+                "name": "Samsung Galaxy Watch 4 Classic",
+                "price": "400"
+            },
+            {
+                "group": "Smartwatches",
+                "name": "Garmin Fenix 7",
+                "price": "700"
+            },
+            {
+                "group": "Headphones",
+                "name": "Sony WH-1000XM4",
+                "price": "350"
+            },
+            {
+                "group": "Headphones",
+                "name": "Apple AirPods Pro",
+                "price": "250"
+            },
+            {
+                "group": "Gaming Consoles",
+                "name": "PlayStation 5",
+                "price": "500"
+            },
+            {
+                "group": "Gaming Consoles",
+                "name": "Xbox Series X",
+                "price": "500"
             },
             {
                 "group": "Laptop",
@@ -227,8 +282,84 @@
                     "relationshipLevel": 12
                 }
             ]
-        }   
+        },
+        {
+            "name": "John Jones",
+            "group": "Siblings",
+            "relationshipType": "Brother",
+            "relationshipLevel": "70",
+            "age": 20,
+            "occupation": "Student",
+            "actions": [
+                {
+                    "actionTitle": "Play video games together",
+                    "health": 2,
+                    "happiness": 7,
+                    "look": 0,
+                    "relationshipLevel": 8
+                },
+                {
+                    "actionTitle": "Study together",
+                    "health": 3,
+                    "happiness": 5,
+                    "look": 0,
+                    "relationshipLevel": 7
+                },
+                {
+                    "actionTitle": "Go for a run",
+                    "health": 5,
+                    "happiness": 8,
+                    "look": 0,
+                    "relationshipLevel": 9
+                },
+                {
+                    "actionTitle": "Attend a sports event",
+                    "health": 3,
+                    "happiness": 9,
+                    "look": 0,
+                    "relationshipLevel": 8
+                }
+            ]
+        },
+        {
+            "name": "Max",
+            "group": "Pets",
+            "relationshipType": "Dog",
+            "relationshipLevel": "90",
+            "age": 3,
+            "actions": [
+                {
+                    "actionTitle": "Go for a walk in the park",
+                    "health": 5,
+                    "happiness": 10,
+                    "look": 0,
+                    "relationshipLevel": 10
+                },
+                {
+                    "actionTitle": "Play fetch",
+                    "health": 3,
+                    "happiness": 8,
+                    "look": 0,
+                    "relationshipLevel": 9
+                },
+                {
+                    "actionTitle": "Give belly rubs",
+                    "health": 2,
+                    "happiness": 9,
+                    "look": 0,
+                    "relationshipLevel": 9
+                },
+                {
+                    "actionTitle": "Grooming session",
+                    "health": 4,
+                    "happiness": 7,
+                    "look": 0,
+                    "relationshipLevel": 8
+                }
+            ]
+        }
     ],
+    
     "EducationalBackground": {
         "subjects": {
             "Math": 0,
