@@ -11,6 +11,8 @@ import Card from "../components/Card";
 import PercentageBar from "../components/ProgressBar";
 import AlertPopup from "../components/eventsPopup/AlertPopup";
 import { UserContext } from "../context/user-context";
+import { CONSTRAINTS } from "../utils/constraints";
+import { COLOR } from "../constants/GlobalColor";
 function SchoolScreen() {
   const userContext = useContext(UserContext);
   const user = userContext.userState;
@@ -21,7 +23,7 @@ function SchoolScreen() {
   const learningState = userContext.learningState
   const learningSubject = learningState.learningSubject
   useEffect(() => {
-    if (user.character.age < 6) {
+    if (user.character.age < CONSTRAINTS.age.attendSchool) {
       Alert.alert("Not Eligible", "You are not old enough to attend school.");
     }
   }, [user.character.age]);
@@ -56,7 +58,7 @@ function SchoolScreen() {
   };
 
   const startLearning = (subject) => {
-    if (learningSubject === "" && learningState.learningProgress === 0) {
+    if (learningSubject === "" && learningState.learningProgress === CONSTRAINTS.education.learningProgess.min) {
       userContext.updateLearningSubject(subject)
       const id = setInterval(() => {
         userContext.updateLearningProgress(10)
@@ -68,9 +70,9 @@ function SchoolScreen() {
 
 
   useEffect(() => {
-    if (learningState.learningProgress >= 100) {
+    if (learningState.learningProgress >= CONSTRAINTS.education.learningProgess.max) {
       clearInterval(learningState.intervalId)
-      if (user.character.age >= 6 && user.character.age < 18 && !user.character.inUniversity)
+      if (user.character.age >= CONSTRAINTS.age.attendSchool && user.character.age < CONSTRAINTS.age.legalAdult && !user.character.inUniversity)
         userContext.levelupEducation(learningSubject)
       console.log(learningSubject)
       if (user.character.inUniversity)
@@ -78,8 +80,8 @@ function SchoolScreen() {
 
     }
   }, [learningState.learningProgress])
-  if (learningState.learningProgress >= 100) {
-    userContext.updateLearningProgress(-100)
+  if (learningState.learningProgress >= CONSTRAINTS.education.learningProgess.max) {
+    userContext.updateLearningProgress(-CONSTRAINTS.education.learningProgess.max)
     userContext.updateLearningSubject("")
   }
 
@@ -97,19 +99,19 @@ function SchoolScreen() {
     <View style={styles.container}>
       <View style={styles.learningContainer}>
         <Text style={styles.tuluyenText}>
-          Currently tu luyện {transformText(learningSubject)}
+          Currently cultivating {transformText(learningSubject)}
         </Text>
         <Text style={styles.yearText}>{learningState.learningProgress}% </Text>
       </View>
       <PercentageBar
         width={"100%"}
         height={12}
-        backgroundColor={"#E0E9F2"}
-        completedColor={"#EB9F4A"}
+        backgroundColor={COLOR.progessBar}
+        completedColor={COLOR.completedColor}
         percentage={learningState.learningProgress}
       />
       <ScrollView style={styles.container}>
-        {user.character.age >= 6 && user.character.age < 18 && !user.character.inUniversity ? (
+        {user.character.age >= CONSTRAINTS.age.attendSchool && user.character.age < CONSTRAINTS.age.legalAdult && !user.character.inUniversity ? (
           Object.keys(subjects).map(subject => {
             const subjectName = transformText([subject][0])
             return (
@@ -126,7 +128,7 @@ function SchoolScreen() {
           )
         ) : null}
 
-        {user.character.age >= 18 && !user.character.inUniversity ? (
+        {user.character.age >= CONSTRAINTS.age.legalAdult && !user.character.inUniversity ? (
           <View style={styles.buttonContainer}>
             <Button title="Apply to University" onPress={applyToUniversity} />
           </View>
@@ -169,11 +171,3 @@ function SchoolScreen() {
   );
 }
 export default SchoolScreen;
-
-
-// create progress bar => current subject (time)
-// currently tu luyen
-// const subjects
-// level, name, avatar
-// card => pstore level data => view
-//const subjects = [  {id: "Math"} ]

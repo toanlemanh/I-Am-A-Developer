@@ -68,7 +68,7 @@ function DrawerStack() {
                 ),
             }}>
             <Drawer.Screen
-                name="I am a Developer"
+                name="Home"
                 component={HomeScreen}
 
             />
@@ -78,12 +78,7 @@ function DrawerStack() {
 
             />
             <Drawer.Screen
-                name="TestData"
-                component={TestData}
-
-            />
-            <Drawer.Screen
-                name="MyAssetScreen"
+                name="My Assets"
                 component={MyAssetScreen}
             />
         </Drawer.Navigator>

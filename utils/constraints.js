@@ -8,6 +8,7 @@ export const CONSTRAINTS = {
         retirement: 65, // Age at which players can retire
         max: 100,
         min: 0,
+        attendSchool: 6,
 
     },
     financial: {
@@ -31,6 +32,10 @@ export const CONSTRAINTS = {
         lookDesclineRate: 1,
     },
     education: {
+        learningProgess: {
+            min: 0,
+            max: 100,
+        },
         prerequisites: {
             // "High School": ["Primary", "Secondary"],
             // "University": ["High School"]
