@@ -315,12 +315,17 @@ const UserProvider = ({ children }) => {
         });
     }
     function updateStatus({ health, happiness, appearance }) {
+        isAlive()
+        if (userState.status.health <= 0) {
+            console.log("You are dead!")
+            return
+        }
         setUserState({
             ...userState,
             status: {
                 health: health
                     ? (userState.status.health + health) < 0
-                        ? 0
+                        ? (0)
                         : ((userState.status.health + health) > 100
                             ? 100
                             : (userState.status.health += health))
@@ -474,7 +479,6 @@ const UserProvider = ({ children }) => {
             }}
         >
             {children}
-            {console.log("userstate eve: ", userState)}
         </UserContext.Provider>
     );
 };
