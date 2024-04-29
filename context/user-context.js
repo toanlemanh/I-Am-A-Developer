@@ -82,7 +82,7 @@ const initialUserState = {
             relationshipType: "Mother",
             relationshipLevel: 20,
             occupation: "Teacher",
-            
+
         },
         {
             name: "John Jones",
@@ -91,7 +91,7 @@ const initialUserState = {
             relationshipLevel: 20,
             age: 20,
             occupation: "Student",
-           
+
         },
         {
             name: "Max",
@@ -99,7 +99,7 @@ const initialUserState = {
             relationshipType: "Dog",
             relationshipLevel: 20,
             age: 3,
-           
+
         }
     ],
     assets: [],
@@ -180,7 +180,6 @@ const UserProvider = ({ children }) => {
             userName: newUserName,
         }));
     }
-
     function updateInSchool(newStatus) {
         setUserState((prev) => ({
             ...prev,
@@ -199,7 +198,6 @@ const UserProvider = ({ children }) => {
             },
         }));
     }
-
     function updateOccupation(name, salary) {
         setUserState((prev) => ({
             ...prev,
@@ -220,54 +218,6 @@ const UserProvider = ({ children }) => {
         date = `${year}/${month}/${day}`;
         return date;
     }
-    function updateLastLoginDate() {
-        setUserState((prev) => ({
-            ...prev,
-            userDailyLogin: {
-                ...prev.userDailyLogin,
-                rewards: 300,
-            },
-        }));
-    }
-    // Handle User Login Rewards
-    // Must be call at the time user login
-    function updateUserLogin() {
-        setUserState((prev) => ({
-            ...prev,
-            userDailyLogin: {
-                ...userState.userDailyLogin,
-                rewards: 200,
-            },
-        }));
-        updateLastLoginDate();
-        console.log("state" + userState.userDailyLogin.rewards);
-        if (
-            userState.userDailyLogin.currentLoginDate !==
-            userState.userDailyLogin.lastLoginDate ||
-            !userState.userDailyLogin.lastLoginDate
-        ) {
-            setUserState((prev) => ({
-                ...prev,
-                userDailyLogin: {
-                    ...prev.userDailyLogin,
-                    rewards: 200,
-                },
-            }));
-            console.log(userState.userDailyLogin.currentLoginDate);
-            updateCharacterMoney(-userState.userDailyLogin.rewards);
-            return `You have received $${userState.userDailyLogin.rewards} from daily login rewards!`;
-        }
-        setUserState({
-            ...userState,
-            userDailyLogin: {
-                ...userState.userDailyLogin,
-                lastLoginDate: userState.userDailyLogin.currentLoginDate,
-            },
-        });
-
-        return "You have successfully logged in!";
-    }
-    // each one increase by one level
     function levelupAllEducation() {
         const updatedEducation = { ...userState.education };
         for (const subject in updatedEducation) {
@@ -279,7 +229,6 @@ const UserProvider = ({ children }) => {
             education: updatedEducation,
         }));
     }
-
     function levelupEducation(subject) {
         const updatedEducation = { ...userState.education };
         updatedEducation[subject] += 1;
@@ -289,7 +238,6 @@ const UserProvider = ({ children }) => {
             education: updatedEducation,
         }));
     }
-
     function levelupHigherEducation(subject) {
         const updatedEducation = { ...userState.higherEducation };
         updatedEducation[subject] += 1;
@@ -313,13 +261,6 @@ const UserProvider = ({ children }) => {
         } catch (error) {
             console.log("Error progress saving data: ", error);
         }
-    }
-
-    function setStatus({ newStatusData }) {
-        setUserState({
-            ...userState,
-            status: { ...userState.status, ...newStatusData },
-        });
     }
     function updateStatus({ health, happiness, appearance }) {
         isAlive()
@@ -410,9 +351,6 @@ const UserProvider = ({ children }) => {
             }
         }
     }
-    
-
-
     async function saveUserDataToStorage(uid) {
         if (!userState.gameJustStarted)
             try {
@@ -460,7 +398,6 @@ const UserProvider = ({ children }) => {
                 updateLearningSubject,
                 updateLearningProgress,
                 setLearningState,
-                updateUserLogin,
                 updateCharacterMoney,
                 updateStatus,
                 updateUser,
@@ -475,7 +412,6 @@ const UserProvider = ({ children }) => {
                 levelupAllEducation,
                 levelupEducation,
                 levelupHigherEducation,
-                setStatus,
                 removeDisease,
                 addDisease,
                 affectedByDiseases,
