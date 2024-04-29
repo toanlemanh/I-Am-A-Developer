@@ -2,17 +2,8 @@ import { useState } from "react";
 import { Text, View } from "react-native";
 import AlertPopup from "../components/eventsPopup/AlertPopup";
 
-export function ManageActions() {
-  const [modalVisible, setModalVisible] = useState(false);
-  const openModal = () => {
-    setModalVisible(true);
-  };
 
-  const closeModal = () => {
-    setModalVisible(false);
-  };
-
-  const renderModal = (action, content) => {
+const renderModal = (action, content) => {
     setModalVisible = true;
     return (
       <AlertPopup
@@ -28,8 +19,11 @@ export function ManageActions() {
       />
     );
   };
+export function ManageActions() {
+  
+  
 
-   function updateStatus({
+    function updateStatus({
     name,
     health,
     happiness,
@@ -38,27 +32,9 @@ export function ManageActions() {
   }) {
     console.log("Update")
   }
-  
+   
 
-  function spendTime(name) {
-    const effects = {
-      health: 0,
-      happiness: 20,
-      look: 0,
-      relationshipLevel: 20,
-    };
-  
-    const content = "You spent some time with " + name + ". You have gain: ";
-    if (effects.relationshipLevel !== 0)
-      content + " Relationship level: " + effects.relationshipLevel;
-    if (effects.health !== 0) content + " health: " + effects.health;
-    if (effects.happiness !== 0) content + " happiness: " + effects.happiness;
-    if (effects.look !== 0) content + " look: " + effects.look;
-    content + ".";
-    //updateStatus(name, effects);
-  
-    return renderModal(name, "Spend Time", content);
-  }
+   
 
   function partyTogether(name) {
     const effects = {
@@ -108,4 +84,25 @@ export function ManageActions() {
   }
 
 }
+ export function spendTime(name) {
+    const effects = {
+      health: 0,
+      happiness: 20,
+      look: 0,
+      relationshipLevel: 20,
+    };
+  
+    const content = "You spent some time with " + name + ". You have gain: ";
+    if (effects.relationshipLevel !== 0)
+      content + " Relationship level: " + effects.relationshipLevel;
+    if (effects.health !== 0) content + " health: " + effects.health;
+    if (effects.happiness !== 0) content + " happiness: " + effects.happiness;
+    if (effects.look !== 0) content + " look: " + effects.look;
+    content + ".";
+    //updateStatus(name, effects);
+  
+    return renderModal(name, "Spend Time", content);
+  }
+
+
 

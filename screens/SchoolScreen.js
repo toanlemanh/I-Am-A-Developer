@@ -18,18 +18,14 @@ function SchoolScreen() {
   const universitySubjects = user.higherEducation;
   const [selectedSubject, setSelectedSubject] = useState("");
   const [modalVisible, setModalVisible] = useState(false);
-  const [learningSubject, setLearningSubject] = useState("")
-  const [intervalId, setIntervalId] = useState("")
+  const learningState = userContext.learningState
+  const learningSubject = learningState.learningSubject
   useEffect(() => {
     if (user.character.age < 6) {
       Alert.alert("Not Eligible", "You are not old enough to attend school.");
     }
   }, [user.character.age]);
-  useEffect(() => {
-    if (user.character.age === 18 && !user.character.inShool && !user.character.inUniversity && user.character.occupation.salary === 0) {
-      userContext.levelupAllEducation()
-    }
-  }, [user.character.age])
+
 
   const openModal = (subject) => {
     setSelectedSubject(subject)
@@ -60,31 +56,31 @@ function SchoolScreen() {
   };
 
   const startLearning = (subject) => {
-    if (learningSubject === "") {
-      setLearningSubject(subject)
-
+    if (learningSubject === "" && learningState.learningProgress === 0) {
+      userContext.updateLearningSubject(subject)
       const id = setInterval(() => {
-        userContext.setLearningProgress((prev) => prev + 10)
+        userContext.updateLearningProgress(10)
       }, 1000)
-      setIntervalId(id)
+      userContext.updateLearningId(id)
     }
+    closeModal()
   }
 
 
   useEffect(() => {
-    if (userContext.learningProgress >= 100) {
-      clearInterval(intervalId)
-
+    if (learningState.learningProgress >= 100) {
+      clearInterval(learningState.intervalId)
       if (user.character.age >= 6 && user.character.age < 18 && !user.character.inUniversity)
         userContext.levelupEducation(learningSubject)
       console.log(learningSubject)
       if (user.character.inUniversity)
         userContext.levelupHigherEducation(learningSubject)
-      setLearningSubject("")
+
     }
-  }, [userContext.learningProgress])
-  if (userContext.learningProgress >= 100) {
-    userContext.setLearningProgress(0)
+  }, [learningState.learningProgress])
+  if (learningState.learningProgress >= 100) {
+    userContext.updateLearningProgress(-100)
+    userContext.updateLearningSubject("")
   }
 
   const renderContent = (name, duration, level) => {
@@ -103,14 +99,14 @@ function SchoolScreen() {
         <Text style={styles.tuluyenText}>
           Currently tu luyện {transformText(learningSubject)}
         </Text>
-        <Text style={styles.yearText}>{userContext.learningProgress}% </Text>
+        <Text style={styles.yearText}>{learningState.learningProgress}% </Text>
       </View>
       <PercentageBar
         width={"100%"}
         height={12}
         backgroundColor={"#E0E9F2"}
         completedColor={"#EB9F4A"}
-        percentage={userContext.learningProgress}
+        percentage={learningState.learningProgress}
       />
       <ScrollView style={styles.container}>
         {user.character.age >= 6 && user.character.age < 18 && !user.character.inUniversity ? (
@@ -160,12 +156,11 @@ function SchoolScreen() {
           content={selectedSubject ? renderContent(
             transformText(selectedSubject),
             4,
-            subjects[selectedSubject],
+            user.character.inUniversity ? universitySubjects[selectedSubject] : subjects[selectedSubject]
           ) : null}
-          buttonOnPress={() => {
+          buttonOnPress={() =>
             startLearning(selectedSubject)
-            closeModal()
-          }}
+          }
           buttonText={"Start Learning"}
         />
       </ScrollView>
