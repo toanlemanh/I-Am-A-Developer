@@ -4,20 +4,20 @@ import {
   MaterialCommunityIcons,
   MaterialIcons,
 } from "@expo/vector-icons";
-import {loadingStyle} from "../Style/componentStyle/LoadingStyle"
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useNavigation } from "@react-navigation/native";
 import React, { useContext, useEffect, useState } from "react";
-import { ActivityIndicator, Image, Pressable, Text, View } from "react-native";
+import { ActivityIndicator, Alert, Image, Pressable, Text, View } from "react-native";
 import Animated, { BounceIn, BounceOut } from "react-native-reanimated";
+import { loadingStyle } from "../Style/componentStyle/LoadingStyle";
 import { styles } from "../Style/screenStyles/HomeScreenStyle";
+import { getUserId } from "../api/axios";
 import CharacterStatus from "../components/CharacterStatus";
 import CustomAvatar from "../components/CustomAvatar";
 import PercentageBar from "../components/ProgressBar";
 import SelectionPopup from "../components/eventsPopup/SelectionPopup";
 import { COLOR } from "../constants/GlobalColor";
 import { AuthContext } from "../context/auth";
-import { getUserId } from "../api/axios";
 import { UserContext } from "../context/user-context";
 import data from "../data/data.json";
 import { AVATARS } from "../utils/avatars";
@@ -110,12 +110,17 @@ export default function HomeScreen() {
     }
   }, [userContext.progress]);
   function updateAge() {
-    userContext.updateCharacterAge(1);
-    setModalVisible(true);
-    const eventsLength = data.newAgeEvents.data.length;
-    const index = Math.floor(Math.random() * eventsLength);
-    setRandomIndex(index);
-    userContext.updateStatus({ health: -7, happiness: -10, appearance: -5 });
+    if (user.isAlive) {
+      userContext.updateCharacterAge(1);
+      setModalVisible(true);
+      const eventsLength = data.newAgeEvents.data.length;
+      const index = Math.floor(Math.random() * eventsLength);
+      setRandomIndex(index);
+      userContext.updateStatus({ health: -7, happiness: -10, appearance: -5 });
+    } else {
+      Alert.alert("You are Dead!")
+      navigation.navigate('EndGameScreen')
+    }
   }
   function handleAgePress() {
     updateAge();
@@ -198,9 +203,6 @@ export default function HomeScreen() {
           <View style={styles.characterNameContainer}>
             <Text style={styles.stageStyle}> {lifeStage}</Text>
             <Text style={styles.username}>{user.userName}</Text>
-            <Text style={styles.username}>
-              {Math.round(userContext.progress)}
-            </Text>
           </View>
         </View>
         <View>
