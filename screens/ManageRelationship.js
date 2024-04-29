@@ -18,8 +18,9 @@ export default function ManageRelationship({ route, navigation }) {
   const [actionText, setActionText] = useState('');
   const [actionName,setActionName] = useState('');
   // Retrieve all relationships from data
-  const relationships = data.Relationships;
+  
   const userContext = useContext(UserContext);
+  const relationships = userContext.userState.relationships;
   // Function to open modal
   const openModal = () => {
     setModalVisible(true);
@@ -77,7 +78,7 @@ const handleActionClick = (action) => {
       appearance:action.look
   });
   //Update relationship level here
-  userContext.updateRelationshipLevel(relationship.group, relationship.name, action.relationshipLevel)
+  //userContext.updateRelationshipLevel(relationship.group, relationship.name, action.relationshipLevel)
   console.log(action.health,action.happiness,action.look,action.relationshipLevel);
 };
 

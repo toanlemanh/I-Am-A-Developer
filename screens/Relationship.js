@@ -5,10 +5,14 @@ import CustomDataLabel from '../components/CustomDataLabel'
 import data from "../data/userData.json"
 import { styles } from '../Style/screenStyles/RelationshipStyle';
 import { UserContext } from '../context/user-context'
-const relationships2 = data.Relationships;
+import { useContext } from 'react'
 
 export default function RelationshipScreen({ navigation }) {
   // Grouping relationships by group name
+  const userContext = useContext(UserContext);
+  const relationships2 = userContext.userState.relationships;
+
+  console.log(relationships2,"hahaha");
   const groupedRelationships = relationships2.reduce((acc, item) => {
     if (!acc[item.group]) {
       acc[item.group] = []
@@ -16,7 +20,7 @@ export default function RelationshipScreen({ navigation }) {
     acc[item.group].push(item)
     return acc
   }, {})
-
+  
   function handleCard(group, name, relationshipType, relationshipLevel, occupation) {
     navigation.navigate('ManageRelationship', {
       group: group,
