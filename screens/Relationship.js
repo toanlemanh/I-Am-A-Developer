@@ -1,18 +1,15 @@
-import React from 'react'
-import { ScrollView, StyleSheet, View } from 'react-native'
+import React, { useContext } from 'react'
+import { ScrollView, View } from 'react-native'
+import { styles } from '../Style/screenStyles/RelationshipStyle'
 import Card from '../components/Card'
 import CustomDataLabel from '../components/CustomDataLabel'
-
-import { styles } from '../Style/screenStyles/RelationshipStyle';
 import { UserContext } from '../context/user-context'
-import { useContext } from 'react'
 
 export default function RelationshipScreen({ navigation }) {
   // Grouping relationships by group name
   const userContext = useContext(UserContext);
   const relationships2 = userContext.userState.relationships;
 
-  console.log(relationships2,"hahaha");
   const groupedRelationships = relationships2.reduce((acc, item) => {
     if (!acc[item.group]) {
       acc[item.group] = []
@@ -20,7 +17,7 @@ export default function RelationshipScreen({ navigation }) {
     acc[item.group].push(item)
     return acc
   }, {})
-  
+
   function handleCard(group, name, relationshipType, relationshipLevel, occupation) {
     navigation.navigate('ManageRelationship', {
       group: group,
@@ -38,7 +35,7 @@ export default function RelationshipScreen({ navigation }) {
           <CustomDataLabel>{group}</CustomDataLabel>
           {groupItems.map((item, itemIndex) => (
             <Card
-            time={itemIndex}
+              time={itemIndex}
               key={itemIndex}
               onPress={() => handleCard(group, item.name, item.relationshipType, item.relationshipLevel, item.occupation)}
               percentage={item.relationshipLevel}

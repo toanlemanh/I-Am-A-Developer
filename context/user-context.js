@@ -586,18 +586,11 @@ const UserProvider = ({ children }) => {
             updateStatus(disease.effects);
         }
     }
-    function setRelationships(newRelationships) {
-        setUserState({
-            ...userState,
-            relationships: newRelationships,
-        });
-    }
-    // update a specific realtionship by their group and key
     function updateRelationshipLevel(name, level) {
         for (let i = 0; i < userState.relationships.length; i++) {
-            for (let j = 0; j < userState.relationships[i].actions.length; j++) {
-                if (userState.relationships[i].actions[j].actionTitle === name)
-                    userState.relationships[i].actions[j].relationshipLevel += level;
+            if (userState.relationships[i].name === name) {
+                if (userState.relationships[i].relationshipLevel + level > 100) userState.relationships[i].relationshipLevel = 100
+                else userState.relationships[i].relationshipLevel += level
             }
         }
     }
