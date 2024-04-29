@@ -292,16 +292,12 @@ const UserProvider = ({ children }) => {
             higherEducation: updatedEducation,
         }));
     }
-
-    // Increase Progress
     function startProgress() {
         const id = setInterval(() => {
-            // replace by constraints.speed
             setProgress((prev) => (prev += 100 / 720));
         }, 1000);
         return id;
     }
-
     async function loadProgress(uid) {
         try {
             const loadedProgress = await AsyncStorage.getItem("progress" + uid);
@@ -318,9 +314,7 @@ const UserProvider = ({ children }) => {
             status: { ...userState.status, ...newStatusData },
         });
     }
-
     function updateStatus({ health, happiness, appearance }) {
-
         setUserState({
             ...userState,
             status: {
@@ -348,7 +342,6 @@ const UserProvider = ({ children }) => {
             },
         });
     }
-
     function updateCharacterMoney(newMoney) {
         setUserState({
             ...userState,
@@ -358,7 +351,6 @@ const UserProvider = ({ children }) => {
             },
         });
     }
-
     function updateCharacterAge(value) {
         setUserState({
             ...userState,
@@ -368,36 +360,29 @@ const UserProvider = ({ children }) => {
             },
         });
     }
-
     function updateProgress(value) {
         setProgress((prev) => prev + value);
     }
-
     function setDiseases(diseases) {
         setUserState({
             ...userState,
             currentDiseases: diseases,
         });
     }
-
     function removeDisease(targetName) {
         setDiseases((prev) => [
             prev.findAll((disease) => disease.name !== targetName),
         ]);
     }
-
     function addDisease(newDisease) {
         setDiseases((prev) => [...prev, newDisease]);
     }
-
-    // called everytime character ages up
     function affectedByDiseases() {
         const diseases = userState.currentDiseases;
         for (let disease in diseases) {
             updateStatus(disease.effects);
         }
     }
-
     function setRelationships(newRelationships) {
         setUserState({
             ...userState,
@@ -406,18 +391,12 @@ const UserProvider = ({ children }) => {
     }
     // update a specific realtionship by their group and key
     function updateRelationshipLevel(group, name, level) {
-        setUserState((prevState) => {
-            const relationships = {
-                ...prevState.relationships,
-                [group]: {
-                    ...(prevState.relationships[group] || {}),
-                    [name]: {
-                        relationshipLevel: prevState.relationships[group][name].relationshipLevel + level,
-                    },
-                },
-            };
-            return { ...prevState, relationships };
-        });
+        for (let i = 0; i < userState.relationships.length; i++) {
+            for (let j = 0; i < userState.relationships[i].length; j++) {
+                if (userState.relationships[i][j].name === name)
+                    userState.relationships[i][j].relationshipLevel += level
+            }
+        }
     }
 
 
