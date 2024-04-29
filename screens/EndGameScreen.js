@@ -9,35 +9,40 @@ export default function EndGameScreen({ navigation }) {
   const userContext = useContext(UserContext);
   return (
     <View style={styles.container}>
+        <Text style={styles.text}>
+            Farewell {userContext.userState.userName} :{'('}
+        </Text>
       <ImageBackground
         source={require("../assets/images/rip.png")}
         style={styles.image}
-        imageStyle={{ opacity: 1 }} // Adjust opacity here
+      
       >
         {/* <View style={styles.text}>  */}
-        <Text style={styles.text}>
-            Farewell {userContext.userState.userName}
-        </Text>
-          <Card
-            barHidden={true}
-            onPress={() => {
-              userContext.refresh();
-              Alert.alert("You have started a new life!");
-              navigation.navigate("MainScreen");
-            }}
-          >
-            Start a new Life
-          </Card>
-          <Card
-            barHidden={true}
-            onPress={() => {
-              auth.logout();
-            }}
-          >
-            Log Out
-          </Card>
+      
+          
         {/* </View> */}
       </ImageBackground>
+        <View style={styles.options} >
+          <Card
+                barHidden={true}
+                onPress={() => {
+                  userContext.refresh();
+                  Alert.alert("You have started a new life!");
+                  navigation.navigate("MainScreen");
+                }}
+              >
+                Start a new Life
+              </Card>
+              <Card
+                barHidden={true}
+                onPress={() => {
+                  auth.logout();
+                }}
+              >
+                Log Out
+          </Card>
+       
+        </View>
     </View>
   );
 }

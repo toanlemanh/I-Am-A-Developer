@@ -7,7 +7,7 @@ import {
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useNavigation } from "@react-navigation/native";
 import React, { useContext, useEffect, useState } from "react";
-import { ActivityIndicator, Alert, Image, Pressable, Text, View } from "react-native";
+import { ActivityIndicator, Alert, Image, Pressable, ScrollView, Text, View, useWindowDimensions } from "react-native";
 import Animated, { BounceIn, BounceOut } from "react-native-reanimated";
 import { loadingStyle } from "../Style/componentStyle/LoadingStyle";
 import { styles } from "../Style/screenStyles/HomeScreenStyle";
@@ -34,7 +34,7 @@ export default function HomeScreen() {
   const user = userContext.userState;
   const [modalVisible, setModalVisible] = useState(false);
   const [randomIndex, setRandomIndex] = useState(0);
-
+  const { height: windowHeight } = useWindowDimensions()
   let progressId = "";
   React.useEffect(() => {
     async function loadUserName() {
@@ -184,7 +184,7 @@ export default function HomeScreen() {
       : null;
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       {/* Level progress bar*/}
       <PercentageBar
         width={"100%"}
@@ -215,12 +215,12 @@ export default function HomeScreen() {
       </View>
 
       {/* Container of user's events and different age */}
-      <View style={styles.eventsContainer}>
+      <View style={[styles.eventsContainer, { minHeight: windowHeight * 0.55 }]}>
         <View style={styles.avatarContainer}>
           <AnimatedImage
             entering={BounceIn.duration(500).delay(100).springify()}
             exiting={BounceOut.duration(300).delay(100).springify()}
-            style={styles.avatar}
+            style={[styles.avatar, { height: windowHeight * 0.4 }]}
             source={AVATARS[`${lifeStage}`]}
           />
         </View>
@@ -303,6 +303,6 @@ export default function HomeScreen() {
         </View>
         <CharacterStatus />
       </View>
-    </View>
+    </ScrollView>
   );
 }

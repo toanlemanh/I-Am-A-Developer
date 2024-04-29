@@ -1,9 +1,9 @@
-import React from 'react';
-import { Modal, Text, Pressable, View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import React from 'react';
+import { Modal, Pressable, Text, View, useWindowDimensions } from 'react-native';
 import { styles } from '../../Style/componentStyle/popupStyle/SelectPopStyle';
-function SelectionPopup({ 
-    modalVisible, 
+function SelectionPopup({
+    modalVisible,
     closeModal,
     title,
     choice1,
@@ -11,9 +11,11 @@ function SelectionPopup({
     choice3,
     handleChoice1,
     handleChoice2,
-    handleChoice3 
+    handleChoice3
 
-    }) {
+}) {
+    const { width: windowWidth } = useWindowDimensions()
+    const gradientColor = ['#005D63', '#77B29F', '#005D63']
     return (
         <Modal
             animationType="slide"
@@ -25,7 +27,7 @@ function SelectionPopup({
             <View style={styles.centeredView}>
 
                 <View style={styles.outerBoderPopup}>
-                    <View style={styles.innerBoderPopup}>
+                    <View style={[styles.innerBoderPopup, { width: windowWidth * 0.8 }]}>
 
                         <View style={styles.eventContainer}>
                             <Text style={styles.eventTitle}>New Age event!</Text>
@@ -35,8 +37,8 @@ function SelectionPopup({
 
                         <View >
                             <LinearGradient
-                               colors={['#005D63', '#77B29F', '#005D63']}
-                                style={styles.gradient}
+                                colors={gradientColor}
+                                style={[styles.gradient, { width: windowWidth * 0.6 }]}
                                 start={{ x: 0, y: 0 }}
                                 end={{ x: 1, y: 1 }}
                             >
@@ -51,8 +53,8 @@ function SelectionPopup({
 
                         <View style={styles.buttonOutterContainer}>
                             <LinearGradient
-                                colors={['#005D63', '#77B29F', '#005D63']}
-                                style={styles.gradient}
+                                colors={gradientColor}
+                                style={[styles.gradient, { width: windowWidth * 0.6 }]}
                                 start={{ x: 0, y: 0 }}
                                 end={{ x: 1, y: 1 }}
                             >
@@ -65,24 +67,24 @@ function SelectionPopup({
                             </LinearGradient>
 
                         </View>
-                    
-                        {choice3 !=null&&(
-                               <View style={styles.buttonOutterContainer}>
-                               <LinearGradient
-                                   colors={['#005D63', '#77B29F', '#005D63']}
-                                   style={styles.gradient}
-                                   start={{ x: 0, y: 0 }}
-                                   end={{ x: 1, y: 1 }}
-                               >
-   
-                                   <Pressable
-                                       style={styles.button}
-                                       onPress={handleChoice3}>
-                                       <Text style={styles.textButtonStyle}>{choice3}</Text>
-                                   </Pressable>
-                               </LinearGradient>
-   
-                           </View>
+
+                        {choice3 != null && (
+                            <View style={styles.buttonOutterContainer}>
+                                <LinearGradient
+                                    colors={gradientColor}
+                                    style={[styles.gradient, { width: windowWidth * 0.6 }]}
+                                    start={{ x: 0, y: 0 }}
+                                    end={{ x: 1, y: 1 }}
+                                >
+
+                                    <Pressable
+                                        style={styles.button}
+                                        onPress={handleChoice3}>
+                                        <Text style={styles.textButtonStyle}>{choice3}</Text>
+                                    </Pressable>
+                                </LinearGradient>
+
+                            </View>
                         )}
 
                     </View>

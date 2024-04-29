@@ -148,9 +148,10 @@ const UserProvider = ({ children }) => {
     }
 
     function updateLearningProgress(modifier) {
+
         setLearningState((prev) => ({
             ...prev,
-            learningProgress: (prev.learningProgress += modifier),
+            learningProgress: modifier ? (prev.learningProgress += modifier) : 0,
         }));
     }
 
