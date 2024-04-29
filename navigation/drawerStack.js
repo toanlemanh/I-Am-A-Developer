@@ -68,7 +68,7 @@ function DrawerStack() {
                 ),
             }}>
             <Drawer.Screen
-                name="I am a Developer"
+                name="Home"
                 component={HomeScreen}
 
             />
@@ -80,20 +80,7 @@ function DrawerStack() {
             <Drawer.Screen
                 name="My Assets"
                 component={MyAssetScreen}
-
             />
-            {/* <Drawer.Screen
-                name="GoingOffline"
-                component={GoingOffline}
-                options={{
-                    headerStyle: {
-                        backgroundColor: COLOR.headerBackground,
-                    },
-                    headerTintColor: "#EED817",
-                    headerTitleAlign: "center",
-
-                }}
-            /> */}
         </Drawer.Navigator>
     )
 }
