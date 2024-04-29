@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 import { COLOR } from "../../constants/GlobalColor";
-
+import { heightPercentageToDP as hp, widthPercentageToDP as wp } from "react-native-responsive-screen";
 export const styles = StyleSheet.create({
     container: {
         width: "100%",
@@ -56,4 +56,9 @@ export const styles = StyleSheet.create({
     optionText:{
         fontSize: 16
     }
+})
+export const landStyles = StyleSheet.create({
+    container: {
+       paddingHorizontal: wp(20),
+    },
 })

@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 
 import { AntDesign } from "@expo/vector-icons";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { AuthContext } from "../context/auth";
 
 // Screen
 import { COLOR } from "../constants/GlobalColor";
@@ -18,7 +17,6 @@ import DrawerStack from "./drawerStack";
 const Stack = createNativeStackNavigator();
 
 function UserStack() {
-  const authContext = useContext(AuthContext);
   return (
     <Stack.Navigator
       screenOptions={({ navigation }) => ({

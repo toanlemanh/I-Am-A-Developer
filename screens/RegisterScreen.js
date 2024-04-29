@@ -7,20 +7,19 @@ import {
   ScrollView,
   Text,
   TouchableOpacity,
-  View
+  View,
+  Dimensions,
 } from "react-native";
-import { styles } from "../Style/screenStyles/RegisterStyles";
+import { style, landStyle } from "../Style/screenStyles/RegisterStyles";
 import DividerLine from "../components/DividerLine";
 import FormBtn from "../components/FormBtn";
 import FormInput from "../components/FormInput";
 import SocialBtn from "../components/SocialBtn";
 import { signUp } from "../config/firebase";
-import { AuthContext } from "../context/auth";
 import { postUserId } from "../api/axios";
 import { UserContext } from "../context/user-context";
 function RegisterScreen({ navigation }) {
   let USER_ID;
-  const authContext = useContext(AuthContext);
   const userContext = useContext(UserContext);
   const [email, setEmail] = useState();
   const [passsword, setPassword] = useState();
@@ -28,9 +27,20 @@ function RegisterScreen({ navigation }) {
   const [confirm, setConfirm] = useState();
   const [match, setMatch] = useState(true);
   const [userId, setUserId] = useState();
- // userContext.refresh();
+  const [styles, setStyle] = useState(style);
   const [initialState, setInitialState] = useState(userContext.userState);
 
+  useEffect(() => {
+    Dimensions.addEventListener("change", ({ window: { width, height } }) => {
+      if (width < height) {
+        console.log("Pot");
+        setStyle(style);
+      } else {
+        setStyle({ ...style, ...landStyle });
+        console.log("land");
+      }
+    });
+  }, []);
   function onEmailChangeHandler(email) {
     email = email.trim();
     setEmail(email);
@@ -53,10 +63,11 @@ function RegisterScreen({ navigation }) {
   }, [passsword, confirm, match]);
 
   function updateInitialState(data) {
-    console.log("data", data)
+    console.log("data", data);
     setInitialState((prev) => ({
-      ...prev, ...data
-    }))
+      ...prev,
+      ...data,
+    }));
   }
   useEffect(() => {
     function registerUserName() {
@@ -67,13 +78,11 @@ function RegisterScreen({ navigation }) {
         try {
           postUserId(userId, initialState);
           navigation.navigate("LoginScreen");
-        }
-        catch (err) {
-          Alert.alert("Error", "Wrong Credential!")
-        }
-        finally {
-    //thieu async
-        AsyncStorage.setItem("username"+userId, username);
+        } catch (err) {
+          Alert.alert("Error", "Wrong Credential!");
+        } finally {
+          //thieu async
+          AsyncStorage.setItem("username" + userId, username);
         }
       }
     }
@@ -100,7 +109,6 @@ function RegisterScreen({ navigation }) {
       Alert.alert("Error", "Password and confirm password do not match.");
       return;
     }
-
 
     // Clear the input fields after registration, do not clear username
     setEmail("");
@@ -178,4 +186,3 @@ function RegisterScreen({ navigation }) {
 }
 
 export default RegisterScreen;
-

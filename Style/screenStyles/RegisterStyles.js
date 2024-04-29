@@ -1,5 +1,6 @@
 import { StyleSheet } from "react-native";
-export const styles = StyleSheet.create({
+import { widthPercentageToDP as wp } from "react-native-responsive-screen";
+export const style = StyleSheet.create({
     container: {
       width: "100%",
       height: "100%",
@@ -53,5 +54,10 @@ export const styles = StyleSheet.create({
     optionsText:{
       fontSize: 16
     }
+  });
+export const landStyle = StyleSheet.create({
+    container: {
+      paddingHorizontal: wp(20),
+    },
   });
   
