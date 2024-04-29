@@ -1,5 +1,4 @@
 import { StyleSheet } from "react-native";
-import { heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import { COLOR } from "../../constants/GlobalColor";
 export const styles = StyleSheet.create({
     container: {
@@ -19,15 +18,14 @@ export const styles = StyleSheet.create({
 
     },
     underhalf: {
-        backgroundColor: 'white',
-        flex: 1
-
+        backgroundColor: COLOR.homeBackgound,
+        maxHeight: 200,
     },
-    avatarContainer:{
-        overflow:'hidden', paddingTop:'30%'
+    avatarContainer: {
+        overflow: 'hidden', paddingTop: '10%'
     },
-    avatar:{
-        resizeMode:"contain", width: '100%', height: '80%'
+    avatar: {
+        resizeMode: "contain", width: '100%', height: '80%', marginBottom: 30
     },
     userInfo: {
         flexDirection: 'row',
@@ -75,7 +73,7 @@ export const styles = StyleSheet.create({
         marginVertical: 20,
     },
     eventsContainer: {
-        height: hp('55%'),
+        flex: 1,
         paddingLeft: 15,
         // flex: 1,
 
@@ -91,18 +89,18 @@ export const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     statusTextContainer: {
-        
+
         justifyContent: 'space-between',
         alignItems: 'flex-end',
-        
+
     },
     statusBarContainer: {
-        
+
         justifyContent: 'space-between',
         alignItems: 'flex-start',
-        marginTop:5,
-        marginHorizontal:7
-       
+        marginTop: 5,
+        marginHorizontal: 7
+
     },
     statusText: {
         fontWeight: '300',

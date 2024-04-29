@@ -10,9 +10,9 @@ import { styles } from "../Style/screenStyles/SchoolStyle";
 import Card from "../components/Card";
 import PercentageBar from "../components/ProgressBar";
 import AlertPopup from "../components/eventsPopup/AlertPopup";
+import { COLOR } from "../constants/GlobalColor";
 import { UserContext } from "../context/user-context";
 import { CONSTRAINTS } from "../utils/constraints";
-import { COLOR } from "../constants/GlobalColor";
 function SchoolScreen() {
   const userContext = useContext(UserContext);
   const user = userContext.userState;
@@ -110,64 +110,68 @@ function SchoolScreen() {
         completedColor={COLOR.completedColor}
         percentage={learningState.learningProgress}
       />
+
       <ScrollView style={styles.container}>
-        {user.character.age >= CONSTRAINTS.age.attendSchool && user.character.age < CONSTRAINTS.age.legalAdult && !user.character.inUniversity ? (
-          Object.keys(subjects).map((subject, itemIndex) => {
-            const subjectName = transformText([subject][0])
-            return (
-              <Card
-                time={itemIndex}
-                key={[subject]}
-                percentage={subjects[subject] * 20}  // Assuming fixed percentage
-                showDetail={true}
-                onPress={() => openModal([subject][0])}
-              >
-                <Text>{subjectName}</Text>
-              </Card>
+        <View style={styles.cardsContainer}>
+          {user.character.age >= CONSTRAINTS.age.attendSchool && user.character.age < CONSTRAINTS.age.legalAdult && !user.character.inUniversity ? (
+            Object.keys(subjects).map((subject, itemIndex) => {
+              const subjectName = transformText([subject][0])
+              return (
+                <Card
+                  time={itemIndex}
+                  key={[subject]}
+                  percentage={subjects[subject] * 20}  // Assuming fixed percentage
+                  showDetail={true}
+                  onPress={() => openModal([subject][0])}
+                >
+                  <Text>{subjectName}</Text>
+                </Card>
+              )
+            }
             )
-          }
-          )
-        ) : null}
-
-        {user.character.age >= CONSTRAINTS.age.legalAdult && !user.character.inUniversity ? (
-          <View style={styles.buttonContainer}>
-            <Button title="Apply to University" onPress={applyToUniversity} />
-          </View>
-        ) : null}
-
-        {user.character.inUniversity && (
-          Object.keys(universitySubjects).map((subject, id) => {
-            const subjectName = transformText([subject][0])
-            return (
-              <Card
-                time={id}
-                key={[subject]}
-                percentage={universitySubjects[subject] * 20}  // Assuming fixed percentage
-                showDetail={true}
-                onPress={() => openModal(subject)}
-              >
-                <Text>{subjectName}</Text>
-              </Card>
-            )
-          }
-          )
-        )}
-
-        <AlertPopup
-          modalVisible={modalVisible}
-          closeModal={closeModal}
-          title={selectedSubject ? transformText(selectedSubject) : "Subject"}
-          content={selectedSubject ? renderContent(
-            transformText(selectedSubject),
-            4,
-            user.character.inUniversity ? universitySubjects[selectedSubject] : subjects[selectedSubject]
           ) : null}
-          buttonOnPress={() =>
-            startLearning(selectedSubject)
-          }
-          buttonText={"Start Learning"}
-        />
+
+          {user.character.age >= CONSTRAINTS.age.legalAdult && !user.character.inUniversity ? (
+            <View style={styles.buttonContainer}>
+              <Button title="Apply to University" onPress={applyToUniversity} />
+            </View>
+          ) : null}
+
+          {user.character.inUniversity && (
+            Object.keys(universitySubjects).map((subject, id) => {
+              const subjectName = transformText([subject][0])
+              return (
+                <Card
+                  time={id}
+                  key={[subject]}
+                  percentage={universitySubjects[subject] * 20}  // Assuming fixed percentage
+                  showDetail={true}
+                  onPress={() => openModal(subject)}
+                >
+                  <Text>{subjectName}</Text>
+                </Card>
+              )
+            }
+            )
+          )}
+
+          <AlertPopup
+            modalVisible={modalVisible}
+            closeModal={closeModal}
+            title={selectedSubject ? transformText(selectedSubject) : "Subject"}
+            content={selectedSubject ? renderContent(
+              transformText(selectedSubject),
+              4,
+              user.character.inUniversity ? universitySubjects[selectedSubject] : subjects[selectedSubject]
+            ) : null}
+            buttonOnPress={() =>
+              startLearning(selectedSubject)
+            }
+            buttonText={"Start Learning"}
+          />
+        </View>
       </ScrollView>
+
     </View>
 
   );
