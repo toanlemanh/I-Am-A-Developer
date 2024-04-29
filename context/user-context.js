@@ -15,7 +15,7 @@ const initialUserState = {
     },
     character: {
         img: "",
-        money: 20000000,
+        money: 0,
         age: 0,
         occupation: {
             name: "",
@@ -65,6 +65,9 @@ const initialUserState = {
         userExperience: 0,
         userInterface: 0,
     },
+
+
+
     relationships: [
         {
             name: "William Jones",

@@ -38,6 +38,7 @@ export default function RelationshipScreen({ navigation }) {
           <CustomDataLabel>{group}</CustomDataLabel>
           {groupItems.map((item, itemIndex) => (
             <Card
+            time={itemIndex}
               key={itemIndex}
               onPress={() => handleCard(group, item.name, item.relationshipType, item.relationshipLevel, item.occupation)}
               percentage={item.relationshipLevel}

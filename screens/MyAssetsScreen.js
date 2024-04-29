@@ -70,6 +70,7 @@ export default function MyAssetScreen() {
           assets.map((item, id) => (
             <View key={id}>
               <Card
+                time={id}
                 key={id}
                 //onPress={() => openModal(item)}
                 barHidden={true}

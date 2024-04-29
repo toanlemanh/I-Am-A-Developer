@@ -10,9 +10,14 @@ import { COLOR } from '../constants/GlobalColor';
  barHidden is use to hide the percentage bar when value is  true
 showDetail will show the text when user set this to true
  */
-export default function Card({ percentage,onPress,barHidden,showDetail,children }) {
+import Animated, { FadeInLeft } from "react-native-reanimated";
+const AnimatedView =
+  Animated.createAnimatedComponent(View);
+export default function Card({ percentage,onPress,barHidden,showDetail,children, time }) {
   return (
-    <View style={styles.container}>
+    <AnimatedView 
+    entering={FadeInLeft.duration(600).delay(200*time).springify()} 
+    style={styles.container}>
       <Pressable style={({ pressed }) => pressed && styles.pressed} onPress={onPress}>
           <View style={styles.inner}>
             <CustomAvatar width={40} height={40} />
@@ -33,7 +38,7 @@ export default function Card({ percentage,onPress,barHidden,showDetail,children 
             </View>
         </View>
       </Pressable>
-    </View>
+    </AnimatedView>
   );
 }
 

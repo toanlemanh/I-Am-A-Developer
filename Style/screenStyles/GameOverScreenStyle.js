@@ -1,9 +1,26 @@
 import { StyleSheet } from "react-native";
-
+import { COLOR } from "../../constants/GlobalColor";
 export const styles = StyleSheet.create({
     container: {
-        alignItems: 'center',
         flex: 1,
-        justifyContent: 'center'
-    }
+        flexDirection: "column",
+      },
+      image: {
+        flex: 1,
+        resizeMode: "contain", 
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: COLOR.welcomeBackground,
+      },
+      text: {
+        color: "white",
+        fontSize: 42,
+        lineHeight: 84,
+        fontWeight: "bold",
+        textAlign: "center",
+        backgroundColor: "#000000c0",
+        opacity: 0.8,
+        borderRadius: 70,
+        padding: 10,
+      },
 })
