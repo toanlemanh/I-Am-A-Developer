@@ -5,9 +5,9 @@ import { AuthContext } from '../context/auth'
 
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { Alert } from 'react-native'
+import { putUserData } from '../api/axios'
 import CustomDrawerContent from '../components/CustomDrawerContent'
 import { COLOR } from '../constants/GlobalColor'
-import { putUserData } from '../api/axios'
 import { UserContext } from '../context/user-context'
 import ActivitiesScreen from '../screens/ActivitiesScreen'
 import HomeScreen from '../screens/HomeScreen'
@@ -27,7 +27,6 @@ function DrawerStack() {
         }
         userState.userDailyLogin.lastLoginDate = userContext.formatDate()
     }
-
 
     return (
         <Drawer.Navigator

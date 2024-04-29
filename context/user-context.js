@@ -5,7 +5,7 @@ const initialUserState = {
     userName: "name",
     gameJustStarted: true,
     ageLogs: {},
-
+    isAlive: true,
     userDailyLogin: {
         // after comparison: lastlogin = currentlogin
         lastLoginDate: "",
@@ -288,7 +288,28 @@ const UserProvider = ({ children }) => {
     });
     // const [learningProgress, setLearningProgress] = useState(0)
     function refresh() {
-        setUserState(initialUserState);
+        const name = userState.userName
+        setUserState(() => ({
+            ...initialUserState,
+            userName: name,
+            character: {
+                ...initialUserState.character,
+                age: 0,
+            },
+            status: {
+                health: 100,
+                happiness: 100,
+                appearance: 100,
+            }
+        }));
+        setProgress(0),
+            clearInterval(learningState.intervalId)
+        setLearningState({
+            learningSubject: "",
+            learningProgress: 0,
+            intervalId: ""
+        }
+        )
     }
     function updateUser(newUserState) {
         setUserState((prev) => ({
@@ -481,16 +502,23 @@ const UserProvider = ({ children }) => {
         });
     }
     function updateStatus({ health, happiness, appearance }) {
+        isAlive()
+        if (userState.status.health <= 0) {
+            console.log(userState.isAlive = false);
+            console.log("You are dead!")
+            return
+        }
         setUserState({
             ...userState,
             status: {
                 health: health
                     ? (userState.status.health + health) < 0
-                        ? 0
+                        ? (0)
                         : ((userState.status.health + health) > 100
                             ? 100
                             : (userState.status.health += health))
                     : userState.status.health,
+                // <= cai nay chua toi depth 4 dau thay oi
                 happiness: happiness
                     ? (userState.status.happiness + happiness) < 0
                         ? 0
@@ -509,6 +537,7 @@ const UserProvider = ({ children }) => {
         });
     }
     function updateCharacterMoney(newMoney) {
+        if ((userState.character.money - newMoney) < 0) return false
         setUserState({
             ...userState,
             character: {
@@ -516,8 +545,13 @@ const UserProvider = ({ children }) => {
                 money: (userState.character.money -= newMoney),
             },
         });
+        return true
     }
     function updateCharacterAge(value) {
+        if (!isAlive) {
+            console.log(isAlive)
+            return
+        }
         setUserState({
             ...userState,
             character: {
@@ -640,7 +674,6 @@ const UserProvider = ({ children }) => {
             }}
         >
             {children}
-            {console.log("userstate eve: ", userState)}
         </UserContext.Provider>
     );
 };
