@@ -162,7 +162,7 @@
             "name": "William Jones",
             "group": "Parents",
             "relationshipType": "Father",
-            "relationshipLevel": "100",
+            "relationshipLevel": 100,
             "occupation": "Doctor",
             "actions": [
                 {
@@ -173,7 +173,7 @@
                     "relationshipLevel": 10
                 },
                 {
-                    "actionTitle": "Attend parent-teacher meeting",
+                    "actionTitle": "Meet teacher",
                     "health": -3,
                     "happiness": 5,
                     "look": 0,
@@ -227,7 +227,7 @@
             "name": "Emily Taylor",
             "group": "Parents",
             "relationshipType": "Mother",
-            "relationshipLevel": "100",
+            "relationshipLevel": 100,
             "occupation": "Teacher",
             "actions": [
                 {
@@ -292,12 +292,12 @@
             "name": "John Jones",
             "group": "Siblings",
             "relationshipType": "Brother",
-            "relationshipLevel": "70",
+            "relationshipLevel": 75,
             "age": 20,
             "occupation": "Student",
             "actions": [
                 {
-                    "actionTitle": "Play video games together",
+                    "actionTitle": "Play video games",
                     "health": 2,
                     "happiness": 7,
                     "look": 0,
@@ -330,11 +330,11 @@
             "name": "Max",
             "group": "Pets",
             "relationshipType": "Dog",
-            "relationshipLevel": "90",
+            "relationshipLevel": 90,
             "age": 3,
             "actions": [
                 {
-                    "actionTitle": "Go for a walk in the park",
+                    "actionTitle": "Go for a walk",
                     "health": 5,
                     "happiness": 10,
                     "look": 0,

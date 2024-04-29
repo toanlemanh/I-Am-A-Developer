@@ -16,7 +16,7 @@ import FormInput from "../components/FormInput";
 import SocialBtn from "../components/SocialBtn";
 import { signUp } from "../config/firebase";
 import { AuthContext } from "../context/auth";
-import { postUserId } from "../context/axios";
+import { postUserId } from "../api/axios";
 import { UserContext } from "../context/user-context";
 function RegisterScreen({ navigation }) {
   let USER_ID;
