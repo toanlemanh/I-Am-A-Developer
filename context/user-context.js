@@ -66,46 +66,215 @@ const initialUserState = {
         userInterface: 0,
     },
 
-    relationships: {
-        motherinlaw: [
-            {
-                name: "William Jones",
-                group: "Parents",
-                relationshipType: "Father",
-                relationshipLevel: 100,
-                age: 20,
-                occupation: "Doctor",
-            },
-            {
-                name: "Emily Taylor",
-                group: "Parents",
-                relationshipType: "Mother",
-                relationshipLevel: 100,
-                age: 20,
-                occupation: "Teacher",
-            },
-        ],
-        siblings: [
-            {
-                name: "John Jones",
-                group: "Siblings",
-                relationshipType: "Brother",
-                relationshipLevel: 75,
-                age: 5,
-                occupation: "Student",
-            },
-        ],
-        love: [],
-        pet: [
-            {
-                name: "Max",
-                group: "Pets",
-                relationshipType: "Dog",
-                relationshipLevel: 90,
-                age: 3,
-            },
-        ],
-    },
+
+
+    relationships: [
+        {
+            name: "William Jones",
+            group: "Parents",
+            relationshipType: "Father",
+            relationshipLevel: 100,
+            occupation: "Doctor",
+            actions: [
+                {
+                    actionTitle: "Go to mall for clothes",
+                    health: 1,
+                    happiness: 10,
+                    look: 10,
+                    relationshipLevel: 10
+                },
+                {
+                    actionTitle: "Meet teacher",
+                    health: -3,
+                    happiness: 5,
+                    look: 0,
+                    relationshipLevel: 8
+                },
+                {
+                    actionTitle: "Go to barber shop ",
+                    health: 10,
+                    happiness: 2,
+                    look: 10,
+                    relationshipLevel: 12
+                },
+                {
+                    actionTitle: "Family Game Night",
+                    health: 2,
+                    happiness: 9,
+                    look: 0,
+                    relationshipLevel: 10
+                },
+                {
+                    actionTitle: "Cook and Share a Meal",
+                    health: 4,
+                    happiness: 7,
+                    look: 0,
+                    relationshipLevel: 11
+                },
+                {
+                    actionTitle: "Create a Family Scrapbook",
+                    health: 1,
+                    happiness: 8,
+                    look: 0,
+                    relationshipLevel: 9
+                },
+                {
+                    actionTitle: "Volunteer Together",
+                    health: 3,
+                    happiness: 6,
+                    look: 0,
+                    relationshipLevel: 10
+                },
+                {
+                    actionTitle: "Plan a Family Day Trip",
+                    health: 5,
+                    happiness: 9,
+                    look: 0,
+                    relationshipLevel: 12
+                }
+            ]
+        },
+        {
+            name: "Emily Taylor",
+            group: "Parents",
+            relationshipType: "Mother",
+            relationshipLevel: 100,
+            occupation: "Teacher",
+            actions: [
+                {
+                    actionTitle: "Spend time baking together",
+                    health: 3,
+                    happiness: 8,
+                    look: 0,
+                    relationshipLevel: 10
+                },
+                {
+                    actionTitle: "Watch a movie ",
+                    health: 2,
+                    happiness: 10,
+                    look: 0,
+                    relationshipLevel: 9
+                },
+                {
+                    actionTitle: "Take a walk in the park",
+                    health: 5,
+                    happiness: 7,
+                    look: 0,
+                    relationshipLevel: 11
+                },
+                {
+                    actionTitle: "Family Game Night",
+                    health: 2,
+                    happiness: 9,
+                    look: 0,
+                    relationshipLevel: 10
+                },
+                {
+                    actionTitle: "Cook and Share a Meal",
+                    health: 4,
+                    happiness: 7,
+                    look: 0,
+                    relationshipLevel: 11
+                },
+                {
+                    actionTitle: "Create a Family Scrapbook",
+                    health: 1,
+                    happiness: 8,
+                    look: 0,
+                    relationshipLevel: 9
+                },
+                {
+                    actionTitle: "Volunteer Together",
+                    health: 3,
+                    happiness: 6,
+                    look: 0,
+                    relationshipLevel: 10
+                },
+                {
+                    actionTitle: "Plan a Family Day Trip",
+                    health: 5,
+                    happiness: 9,
+                    look: 0,
+                    relationshipLevel: 12
+                }
+            ]
+        },
+        {
+            name: "John Jones",
+            group: "Siblings",
+            relationshipType: "Brother",
+            relationshipLevel: 75,
+            age: 20,
+            occupation: "Student",
+            actions: [
+                {
+                    actionTitle: "Play video games",
+                    health: 2,
+                    happiness: 7,
+                    look: 0,
+                    relationshipLevel: 8
+                },
+                {
+                    actionTitle: "Study together",
+                    health: 3,
+                    happiness: 5,
+                    look: 0,
+                    relationshipLevel: 7
+                },
+                {
+                    actionTitle: "Go for a run",
+                    health: 5,
+                    happiness: 8,
+                    look: 0,
+                    relationshipLevel: 9
+                },
+                {
+                    actionTitle: "Attend a sports event",
+                    health: 3,
+                    happiness: 9,
+                    look: 0,
+                    relationshipLevel: 8
+                }
+            ]
+        },
+        {
+            name: "Max",
+            group: "Pets",
+            relationshipType: "Dog",
+            relationshipLevel: 90,
+            age: 3,
+            actions: [
+                {
+                    actionTitle: "Go for a walk",
+                    health: 5,
+                    happiness: 10,
+                    look: 0,
+                    relationshipLevel: 10
+                },
+                {
+                    actionTitle: "Play fetch",
+                    health: 3,
+                    happiness: 8,
+                    look: 0,
+                    relationshipLevel: 9
+                },
+                {
+                    actionTitle: "Give belly rubs",
+                    health: 2,
+                    happiness: 9,
+                    look: 0,
+                    relationshipLevel: 9
+                },
+                {
+                    actionTitle: "Grooming session",
+                    health: 4,
+                    happiness: 7,
+                    look: 0,
+                    relationshipLevel: 8
+                }
+            ]
+        }
+    ],
     assets: [],
     progress: 0,
 };
@@ -125,7 +294,16 @@ const UserProvider = ({ children }) => {
         const name = userState.userName
         setUserState(() => ({
             ...initialUserState,
-            userName: name
+            userName: name,
+            character: {
+                ...initialUserState.character,
+                age: 0,
+            },
+            status: {
+                health: 100,
+                happiness: 100,
+                appearance: 100,
+            }
         }));
         setProgress(0),
             clearInterval(learningState.intervalId)
@@ -343,6 +521,7 @@ const UserProvider = ({ children }) => {
                             ? 100
                             : (userState.status.health += health))
                     : userState.status.health,
+                // <= cai nay chua toi depth 4 dau thay oi
                 happiness: happiness
                     ? (userState.status.happiness + happiness) < 0
                         ? 0
@@ -361,6 +540,7 @@ const UserProvider = ({ children }) => {
         });
     }
     function updateCharacterMoney(newMoney) {
+        if ((userState.character.money - newMoney) < 0) return false
         setUserState({
             ...userState,
             character: {
@@ -368,6 +548,7 @@ const UserProvider = ({ children }) => {
                 money: (userState.character.money -= newMoney),
             },
         });
+        return true
     }
     function updateCharacterAge(value) {
         if (!isAlive) {
@@ -412,7 +593,7 @@ const UserProvider = ({ children }) => {
         });
     }
     // update a specific realtionship by their group and key
-    function updateRelationshipLevel(group, name, level) {
+    function updateRelationshipLevel(name, level) {
         for (let i = 0; i < userState.relationships.length; i++) {
             for (let j = 0; i < userState.relationships[i].length; j++) {
                 if (userState.relationships[i][j].name === name)

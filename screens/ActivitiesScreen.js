@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { ScrollView, Text, View } from "react-native";
+import { Alert, ScrollView, Text, View } from "react-native";
 import { styles } from "../Style/screenStyles/ActivitiesStyle";
 import Card from "../components/Card";
 import AlertPopup from "../components/eventsPopup/AlertPopup";
@@ -23,12 +23,19 @@ export default function ActivitiesScreen() {
     const activityHandler = () => {
         setModalVisible(false);
         setSelectedActivity(null);
-        userContext.updateCharacterMoney(selectedActivity.cost)
-        userContext.updateStatus({
-            health: selectedActivity.effects.health,
-            happiness: selectedActivity.effects.happiness,
-            appearance: selectedActivity.effects.appearance,
-        })
+        let enoughMoney = true
+        enoughMoney = userContext.updateCharacterMoney(selectedActivity.cost)
+
+        if (enoughMoney === true) {
+            userContext.updateStatus({
+                health: selectedActivity.effects.health,
+                happiness: selectedActivity.effects.happiness,
+                appearance: selectedActivity.effects.appearance,
+            })
+            Alert.alert("You have finished an action, please don't do that again today!")
+        }
+        else Alert.alert("You don't have enough money, please work harder!")
+
     }
 
     const renderActivity = (cost, happiness, health, appearance) => {

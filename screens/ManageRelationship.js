@@ -18,8 +18,14 @@ export default function ManageRelationship({ route, navigation }) {
   const [actionText, setActionText] = useState('');
   const [actionName,setActionName] = useState('');
   // Retrieve all relationships from data
-  const relationships = data.Relationships;
+  
   const userContext = useContext(UserContext);
+  const [status,setStatus] = useState({
+    health:0,
+    happiness:0,
+    appearance:0
+  });
+  const relationships = userContext.userState.relationships;
   // Function to open modal
   const openModal = () => {
     setModalVisible(true);
@@ -71,15 +77,24 @@ const handleActionClick = (action) => {
   setActionText(generateActionContent(action));
   setActionModal(true);
   setActionName(action.actionTitle);
-  userContext.updateStatus({
+  setStatus({
       health:action.health,
       happiness:action.happiness,
       appearance:action.look
-  });
+  })
+  
   //Update relationship level here
-  userContext.updateRelationshipLevel(relationship.group, relationship.name, action.relationshipLevel)
+  //userContext.updateRelationshipLevel(relationship.group, relationship.name, action.relationshipLevel)
   console.log(action.health,action.happiness,action.look,action.relationshipLevel);
 };
+function modalOnPress(){
+  setActionModal(false);
+  userContext.updateStatus({
+    health:status.health,
+    happiness:status.happiness,
+    appearance:status.look
+});
+}
 
 // Function to generate action content
 const generateActionContent = (action) => {
@@ -118,7 +133,9 @@ return (
     closeModal={closeActionModal}
     title={actionName} // Assuming you want to display the name of the person
     content={actionModalContent(actionText)} // Pass actionText as content
+    buttonOnPress={modalOnPress}
     buttonText={"OK"}
+    
   />
 
   {/* Render relationship modal */}
