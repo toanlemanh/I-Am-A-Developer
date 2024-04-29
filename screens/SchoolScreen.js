@@ -10,9 +10,9 @@ import { styles } from "../Style/screenStyles/SchoolStyle";
 import Card from "../components/Card";
 import PercentageBar from "../components/ProgressBar";
 import AlertPopup from "../components/eventsPopup/AlertPopup";
+import { COLOR } from "../constants/GlobalColor";
 import { UserContext } from "../context/user-context";
 import { CONSTRAINTS } from "../utils/constraints";
-import { COLOR } from "../constants/GlobalColor";
 function SchoolScreen() {
   const userContext = useContext(UserContext);
   const user = userContext.userState;
@@ -111,46 +111,47 @@ function SchoolScreen() {
         percentage={learningState.learningProgress}
       />
       <ScrollView style={styles.container}>
-        {user.character.age >= CONSTRAINTS.age.attendSchool && user.character.age < CONSTRAINTS.age.legalAdult && !user.character.inUniversity ? (
-          Object.keys(subjects).map(subject => {
-            const subjectName = transformText([subject][0])
-            return (
-              <Card
-                key={[subject]}
-                percentage={subjects[subject] * 20}  // Assuming fixed percentage
-                showDetail={true}
-                onPress={() => openModal([subject][0])}
-              >
-                <Text>{subjectName}</Text>
-              </Card>
+        <View style={styles.container}>
+          {user.character.age >= CONSTRAINTS.age.attendSchool && user.character.age < CONSTRAINTS.age.legalAdult && !user.character.inUniversity ? (
+            Object.keys(subjects).map(subject => {
+              const subjectName = transformText([subject][0])
+              return (
+                <Card
+                  key={[subject]}
+                  percentage={subjects[subject] * 20}
+                  showDetail={true}
+                  onPress={() => openModal([subject][0])}
+                >
+                  <Text>{subjectName}</Text>
+                </Card>
+              )
+            }
             )
-          }
-          )
-        ) : null}
+          ) : null}
 
-        {user.character.age >= CONSTRAINTS.age.legalAdult && !user.character.inUniversity ? (
-          <View style={styles.buttonContainer}>
-            <Button title="Apply to University" onPress={applyToUniversity} />
-          </View>
-        ) : null}
+          {user.character.age >= CONSTRAINTS.age.legalAdult && !user.character.inUniversity ? (
+            <View style={styles.buttonContainer}>
+              <Button title="Apply to University" onPress={applyToUniversity} />
+            </View>
+          ) : null}
 
-        {user.character.inUniversity && (
-          Object.keys(universitySubjects).map((subject) => {
-            const subjectName = transformText([subject][0])
-            return (
-              <Card
-                key={[subject]}
-                percentage={universitySubjects[subject] * 20}  // Assuming fixed percentage
-                showDetail={true}
-                onPress={() => openModal(subject)}
-              >
-                <Text>{subjectName}</Text>
-              </Card>
+          {user.character.inUniversity && (
+            Object.keys(universitySubjects).map((subject) => {
+              const subjectName = transformText([subject][0])
+              return (
+                <Card
+                  key={[subject]}
+                  percentage={universitySubjects[subject] * 20}
+                  showDetail={true}
+                  onPress={() => openModal(subject)}
+                >
+                  <Text>{subjectName}</Text>
+                </Card>
+              )
+            }
             )
-          }
-          )
-        )}
-
+          )}
+        </View>
         <AlertPopup
           modalVisible={modalVisible}
           closeModal={closeModal}
