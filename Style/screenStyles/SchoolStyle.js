@@ -7,7 +7,12 @@ export const styles = StyleSheet.create({
     padding: 10,
     backgroundColor: COLOR.homeBackgound,
     flex: 1,
-    alignContent: 'center',
+  },
+  cardsContainer: {
+    padding: 10,
+    backgroundColor: COLOR.homeBackgound,
+    flex: 1,
+    alignItems: 'center',
   },
   learningContainer: {
     flexDirection: "row",

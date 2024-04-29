@@ -1,6 +1,6 @@
-import React from 'react';
-import { Modal, StyleSheet, Text, Pressable, View } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import React from 'react';
+import { Modal, Pressable, Text, View } from 'react-native';
 import { styles } from '../../Style/componentStyle/popupStyle/SettingPopStyle';
 function SettingPopup({ modalVisible, closeModal }) {
     return (
@@ -19,7 +19,6 @@ function SettingPopup({ modalVisible, closeModal }) {
                         <View style={styles.eventContainer}>
                             <Text style={styles.eventTitle}>Cúc à?</Text>
                         </View>
-                        {/* <Text style={styles.eventText}>Do you fap with your step sister pant ?</Text> */}
                         <View style={styles.buttonContainer}>
                             <LinearGradient
                                 colors={['#005D63', '#77B29F', '#005D63']}

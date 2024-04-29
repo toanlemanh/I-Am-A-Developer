@@ -55,10 +55,10 @@ export const styles = StyleSheet.create({
     },
     button: {
         borderRadius: 20,
-         padding: 10,
-         //elevation: 2,
+        padding: 10,
+        //elevation: 2,
         // // backgroundColor: '#3a97de',
-         //width: 200
+        //width: 200
     },
     textButtonStyle: {
         color: 'white',
@@ -78,10 +78,10 @@ export const styles = StyleSheet.create({
         fontSize: 15,
         fontWeight: '500'
     },
-    eventContainer:{
+    eventContainer: {
         width: 200
     },
-    buttonOutterContainer:{
+    buttonOutterContainer: {
         padding: 5
     }
 });

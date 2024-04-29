@@ -6,12 +6,12 @@ import {
 export const styles = StyleSheet.create({
   container: {
     width: wp("85%"),
-    height: hp("12%"),
+    maxHeight: hp("12%"),
     backgroundColor: "#FFFFFF",
     borderRadius: 12,
     marginVertical: 10,
     justifyContent: "center",
-
+    flex: 1,
     elevation: 7,
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
