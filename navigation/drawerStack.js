@@ -5,6 +5,7 @@ import { AuthContext } from '../context/auth'
 
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { Alert } from 'react-native'
+import { styles } from '../Style/globalStyles'
 import { putUserData } from '../api/axios'
 import CustomDrawerContent from '../components/CustomDrawerContent'
 import { COLOR } from '../constants/GlobalColor'
@@ -23,9 +24,12 @@ function DrawerStack() {
         if (userState.userDailyLogin.lastLoginDate !== userState.userDailyLogin.currentLoginDate || userState.userDailyLogin.lastLoginDate === "") {
             userState.character.money += userState.userDailyLogin.rewards
             userState.userDailyLogin.lastLoginDate = userContext.formatDate()
-            return `You have received $${userState.userDailyLogin.rewards} from daily login rewards`
+            return `You have received $${userState.userDailyLogin.rewards} from daily login rewards!`
         }
-        userState.userDailyLogin.lastLoginDate = userContext.formatDate()
+        else {
+            userState.userDailyLogin.lastLoginDate = userContext.formatDate()
+            return 'You have already received the daily login rewards!'
+        }
     }
 
     return (
@@ -40,16 +44,16 @@ function DrawerStack() {
 
                 headerRight: () => (<View style={{ flexDirection: 'row' }}>
                     <Pressable
-                        style={{ backgroundColor: COLOR.titleBackground, padding: 5, alignItems: 'center', justifyContent: 'center', marginRight: 10 }}
+                        style={styles.button}
                         onPress={() => {
                             const rewardsNoti = loginRewardsHandler()
                             if (rewardsNoti) Alert.alert(rewardsNoti);
                         }}
                     >
-                        <View><Text style={{ color: 'white', textAlign: 'center', fontSize: 10 }}>Rewards</Text></View>
+                        <View><Text style={styles.buttonText}>Rewards</Text></View>
                     </Pressable>
                     <Pressable
-                        style={{ backgroundColor: COLOR.titleBackground, padding: 5, alignItems: 'center', justifyContent: 'center', marginRight: 10 }}
+                        style={styles.button}
                         title="Savebutton"
                         onPress={async () => {
                             if (authContext.userId) {
@@ -60,7 +64,7 @@ function DrawerStack() {
                             }
                         }}
                     >
-                        <View><Text style={{ color: 'white', textAlign: 'center', fontSize: 10 }}>Save</Text></View>
+                        <View><Text style={styles.buttonText}>Save</Text></View>
                     </Pressable>
                 </View>
 

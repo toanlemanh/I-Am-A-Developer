@@ -15,6 +15,7 @@ function SelectionPopup({
 
 }) {
     const { width: windowWidth } = useWindowDimensions()
+    const gradientColor = ['#005D63', '#77B29F', '#005D63']
     return (
         <Modal
             animationType="slide"
@@ -36,7 +37,7 @@ function SelectionPopup({
 
                         <View >
                             <LinearGradient
-                                colors={['#005D63', '#77B29F', '#005D63']}
+                                colors={gradientColor}
                                 style={[styles.gradient, { width: windowWidth * 0.6 }]}
                                 start={{ x: 0, y: 0 }}
                                 end={{ x: 1, y: 1 }}
@@ -52,7 +53,7 @@ function SelectionPopup({
 
                         <View style={styles.buttonOutterContainer}>
                             <LinearGradient
-                                colors={['#005D63', '#77B29F', '#005D63']}
+                                colors={gradientColor}
                                 style={[styles.gradient, { width: windowWidth * 0.6 }]}
                                 start={{ x: 0, y: 0 }}
                                 end={{ x: 1, y: 1 }}
@@ -70,7 +71,7 @@ function SelectionPopup({
                         {choice3 != null && (
                             <View style={styles.buttonOutterContainer}>
                                 <LinearGradient
-                                    colors={['#005D63', '#77B29F', '#005D63']}
+                                    colors={gradientColor}
                                     style={[styles.gradient, { width: windowWidth * 0.6 }]}
                                     start={{ x: 0, y: 0 }}
                                     end={{ x: 1, y: 1 }}
