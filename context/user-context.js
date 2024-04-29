@@ -5,7 +5,7 @@ const initialUserState = {
     userName: "name",
     gameJustStarted: true,
     ageLogs: {},
-
+    isAlive: true,
     userDailyLogin: {
         // after comparison: lastlogin = currentlogin
         lastLoginDate: "",
@@ -122,7 +122,19 @@ const UserProvider = ({ children }) => {
     });
     // const [learningProgress, setLearningProgress] = useState(0)
     function refresh() {
-        setUserState(initialUserState);
+        const name = userState.userName
+        setUserState(() => ({
+            ...initialUserState,
+            userName: name
+        }));
+        setProgress(0),
+            clearInterval(learningState.intervalId)
+        setLearningState({
+            learningSubject: "",
+            learningProgress: 0,
+            intervalId: ""
+        }
+        )
     }
     function updateUser(newUserState) {
         setUserState((prev) => ({
@@ -317,6 +329,7 @@ const UserProvider = ({ children }) => {
     function updateStatus({ health, happiness, appearance }) {
         isAlive()
         if (userState.status.health <= 0) {
+            console.log(userState.isAlive = false);
             console.log("You are dead!")
             return
         }
@@ -357,6 +370,10 @@ const UserProvider = ({ children }) => {
         });
     }
     function updateCharacterAge(value) {
+        if (!isAlive) {
+            console.log(isAlive)
+            return
+        }
         setUserState({
             ...userState,
             character: {

@@ -19,8 +19,8 @@ export const styles = StyleSheet.create({
     shadowRadius: 4,
   },
   cardContainer: {
-    width:  50,
-    height:  50,
+    width: 50,
+    height: 50,
     borderRadius: (40 + 10) / 2,
     backgroundColor: "#D9D9D9",
     alignItems: "center",
@@ -45,6 +45,7 @@ export const styles = StyleSheet.create({
   items: {
     marginLeft: 10,
     marginTop: 23,
+    justifyContent: 'center'
   },
   viewDetail: {
     color: "#083C4C",

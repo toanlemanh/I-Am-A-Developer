@@ -1,18 +1,19 @@
 import React, { useContext } from "react";
 
+import { AntDesign } from "@expo/vector-icons";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { Pressable, AntDesign } from "@expo/vector-icons";
 import { AuthContext } from "../context/auth";
 
 // Screen
-import RelationshipScreen from "../screens/Relationship";
-import ManageRelationship from "../screens/ManageRelationship";
-import AssetScreen from "../screens/AssetScreen";
-import OccupationScreen from "../screens/OccupationScreen";
-import SchoolScreen from "../screens/SchoolScreen";
-import JobMarket from "../screens/JobMarket";
-import DrawerStack from "./drawerStack";
 import { COLOR } from "../constants/GlobalColor";
+import AssetScreen from "../screens/AssetScreen";
+import EndGameScreen from "../screens/EndGameScreen";
+import JobMarket from "../screens/JobMarket";
+import ManageRelationship from "../screens/ManageRelationship";
+import OccupationScreen from "../screens/OccupationScreen";
+import RelationshipScreen from "../screens/Relationship";
+import SchoolScreen from "../screens/SchoolScreen";
+import DrawerStack from "./drawerStack";
 
 const Stack = createNativeStackNavigator();
 
@@ -80,6 +81,14 @@ function UserStack() {
         component={JobMarket}
         options={{
           title: "JOB MARKET",
+        }}
+      />
+      <Stack.Screen
+        name="EndGameScreen"
+        component={EndGameScreen}
+        options={{
+          headerShown: false,
+          title: "Game Over!",
         }}
       />
     </Stack.Navigator>
