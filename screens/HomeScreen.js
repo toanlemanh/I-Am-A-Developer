@@ -246,7 +246,7 @@ export default function HomeScreen() {
               navigation.navigate("Assets");
             }}
           >
-            <View style={{ justifyContent: "center", alignItems: "center" }}>
+            <View style={styles.iconNavigateStyle}>
               <MaterialCommunityIcons name="sack" size={24} color="black" />
               <Text style={styles.navigateText}>Assets</Text>
             </View>

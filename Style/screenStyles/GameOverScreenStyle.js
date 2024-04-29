@@ -23,4 +23,7 @@ export const styles = StyleSheet.create({
         borderRadius: 70,
         padding: 10,
       },
+      imageStyle:{
+         opacity: 1 
+      }
 })

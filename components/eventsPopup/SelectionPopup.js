@@ -33,7 +33,7 @@ function SelectionPopup({
 
                         <Text style={styles.eventText}>{title}</Text>
 
-                        <View style={{  }}>
+                        <View >
                             <LinearGradient
                                colors={['#005D63', '#77B29F', '#005D63']}
                                 style={styles.gradient}

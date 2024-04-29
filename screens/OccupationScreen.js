@@ -80,7 +80,7 @@ export default function OccupationScreen({ navigation }) {
           navigation.navigate('Job Market')
         }}>
           <View style={styles.buttonContainer}>
-            <Text style={{ color: 'white' }}>Find jobs</Text>
+            <Text style={styles.findjob}>Find jobs</Text>
             <FontAwesome name="search" size={21} color="white" />
           </View>
         </ButtonComponent>

@@ -34,7 +34,7 @@ function SettingPopup({ modalVisible, closeModal }) {
                                 </Pressable>
                             </LinearGradient>
                         </View>
-                        <View style={{ }}>
+                        <View >
                             <LinearGradient
                                 colors={['#005D63', '#77B29F', '#005D63']}
                                 style={styles.gradient}

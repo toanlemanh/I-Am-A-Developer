@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 
 import { View } from "react-native";
-
+import { styles } from "../Style/componentStyle/ProgressbarStyle";
 const PercentageBar = ({
-  navigation,
   percentage,
   height,
   backgroundColor,
@@ -12,15 +11,13 @@ const PercentageBar = ({
 }) => {
   return (
     <View>
-      <View style={{ justifyContent: "center" }}>
+      <View style={styles.container}>
         <View
           style={{
             width: width,
             height: height,
             marginVertical: 0,
-
             borderColor: backgroundColor,
-
             backgroundColor: backgroundColor,
           }}
         />
