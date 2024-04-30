@@ -9,8 +9,8 @@ import { useNavigation } from "@react-navigation/native";
 import React, { useContext, useEffect, useState } from "react";
 import { ActivityIndicator, Alert, Image, Pressable, ScrollView, Text, View, useWindowDimensions } from "react-native";
 import Animated, { BounceIn, BounceOut } from "react-native-reanimated";
-import { loadingStyle } from "../Style/componentStyle/LoadingStyle";
-import { styles } from "../Style/screenStyles/HomeScreenStyle";
+import { loadingStyle } from '../styles/componentStyles/LoadingStyle'
+import { styles } from '../styles/screenStyles/HomeScreenStyle'
 import { getUserId } from "../api/axios";
 import CharacterStatus from "../components/CharacterStatus";
 import CustomAvatar from "../components/CustomAvatar";

@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Platform, Text, View, useWindowDimensions } from 'react-native';
-import { styles } from "../Style/screenStyles/HomeScreenStyle";
+import { styles } from "../styles/screenStyles/HomeScreenStyle";
 import PercentageBar from '../components/ProgressBar';
 import { COLOR } from '../constants/GlobalColor';
 import { UserContext } from '../store/user-context';

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import { View } from "react-native";
-import { styles } from "../Style/componentStyle/ProgressbarStyle";
+import { styles } from '../styles/componentStyles/ProgressbarStyle';
 const PercentageBar = ({
   percentage,
   height,

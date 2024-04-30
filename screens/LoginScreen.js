@@ -9,7 +9,7 @@ import { signInWithPassword } from '../config/firebase'
 import { Ionicons } from '@expo/vector-icons'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import Animated, { ZoomIn, ZoomOut } from 'react-native-reanimated'
-import { landStyles, styles } from '../Style/screenStyles/LoginScreenStyle'
+import { landStyles, styles } from '../styles/screenStyles/LoginScreenStyle'
 import { AuthContext } from "../store/auth"
 //1. Input handler 
 //2. Connect firebase 

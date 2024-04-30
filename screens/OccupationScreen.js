@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import { styles } from "../Style/screenStyles/OccupationStyle";
+import { styles } from "../styles/screenStyles/OccupationStyle";
 import Card from "../components/Card";
 import AlertPopup from "../components/eventsPopup/AlertPopup";
 import { UserContext } from "../store/user-context";

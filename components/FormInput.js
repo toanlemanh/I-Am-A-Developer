@@ -1,7 +1,7 @@
 import React from 'react'
 import { TextInput, StyleSheet, View } from 'react-native'
 import Animated, { BounceIn } from 'react-native-reanimated';
-import { styles } from '../Style/componentStyle/FormInputStyle';
+import { styles } from '../styles/componentStyles/FormInputStyle'
 function FormInput({ placeholder, secureTextEntry, value, onCredentialChangeHandler }) {
     return (
         <Animated.View entering={BounceIn.duration(500).delay(100).springify()}>

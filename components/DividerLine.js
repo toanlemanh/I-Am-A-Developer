@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, Text } from 'react-native'
-import { styles } from '../Style/componentStyle/DividerStyle'
+import { styles } from '../styles/componentStyles/DividerStyle'
 function DividerLine({ children }) {
     return (
         <View style={styles.dividerContainer}>

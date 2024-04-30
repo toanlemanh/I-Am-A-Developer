@@ -1,10 +1,10 @@
 import { useContext, useState } from "react";
 import { ScrollView, Text, View } from "react-native";
-import { styles } from "../Style/screenStyles/ManageRelaStyle";
+import { styles } from "../styles/screenStyles/ManageRelaStyle";
 import Card from "../components/Card";
 import CustomDataLabel from "../components/CustomDataLabel";
 import AlertPopup from "../components/eventsPopup/AlertPopup";
-import data from "../data/userData.json";
+import data from "../data/data.json";
 import { UserContext } from "../store/user-context";
 export default function ManageRelationship({ route, navigation }) {
   const [modalVisible, setModalVisible] = useState(false);

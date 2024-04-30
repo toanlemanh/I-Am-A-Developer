@@ -6,7 +6,7 @@ import {
   Text,
   View
 } from "react-native";
-import { styles } from "../Style/screenStyles/SchoolStyle";
+import { styles } from "../styles/screenStyles/SchoolStyle";
 import Card from "../components/Card";
 import PercentageBar from "../components/ProgressBar";
 import AlertPopup from "../components/eventsPopup/AlertPopup";
