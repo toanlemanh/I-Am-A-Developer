@@ -6,12 +6,8 @@ function SelectionPopup({
     modalVisible,
     closeModal,
     title,
-    choice1,
-    choice2,
-    choice3,
-    handleChoice1,
-    handleChoice2,
-    handleChoice3
+    choices,
+    handleChoice
 
 }) {
     const { width: windowWidth } = useWindowDimensions()
@@ -34,58 +30,28 @@ function SelectionPopup({
                         </View>
 
                         <Text style={styles.eventText}>{title}</Text>
+                        {
+                            choices.map((choice, index) => {
+                                return (
+                                    <View key={index} style={styles.buttonOutterContainer}>
+                                        <LinearGradient
+                                            colors={gradientColor}
+                                            style={[styles.gradient, { width: windowWidth * 0.6 }]}
+                                            start={{ x: 0, y: 0 }}
+                                            end={{ x: 1, y: 1 }}
+                                        >
+                                            <Pressable
+                                                style={styles.button}
+                                                onPress={() => handleChoice(choice)}>
+                                                <Text style={styles.textButtonStyle}>{choice.description}</Text>
+                                            </Pressable>
+                                        </LinearGradient>
+                                    </View>
+                                )
+                            })
+                        }
 
-                        <View >
-                            <LinearGradient
-                                colors={gradientColor}
-                                style={[styles.gradient, { width: windowWidth * 0.6 }]}
-                                start={{ x: 0, y: 0 }}
-                                end={{ x: 1, y: 1 }}
-                            >
 
-                                <Pressable
-                                    style={styles.button}
-                                    onPress={handleChoice1}>
-                                    <Text style={styles.textButtonStyle}>{choice1}</Text>
-                                </Pressable>
-                            </LinearGradient>
-                        </View>
-
-                        <View style={styles.buttonOutterContainer}>
-                            <LinearGradient
-                                colors={gradientColor}
-                                style={[styles.gradient, { width: windowWidth * 0.6 }]}
-                                start={{ x: 0, y: 0 }}
-                                end={{ x: 1, y: 1 }}
-                            >
-
-                                <Pressable
-                                    style={styles.button}
-                                    onPress={handleChoice2}>
-                                    <Text style={styles.textButtonStyle}>{choice2}</Text>
-                                </Pressable>
-                            </LinearGradient>
-
-                        </View>
-
-                        {choice3 != null && (
-                            <View style={styles.buttonOutterContainer}>
-                                <LinearGradient
-                                    colors={gradientColor}
-                                    style={[styles.gradient, { width: windowWidth * 0.6 }]}
-                                    start={{ x: 0, y: 0 }}
-                                    end={{ x: 1, y: 1 }}
-                                >
-
-                                    <Pressable
-                                        style={styles.button}
-                                        onPress={handleChoice3}>
-                                        <Text style={styles.textButtonStyle}>{choice3}</Text>
-                                    </Pressable>
-                                </LinearGradient>
-
-                            </View>
-                        )}
 
                     </View>
                 </View>

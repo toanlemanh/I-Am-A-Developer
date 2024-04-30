@@ -4,12 +4,9 @@ import { CONSTRAINTS } from "../utils/CharacterConstraints";
 const initialUserState = {
     userName: "name",
     gameJustStarted: true,
-    ageLogs: {},
     isAlive: true,
     userDailyLogin: {
-        // after comparison: lastlogin = currentlogin
         lastLoginDate: "",
-        // set current login date
         currentLoginDate: "",
         rewards: 100,
     },
@@ -31,7 +28,6 @@ const initialUserState = {
         happiness: 100,
         appearance: 100,
     },
-    // currentDiseases in an array of diseases objects
     currentDiseases: [],
     education: {
         math: 0,
@@ -65,9 +61,6 @@ const initialUserState = {
         userExperience: 0,
         userInterface: 0,
     },
-
-
-
     relationships: [
         {
             name: "William Jones",
