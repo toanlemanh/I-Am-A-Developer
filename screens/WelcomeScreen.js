@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import {
   Dimensions,
   Image,
-  Platform,
   SafeAreaView,
   View,
   useWindowDimensions
@@ -26,19 +25,10 @@ function WelcomeScreen({ navigation }) {
     });
   }, []);
 
-  const imageStyle = Platform.select({
-    ios: {
-      ...style.image,
-      minHeight: windowHeight * 0.55,
-    },
-    android: {
-      ...style.image,
-      minHeight: windowHeight * 0.55,
-    },
-    web: {
-      ...style.image,
-    },
-  });
+  const imageStyle = {
+    ...style.image,
+    minHeight: windowHeight * 0.55,
+  }
 
   return (
     <SafeAreaView style={style.container}>
