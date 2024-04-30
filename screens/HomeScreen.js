@@ -18,10 +18,12 @@ import { COLOR } from "../constants/GlobalColor";
 import data from "../data/data.json";
 import { AuthContext } from "../store/auth";
 import { UserContext } from "../store/user-context";
+
+import { AVATARS } from "../constants/avatars";
+import { CONSTRAINTS } from "../utils/CharacterConstraints";
 import { loadingStyle } from '../styles/componentStyles/LoadingStyle';
 import { styles } from '../styles/screenStyles/HomeScreenStyle';
-import { AVATARS } from "../utils/avatars";
-import { CONSTRAINTS } from "../utils/constraints";
+
 const AnimatedImage = Animated.createAnimatedComponent(Image);
 export default function HomeScreen() {
   const [isLoading, setIsLoading] = useState(true);

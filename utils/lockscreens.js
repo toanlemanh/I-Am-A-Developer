@@ -1,5 +1,5 @@
 import { Alert } from "react-native";
-import { CONSTRAINTS } from "./constraints";
+import { CONSTRAINTS } from "./CharacterConstraints";
 // check the requirement to lock (true) or unlock (false) the screen 
 export function lockJobMarketScreen (age, health) {
         if (age < CONSTRAINTS.age.legalAdult) {

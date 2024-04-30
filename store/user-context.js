@@ -1,6 +1,6 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { createContext, useState } from "react";
-import { CONSTRAINTS } from "../utils/constraints";
+import { CONSTRAINTS } from "../utils/CharacterConstraints";
 const initialUserState = {
     userName: "name",
     gameJustStarted: true,

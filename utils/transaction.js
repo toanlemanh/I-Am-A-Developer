@@ -9,11 +9,11 @@ export function buy(money, assetName, assetPrice) {
             return message = `Successfull transaction! A ${assetName} is added into your assets!`;
         }
         else {
-            message = `You have ${money} ! Let's make money harder!`
+            message = `You have ${money}$ ! Let's make money harder!`
             throw new Error(message);
         }
     } catch (error) {
-        Alert.alert("Error", error.message);
+        Alert.alert("Opps!", error.message);
     }
 }
 

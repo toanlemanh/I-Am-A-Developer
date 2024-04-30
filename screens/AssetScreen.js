@@ -49,18 +49,19 @@ export default function AssetScreen() {
       userContext.updateCharacterMoney(price);
       userContext.updateAsset(name);
       Alert.alert("Successful!", message);
-      closeModal();
+      
     }
     else {
       console.log("Eorr trans")
     }
+    closeModal();
   }
 
   const renderContent = (name, price) => {
     return (
       <View>
         <Text><Text style={styles.label}>Brand Name: :</Text> {name}</Text>
-        <Text><Text style={styles.label}>Price:</Text> {price}</Text>
+        <Text><Text style={styles.label}>Price:</Text> {price}$</Text>
       </View>
     )
   }
@@ -89,7 +90,7 @@ export default function AssetScreen() {
         closeModal={closeModal}
         title={selectedAsset?.group}
         content={renderContent(selectedAsset?.name, selectedAsset?.price)}
-        buttonText={buttonText(selectedAsset?.group)}
+        buttonText={buttonText(selectedAsset?.name)}
         buttonOnPress={() => handleTransaction(selectedAsset?.name, selectedAsset?.price)}
       />
     </ScrollView>
