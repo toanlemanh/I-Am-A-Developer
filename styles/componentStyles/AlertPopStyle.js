@@ -11,7 +11,7 @@ export const styles = StyleSheet.create({
     },
     outerBoderPopup: {
         margin: 20,
-        backgroundColor: '#F0E5E5',
+       backgroundColor: '#F0E5E5',
         borderRadius: 20,
         alignItems: 'center',
         shadowColor: '#000',
@@ -52,7 +52,6 @@ export const styles = StyleSheet.create({
     button: {
         borderRadius: 20,
         padding: 10,
-        elevation: 2,
         width: 200
     },
     textButtonStyle: {
