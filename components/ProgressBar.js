@@ -32,7 +32,7 @@ const PercentageBar = ({
             bottom: height,
           }}
         >
-            <Text style={styles.percentage}>{percentage} %</Text>
+            <Text style={styles.percentage}>{Math.round(percentage,2)} %</Text>
         </View>
         <View
           style={{
