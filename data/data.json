@@ -1038,103 +1038,144 @@
   "fatalEvents": {
     "data": [
       {
-        "description": "You're walking down the street when suddenly...",
-        "rate": 0.01,
-        "choice": {
-          "description": "You hear a screech of tires!",
-          "healthEffect": -100,
-          "happinessEffect": 0,
-          "result": "There's nothing you can do to avoid the impact."
-        }
-      },
-      {
-        "description": "You experience some unusual symptoms and decide to visit a doctor. The news isn't good...",
-        "rate": 0.005,
-        "choice": {
-          "description": "You are diagnosed with a terminal illness.",
-          "healthEffect": -100,
-          "happinessEffect": -20,
-          "result": "The doctor explains the diagnosis and treatment options (if any)."
-        }
-      },
-      {
-        "description": "The weather forecast has been ominous for days. Now...",
-        "rate": 0.02,
-        "choice": {
-          "description": "A powerful earthquake strikes your area!",
-          "healthEffect": -50,
-          "happinessEffect": -15,
-          "result": "The ground shakes violently, causing widespread destruction."
-        }
-      },
-      {
-        "description": "You're driving down the road when...",
-        "rate": 0.05,
-        "choice": {
-          "description": "There's a sudden brake and a minor collision!",
-          "healthEffect": -5,
-          "happinessEffect": -10,
-          "result": "Your car sustains some bumper damage, but everyone is okay."
-        }
-      },
-      {
-        "description": "You enjoy a delicious meal, but a few hours later...",
-        "rate": 0.03,
-        "choice": {
-          "description": "You experience a nasty case of food poisoning.",
-          "healthEffect": -15,
-          "happinessEffect": -5,
-          "result": "You spend the next few days curled up on the couch."
-        }
-      },
-      {
-        "description": "You're walking home late at night when...",
-        "rate": 0.02,
-        "choice": {
-          "description": "Someone approaches you and demands your valuables!",
-          "healthEffect": -5,
-          "happinessEffect": -15,
-          "result": "You hand over your wallet to avoid further trouble."
-        }
-      },
-      {
-        "description": "You wake up in the middle of the night to the smell of smoke...",
-        "rate": 0.01,
+        "description": "You're taking a peaceful stroll in the park when suddenly a large branch falls from a tree!",
         "choice": [
           {
-            "description": "Quickly evacuate the house and call for help.",
-            "healthEffect": -5,
+            "description": "Quickly assess the situation and move away from the falling branch!",
+            "healthEffect": -25,
             "happinessEffect": -10,
-            "result": "The fire department arrives and manages to put out the fire before major damage."
+            "result": "You narrowly avoid the falling branch, feeling shaken but unharmed."
           },
           {
-            "description": "Panic and become disoriented, delaying your escape.",
-            "healthEffect": -10,
-            "happinessEffect": -15,
-            "result": "Firefighters rescue you from the house, but it sustains significant damage."
+            "description": "Freeze in shock, unable to react in time!",
+            "healthEffect": -35,
+            "happinessEffect": -20,
+            "result": "The branch hits you, causing injuries that require medical attention."
           }
         ]
       },
       {
-        "description": "You're excited about your upcoming vacation, but during your travels...",
-        "rate": 0.02,
+        "description": "You're enjoying a sunny day at the beach when suddenly a strong rip current pulls you out to sea!",
         "choice": [
           {
-            "description": "Your flight gets delayed due to bad weather.",
-            "healthEffect": 0,
-            "happinessEffect": -5,
-            "result": "You spend the day at the airport, waiting for your rescheduled flight."
+            "description": "Stay calm and swim parallel to the shore to escape the rip current!",
+            "healthEffect": -40,
+            "happinessEffect": -10,
+            "result": "You manage to escape the rip current and swim safely back to shore, feeling exhausted but relieved."
           },
           {
-            "description": "You get a mild case of food poisoning while abroad.",
+            "description": "Panic and struggle against the current, exhausting yourself further!",
+            "healthEffect": -35,
+            "happinessEffect": -30,
+            "result": "You tire yourself out and struggle to stay afloat, requiring rescue by lifeguards."
+          }
+        ]
+      },
+      {
+        "description": "You're peacefully gardening in your backyard when suddenly a swarm of angry bees emerges from their hive!",
+        "choice": [
+          {
+            "description": "Slowly and calmly walk away from the bees without making sudden movements!",
+            "healthEffect": -20,
+            "happinessEffect": -5,
+            "result": "You manage to escape the bees without getting stung, feeling relieved but shaken."
+          },
+          {
+            "description": "Panic and start swatting at the bees, aggravating them further!",
+            "healthEffect": -35,
+            "happinessEffect": -20,
+            "result": "You get stung multiple times and suffer from severe allergic reactions, requiring immediate medical attention."
+          }
+        ]
+      },
+      {
+        "description": "You're enjoying a movie night at home when suddenly a small fire breaks out in the kitchen!",
+        "choice": [
+          {
+            "description": "Quickly grab a fire extinguisher and attempt to put out the fire!",
+            "healthEffect": -35,
+            "happinessEffect": -10,
+            "result": "You successfully extinguish the fire, preventing further damage but feeling shaken by the experience."
+          },
+          {
+            "description": "Panic and attempt to smother the fire with a kitchen towel, spreading it further!",
+            "healthEffect": -35,
+            "happinessEffect": -20,
+            "result": "The fire spreads rapidly, causing significant damage to your home and endangering your safety."
+          }
+        ]
+      },
+      {
+        "description": "You're peacefully reading a book in your favorite café when suddenly a nearby construction site collapses!",
+        "choice": [
+          {
+            "description": "Quickly assess the situation and find the nearest exit to evacuate the café!",
+            "healthEffect": -25,
+            "happinessEffect": -10,
+            "result": "You manage to escape the collapsing debris, feeling shaken but thankful to be unharmed."
+          },
+          {
+            "description": "Panic and freeze in place, unable to react to the unfolding danger!",
+            "healthEffect": -35,
+            "happinessEffect": -30,
+            "result": "You get caught in the collapse, sustaining serious injuries and requiring immediate medical attention."
+          }
+        ]
+      },
+      {
+        "description": "You're cycling through the countryside when suddenly a car swerves into your path!",
+        "choice": [
+          {
+            "description": "Quickly veer off the road to avoid the collision!",
+            "healthEffect": -25,
+            "happinessEffect": -10,
+            "result": "You narrowly avoid the collision, feeling shaken but thankful to be alive."
+          },
+          {
+            "description": "Brace for impact, hoping for the best!",
+            "healthEffect": -20,
+            "happinessEffect": -20,
+            "result": "The car hits you, causing injuries that require immediate medical attention."
+          }
+        ]
+      },
+      {
+        "description": "You're hiking in the mountains when suddenly a rockslide blocks the trail!",
+        "choice": [
+          {
+            "description": "Quickly find cover behind a large rock or tree!",
+            "healthEffect": -30,
+            "happinessEffect": -10,
+            "result": "You avoid getting hit by the falling rocks, feeling shaken but relieved."
+          },
+          {
+            "description": "Panic and attempt to outrun the rockslide!",
+            "healthEffect": -20,
+            "happinessEffect": -30,
+            "result": "You get caught in the rockslide, sustaining serious injuries and requiring rescue."
+          }
+        ]
+      },
+      {
+        "description": "You're skiing down a slope when suddenly you lose control and head towards a tree!",
+        "choice": [
+          {
+            "description": "Quickly try to regain control and steer away from the tree!",
             "healthEffect": -10,
             "happinessEffect": -10,
-            "result": "You spend a few days resting in your hotel room, missing out on some sightseeing."
+            "result": "You manage to avoid the tree, feeling shaken but relieved."
+          },
+          {
+            "description": "Brace for impact, hoping for the best!",
+            "healthEffect": -20,
+            "happinessEffect": -20,
+            "result": "You collide with the tree, suffering injuries that require medical attention."
           }
         ]
       }
     ]
   },
+
   "newAgeEvents": {
     "data": [
       {

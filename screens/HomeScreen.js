@@ -23,6 +23,7 @@ import { AVATARS } from "../constants/avatars";
 import { CONSTRAINTS } from "../utils/CharacterConstraints";
 import { loadingStyle } from '../styles/componentStyles/LoadingStyle';
 import { styles } from '../styles/screenStyles/HomeScreenStyle';
+import SettingPopup from "../components/eventsPopup/SettingPopup";
 
 const AnimatedImage = Animated.createAnimatedComponent(Image);
 export default function HomeScreen() {
@@ -36,7 +37,9 @@ export default function HomeScreen() {
   const user = userContext.userState;
   const [modalVisible, setModalVisible] = useState(false);
   const [randomIndex, setRandomIndex] = useState(0);
-  const { height: windowHeight } = useWindowDimensions()
+  const { height: windowHeight } = useWindowDimensions();
+  const [fatalModal,setFatalModal] = useState(false);
+  const [randomFatal,setRandomFatal] = useState(0);
   let progressId = "";
   React.useEffect(() => {
     async function loadUserName() {
@@ -56,8 +59,7 @@ export default function HomeScreen() {
         } finally {
           setIsLoading(false);
           userContext.loadProgress(userId);
-          // userContext.loadUserDataFromStorage(userId);
-          //  userContext.saveUserDataToStorage(userId);
+    
         }
       }
     }
@@ -119,6 +121,21 @@ export default function HomeScreen() {
       navigation.navigate('EndGameScreen')
     }
   }, [user.isAlive])
+
+  
+  useEffect(() => {
+    
+    const interval = setInterval(() => {
+        setFatalModal(true);
+        const eventsLength = data.fatalEvents.data.length;
+        const index = Math.floor(Math.random() * eventsLength);
+        setRandomFatal(index);
+
+    }, 100000);
+
+    //Clearing the interval
+    return () => clearInterval(interval);
+}, [randomFatal]);
   function updateAge() {
     if (user.isAlive) {
       userContext.updateCharacterAge(1);
@@ -135,6 +152,7 @@ export default function HomeScreen() {
   }
   function handleChoice(choice) {
     setModalVisible(false);
+    setFatalModal(false);
     const health = choice.healthEffect;
     const happiness = choice.happinessEffect;
     userContext.updateStatus({
@@ -147,6 +165,9 @@ export default function HomeScreen() {
   const closeModal = () => {
     setModalVisible(false);
   };
+  const closeFatalModal= ()=>{
+    setFatalModal(false)
+  }
 
   if (isLoading) {
     return (
@@ -156,7 +177,9 @@ export default function HomeScreen() {
     );
   }
   const title = data.newAgeEvents.data[randomIndex].description;
-  const choices = data.newAgeEvents.data[randomIndex].choice
+  const choices = data.newAgeEvents.data[randomIndex].choice;
+  const fatalEventTitle = data.fatalEvents.data[randomFatal].description;
+  const fatalEventsChoices = data.fatalEvents.data[randomFatal].choice;
   return (
     <ScrollView style={styles.container}>
       {/* Level progress bar*/}
@@ -245,6 +268,14 @@ export default function HomeScreen() {
               closeModal={closeModal}
               title={title}
               choices={choices}
+              handleChoice={handleChoice}
+            />
+            {/** modal for fatal events */}
+            <SettingPopup
+              modalVisible={fatalModal}
+              closeModal={closeFatalModal}
+              title={fatalEventTitle}
+              choices={fatalEventsChoices}
               handleChoice={handleChoice}
             />
           </View>

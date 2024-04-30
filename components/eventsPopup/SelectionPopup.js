@@ -26,7 +26,7 @@ function SelectionPopup({
                     <View style={[styles.innerBoderPopup, { width: windowWidth * 0.8 }]}>
 
                         <View style={styles.eventContainer}>
-                            <Text style={styles.eventTitle}>New Age event!</Text>
+                            <Text style={styles.eventTitle}>Events</Text>
                         </View>
 
                         <Text style={styles.eventText}>{title}</Text>
@@ -50,9 +50,6 @@ function SelectionPopup({
                                 )
                             })
                         }
-
-
-
                     </View>
                 </View>
             </View>

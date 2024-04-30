@@ -41,7 +41,7 @@ export const styles = StyleSheet.create({
         },
         shadowOpacity: 0.25,
         shadowRadius: 4,
-        // elevation: 5,
+        
         borderWidth: 1,
         width: 230,
     },
@@ -55,9 +55,7 @@ export const styles = StyleSheet.create({
     button: {
         borderRadius: 20,
         padding: 10,
-        elevation: 2,
-        // backgroundColor: '#3a97de',
-        width: 200
+        
     },
     textButtonStyle: {
         color: 'white',
