@@ -3,13 +3,6 @@ import axios from 'axios';
 const BACKEND_URL =
     'https://fb-login-demo-93174-default-rtdb.firebaseio.com/'
 
-export function updateExpense(id, expenseData) {
-    return axios.put(BACKEND_URL + `/expenses/${id}.json`, expenseData)
-}
-
-export function deleteExpense(id) {
-    return axios.delete(BACKEND_URL + `/expenses/${id}.json`)
-}
 
 export function postUserId(userId, data) {
     axios.post(BACKEND_URL + `/${userId}.json`, data).then((response) => console.log(">>>response::", response));
