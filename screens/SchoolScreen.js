@@ -1,13 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Alert, Button, ScrollView, Text, View } from "react-native";
-import { styles } from "../styles/screenStyles/SchoolStyle";
 import Card from "../components/Card";
 import PercentageBar from "../components/ProgressBar";
 import AlertPopup from "../components/eventsPopup/AlertPopup";
+import { CONSTRAINTS } from "../constants/CharacterConstraints";
 import { COLOR } from "../constants/GlobalColor";
-import { UserContext } from "../store/user-context";
-import { CONSTRAINTS } from "../utils/CharacterConstraints";
 import { transformText } from "../helpers/helpers";
+import { UserContext } from "../store/user-context";
+import { styles } from "../styles/screenStyles/SchoolStyle";
 function SchoolScreen() {
   const userContext = useContext(UserContext);
   const user = userContext.userState;

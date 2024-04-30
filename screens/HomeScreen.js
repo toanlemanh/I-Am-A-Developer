@@ -20,10 +20,10 @@ import { AuthContext } from "../store/auth";
 import { UserContext } from "../store/user-context";
 
 import SettingPopup from "../components/eventsPopup/SettingPopup";
-import { AVATARS } from "../constants/avatars";
+import { AVATARS } from "../constants/Avatars";
+import { CONSTRAINTS } from "../constants/CharacterConstraints";
 import { loadingStyle } from '../styles/componentStyles/LoadingStyle';
 import { styles } from '../styles/screenStyles/HomeScreenStyle';
-import { CONSTRAINTS } from "../utils/CharacterConstraints";
 
 const AnimatedImage = Animated.createAnimatedComponent(Image);
 export default function HomeScreen() {
