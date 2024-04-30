@@ -8,11 +8,11 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import { styles } from "../styles/screenStyles/OccupationStyle";
 import Card from "../components/Card";
 import AlertPopup from "../components/eventsPopup/AlertPopup";
+import { lockJobMarketScreen } from "../helpers/helpers";
 import { UserContext } from "../store/user-context";
-import { lockJobMarketScreen } from "../utils/Lockscreens";
+import { styles } from "../styles/screenStyles/OccupationStyle";
 
 export default function OccupationScreen({ navigation }) {
   const userContext = useContext(UserContext);

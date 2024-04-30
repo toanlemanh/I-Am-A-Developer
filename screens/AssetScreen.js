@@ -4,9 +4,9 @@ import Card from '../components/Card';
 import CustomDataLabel from '../components/CustomDataLabel';
 import AlertPopup from '../components/eventsPopup/AlertPopup';
 import data from '../data/data.json';
+import { buy } from '../helpers/helpers';
 import { UserContext } from '../store/user-context';
 import { styles } from '../styles/screenStyles/AssetsScreenStyle';
-import { buy } from '../utils/Transaction';
 
 export default function AssetScreen() {
   const userContext = useContext(UserContext);
@@ -49,7 +49,7 @@ export default function AssetScreen() {
       userContext.updateCharacterMoney(price);
       userContext.updateAsset(name);
       Alert.alert("Successful!", message);
-      
+
     }
     else {
       console.log("Eorr trans")

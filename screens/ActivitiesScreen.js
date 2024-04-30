@@ -1,11 +1,11 @@
 import { useContext, useState } from "react";
 import { Alert, ScrollView, Text, View } from "react-native";
-import { styles } from "../styles/screenStyles/ActivitiesStyle";
 import Card from "../components/Card";
 import AlertPopup from "../components/eventsPopup/AlertPopup";
 import data from "../data/data.json";
+import { lockActivitiesScreen } from "../helpers/helpers";
 import { UserContext } from "../store/user-context";
-import { lockActivitiesScreen } from "../utils/Lockscreens";
+import { styles } from "../styles/screenStyles/ActivitiesStyle";
 export default function ActivitiesScreen() {
   const activities = data.activities.data;
   const userContext = useContext(UserContext);
