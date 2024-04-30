@@ -5,7 +5,7 @@ import Card from "../components/Card";
 import AlertPopup from "../components/eventsPopup/AlertPopup";
 import data from "../data/data.json";
 import { UserContext } from "../store/user-context";
-import { lockActivitiesScreen } from "../utils/lockscreens";
+import { lockActivitiesScreen } from "../utils/Lockscreens";
 export default function ActivitiesScreen() {
   const activities = data.activities.data;
   const userContext = useContext(UserContext);

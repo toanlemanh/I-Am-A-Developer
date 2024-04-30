@@ -191,7 +191,7 @@ export default function HomeScreen() {
       {/* Level progress bar*/}
       <PercentageBar
         width={"100%"}
-        height={12}
+        height={14}
         backgroundColor={"#E0E9F2"}
         completedColor={COLOR.happinessColor}
         percentage={Math.round(userContext.progress, 2)}

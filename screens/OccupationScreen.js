@@ -12,7 +12,7 @@ import { styles } from "../styles/screenStyles/OccupationStyle";
 import Card from "../components/Card";
 import AlertPopup from "../components/eventsPopup/AlertPopup";
 import { UserContext } from "../store/user-context";
-import { lockJobMarketScreen } from "../utils/lockscreens";
+import { lockJobMarketScreen } from "../utils/Lockscreens";
 
 export default function OccupationScreen({ navigation }) {
   const userContext = useContext(UserContext);

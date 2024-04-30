@@ -6,7 +6,7 @@ import AlertPopup from '../components/eventsPopup/AlertPopup';
 import data from '../data/data.json';
 import { UserContext } from '../store/user-context';
 import { styles } from '../styles/screenStyles/AssetsScreenStyle';
-import { buy } from '../utils/transaction';
+import { buy } from '../utils/Transaction';
 
 export default function AssetScreen() {
   const userContext = useContext(UserContext);

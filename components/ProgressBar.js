@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { View } from "react-native";
+import { View ,Text} from "react-native";
 import { styles } from '../styles/componentStyles/ProgressbarStyle';
 const PercentageBar = ({
   percentage,
@@ -31,7 +31,9 @@ const PercentageBar = ({
             position: "absolute",
             bottom: height,
           }}
-        />
+        >
+            <Text style={styles.percentage}>{percentage} %</Text>
+        </View>
         <View
           style={{
             width: `${percentage}%`,
