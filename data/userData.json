@@ -67,12 +67,12 @@
             },
             {
                 "group": "Real Estate",
-                "name": "West Lake Mansion",
+                "name": "West Lake",
                 "price": "50000"
             },
             {
                 "group": "Smartphones",
-                "name": "Samsung Galaxy S22 Ultra",
+                "name": "Samsung S2 Ultra",
                 "price": "1200"
             },
             {
@@ -87,22 +87,22 @@
             },
             {
                 "group": "Laptop",
-                "name": "Lenovo ThinkPad X1 Carbon",
+                "name": "Lenovo ThinkPad",
                 "price": "2000"
             },
             {
                 "group": "Tablets",
-                "name": "iPad Pro 12.9(5th generation)",
+                "name": "iPad Pro 12.9",
                 "price": "1200"
             },
             {
                 "group": "Tablets",
-                "name": "Samsung Galaxy Tab S8+",
+                "name": "Samsung Tab S8+",
                 "price": "1000"
             },
             {
                 "group": "Smartwatches",
-                "name": "Samsung Galaxy Watch 4 ",
+                "name": "Samsung Watch 4 ",
                 "price": "400"
             },
             {
