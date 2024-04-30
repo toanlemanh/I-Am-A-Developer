@@ -10,7 +10,7 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import { landStyle, style } from "../Style/screenStyles/RegisterStyles";
+import { landStyle, style } from "../styles/screenStyles/RegisterStyles";
 import { postUserId } from "../api/axios";
 import DividerLine from "../components/DividerLine";
 import FormBtn from "../components/FormBtn";

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Pressable, Text, View, useWindowDimensions } from 'react-native';
-import { styles } from '../Style/componentStyle/CardStyle';
+import { styles } from '../styles/componentStyles/CardStyle';
 import { COLOR } from '../constants/GlobalColor';
 import CustomAvatar from './CustomAvatar';
 import PercentageBar from './ProgressBar';

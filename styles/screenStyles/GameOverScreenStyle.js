@@ -2,12 +2,14 @@ import { StyleSheet } from "react-native";
 import { COLOR } from "../../constants/GlobalColor";
 
 import { heightPercentageToDP as hp ,widthPercentageToDP as wp} from 'react-native-responsive-screen';
+
 export const styles = StyleSheet.create({
-    container: {
+    
+  container: {
         flex: 1,
         backgroundColor: COLOR.welcomeBackground,
+        alignItems:'center'
         
-        alignItems: "center",
       },
       image: {
         flex: 1,
@@ -27,7 +29,10 @@ export const styles = StyleSheet.create({
          opacity: 1 
       },
       options: {
-        marginBottom: hp('15%'), // Add margin to move the options up
-        
+        marginBottom: hp('15%'), // Add margin to move the options up    
     },
+      optionsInLandscape:{
+          width: wp('28%'),
+          height: hp('28%')
+      }
 })

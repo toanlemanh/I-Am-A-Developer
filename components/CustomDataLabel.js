@@ -1,5 +1,5 @@
 import { View,Text,  } from "react-native";
-import { styles } from "../Style/componentStyle/LabelStyle";
+import { styles } from "../styles/componentStyles/LabelStyle";
 
 export default function CustomDataLabel({children}){
     return(

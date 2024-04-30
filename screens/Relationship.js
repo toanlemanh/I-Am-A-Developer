@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { ScrollView, View } from 'react-native'
-import { styles } from '../Style/screenStyles/RelationshipStyle'
+import { styles } from '../styles/screenStyles/RelationshipStyle'
 import Card from '../components/Card'
 import CustomDataLabel from '../components/CustomDataLabel'
 import { UserContext } from '../store/user-context'

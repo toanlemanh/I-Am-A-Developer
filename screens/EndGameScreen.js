@@ -1,11 +1,26 @@
-import { useContext } from "react";
+import { useContext,useState,useEffect} from "react";
 import { Alert, ImageBackground, Text, View } from "react-native";
-import { styles } from '../Style/screenStyles/GameOverScreenStyle';
+import { styles } from '../styles/screenStyles/GameOverScreenStyle';
 import Card from "../components/Card";
 import { AuthContext } from "../store/auth";
 import { UserContext } from "../store/user-context";
+import { useWindowDimensions } from "react-native";
 export default function EndGameScreen({ navigation }) {
   const auth = useContext(AuthContext);
+
+  const windowHeight = useWindowDimensions().height;
+  const windowWidth = useWindowDimensions().width;
+  
+  const [isPortrait,setIsPortrait] = useState(true);
+  useEffect(()=>{
+    if(windowHeight<windowWidth){
+      setIsPortrait(false);
+    }
+    else{
+      setIsPortrait(true);
+    }
+    
+  },[windowWidth,windowWidth])
   const userContext = useContext(UserContext);
   return (
     <View style={styles.container}>
@@ -13,7 +28,7 @@ export default function EndGameScreen({ navigation }) {
         Farewell {userContext.userState.userName} :{'('}
       </Text>
       <ImageBackground
-        source={require("../assets/images/rip.png")}
+        source={ require("../assets/images/rip.png")}
         style={styles.image}
 
       >

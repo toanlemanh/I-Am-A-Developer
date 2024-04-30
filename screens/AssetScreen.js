@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react';
 import { Alert, ScrollView, Text, View } from 'react-native';
-import { styles } from '../Style/screenStyles/AssetsScreenStyle';
+import { styles } from '../styles/screenStyles/AssetsScreenStyle';
 import Card from '../components/Card';
 import CustomDataLabel from '../components/CustomDataLabel';
 import AlertPopup from '../components/eventsPopup/AlertPopup';

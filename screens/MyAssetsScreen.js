@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { Image, ScrollView, Text, View } from "react-native";
-import { styles } from "../Style/screenStyles/AssetsScreenStyle";
+import { styles } from "../styles/screenStyles/AssetsScreenStyle";
 import Card from "../components/Card";
 import { UserContext } from "../store/user-context";
 
