@@ -17,7 +17,7 @@ export const styles = StyleSheet.create({
     resizeMode: "contain",
     width: "100%",
     height: "50%",
-    marginTop: "50%",
+    marginTop: "15%",
   },
   emptyContainer: { borderRadius: 100, height: 500, overflow: "hidden" },
 });
