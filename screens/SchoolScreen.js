@@ -12,7 +12,7 @@ import PercentageBar from "../components/ProgressBar";
 import AlertPopup from "../components/eventsPopup/AlertPopup";
 import { COLOR } from "../constants/GlobalColor";
 import { UserContext } from "../store/user-context";
-import { CONSTRAINTS } from "../utils/constraints";
+import { CONSTRAINTS } from "../utils/CharacterConstraints";
 function SchoolScreen() {
   const userContext = useContext(UserContext);
   const user = userContext.userState;

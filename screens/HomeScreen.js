@@ -21,7 +21,7 @@ import data from "../data/data.json";
 import { AuthContext } from "../store/auth";
 import { UserContext } from "../store/user-context";
 import { AVATARS } from "../utils/avatars";
-import { CONSTRAINTS } from "../utils/constraints";
+import { CONSTRAINTS } from "../utils/CharacterConstraints";
 const AnimatedImage = Animated.createAnimatedComponent(Image);
 export default function HomeScreen() {
   const [isLoading, setIsLoading] = useState(true);
