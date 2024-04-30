@@ -28,14 +28,14 @@ export default function JobMarket() {
         <View>
           <Text style={styles.label}>Requirements:</Text>
           <View>
-            {Object.entries(job.requirements).map(([key, value]) => <Text>{key}: {value}</Text>)}
+            {Object.entries(job.requirements).map(([key, value],id) => <Text key={id} >{key}: {value}</Text>)}
           </View>
         </View>
 
         <View>
           <Text style={styles.label}>Subject Requirements:</Text>
           <View>
-            {Object.entries(job.subjectRequirements).map(([key, value]) => <Text>{key}: {value}</Text>)}
+            {Object.entries(job.subjectRequirements).map(([key, value],id) => <Text key={id}>{key}: {value}</Text>)}
           </View>
         </View>
         <Text><Text style={styles.label}>Salary:</Text> ${job.salary}</Text>

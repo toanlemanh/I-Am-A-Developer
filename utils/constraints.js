@@ -23,6 +23,7 @@ export const CONSTRAINTS = {
     health: {
         minHealthValue: 0,
         maxHealthValue: 100,
+        averHealthValue: 60,
         healthDeclineRate: 1 // Per year or event, adjust based on your game dynamics
     },
     happiness:{
