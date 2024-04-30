@@ -9,8 +9,6 @@ import { useNavigation } from "@react-navigation/native";
 import React, { useContext, useEffect, useState } from "react";
 import { ActivityIndicator, Alert, Image, Pressable, ScrollView, Text, View, useWindowDimensions } from "react-native";
 import Animated, { BounceIn, BounceOut } from "react-native-reanimated";
-import { loadingStyle } from '../styles/componentStyles/LoadingStyle'
-import { styles } from '../styles/screenStyles/HomeScreenStyle'
 import { getUserId } from "../api/axios";
 import CharacterStatus from "../components/CharacterStatus";
 import CustomAvatar from "../components/CustomAvatar";
@@ -20,6 +18,8 @@ import { COLOR } from "../constants/GlobalColor";
 import data from "../data/data.json";
 import { AuthContext } from "../store/auth";
 import { UserContext } from "../store/user-context";
+import { loadingStyle } from '../styles/componentStyles/LoadingStyle';
+import { styles } from '../styles/screenStyles/HomeScreenStyle';
 import { AVATARS } from "../utils/avatars";
 import { CONSTRAINTS } from "../utils/constraints";
 const AnimatedImage = Animated.createAnimatedComponent(Image);
@@ -66,6 +66,8 @@ export default function HomeScreen() {
     if (user.character.age === CONSTRAINTS.age.legalAdult && !user.character.inShool && !user.character.inUniversity && user.character.occupation.salary === 0) {
       userContext.levelupAllEducation()
       user.character.money += 10000
+      Alert.alert("Your parents gave you $10000. It's time to start working for your life!")
+
     }
 
   }, [user.character.age])
@@ -129,39 +131,15 @@ export default function HomeScreen() {
     updateAge();
 
   }
-  function handleChoice1() {
+  function handleChoice(choice) {
     setModalVisible(false);
-    const health = data.newAgeEvents.data[randomIndex].choice[0].healthEffect;
-    const happiness = data.newAgeEvents.data[randomIndex].choice[0].happinessEffect;
+    const health = choice.healthEffect;
+    const happiness = choice.happinessEffect;
     userContext.updateStatus({
       health: health,
       happiness: happiness
     })
 
-    console.log(health, happiness);
-  }
-  function handleChoice2() {
-    setModalVisible(false);
-    const health = data.newAgeEvents.data[randomIndex].choice[1].healthEffect;
-    const happiness = data.newAgeEvents.data[randomIndex].choice[1].happinessEffect;
-    userContext.updateStatus({
-      health: health,
-      happiness: happiness
-    })
-    console.log(health, happiness);
-  }
-
-  function handleChoice3() {
-    setModalVisible(false);
-    const health = data.newAgeEvents.data[randomIndex].choice.length === 3
-      ? data.newAgeEvents.data[randomIndex].choice[2].healthEffect : 0;
-
-    const happiness = data.newAgeEvents.data[randomIndex].choice.length === 3
-      ? data.newAgeEvents.data[randomIndex].choice[2].happinessEffect : 0
-    userContext.updateStatus({
-      health: health,
-      happiness: happiness
-    })
     console.log(health, happiness);
   }
   const closeModal = () => {
@@ -176,13 +154,7 @@ export default function HomeScreen() {
     );
   }
   const title = data.newAgeEvents.data[randomIndex].description;
-  const choice1 = data.newAgeEvents.data[randomIndex].choice[0].description;
-  const choice2 = data.newAgeEvents.data[randomIndex].choice[1].description;
-  const choice3 =
-    data.newAgeEvents.data[randomIndex].choice.length === 3
-      ? data.newAgeEvents.data[randomIndex].choice[2].description
-      : null;
-
+  const choices = data.newAgeEvents.data[randomIndex].choice
   return (
     <ScrollView style={styles.container}>
       {/* Level progress bar*/}
@@ -270,12 +242,8 @@ export default function HomeScreen() {
               modalVisible={modalVisible}
               closeModal={closeModal}
               title={title}
-              choice1={choice1}
-              choice2={choice2}
-              choice3={choice3}
-              handleChoice1={handleChoice1}
-              handleChoice2={handleChoice2}
-              handleChoice3={handleChoice3}
+              choices={choices}
+              handleChoice={handleChoice}
             />
           </View>
 
