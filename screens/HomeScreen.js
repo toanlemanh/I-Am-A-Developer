@@ -20,7 +20,7 @@ import { COLOR } from "../constants/GlobalColor";
 import data from "../data/data.json";
 import { AuthContext } from "../store/auth";
 import { UserContext } from "../store/user-context";
-import { AVATARS } from "../utils/avatars";
+import { AVATARS } from "../constants/avatars";
 import { CONSTRAINTS } from "../utils/CharacterConstraints";
 const AnimatedImage = Animated.createAnimatedComponent(Image);
 export default function HomeScreen() {
