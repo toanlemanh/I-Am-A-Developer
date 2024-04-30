@@ -1,17 +1,17 @@
 import { useContext, useState } from 'react';
 import { Alert, ScrollView, Text, View } from 'react-native';
-import { styles } from '../styles/screenStyles/AssetsScreenStyle';
 import Card from '../components/Card';
 import CustomDataLabel from '../components/CustomDataLabel';
 import AlertPopup from '../components/eventsPopup/AlertPopup';
-import data from '../data/userData.json';
+import data from '../data/data.json';
 import { UserContext } from '../store/user-context';
+import { styles } from '../styles/screenStyles/AssetsScreenStyle';
 import { buy } from '../utils/transaction';
 
 export default function AssetScreen() {
   const userContext = useContext(UserContext);
   const money = userContext.userState.character.money;
-  const assets = data.Properties.assets;
+  const assets = data.assets;
   const [selectedAsset, setSelectedAsset] = useState(null); // Track currently selected asset
   const [modalVisible, setModalVisible] = useState(false);
 
