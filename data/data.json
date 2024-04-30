@@ -1,211 +1,211 @@
 {
   "Relationships": [
     {
-        "name": "William Jones",
-        "group": "Parents",
-        "relationshipType": "Father",
-        "relationshipLevel": 100,
-        "occupation": "Doctor",
-        "actions": [
-            {
-                "actionTitle": "Go to mall for clothes",
-                "health": 1,
-                "happiness": 10,
-                "look": 10,
-                "relationshipLevel": 10
-            },
-            {
-                "actionTitle": "Meet teacher",
-                "health": -3,
-                "happiness": 5,
-                "look": 0,
-                "relationshipLevel": 8
-            },
-            {
-                "actionTitle": "Go to barber shop ",
-                "health": 10,
-                "happiness": 2,
-                "look": 10,
-                "relationshipLevel": 12
-            },
-            {
-                "actionTitle": "Family Game Night",
-                "health": 2,
-                "happiness": 9,
-                "look": 0,
-                "relationshipLevel": 10
-            },
-            {
-                "actionTitle": "Cook and Share a Meal",
-                "health": 4,
-                "happiness": 7,
-                "look": 0,
-                "relationshipLevel": 11
-            },
-            {
-                "actionTitle": "Create a Family Scrapbook",
-                "health": 1,
-                "happiness": 8,
-                "look": 0,
-                "relationshipLevel": 9
-            },
-            {
-                "actionTitle": "Volunteer Together",
-                "health": 3,
-                "happiness": 6,
-                "look": 0,
-                "relationshipLevel": 10
-            },
-            {
-                "actionTitle": "Plan a Family Day Trip",
-                "health": 5,
-                "happiness": 9,
-                "look": 0,
-                "relationshipLevel": 12
-            }
-        ]
+      "name": "William Jones",
+      "group": "Parents",
+      "relationshipType": "Father",
+      "relationshipLevel": 100,
+      "occupation": "Doctor",
+      "actions": [
+        {
+          "actionTitle": "Go to mall for clothes",
+          "health": 1,
+          "happiness": 10,
+          "look": 10,
+          "relationshipLevel": 10
+        },
+        {
+          "actionTitle": "Meet teacher",
+          "health": -3,
+          "happiness": 5,
+          "look": 0,
+          "relationshipLevel": 8
+        },
+        {
+          "actionTitle": "Go to barber shop ",
+          "health": 10,
+          "happiness": 2,
+          "look": 10,
+          "relationshipLevel": 12
+        },
+        {
+          "actionTitle": "Family Game Night",
+          "health": 2,
+          "happiness": 9,
+          "look": 0,
+          "relationshipLevel": 10
+        },
+        {
+          "actionTitle": "Cook and Share a Meal",
+          "health": 4,
+          "happiness": 7,
+          "look": 0,
+          "relationshipLevel": 11
+        },
+        {
+          "actionTitle": "Create a Family Scrapbook",
+          "health": 1,
+          "happiness": 8,
+          "look": 0,
+          "relationshipLevel": 9
+        },
+        {
+          "actionTitle": "Volunteer Together",
+          "health": 3,
+          "happiness": 6,
+          "look": 0,
+          "relationshipLevel": 10
+        },
+        {
+          "actionTitle": "Plan a Family Day Trip",
+          "health": 5,
+          "happiness": 9,
+          "look": 0,
+          "relationshipLevel": 12
+        }
+      ]
     },
     {
-        "name": "Emily Taylor",
-        "group": "Parents",
-        "relationshipType": "Mother",
-        "relationshipLevel": 100,
-        "occupation": "Teacher",
-        "actions": [
-            {
-                "actionTitle": "Spend time baking together",
-                "health": 3,
-                "happiness": 8,
-                "look": 0,
-                "relationshipLevel": 10
-            },
-            {
-                "actionTitle": "Watch a movie ",
-                "health": 2,
-                "happiness": 10,
-                "look": 0,
-                "relationshipLevel": 9
-            },
-            {
-                "actionTitle": "Take a walk in the park",
-                "health": 5,
-                "happiness": 7,
-                "look": 0,
-                "relationshipLevel": 11
-            },
-            {
-                "actionTitle": "Family Game Night",
-                "health": 2,
-                "happiness": 9,
-                "look": 0,
-                "relationshipLevel": 10
-            },
-            {
-                "actionTitle": "Cook and Share a Meal",
-                "health": 4,
-                "happiness": 7,
-                "look": 0,
-                "relationshipLevel": 11
-            },
-            {
-                "actionTitle": "Create a Family Scrapbook",
-                "health": 1,
-                "happiness": 8,
-                "look": 0,
-                "relationshipLevel": 9
-            },
-            {
-                "actionTitle": "Volunteer Together",
-                "health": 3,
-                "happiness": 6,
-                "look": 0,
-                "relationshipLevel": 10
-            },
-            {
-                "actionTitle": "Plan a Family Day Trip",
-                "health": 5,
-                "happiness": 9,
-                "look": 0,
-                "relationshipLevel": 12
-            }
-        ]
+      "name": "Emily Taylor",
+      "group": "Parents",
+      "relationshipType": "Mother",
+      "relationshipLevel": 100,
+      "occupation": "Teacher",
+      "actions": [
+        {
+          "actionTitle": "Spend time baking together",
+          "health": 3,
+          "happiness": 8,
+          "look": 0,
+          "relationshipLevel": 10
+        },
+        {
+          "actionTitle": "Watch a movie ",
+          "health": 2,
+          "happiness": 10,
+          "look": 0,
+          "relationshipLevel": 9
+        },
+        {
+          "actionTitle": "Take a walk in the park",
+          "health": 5,
+          "happiness": 7,
+          "look": 0,
+          "relationshipLevel": 11
+        },
+        {
+          "actionTitle": "Family Game Night",
+          "health": 2,
+          "happiness": 9,
+          "look": 0,
+          "relationshipLevel": 10
+        },
+        {
+          "actionTitle": "Cook and Share a Meal",
+          "health": 4,
+          "happiness": 7,
+          "look": 0,
+          "relationshipLevel": 11
+        },
+        {
+          "actionTitle": "Create a Family Scrapbook",
+          "health": 1,
+          "happiness": 8,
+          "look": 0,
+          "relationshipLevel": 9
+        },
+        {
+          "actionTitle": "Volunteer Together",
+          "health": 3,
+          "happiness": 6,
+          "look": 0,
+          "relationshipLevel": 10
+        },
+        {
+          "actionTitle": "Plan a Family Day Trip",
+          "health": 5,
+          "happiness": 9,
+          "look": 0,
+          "relationshipLevel": 12
+        }
+      ]
     },
     {
-        "name": "John Jones",
-        "group": "Siblings",
-        "relationshipType": "Brother",
-        "relationshipLevel": 75,
-        "age": 20,
-        "occupation": "Student",
-        "actions": [
-            {
-                "actionTitle": "Play video games",
-                "health": 2,
-                "happiness": 7,
-                "look": 0,
-                "relationshipLevel": 8
-            },
-            {
-                "actionTitle": "Study together",
-                "health": 3,
-                "happiness": 5,
-                "look": 0,
-                "relationshipLevel": 7
-            },
-            {
-                "actionTitle": "Go for a run",
-                "health": 5,
-                "happiness": 8,
-                "look": 0,
-                "relationshipLevel": 9
-            },
-            {
-                "actionTitle": "Attend a sports event",
-                "health": 3,
-                "happiness": 9,
-                "look": 0,
-                "relationshipLevel": 8
-            }
-        ]
+      "name": "John Jones",
+      "group": "Siblings",
+      "relationshipType": "Brother",
+      "relationshipLevel": 75,
+      "age": 20,
+      "occupation": "Student",
+      "actions": [
+        {
+          "actionTitle": "Play video games",
+          "health": 2,
+          "happiness": 7,
+          "look": 0,
+          "relationshipLevel": 8
+        },
+        {
+          "actionTitle": "Study together",
+          "health": 3,
+          "happiness": 5,
+          "look": 0,
+          "relationshipLevel": 7
+        },
+        {
+          "actionTitle": "Go for a run",
+          "health": 5,
+          "happiness": 8,
+          "look": 0,
+          "relationshipLevel": 9
+        },
+        {
+          "actionTitle": "Attend a sports event",
+          "health": 3,
+          "happiness": 9,
+          "look": 0,
+          "relationshipLevel": 8
+        }
+      ]
     },
     {
-        "name": "Max",
-        "group": "Pets",
-        "relationshipType": "Dog",
-        "relationshipLevel": 90,
-        "age": 3,
-        "actions": [
-            {
-                "actionTitle": "Go for a walk",
-                "health": 5,
-                "happiness": 10,
-                "look": 0,
-                "relationshipLevel": 10
-            },
-            {
-                "actionTitle": "Play fetch",
-                "health": 3,
-                "happiness": 8,
-                "look": 0,
-                "relationshipLevel": 9
-            },
-            {
-                "actionTitle": "Give belly rubs",
-                "health": 2,
-                "happiness": 9,
-                "look": 0,
-                "relationshipLevel": 9
-            },
-            {
-                "actionTitle": "Grooming session",
-                "health": 4,
-                "happiness": 7,
-                "look": 0,
-                "relationshipLevel": 8
-            }
-        ]
+      "name": "Max",
+      "group": "Pets",
+      "relationshipType": "Dog",
+      "relationshipLevel": 90,
+      "age": 3,
+      "actions": [
+        {
+          "actionTitle": "Go for a walk",
+          "health": 5,
+          "happiness": 10,
+          "look": 0,
+          "relationshipLevel": 10
+        },
+        {
+          "actionTitle": "Play fetch",
+          "health": 3,
+          "happiness": 8,
+          "look": 0,
+          "relationshipLevel": 9
+        },
+        {
+          "actionTitle": "Give belly rubs",
+          "health": 2,
+          "happiness": 9,
+          "look": 0,
+          "relationshipLevel": 9
+        },
+        {
+          "actionTitle": "Grooming session",
+          "health": 4,
+          "happiness": 7,
+          "look": 0,
+          "relationshipLevel": 8
+        }
+      ]
     }
-],
+  ],
   "activities": {
     "data": [
       {
@@ -1033,263 +1033,261 @@
       }
     ]
   },
-    "newAgeEvents": {
-      "data": [
-        {
-          "description": "You wake up feeling strangely energized. What should you do?",
-          "choice": [
-            {
-              "description": "Close your eyes, breathe deeply, and think happy thoughts to feel even better.",
-              "healthEffect": 15,
-              "happinessEffect": 10,
-              "result": "You feel a warm, happy glow inside you."
-            },
-            {
-              "description": "Snuggle with your favorite stuffed animal while imagining it's giving you magic healing powers.",
-              "healthEffect": 5,
-              "happinessEffect": 15,
-              "result": "You feel cozy and content, like you're surrounded by love and positive energy."
-            },
-            {
-              "description": "Jump out of bed and dance around your room to shake off the weird feeling.",
-              "healthEffect": 0,
-              "happinessEffect": 5,
-              "result": "The strange feeling fades away as you dance and have fun."
-            }
-          ]
-        },
-        {
-          "description": "You find a shiny rock on your way home. What do you do?",
-          "choice": [
-            {
-              "description": "Keep the rock and imagine it brings you good luck.",
-              "healthEffect": 5,
-              "happinessEffect": 10,
-              "result": "You feel a little boost of confidence and happiness."
-            },
-            {
-              "description": "Give the rock to a friend as a symbol of your friendship.",
-              "healthEffect": 0,
-              "happinessEffect": 15,
-              "result": "Your friend is super grateful, and you feel really good about making them happy."
-            },
-            {
-              "description": "Leave the rock where you found it and continue on your way.",
-              "healthEffect": 0,
-              "happinessEffect": 0,
-              "result": "You feel indifferent, but maybe someone else will find joy in discovering the rock."
-            }
-          ]
-        },
-        {
-          "description": "You see a rainbow after the rain. What's your reaction?",
-          "choice": [
-            {
-              "description": "Run outside and try to touch the rainbow.",
-              "healthEffect": 0,
-              "happinessEffect": 10,
-              "result": "You laugh and feel joyous, even though you can't touch it."
-            },
-            {
-              "description": "Take a picture of the rainbow to share with your friends.",
-              "healthEffect": 0,
-              "happinessEffect": 15,
-              "result": "Your friends love the picture, and you feel proud of capturing such a beautiful moment."
-            },
-            {
-              "description": "Just admire the rainbow from your window and continue what you were doing.",
-              "healthEffect": 0,
-              "happinessEffect": 5,
-              "result": "You smile at the rainbow and feel a sense of peace."
-            }
-          ]
-        },
-        {
-          "description": "You hear a strange noise coming from your closet at night. What do you do?",
-          "choice": [
-            {
-              "description": "Investigate the noise to make sure there are no monsters hiding.",
-              "healthEffect": -5,
-              "happinessEffect": 0,
-              "result": "You find nothing but clothes and toys, but your imagination runs wild."
-            },
-            {
-              "description": "Stay under your covers and pretend you didn't hear anything.",
-              "healthEffect": 0,
-              "happinessEffect": 5,
-              "result": "You feel safe and snug under your blankets, even if you're a little scared."
-            },
-            {
-              "description": "Turn on the light and ask your parents to check the closet.",
-              "healthEffect": 10,
-              "happinessEffect": 0,
-              "result": "Your parents reassure you that everything's okay, and you feel relieved."
-            }
-          ]
-        },
-        {
-          "description": "You spot a shooting star during a camping trip. What's your wish?",
-          "choice": [
-            {
-              "description": "Wish for a magical adventure.",
-              "healthEffect": 0,
-              "happinessEffect": 10,
-              "result": "You feel excited about the possibilities ahead."
-            },
-            {
-              "description": "Wish for good grades or success in a hobby.",
-              "healthEffect": 0,
-              "happinessEffect": 15,
-              "result": "You feel determined to work hard and make your wish come true."
-            },
-            {
-              "description": "Decide not to make a wish and just enjoy the moment.",
-              "healthEffect": 0,
-              "happinessEffect": 5,
-              "result": "You feel content and grateful for the chance to witness such a beautiful sight."
-            }
-          ]
-        },
-        {
-          "description": "You receive an anonymous compliment. How do you react?",
-          "choice": [
-            {
-              "description": "Smile and feel good about yourself.",
-              "healthEffect": 5,
-              "happinessEffect": 10,
-              "result": "You walk with a little spring in your step, feeling confident and appreciated."
-            },
-            {
-              "description": "Try to guess who the compliment came from and thank them.",
-              "healthEffect": 0,
-              "happinessEffect": 15,
-              "result": "You feel grateful for the kind words and happy to know someone thinks highly of you."
-            },
-            {
-              "description": "Brush it off and assume it was a mistake.",
-              "healthEffect": 0,
-              "happinessEffect": 5,
-              "result": "You feel a bit unsure but carry on with your day."
-            }
-          ]
-        },
-        {
-          "description": "You come across an injured bird on the sidewalk. What do you do?",
-          "choice": [
-            {
-              "description": "Carefully pick up the bird and take it to a nearby animal shelter.",
-              "healthEffect": 10,
-              "happinessEffect": 15,
-              "result": "You feel like a hero for helping the bird, and it warms your heart to see it get better."
-            },
-            {
-              "description": "Find a safe spot for the bird and leave some food and water for it.",
-              "healthEffect": 5,
-              "happinessEffect": 10,
-              "result": "You feel relieved knowing you've done what you can to help, and you hope the bird gets better soon."
-            },
-            {
-              "description": "Walk past the bird and hope it finds help on its own.",
-              "healthEffect": 0,
-              "happinessEffect": 0,
-              "result": "You feel a little guilty but convince yourself that someone else will help the bird."
-            }
-          ]
-        },
-        {
-          "description": "You're invited to a costume party. What will you dress up as?",
-          "choice": [
-            {
-              "description": "A magical unicorn or fairy.",
-              "healthEffect": 0,
-              "happinessEffect": 10,
-              "result": "You feel enchanting and full of wonder in your mystical costume."
-            },
-            {
-              "description": "Your favorite superhero or character from a movie.",
-              "healthEffect": 0,
-              "happinessEffect": 15,
-              "result": "You feel powerful and excited to embody your favorite character for the night."
-            },
-            {
-              "description": "Just wear something simple and comfortable.",
-              "healthEffect": 0,
-              "happinessEffect": 5,
-              "result": "You feel relaxed and confident in your own skin, ready to enjoy the party."
-            }
-          ]
-        },
-        {
-          "description": "You find a stray kitten outside your house. What do you do?",
-          "choice": [
-            {
-              "description": "Bring the kitten inside and give it food, water, and lots of cuddles.",
-              "healthEffect": 10,
-              "happinessEffect": 15,
-              "result": "You feel overjoyed to have a new furry friend, and the kitten purrs in contentment."
-            },
-            {
-              "description": "Take the kitten to a nearby animal shelter to find it a loving home.",
-              "healthEffect": 5,
-              "happinessEffect": 10,
-              "result": "You feel proud knowing you're helping the kitten find a safe and caring family."
-            },
-            {
-              "description": "Leave the kitten outside and hope it finds its way home.",
-              "healthEffect": 0,
-              "happinessEffect": 0,
-              "result": "You feel a little sad but convince yourself that the kitten will be okay on its own."
-            }
-          ]
-        },
-        {
-          "description": "You're feeling stressed about a big test. What do you do to relax?",
-          "choice": [
-            {
-              "description": "Take a break and listen to your favorite music or watch a funny video.",
-              "healthEffect": 10,
-              "happinessEffect": 15,
-              "result": "You feel refreshed and ready to tackle your studies with a positive mindset."
-            },
-            {
-              "description": "Do some deep breathing exercises or practice mindfulness to calm your nerves.",
-              "healthEffect": 15,
-              "happinessEffect": 10,
-              "result": "You feel centered and focused, ready to approach your test with a clear head."
-            },
-            {
-              "description": "Keep studying and try to push through the stress.",
-              "healthEffect": 0,
-              "happinessEffect": 5,
-              "result": "You feel a bit drained, but you're determined to do your best on the test."
-            }
-          ]
-        },
-        {
-          "description": "You're feeling down because your favorite team lost a game. How do you cheer yourself up?",
-          "choice": [
-            {
-              "description": "Watch highlights of your team's past victories to boost your spirits.",
-              "healthEffect": 5,
-              "happinessEffect": 10,
-              "result": "You feel proud to support your team and optimistic about their future games."
-            },
-            {
-              "description": "Go outside and play your favorite sport or game to take your mind off the loss.",
-              "healthEffect": 10,
-              "happinessEffect": 15,
-              "result": "You feel energized and happy to be active, regardless of the game's outcome."
-            },
-            {
-              "description": "Talk to a friend or family member about how you're feeling to get some support.",
-              "healthEffect": 0,
-              "happinessEffect": 5,
-              "result": "You feel better after sharing your feelings and receiving some encouragement."
-            }
-          ]
-        }
-      ]
-    }    
-    }
-  
-  
+  "newAgeEvents": {
+    "data": [
+      {
+        "description": "You wake up feeling strangely energized. What should you do?",
+        "choice": [
+          {
+            "description": "Close your eyes, breathe deeply, and think happy thoughts to feel even better.",
+            "healthEffect": 15,
+            "happinessEffect": 10,
+            "result": "You feel a warm, happy glow inside you."
+          },
+          {
+            "description": "Snuggle with your favorite stuffed animal while imagining it's giving you magic healing powers.",
+            "healthEffect": 5,
+            "happinessEffect": 15,
+            "result": "You feel cozy and content, like you're surrounded by love and positive energy."
+          },
+          {
+            "description": "Jump out of bed and dance around your room to shake off the weird feeling.",
+            "healthEffect": 0,
+            "happinessEffect": 5,
+            "result": "The strange feeling fades away as you dance and have fun."
+          }
+        ]
+      },
+      {
+        "description": "You find a shiny rock on your way home. What do you do?",
+        "choice": [
+          {
+            "description": "Keep the rock and imagine it brings you good luck.",
+            "healthEffect": 5,
+            "happinessEffect": 10,
+            "result": "You feel a little boost of confidence and happiness."
+          },
+          {
+            "description": "Give the rock to a friend as a symbol of your friendship.",
+            "healthEffect": 0,
+            "happinessEffect": 15,
+            "result": "Your friend is super grateful, and you feel really good about making them happy."
+          },
+          {
+            "description": "Leave the rock where you found it and continue on your way.",
+            "healthEffect": 0,
+            "happinessEffect": 0,
+            "result": "You feel indifferent, but maybe someone else will find joy in discovering the rock."
+          }
+        ]
+      },
+      {
+        "description": "You see a rainbow after the rain. What's your reaction?",
+        "choice": [
+          {
+            "description": "Run outside and try to touch the rainbow.",
+            "healthEffect": 0,
+            "happinessEffect": 10,
+            "result": "You laugh and feel joyous, even though you can't touch it."
+          },
+          {
+            "description": "Take a picture of the rainbow to share with your friends.",
+            "healthEffect": 0,
+            "happinessEffect": 15,
+            "result": "Your friends love the picture, and you feel proud of capturing such a beautiful moment."
+          },
+          {
+            "description": "Just admire the rainbow from your window and continue what you were doing.",
+            "healthEffect": 0,
+            "happinessEffect": 5,
+            "result": "You smile at the rainbow and feel a sense of peace."
+          }
+        ]
+      },
+      {
+        "description": "You hear a strange noise coming from your closet at night. What do you do?",
+        "choice": [
+          {
+            "description": "Investigate the noise to make sure there are no monsters hiding.",
+            "healthEffect": -5,
+            "happinessEffect": 0,
+            "result": "You find nothing but clothes and toys, but your imagination runs wild."
+          },
+          {
+            "description": "Stay under your covers and pretend you didn't hear anything.",
+            "healthEffect": 0,
+            "happinessEffect": 5,
+            "result": "You feel safe and snug under your blankets, even if you're a little scared."
+          },
+          {
+            "description": "Turn on the light and ask your parents to check the closet.",
+            "healthEffect": 10,
+            "happinessEffect": 0,
+            "result": "Your parents reassure you that everything's okay, and you feel relieved."
+          }
+        ]
+      },
+      {
+        "description": "You spot a shooting star during a camping trip. What's your wish?",
+        "choice": [
+          {
+            "description": "Wish for a magical adventure.",
+            "healthEffect": 0,
+            "happinessEffect": 10,
+            "result": "You feel excited about the possibilities ahead."
+          },
+          {
+            "description": "Wish for good grades or success in a hobby.",
+            "healthEffect": 0,
+            "happinessEffect": 15,
+            "result": "You feel determined to work hard and make your wish come true."
+          },
+          {
+            "description": "Decide not to make a wish and just enjoy the moment.",
+            "healthEffect": 0,
+            "happinessEffect": 5,
+            "result": "You feel content and grateful for the chance to witness such a beautiful sight."
+          }
+        ]
+      },
+      {
+        "description": "You receive an anonymous compliment. How do you react?",
+        "choice": [
+          {
+            "description": "Smile and feel good about yourself.",
+            "healthEffect": 5,
+            "happinessEffect": 10,
+            "result": "You walk with a little spring in your step, feeling confident and appreciated."
+          },
+          {
+            "description": "Try to guess who the compliment came from and thank them.",
+            "healthEffect": 0,
+            "happinessEffect": 15,
+            "result": "You feel grateful for the kind words and happy to know someone thinks highly of you."
+          },
+          {
+            "description": "Brush it off and assume it was a mistake.",
+            "healthEffect": 0,
+            "happinessEffect": 5,
+            "result": "You feel a bit unsure but carry on with your day."
+          }
+        ]
+      },
+      {
+        "description": "You come across an injured bird on the sidewalk. What do you do?",
+        "choice": [
+          {
+            "description": "Carefully pick up the bird and take it to a nearby animal shelter.",
+            "healthEffect": 10,
+            "happinessEffect": 15,
+            "result": "You feel like a hero for helping the bird, and it warms your heart to see it get better."
+          },
+          {
+            "description": "Find a safe spot for the bird and leave some food and water for it.",
+            "healthEffect": 5,
+            "happinessEffect": 10,
+            "result": "You feel relieved knowing you've done what you can to help, and you hope the bird gets better soon."
+          },
+          {
+            "description": "Walk past the bird and hope it finds help on its own.",
+            "healthEffect": 0,
+            "happinessEffect": 0,
+            "result": "You feel a little guilty but convince yourself that someone else will help the bird."
+          }
+        ]
+      },
+      {
+        "description": "You're invited to a costume party. What will you dress up as?",
+        "choice": [
+          {
+            "description": "A magical unicorn or fairy.",
+            "healthEffect": 0,
+            "happinessEffect": 10,
+            "result": "You feel enchanting and full of wonder in your mystical costume."
+          },
+          {
+            "description": "Your favorite superhero or character from a movie.",
+            "healthEffect": 0,
+            "happinessEffect": 15,
+            "result": "You feel powerful and excited to embody your favorite character for the night."
+          },
+          {
+            "description": "Just wear something simple and comfortable.",
+            "healthEffect": 0,
+            "happinessEffect": 5,
+            "result": "You feel relaxed and confident in your own skin, ready to enjoy the party."
+          }
+        ]
+      },
+      {
+        "description": "You find a stray kitten outside your house. What do you do?",
+        "choice": [
+          {
+            "description": "Bring the kitten inside and give it food, water, and lots of cuddles.",
+            "healthEffect": 10,
+            "happinessEffect": 15,
+            "result": "You feel overjoyed to have a new furry friend, and the kitten purrs in contentment."
+          },
+          {
+            "description": "Take the kitten to a nearby animal shelter to find it a loving home.",
+            "healthEffect": 5,
+            "happinessEffect": 10,
+            "result": "You feel proud knowing you're helping the kitten find a safe and caring family."
+          },
+          {
+            "description": "Leave the kitten outside and hope it finds its way home.",
+            "healthEffect": 0,
+            "happinessEffect": 0,
+            "result": "You feel a little sad but convince yourself that the kitten will be okay on its own."
+          }
+        ]
+      },
+      {
+        "description": "You're feeling stressed about a big test. What do you do to relax?",
+        "choice": [
+          {
+            "description": "Take a break and listen to your favorite music or watch a funny video.",
+            "healthEffect": 10,
+            "happinessEffect": 15,
+            "result": "You feel refreshed and ready to tackle your studies with a positive mindset."
+          },
+          {
+            "description": "Do some deep breathing exercises or practice mindfulness to calm your nerves.",
+            "healthEffect": 15,
+            "happinessEffect": 10,
+            "result": "You feel centered and focused, ready to approach your test with a clear head."
+          },
+          {
+            "description": "Keep studying and try to push through the stress.",
+            "healthEffect": 0,
+            "happinessEffect": 5,
+            "result": "You feel a bit drained, but you're determined to do your best on the test."
+          }
+        ]
+      },
+      {
+        "description": "You're feeling down because your favorite team lost a game. How do you cheer yourself up?",
+        "choice": [
+          {
+            "description": "Watch highlights of your team's past victories to boost your spirits.",
+            "healthEffect": 5,
+            "happinessEffect": 10,
+            "result": "You feel proud to support your team and optimistic about their future games."
+          },
+          {
+            "description": "Go outside and play your favorite sport or game to take your mind off the loss.",
+            "healthEffect": 10,
+            "happinessEffect": 15,
+            "result": "You feel energized and happy to be active, regardless of the game's outcome."
+          },
+          {
+            "description": "Talk to a friend or family member about how you're feeling to get some support.",
+            "healthEffect": 0,
+            "happinessEffect": 5,
+            "result": "You feel better after sharing your feelings and receiving some encouragement."
+          }
+        ]
+      }
+    ]
+  }
+}
