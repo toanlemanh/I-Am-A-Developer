@@ -66,6 +66,8 @@ export default function HomeScreen() {
     if (user.character.age === CONSTRAINTS.age.legalAdult && !user.character.inShool && !user.character.inUniversity && user.character.occupation.salary === 0) {
       userContext.levelupAllEducation()
       user.character.money += 10000
+      Alert.alert("Your parents gave you $10000. It's time to start working for your life!")
+
     }
 
   }, [user.character.age])
