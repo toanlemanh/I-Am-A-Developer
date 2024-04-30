@@ -27,7 +27,10 @@ function WelcomeScreen({ navigation }) {
   }, []);
 
   const imageStyle = Platform.select({
-    ios: style.image,
+    ios: {
+      ...style.image,
+      minHeight: windowHeight * 0.55,
+    },
     android: {
       ...style.image,
       minHeight: windowHeight * 0.55,
