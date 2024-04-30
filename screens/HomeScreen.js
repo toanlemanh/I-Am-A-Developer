@@ -71,7 +71,6 @@ export default function HomeScreen() {
       userContext.levelupAllEducation()
       user.character.money += 10000
       Alert.alert("Your parents gave you $10000. It's time to start working for your life!")
-
     }
 
   }, [user.character.age])
@@ -150,6 +149,7 @@ export default function HomeScreen() {
       const index = Math.floor(Math.random() * eventsLength);
       setRandomIndex(index);
       userContext.updateStatus({ health: -7, happiness: -10, appearance: -5 });
+      userContext.updateCharacterMoney(-user.character.occupation.salary)
     }
   }
   function handleAgePress() {
