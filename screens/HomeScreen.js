@@ -19,11 +19,11 @@ import data from "../data/data.json";
 import { AuthContext } from "../store/auth";
 import { UserContext } from "../store/user-context";
 
+import SettingPopup from "../components/eventsPopup/SettingPopup";
 import { AVATARS } from "../constants/avatars";
-import { CONSTRAINTS } from "../utils/CharacterConstraints";
 import { loadingStyle } from '../styles/componentStyles/LoadingStyle';
 import { styles } from '../styles/screenStyles/HomeScreenStyle';
-import SettingPopup from "../components/eventsPopup/SettingPopup";
+import { CONSTRAINTS } from "../utils/CharacterConstraints";
 
 const AnimatedImage = Animated.createAnimatedComponent(Image);
 export default function HomeScreen() {
@@ -38,8 +38,8 @@ export default function HomeScreen() {
   const [modalVisible, setModalVisible] = useState(false);
   const [randomIndex, setRandomIndex] = useState(0);
   const { height: windowHeight } = useWindowDimensions();
-  const [fatalModal,setFatalModal] = useState(false);
-  const [randomFatal,setRandomFatal] = useState(0);
+  const [fatalModal, setFatalModal] = useState(false);
+  const [randomFatal, setRandomFatal] = useState(0);
   let progressId = "";
   React.useEffect(() => {
     async function loadUserName() {
@@ -59,7 +59,7 @@ export default function HomeScreen() {
         } finally {
           setIsLoading(false);
           userContext.loadProgress(userId);
-    
+
         }
       }
     }
@@ -122,20 +122,26 @@ export default function HomeScreen() {
     }
   }, [user.isAlive])
 
-  
-  useEffect(() => {
-    
-    const interval = setInterval(() => {
-        setFatalModal(true);
-        const eventsLength = data.fatalEvents.data.length;
-        const index = Math.floor(Math.random() * eventsLength);
-        setRandomFatal(index);
 
-    }, 100000);
+  useEffect(() => {
+
+    const interval = setInterval(() => {
+      const eventsLength = data.fatalEvents.data.length;
+      const index = Math.floor(Math.random() * eventsLength);
+      setRandomFatal(index);
+      if (user.isAlive) {
+        setFatalModal(true);
+        console.log("danger")
+      }
+      else {
+        clearInterval(interval)
+      }
+
+    }, 200000);
 
     //Clearing the interval
     return () => clearInterval(interval);
-}, [randomFatal]);
+  }, [randomFatal]);
   function updateAge() {
     if (user.isAlive) {
       userContext.updateCharacterAge(1);
@@ -165,7 +171,7 @@ export default function HomeScreen() {
   const closeModal = () => {
     setModalVisible(false);
   };
-  const closeFatalModal= ()=>{
+  const closeFatalModal = () => {
     setFatalModal(false)
   }
 
