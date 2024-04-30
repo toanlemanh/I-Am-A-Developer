@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "FinalProject",
-    "slug": "FinalProject",
+    "name": "I-am-a-Developer",
+    "slug": "I-am-a-Developer",
     "version": "1.0.0",
     "orientation": "default",
     "icon": "./assets/icon.png",
@@ -9,7 +9,7 @@
     "splash": {
       "image": "./assets/loading.png",
       "resizeMode": "contain",
-      "backgroundColor": "#FFF1E7"
+      "backgroundColor": "#FBF5F2"
     },
     "assetBundlePatterns": [
       "**/*"
@@ -20,12 +20,16 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/loading.png",
-        "backgroundColor": "#FFF1E7",
+        "backgroundColor": "#FBF5F2",
         "scaleType": "center"
       }
     },
     "web": {
-      "favicon": "./assets/splash1.png"
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/loading.png",
+        "backgroundColor": "#FBF5F2",
+        "scaleType": "center"
+      }
     }
   }
 }
