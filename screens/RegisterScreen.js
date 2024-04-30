@@ -3,21 +3,21 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import React, { useContext, useEffect, useState } from "react";
 import {
   Alert,
+  Dimensions,
   Platform,
   ScrollView,
   Text,
   TouchableOpacity,
   View,
-  Dimensions,
 } from "react-native";
-import { style, landStyle } from "../Style/screenStyles/RegisterStyles";
+import { landStyle, style } from "../Style/screenStyles/RegisterStyles";
+import { postUserId } from "../api/axios";
 import DividerLine from "../components/DividerLine";
 import FormBtn from "../components/FormBtn";
 import FormInput from "../components/FormInput";
 import SocialBtn from "../components/SocialBtn";
 import { signUp } from "../config/firebase";
-import { postUserId } from "../api/axios";
-import { UserContext } from "../context/user-context";
+import { UserContext } from "../store/user-context";
 function RegisterScreen({ navigation }) {
   let USER_ID;
   const userContext = useContext(UserContext);

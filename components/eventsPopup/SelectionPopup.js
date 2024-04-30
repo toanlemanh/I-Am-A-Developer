@@ -1,7 +1,7 @@
 import { LinearGradient } from 'expo-linear-gradient';
 import React from 'react';
 import { Modal, Pressable, Text, View, useWindowDimensions } from 'react-native';
-import { styles } from '../../Style/componentStyle/popupStyle/SelectPopStyle';
+import { styles } from '../../styles/componentStyles/SelectPopStyle';
 function SelectionPopup({
     modalVisible,
     closeModal,

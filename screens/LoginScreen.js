@@ -1,6 +1,5 @@
-import React, { useContext, useState,useEffect } from 'react'
-import { Alert, Platform, ScrollView, Text, TouchableOpacity, View } from 'react-native'
-import { Dimensions } from 'react-native'
+import React, { useContext, useEffect, useState } from 'react'
+import { Alert, Dimensions, Platform, ScrollView, Text, TouchableOpacity, View } from 'react-native'
 import DividerLine from '../components/DividerLine'
 import FormBtn from '../components/FormBtn'
 import FormInput from '../components/FormInput'
@@ -10,8 +9,8 @@ import { signInWithPassword } from '../config/firebase'
 import { Ionicons } from '@expo/vector-icons'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import Animated, { ZoomIn, ZoomOut } from 'react-native-reanimated'
-import { styles, landStyles } from '../Style/screenStyles/LoginScreenStyle'
-import { AuthContext } from "./../context/auth"
+import { landStyles, styles } from '../Style/screenStyles/LoginScreenStyle'
+import { AuthContext } from "../store/auth"
 //1. Input handler 
 //2. Connect firebase 
 
@@ -22,17 +21,17 @@ function LoginScreen({ navigation }) {
     const [style, setStyle] = useState(styles);
     useEffect(() => {
         Dimensions.addEventListener("change", ({ window: { width, height } }) => {
-          if (width < height) {
-            console.log("Pot");
-            setStyle(styles);
-            
-          } else {
-           
-            setStyle({...styles,...landStyles});
-            console.log("land");
-          }
+            if (width < height) {
+                console.log("Pot");
+                setStyle(styles);
+
+            } else {
+
+                setStyle({ ...styles, ...landStyles });
+                console.log("land");
+            }
         });
-      }, []);
+    }, []);
 
     function onEmailChangeHandler(email) {
         //   console.log(email)
@@ -50,7 +49,7 @@ function LoginScreen({ navigation }) {
             const userId = await signInWithPassword(email, password)
             if (userId) {
                 console.log("UID", userId)
-                const userName = await AsyncStorage.getItem("username"+userId)
+                const userName = await AsyncStorage.getItem("username" + userId)
                 console.log("uname", userName)
 
                 authContext.authenticate(userId, userName);

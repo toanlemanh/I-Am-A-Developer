@@ -1,8 +1,8 @@
+import { NavigationContainer } from '@react-navigation/native'
 import React, { useContext } from 'react'
+import { AuthContext } from '../store/auth'
 import AuthStack from './authStack'
 import UserStack from './userStack'
-import { AuthContext } from '../context/auth'
-import { NavigationContainer } from '@react-navigation/native'
 
 function RootNavigation() {
     const authContext = useContext(AuthContext)

@@ -1,12 +1,11 @@
 import { StyleSheet } from "react-native";
 import {
-  heightPercentageToDP as hp,
-  widthPercentageToDP as wp,
+  widthPercentageToDP as wp
 } from "react-native-responsive-screen";
 export const styles = StyleSheet.create({
   container: {
     width: wp("85%"),
-    maxHeight: hp("12%"),
+    maxHeight: 80,
     backgroundColor: "#FFFFFF",
     borderRadius: 12,
     marginVertical: 10,

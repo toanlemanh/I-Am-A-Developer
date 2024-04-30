@@ -3,8 +3,8 @@ import { Alert, ScrollView, Text, View } from "react-native";
 import { styles } from "../Style/screenStyles/ActivitiesStyle";
 import Card from "../components/Card";
 import AlertPopup from "../components/eventsPopup/AlertPopup";
-import { UserContext } from "../context/user-context";
 import data from "../data/data.json";
+import { UserContext } from "../store/user-context";
 export default function ActivitiesScreen() {
     const activities = data.activities.data;
     const userContext = useContext(UserContext)

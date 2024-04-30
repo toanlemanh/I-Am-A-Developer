@@ -1,29 +1,26 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Dimensions,
   Image,
   Platform,
   SafeAreaView,
-  Text,
   View,
+  useWindowDimensions
 } from "react-native";
-import FormBtn from "../components/FormBtn";
-import { styles, landStyles } from "../Style/screenStyles/WelcomeStyle";
-import { useEffect, useState } from "react";
-import {
-  heightPercentageToDP as hp,
-  widthPercentageToDP as wp,
-} from "react-native-responsive-screen";
 import Animated, { ZoomIn, ZoomOut } from "react-native-reanimated";
+import FormBtn from "../components/FormBtn";
+import { landStyles, styles } from "../styles/screenStyles/WelcomeStyle";
 function WelcomeScreen({ navigation }) {
   const [style, setStyle] = useState(styles);
+  const { width: windowWidth } = useWindowDimensions()
+  const { height: windowHeight } = useWindowDimensions()
   useEffect(() => {
     Dimensions.addEventListener("change", ({ window: { width, height } }) => {
       if (width < height) {
         console.log("Pot");
         setStyle(styles);
       } else {
-        setStyle({...styles,...landStyles});
+        setStyle({ ...styles, ...landStyles });
         console.log("land");
       }
     });
@@ -33,7 +30,7 @@ function WelcomeScreen({ navigation }) {
     ios: style.image,
     android: {
       ...style.image,
-      height: hp(55),
+      minHeight: windowHeight * 0.55,
     },
     web: {
       ...style.image,

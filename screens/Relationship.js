@@ -3,7 +3,7 @@ import { ScrollView, View } from 'react-native'
 import { styles } from '../Style/screenStyles/RelationshipStyle'
 import Card from '../components/Card'
 import CustomDataLabel from '../components/CustomDataLabel'
-import { UserContext } from '../context/user-context'
+import { UserContext } from '../store/user-context'
 
 export default function RelationshipScreen({ navigation }) {
   // Grouping relationships by group name

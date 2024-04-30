@@ -3,7 +3,7 @@ import { Platform, Text, View, useWindowDimensions } from 'react-native';
 import { styles } from "../Style/screenStyles/HomeScreenStyle";
 import PercentageBar from '../components/ProgressBar';
 import { COLOR } from '../constants/GlobalColor';
-import { UserContext } from '../context/user-context';
+import { UserContext } from '../store/user-context';
 
 
 export default function CharacterStatus() {

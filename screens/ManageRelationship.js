@@ -4,8 +4,8 @@ import { styles } from "../Style/screenStyles/ManageRelaStyle";
 import Card from "../components/Card";
 import CustomDataLabel from "../components/CustomDataLabel";
 import AlertPopup from "../components/eventsPopup/AlertPopup";
-import { UserContext } from "../context/user-context";
-import data from "../data/userData.json"
+import data from "../data/userData.json";
+import { UserContext } from "../store/user-context";
 export default function ManageRelationship({ route, navigation }) {
   const [modalVisible, setModalVisible] = useState(false);
   const [actionModal, setActionModal] = useState(false);
@@ -25,7 +25,7 @@ export default function ManageRelationship({ route, navigation }) {
     happiness: 0,
     appearance: 0
   });
-  const relationships  = data.Relationships;
+  const relationships = data.Relationships;
   // Function to open modal
   const openModal = () => {
     setModalVisible(true);

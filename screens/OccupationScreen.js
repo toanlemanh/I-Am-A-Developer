@@ -4,7 +4,7 @@ import { Platform, ScrollView, Text, TouchableNativeFeedback, TouchableOpacity, 
 import { styles } from '../Style/screenStyles/OccupationStyle';
 import Card from '../components/Card';
 import AlertPopup from '../components/eventsPopup/AlertPopup';
-import { UserContext } from '../context/user-context';
+import { UserContext } from '../store/user-context';
 
 export default function OccupationScreen({ navigation }) {
 
@@ -33,11 +33,9 @@ export default function OccupationScreen({ navigation }) {
   };
 
   const renderJobDetails = (job) => {
-    if (!job) return <Text>Go find a job</Text>;
+    if (occupation.salary === 0) return <Text>Go find a job</Text>;
     return (
       <View style={styles.detailsContainer}>
-        <Text><Text style={styles.label}>Job:</Text> {job.job}</Text>
-        <Text><Text style={styles.label}>Years:</Text> {job.years}</Text>
         <Text><Text style={styles.label}>Salary:</Text> {job.salary}</Text>
       </View>
     );
@@ -56,6 +54,7 @@ export default function OccupationScreen({ navigation }) {
             showDetail={false}
           >
             {occupation.name ? occupation.name : "No Current Job"}
+
           </Card>
         ) : (
           <Card
@@ -72,7 +71,7 @@ export default function OccupationScreen({ navigation }) {
         closeModal={closeModal} // General close modal function
         title={occupation?.name || "No Current Job"}
         content={renderJobDetails(occupation)}
-        buttonText={occupation ? "Quit Job" : "OK"}  // Text changes based on occupation presence
+        buttonText={occupation.salary !== 0 ? "Quit Job" : "OK"}  // Text changes based on occupation presence
         buttonOnPress={occupation ? quitJob : closeModal}  // Function changes based on occupation presence
       />
       <View style={styles.buttonOutterContainer}>

@@ -4,8 +4,8 @@ import { styles } from '../Style/screenStyles/AssetsScreenStyle';
 import Card from '../components/Card';
 import CustomDataLabel from '../components/CustomDataLabel';
 import AlertPopup from '../components/eventsPopup/AlertPopup';
-import { UserContext } from '../context/user-context';
 import data from '../data/userData.json';
+import { UserContext } from '../store/user-context';
 import { buy } from '../utils/transaction';
 
 export default function AssetScreen() {

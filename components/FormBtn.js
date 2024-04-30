@@ -1,7 +1,7 @@
 import React from "react";
 import { Text, TouchableOpacity } from "react-native";
 import Animated, { BounceIn } from "react-native-reanimated";
-import { styles } from "../Style/componentStyle/FormBtnStyle";
+import { styles } from "../styles/componentStyles/FormBtnStyle";
 const AnimatedTouchableOpacity =
   Animated.createAnimatedComponent(TouchableOpacity);
 

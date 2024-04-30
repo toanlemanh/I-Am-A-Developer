@@ -1,18 +1,19 @@
 import { createDrawerNavigator } from '@react-navigation/drawer'
 import React, { useContext } from 'react'
 import { Pressable, Text, View } from 'react-native'
-import { AuthContext } from '../context/auth'
+import { AuthContext } from '../store/auth'
 
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { Alert } from 'react-native'
-import { styles } from '../Style/globalStyles'
 import { putUserData } from '../api/axios'
 import CustomDrawerContent from '../components/CustomDrawerContent'
 import { COLOR } from '../constants/GlobalColor'
-import { UserContext } from '../context/user-context'
+import { formatDate } from '../helpers/helpers'
 import ActivitiesScreen from '../screens/ActivitiesScreen'
 import HomeScreen from '../screens/HomeScreen'
 import MyAssetScreen from '../screens/MyAssetsScreen'
+import { UserContext } from '../store/user-context'
+import { styles } from '../styles/GlobalStyles'
 const Drawer = createDrawerNavigator()
 
 function DrawerStack() {
@@ -20,14 +21,14 @@ function DrawerStack() {
     const userContext = useContext(UserContext);
     const userState = userContext.userState
     function loginRewardsHandler() {
-        userState.userDailyLogin.currentLoginDate = userContext.formatDate()
+        userState.userDailyLogin.currentLoginDate = formatDate()
         if (userState.userDailyLogin.lastLoginDate !== userState.userDailyLogin.currentLoginDate || userState.userDailyLogin.lastLoginDate === "") {
             userState.character.money += userState.userDailyLogin.rewards
-            userState.userDailyLogin.lastLoginDate = userContext.formatDate()
+            userState.userDailyLogin.lastLoginDate = formatDate()
             return `You have received $${userState.userDailyLogin.rewards} from daily login rewards!`
         }
         else {
-            userState.userDailyLogin.lastLoginDate = userContext.formatDate()
+            userState.userDailyLogin.lastLoginDate = formatDate()
             return 'You have already received the daily login rewards!'
         }
     }

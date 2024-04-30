@@ -1,10 +1,8 @@
-import { View, Text, StyleSheet, ScrollView, Alert, Image } from "react-native";
-import Card from "../components/Card";
-import CustomDataLabel from "../components/CustomDataLabel";
-import { useState, useContext } from "react";
-import AlertPopup from "../components/eventsPopup/AlertPopup";
+import { useContext } from "react";
+import { Image, ScrollView, Text, View } from "react-native";
 import { styles } from "../Style/screenStyles/AssetsScreenStyle";
-import { UserContext } from "../context/user-context";
+import Card from "../components/Card";
+import { UserContext } from "../store/user-context";
 
 
 export default function MyAssetScreen() {
@@ -58,7 +56,7 @@ export default function MyAssetScreen() {
     return (
       <ScrollView style={styles.container}>
         <View style={styles.emptyContainer}>
-            <Image style={styles.empty} source={require("../assets/images/empty-cart-girl.png")} />
+          <Image style={styles.empty} source={require("../assets/images/empty-cart-girl.png")} />
         </View>
       </ScrollView>
     );
@@ -74,7 +72,7 @@ export default function MyAssetScreen() {
                 key={id}
                 //onPress={() => openModal(item)}
                 barHidden={true}
-                //showDetail={true}
+              //showDetail={true}
               >
                 {item}
               </Card>

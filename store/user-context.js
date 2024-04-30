@@ -211,14 +211,7 @@ const UserProvider = ({ children }) => {
             },
         }));
     }
-    function formatDate() {
-        let date = new Date();
-        const year = date.getFullYear();
-        const month = String(date.getMonth() + 1).padStart(2, "0"); // Month is zero-indexed
-        const day = String(date.getDate()).padStart(2, "0");
-        date = `${year}/${month}/${day}`;
-        return date;
-    }
+
     function levelupAllEducation() {
         const updatedEducation = { ...userState.education };
         for (const subject in updatedEducation) {
@@ -394,7 +387,6 @@ const UserProvider = ({ children }) => {
                 userState,
                 progress,
                 learningState,
-                formatDate,
                 updateLearningId,
                 updateLearningSubject,
                 updateLearningProgress,
