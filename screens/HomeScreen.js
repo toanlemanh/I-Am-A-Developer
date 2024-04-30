@@ -136,7 +136,7 @@ export default function HomeScreen() {
         clearInterval(interval)
       }
 
-    }, 200000);
+    }, 120000);
 
     //Clearing the interval
     return () => clearInterval(interval);

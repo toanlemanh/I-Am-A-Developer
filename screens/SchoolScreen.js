@@ -41,12 +41,13 @@ function SchoolScreen() {
     if (
       learningSubject === "" &&
       learningState.learningProgress ===
-        CONSTRAINTS.education.learningProgess.min
+      CONSTRAINTS.education.learningProgess.min
     ) {
       userContext.updateLearningSubject(subject);
       const id = setInterval(() => {
         userContext.updateLearningProgress(200 / 240);
       }, 2000);
+
       userContext.updateLearningId(id);
     }
     closeModal();
@@ -113,26 +114,26 @@ function SchoolScreen() {
       <ScrollView style={styles.container}>
         <View style={styles.cardsContainer}>
           {user.character.age >= CONSTRAINTS.age.attendSchool &&
-          user.character.age < CONSTRAINTS.age.legalAdult &&
-          !user.character.inUniversity
+            user.character.age < CONSTRAINTS.age.legalAdult &&
+            !user.character.inUniversity
             ? Object.keys(subjects).map((subject, itemIndex) => {
-                const subjectName = transformText([subject][0]);
-                return (
-                  <Card
-                    time={itemIndex}
-                    key={[subject]}
-                    percentage={subjects[subject] * 20} // Assuming fixed percentage
-                    showDetail={true}
-                    onPress={() => openModal([subject][0])}
-                  >
-                    <Text>{subjectName}</Text>
-                  </Card>
-                );
-              })
+              const subjectName = transformText([subject][0]);
+              return (
+                <Card
+                  time={itemIndex}
+                  key={[subject]}
+                  percentage={subjects[subject] * 20} // Assuming fixed percentage
+                  showDetail={true}
+                  onPress={() => openModal([subject][0])}
+                >
+                  <Text>{subjectName}</Text>
+                </Card>
+              );
+            })
             : null}
 
           {user.character.age >= CONSTRAINTS.age.legalAdult &&
-          !user.character.inUniversity ? (
+            !user.character.inUniversity ? (
             <View style={styles.buttonContainer}>
               <Button title="Apply to University" onPress={applyToUniversity} />
             </View>
@@ -161,12 +162,12 @@ function SchoolScreen() {
             content={
               selectedSubject
                 ? renderContent(
-                    transformText(selectedSubject),
-                    4,
-                    user.character.inUniversity
-                      ? universitySubjects[selectedSubject]
-                      : subjects[selectedSubject]
-                  )
+                  transformText(selectedSubject),
+                  4,
+                  user.character.inUniversity
+                    ? universitySubjects[selectedSubject]
+                    : subjects[selectedSubject]
+                )
                 : null
             }
             buttonOnPress={() => startLearning(selectedSubject)}
