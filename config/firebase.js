@@ -2,7 +2,7 @@ import axios from "axios"
 import { Alert } from "react-native"
 
 //create your firebase project and fill your APIKey
-const WebApiKey = "AIzaSyAb-ikC6OtN_mah2Z1_BKu-bPYKEPdWn2w"
+const WebApiKey = ""
 
 const authenticate = async (mode, email, password) => {
     try {
